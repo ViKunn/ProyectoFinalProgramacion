@@ -32,9 +32,6 @@ public class Map {
 
 
 
-
-
-
 	private Block[][] loadBlocks(Vector<Vector<Integer>> numbers) {
 
 		Block[][] loadedBlocks = new Block[mapSizeY][mapSizeX];
