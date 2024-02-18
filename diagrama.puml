@@ -1,0 +1,42 @@
+@startuml
+
+
+/'Esto de aquí ignoren'/
+skinparam Linetype ortho
+skinparam class {
+BackgroundColor LightBlue
+ArrowColor Black
+BorderColor Black
+}
+
+
+class BadIceCream
+abstract class Enemy{
+
+}
+
+class DataManager
+
+abstract class Entity
+
+Player ... Level
+Enemy ..l.. Map
+
+BadIceCream --> Level
+BadIceCream -> Player
+
+Level --> Map
+Level --> Enemy
+Level --> Fruit
+
+Enemy <|-- Troll
+
+
+Map --> Block
+Map --- DataManager
+
+Entity <|-- Player
+Entity <|-- Enemy
+Player --> keyHandler
+
+@enduml
