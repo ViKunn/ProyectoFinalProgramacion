@@ -1,5 +1,7 @@
+import business.Direction;
 import business.Position;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class Map {
@@ -25,13 +27,30 @@ public class Map {
 	}
 
 	// TODO para poner hielo se actualiza el mapa
-	public void putIce(int direction, int x, int y){
+	public void putIce(Direction direction, int x, int y){
 		// TODO
 	}
+	
+	public ArrayList<Position> getFreePositions(){
+		ArrayList<Position> freePositions = new ArrayList<>();
 
+		for (int row = 0; row < mapSizeY; row++) {
+			for (int col = 0; col < mapSizeX; col++) {
 
+				Position position = new Position(row, col);
 
+				if (getBlock(position).isSolid()){
+					break;
+				}
 
+				freePositions.add(position);
+			}
+		}
+		
+		return freePositions;
+	}
+
+	
 	private Block[][] loadBlocks(Vector<Vector<Integer>> numbers) {
 
 		Block[][] loadedBlocks = new Block[mapSizeY][mapSizeX];
@@ -62,4 +81,12 @@ public class Map {
 
 	}
 
+	public int getMapSizeX() {
+		return mapSizeX;
+	}
+	public int getMapSizeY() {
+		return mapSizeY;
+	}
+	
+	
 }

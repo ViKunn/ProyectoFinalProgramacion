@@ -3,45 +3,46 @@ import business.Direction;
 import business.Position;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Level{
 
 	private Map map;
 
-	private Position playerInitialPosition;
-
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Fruit> fruits;
-
-	public static void main(String[] args) {
-		Level level = new Level("");
-
-	}
 
 	public Level(String mapPath) {
 
 		map = DataManager.loadMap("res/maps/map01.txt");
-
-		playerInitialPosition = new Position(1,1);
 
 		enemies = new ArrayList<Enemy>();
 		fruits = new ArrayList<Fruit>();
 
 	}
 
-	// TODO
+	// TODO posición predeterminada o posición random?
 	public Position getPlayerInitialPosition(){
-		return playerInitialPosition;
-	}
 
-	/*
-	//TODO
-	private Position loadInitialPosition(){
-		Position position = new Position(3,3);
+		ArrayList<Position> enemyPositions = new ArrayList<>();
+		for (Enemy enemy : enemies) {
+			enemyPositions.add(enemy.getPosition());
+		}
 
+		ArrayList<Position> freeMapPositions = map.getFreePositions();
+
+		ArrayList<Position> freePositions = new ArrayList<>();
+		for (Position enemyPosition: enemyPositions){
+			freeMapPositions.remove(enemyPosition);
+		}
+		freePositions = freeMapPositions;
+
+
+		Position position = freePositions.get(1);
 		return position;
+
 	}
-	 */
+
 
 	public boolean isCollidingWithAnEnemy(Position position) {
 
@@ -63,7 +64,6 @@ public class Level{
 
 		return false;
 	}
-
 	public boolean isCollidingWithABlock(Position position) {
 
 		Block block = map.getBlock(position);
@@ -71,13 +71,13 @@ public class Level{
 		return block.isSolid();
 	}
 
-	private boolean comparePositions(Position p1, Position p2){
-		return p1 == p2;
-	}
-
 	public boolean isThereAnIce(Direction direction) {
 		return false;
 	}
 
+
+	private boolean comparePositions(Position p1, Position p2){
+		return p1 == p2;
+	}
 
 }
