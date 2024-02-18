@@ -6,8 +6,8 @@ public class Map {
 
 	private Block[][] blocks;
 
-	private int mapSizeX;
-	private int mapSizeY;
+	private final int mapSizeX;
+	private final int mapSizeY;
 
 	public Map(Vector<Vector<Integer>> numbers, int mapSizeX, int mapSizeY) {
 
@@ -17,18 +17,9 @@ public class Map {
 		blocks = loadBlocks(numbers);
 
 		System.out.println(":)");
-
 	}
 
-	//
-	public Map(){
-
-		blocks = new Block[][]{ {new Block("", false), new Block("", false), new Block("", true)},
-								{new Block("", false), new Block("", false), new Block("", true)},
-								{new Block("", true), new Block("", true), new Block("", true)}};
-
-	}
-
+	// TODO
 	public Block getBlock(Position position){
 		return blocks[position.getX()][position.getY()];
 	}
@@ -38,9 +29,15 @@ public class Map {
 		// TODO
 	}
 
-	private Block[][] loadBlocks(Vector<Vector<Integer>> numbers){
 
-		Block[][] blocks = new Block[mapSizeY][mapSizeX];
+
+
+
+
+
+	private Block[][] loadBlocks(Vector<Vector<Integer>> numbers) {
+
+		Block[][] loadedBlocks = new Block[mapSizeY][mapSizeX];
 
 		BlockManager blockManager = new BlockManager();
 		int blockNumber;
@@ -52,17 +49,19 @@ public class Map {
 				blockNumber = numbers.get(i).get(j);
 
 				try {
-					blocks[i][j] = blockManager.getBlock(blockNumber);
+
+					loadedBlocks[i][j] = blockManager.getBlock(blockNumber);
 
 				} catch (ArrayIndexOutOfBoundsException e){
-					System.out.println("Error en los archivos de mapa");
-					e.printStackTrace();
+
+					System.out.println("Error en el tamaño de la matriz en los archivos de mapa");
+					break;
 				}
 
 			}
 		}
 
-		return blocks;
+		return loadedBlocks;
 
 	}
 

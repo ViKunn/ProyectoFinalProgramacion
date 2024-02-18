@@ -13,11 +13,15 @@ public class Level{
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Fruit> fruits;
 
+	public static void main(String[] args) {
+		Level level = new Level("");
+
+	}
+
 	public Level(String mapPath) {
 
-		// map = DataManager.loadMap("res/maps/map01.txt");
+		map = DataManager.loadMap("res/maps/map01.txt");
 
-		map = new Map();
 		playerInitialPosition = new Position(1,1);
 
 		enemies = new ArrayList<Enemy>();
@@ -37,7 +41,6 @@ public class Level{
 
 		return position;
 	}
-
 	 */
 
 	public boolean isCollidingWithAnEnemy(Position position) {

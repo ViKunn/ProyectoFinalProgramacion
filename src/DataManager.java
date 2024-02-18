@@ -6,69 +6,78 @@ import java.util.Vector;
 
 public class DataManager {
 
-	private static ArrayList<String> lines = new ArrayList<>();
+	private static Vector<String> readLines = new Vector<>();
 
-	// map
 	public static Map loadMap(String path) {
 
-		Vector<Vector<Integer>> numbers = strVectorToIntVector();
-		readFile(path);
+		readTxtFile(path);
 
+		Vector<Vector<Integer>> numbers = strVectorToIntVector(DataManager.readLines);
 		Map map = new Map(numbers, 18, 18);
+
 		return map;
 	}
+	private static Vector<Vector<Integer>> strVectorToIntVector(Vector<String> readLines){
 
-	private static Vector<Vector<Integer>> strVectorToIntVector(){
+		Vector<Vector<Integer>> rows = new Vector<>();
+		Vector<Integer> lineIntegers = new Vector<>();
 
-		Vector<Vector<Integer>> lines = new Vector<>();
+		int row = 0;
 
-		for (String line : DataManager.lines) {
+		for (String line : readLines) {
 
-			Vector<Integer> lineIntegers = new Vector<>();
-			String[] lineNumbers = DataManager.lines.get(1).split("\t");
-
-			int counter = 0;
-
-			for (int num :	lineIntegers) {
-				num = Integer.parseInt(lineNumbers[counter]);
-				lineIntegers.add(num);
-
-				counter++;
+			if (line == null){
+				break;
 			}
 
-			counter = 0;
+			lineIntegers.clear();
 
-			lines.add(lineIntegers);
+			String[] lineNumbers = DataManager.readLines.get(row).split("\t");
+			row++;
+
+			int col = 0;
+
+			for (String number : lineNumbers) {
+
+				//TODO
+				int num = Integer.parseInt(lineNumbers[col]);
+				lineIntegers.add(num);
+
+				col++;
+			}
+
+			col = 0;
+
+			rows.add(lineIntegers);
 
 		}
 
-		/*
-		for (int i = 0; i < lines.size() - 1; i++) {
-
-		}
-
-		 */
-
-		return lines;
+		return rows;
 	}
 
 
-	// read File
-	private static void readFile(String path){
 
-		lines.clear();
 
-		String line;
+
+	/**
+	 * Reads a .txt file
+	 * @param path
+	 * @return ArrayList of the read lines
+	 */
+	private static void readTxtFile(String path){
+
+		readLines.clear();
 
 		try {
 
+			String line;
 			FileReader fileReader = new FileReader(path);
 			BufferedReader reader = new BufferedReader(fileReader);
 
 			do {
 
 				line = reader.readLine();
-				lines.add(line);
+				readLines.add(line);
 
 			} while (line != null);
 
