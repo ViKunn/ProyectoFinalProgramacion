@@ -12,5 +12,5 @@ public class Enemy extends Entity {
 		this.direction = direction;
 		this.speed = speed;
 	}
-
+	
 }
