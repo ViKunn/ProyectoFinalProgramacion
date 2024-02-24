@@ -8,7 +8,7 @@ public class Fruit extends Entity {
 	public Fruit(Level level) {
 		this.level = level;
 	}
-	public void setInitalValues(){
+	public void setInitialValues(){
 
 	}
 }
