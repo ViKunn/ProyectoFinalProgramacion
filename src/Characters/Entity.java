@@ -7,16 +7,16 @@ public abstract class Entity  {
 
 	protected Position position;
 	protected Direction direction;
-	protected int speed;
+	protected int advance;
 
 	public Position getPosition(){
 		return position;
 	}
 	public int getSpeed(){
-		return speed;
+		return advance;
 	}
 	public Direction getDirection(){
 		return direction;
 	}
-
+	//public abstract Map breakIce();
 }

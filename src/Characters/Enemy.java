@@ -1,7 +1,5 @@
 package Characters;
-import Characters.Entity;
 import business.Direction;
-import business.Movable;
 import business.Position;
 
 public class Enemy extends Entity {
@@ -10,7 +8,7 @@ public class Enemy extends Entity {
 
 		this.position = position;
 		this.direction = direction;
-		this.speed = speed;
+		this.advance = speed;
 	}
 	
 }
