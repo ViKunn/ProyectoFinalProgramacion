@@ -1,3 +1,5 @@
+package business;
+
 public class Block {
 
 	private String name;
@@ -10,5 +12,10 @@ public class Block {
 
 	public boolean isSolid() {
 		return solid;
+	}
+
+	@Override
+	public String toString() {
+		return name;
 	}
 }

@@ -1,5 +1,7 @@
+import business.BadIceCream;
 import business.Direction;
-
+import com.sun.source.tree.WhileLoopTree;
+import java.util.Scanner;
 public class Main {
 
 	/*--------------------------------------------------*/
@@ -19,7 +21,7 @@ public class Main {
 
         //ENTONCES:
         assertTrue(player.estaMuerto());
-
+w
 
 		//Dado: que existe un player y una fruta:
 		Player player;
@@ -28,15 +30,40 @@ public class Main {
 		player = new Player(5,5);
         fruta = new Fruta(5, 5);
 		//ENTONCES: el player aumenta sus objetosRecolectados
-		assertTrue(player.getObjetosRecolectados());
+		assert(1, player.getObjetosRecolectados());
+
 
 		*/
-
 		BadIceCream badIceCream = new BadIceCream();
 
-		badIceCream.movePlayer(Direction.UP);
-		badIceCream.movePlayer(Direction.LEFT);
+		Scanner scanner = new Scanner(System.in);
+		while (badIceCream.isRunning()){
+			System.out.println("Ingrese una tecla (w/a/s/d):");
+			String tecla = scanner.nextLine();
+			switch (tecla) {
+				case "w":
+					badIceCream.movePlayer(Direction.UP);
+					break;
+				case "a":
+					badIceCream.movePlayer(Direction.LEFT);
+					break;
+				case "s":
+					badIceCream.movePlayer(Direction.DOWN);
+					break;
+				case "d":
+					badIceCream.movePlayer(Direction.RIGHT);
+					break;
+			//	case "f":
+				//	badIceCream.playerBreakIce();
+				//	break;
+				default:
+					System.out.println("Tecla no válida.");
+					break;
+			}
 
+			System.out.println(badIceCream.getPlayer().getPosition());
+
+		}
 
 	}
 }
@@ -50,7 +77,7 @@ TODO
 - player.breakIce()
 - enemy.breakIce()
 - player.incrementCollectionCounter()
-- level.getNumCollectionableElements()
+- level.getNumCollectableElements() // TODO
 - player.getFrontPosition()
 
 
@@ -63,7 +90,7 @@ TODO BUSINESS
 - que los enemigos se puedan mover
 
 	level.update(){
-		enemy.move(Map)
+		enemy.move(business.Map)
 	}
 
 	move(map){
@@ -92,6 +119,8 @@ TODO BUSINESS
 	}
 
 - badIceCream.passLevel()
+
+
 
 
  */

@@ -1,3 +1,5 @@
+package business;
+
 import java.util.HashMap;
 
 public class BlockManager {
@@ -8,9 +10,9 @@ public class BlockManager {
 
 		blocks = new HashMap<Integer, Block>();
 
-		blocks.put(0, new Block("Nieve",  false));
-		blocks.put(1, new Block("Hielo",  true));
-		blocks.put(2, new Block("Madera", true));
+		blocks.put(0, new Block(               "SNOW ",               false));
+		blocks.put(1, new Block("\u001B[34m" + "ICE  " + "\u001B[0m", true ));
+		blocks.put(2, new Block("\u001B[31m" + "BLOCK" + "\u001B[0m", true ));
 
 	}
 

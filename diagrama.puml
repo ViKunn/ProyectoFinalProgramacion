@@ -20,7 +20,8 @@ class DataManager
 abstract class Entity
 
 Player ... Level
-Enemy ..l.. Map
+Player ...> Map
+Enemy  .l.> Map
 
 BadIceCream --> Level
 BadIceCream -> Player

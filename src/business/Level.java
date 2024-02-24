@@ -1,9 +1,9 @@
+package business;
+
 import Characters.Enemy;
-import business.Direction;
-import business.Position;
+import data.DataManager;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Level{
 
@@ -21,26 +21,21 @@ public class Level{
 
 	}
 
-	// TODO posición predeterminada o posición random?
+	/*
+	// TODO posición predeterminada de acuerdo con las capas de texto
 	public Position getPlayerInitialPosition(){
 
-		ArrayList<Position> enemyPositions = new ArrayList<>();
-		for (Enemy enemy : enemies) {
-			enemyPositions.add(enemy.getPosition());
-		}
-
-		ArrayList<Position> freeMapPositions = map.getFreePositions();
-
-		ArrayList<Position> freePositions = new ArrayList<>();
-		for (Position enemyPosition: enemyPositions){
-			freeMapPositions.remove(enemyPosition);
-		}
-		freePositions = freeMapPositions;
 
 
-		Position position = freePositions.get(1);
-		return position;
+	}
+	 */
 
+
+	public Position getPlayerInitialPosition(){
+
+
+
+		return new Position(2,2);
 	}
 
 
@@ -65,19 +60,19 @@ public class Level{
 		return false;
 	}
 	public boolean isCollidingWithABlock(Position position) {
-
-		Block block = map.getBlock(position);
-
-		return block.isSolid();
+		return map.getBlock(position).isSolid();
 	}
 
 	public boolean isThereAnIce(Direction direction) {
 		return false;
 	}
 
-
 	private boolean comparePositions(Position p1, Position p2){
 		return p1 == p2;
+	}
+
+	public void presentarMapa(){
+		System.out.println(map);
 	}
 
 }

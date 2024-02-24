@@ -1,31 +1,31 @@
-import Characters.Player;
-import business.Direction;
+package business;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import Characters.Player;
 
 public class BadIceCream {
 
 	private Player player;
-
-	// private ArrayList<Level> levels;
-
+	// private ArrayList<business.Level> levels;
 	private Level level;
+	private boolean isRunning;
 
 
 	public BadIceCream(){
-		level = new Level("");
+
+		LevelManager levelManager = new LevelManager();
+		level = levelManager.getLevel(1);
+
 		player = new Player(level.getPlayerInitialPosition());
+		isRunning = true;
 	}
 
-	//
+
 	public void movePlayer(Direction direction){
 
 		if (isCollidingWithABlock()){
 			System.out.println("No se puede mover porque hay un bloque");
 			return;
 		}
-
 		player.move(direction);
 
 		/*
@@ -37,36 +37,27 @@ public class BadIceCream {
 			System.out.println("Comiste una fruta!!");
 			player.incrementCollectionCounter();
 		}
-		if(player.getCollectionCounter() == level.getNumOfCollectibleElements()){
+		if(player.getCollectionCounter() == level.getNumOfCollectableElements()){
 			System.out.println("Felicidades!! Ganaste!!");
+			isRunning = false;
 		}
 
 		 */
 	}
 
+	public boolean isRunning(){
+		return isRunning;
+	}
 
 
-/*	  TODO: AQUI HAY QUE CAMBIAR Y ENVIAR EL NIVEL AL PLAYER Y QUE ÉL SE ENCARGE DE ROMPER JEJE
+/*	  TODO: AQUÍ SE VA ACTUALIZAR EL MAPA QUE SE MODIFICO POR EL PLAYER 
 
-		public void breakIcePlayer(){
-		if(isThereAnIce()){ //Aquí necesito que nivel me diga si hay un hielo en la posición que le mando  ME PREGUNTAN SI NO ENTIENDEN
-								// Y que player me mande la posición frontal siguiente (la posición que está mirando de frente)
-		level.breakIce(player.getDirection(), player.getFrontPosition()); // Nivel, necesito que quites los hielos y pongas nieve :)
-
-		}
-
-
-		player.breakIce(level);
-		enemy.breakIce();
-
+	public void playerBreakIce(){
+		level.uploadMap(player.breakIce(level.getMap()));
+		System.out.println("Se ha roto los hielos");
 	}
 
 */
-
-
-
-
-
 
 
 	/*
@@ -96,12 +87,18 @@ public class BadIceCream {
 	}
 
 	 */
+
 	private boolean isCollidingWithABlock() {
 
 		if (level.isCollidingWithABlock(player.getPosition())){
 			return true;
 		}
 		return false;
+	}
+
+
+	public Player getPlayer() {
+		return player;
 	}
 
 	// TODO

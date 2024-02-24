@@ -1,7 +1,7 @@
-import business.Direction;
-import business.Position;
+package business;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Vector;
 
 public class Map {
@@ -17,8 +17,6 @@ public class Map {
 		this.mapSizeY = mapSizeY;
 
 		blocks = loadBlocks(numbers);
-
-		System.out.println(":)");
 	}
 
 	// TODO
@@ -26,11 +24,6 @@ public class Map {
 		return blocks[position.getX()][position.getY()];
 	}
 
-	// TODO para poner hielo se actualiza el mapa
-	public void putIce(Direction direction, int x, int y){
-		// TODO
-	}
-	
 	public ArrayList<Position> getFreePositions(){
 		ArrayList<Position> freePositions = new ArrayList<>();
 
@@ -87,6 +80,18 @@ public class Map {
 	public int getMapSizeY() {
 		return mapSizeY;
 	}
-	
-	
+
+
+	@Override
+	public String toString() {
+
+		for (int row = 0; row < mapSizeY; row++) {
+			for (int col = 0; col < mapSizeX; col++) {
+				System.out.print(blocks[row][col] + " ");
+			}
+			System.out.print("\n");
+		}
+
+		return "";
+	}
 }
