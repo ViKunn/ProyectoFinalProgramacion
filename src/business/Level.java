@@ -6,7 +6,7 @@ import data.DataManager;
 
 import java.util.ArrayList;
 
-public class Level{
+public class Level {
 
 	private Map map;
 
@@ -32,8 +32,11 @@ public class Level{
 
 
 		// burned
+
 		troll1 = new Troll(new Position(3,3), Direction.DOWN, new CollisionChecker(map));
 		enemies.add(troll1);
+		//Thread threadTroll1 = new Thread(troll1);
+		// threadTroll1.start();
 
 	}
 

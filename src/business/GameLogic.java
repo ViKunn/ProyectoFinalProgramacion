@@ -7,12 +7,14 @@ public class GameLogic {
 	private Player player;
 	private Level level;
 	private boolean isRunning;
+	private int numLevel;
 
 	private CollisionChecker collisionChecker;
 
-	public GameLogic(){
+	public GameLogic(int numLevel){
 
 		LevelManager levelManager = new LevelManager();
+		this.numLevel = numLevel;
 		level = levelManager.getLevel(1);
 		player = new Player(level.getPlayerInitialPosition());
 		isRunning = true;
@@ -22,13 +24,12 @@ public class GameLogic {
 
 	public void movePlayer(Direction direction){
 
-		if (collisionChecker.frontBlockIsSolid(direction, player.getPosition())){
+		if (isCollidingWithABlock(direction)){
 			System.out.println("No se puede mover porque hay un bloque");
 			return;
 		}
 
 		player.move(direction);
-
 
 		if (isCollidingWithAnEnemy()){
 			player.die();
@@ -49,14 +50,6 @@ public class GameLogic {
 		}
 		 */
 	}
-
-	public boolean isRunning(){
-		return isRunning;
-	}
-
-
-/*	  TODO: AQUÍ SE VA ACTUALIZAR EL MAPA QUE SE MODIFICO POR EL PLAYER 
-
 	public void playerBreakIce(){
 		player.breakIce(level.getMap());
 		System.out.println("Se ha roto los hielos");
