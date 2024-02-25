@@ -26,8 +26,10 @@ public class Player extends Entity implements Movable /*, Breakable*/ {
 				break;
 			case direction.RIGHT:
 				position.setX(position.getX() + advance);
+				break;
 			case direction.LEFT:
 				position.setX(position.getX() - advance);
+				break;
 
 		}
 	}
@@ -75,4 +77,17 @@ public class Player extends Entity implements Movable /*, Breakable*/ {
 			// hielo
 		return false;
 	}
+
+	public void setLife(boolean lifeState){
+		this.life = lifeState;
+	}
+
+	// Muerte del jugador, estado de vivo o muerto, ya está jeje
+
+	public boolean playerIsAlive(){
+		return alive;
+	}
+
+	 */
+
 }
