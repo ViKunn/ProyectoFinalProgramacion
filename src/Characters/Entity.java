@@ -16,5 +16,5 @@ public abstract class Entity  {
 	public Direction getDirection(){
 		return direction;
 	}
-	//public abstract Map breakIce();
+
 }

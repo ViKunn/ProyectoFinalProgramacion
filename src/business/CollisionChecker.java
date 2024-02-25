@@ -8,6 +8,9 @@ public class CollisionChecker {
 		this.map = map;
 	}
 
+	// TODO corregir para ocupar método Position.getFrontPosition
+	// TODO verificar lineas de código duplicadas
+
 	public boolean frontBlockIsSolid(Direction direction, Position position){
 
 		Position frontPosition = new Position();

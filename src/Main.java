@@ -2,17 +2,15 @@ import business.GameLogic;
 import business.Direction;
 
 import java.util.Scanner;
-public class Main {
 
-	/*--------------------------------------------------*/
+public class Main {
 
 	public static void main(String[] args) {
 
-		GameLogic gameLogic = new GameLogic();
-
+		GameLogic gameLogic = inicializarGameLogic();
 		Scanner scanner = new Scanner(System.in);
 
-		while (gameLogic.isRunning()){
+		while (gameLogic.isRunning()) {
 
 			System.out.println("Ingrese una tecla (w/a/s/d):");
 			String tecla = scanner.nextLine();
@@ -21,90 +19,87 @@ public class Main {
 				case "w":
 					gameLogic.movePlayer(Direction.UP);
 					break;
+
 				case "a":
 					gameLogic.movePlayer(Direction.LEFT);
 					break;
+
 				case "s":
 					gameLogic.movePlayer(Direction.DOWN);
 					break;
+
 				case "d":
 					gameLogic.movePlayer(Direction.RIGHT);
 					break;
-			//	case "f":
-				//	badIceCream.playerBreakIce();
-				//	break;
+
+				case "f":
+					gameLogic.playerBreakIce();
+					break;
+
 				default:
 					System.out.println("Tecla no válida.");
 					break;
 			}
 
 			System.out.println(gameLogic);
-
-			// System.out.println(gameLogic.getPlayer().getPosition());
 		}
 
 		System.out.println("EL NIVEL SE PASÓ!! AQUÍ SE PRESENTARÍA EL MENU PRINCIPAL");
-
 	}
+
+	public static GameLogic inicializarGameLogic() {
+		Scanner scanner = new Scanner(System.in);
+		int opción;
+
+		do {
+			System.out.println("Selecciona un nivel:");
+			System.out.println("1. Nivel Fácil");
+			System.out.println("2. Nivel Difícil");
+			System.out.println("3. Salir");
+			System.out.print("Ingresa tu opción: ");
+
+			opción = scanner.nextInt();
+			switch (opción) {
+				case 1:
+					System.out.println("Has seleccionado el Nivel Fácil.");
+					return new GameLogic(opción);
+				case 2:
+					System.out.println("Has seleccionado el Nivel Difícil.");
+					return new GameLogic(opción);
+				case 3:
+					System.out.println("Saliendo del juego...");
+					break;
+				default:
+					System.out.println("ERROR: Opción no válida.");
+					break;
+			}
+
+		} while (opción != 3);
+
+		scanner.close();
+		return null;
+	}
+
 }
 
 /*
 
-// EN LA MAÑANA
+TODO --> OBJETIVOS DEL DÍA
+
+	- El enemigo se mueva
+
+	- Posición frutas
+	- Recolección frutas
+	- Jugador gana el nivel
+
+	- Test nivel 1 con frutas
+
+	- Posición monstruos
 
 
-TODO player muera
-TODO el enemigo se mueva
+DOUBT --> BUSINESS
 
-TODO presentación en consola
-TODO posición frutas
-TODO recolección frutas
-TODO jugador gana el nivel
-
-TODO Test nivel 1 con frutas
-
-TODO posición monstruos
-
- */
-
-/*
-
-TODO
-
-- Constructor en TODAS las clases que no tengan :)
-
-- player.breakIce()
-- enemy.breakIce()
-- player.incrementCollectionCounter()
-- player.getFrontPosition()
-
-
-TODO BUSINESS
-
-
-- que los enemigos se puedan mover
-
-	level.update(){
-		enemy.move(business.Map)
-	}
-
-	move(map){
-
-		patron de movimiento
-
-		position.getX()
-		position.getY()
-
-		if(map.getBlock(x, y).isSolid()){
-			// tomar tal decision
-		}
-
-	}
-
-- como se inicializan las posiciones en nivel
-
-- que el jugador pueda recoger las frutas
-
-- badIceCream.passLevel()
+	- Como se inicializan las posiciones en nivel?
+	- Que el jugador pueda recoger las frutas?
 
 */

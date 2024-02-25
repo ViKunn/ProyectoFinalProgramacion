@@ -3,9 +3,9 @@ package Characters;
 import business.*;
 
 
-public class Player extends Entity implements Movable /*, Breakable*/ {
+public class Player extends Entity implements Movable, PowerUps {
 
-	private int posibleSpeed = 1;
+	private final int posibleSpeed = 1;
 	private boolean alive;
 
 	public Player(Position position ){
@@ -18,16 +18,17 @@ public class Player extends Entity implements Movable /*, Breakable*/ {
 		this.direction = direction;
 
 		switch (direction){
-			case direction.UP:
+
+			case UP:
 				position.setY(position.getY() - advance);
 				break;
-			case direction.DOWN:
+			case DOWN:
 				position.setY(position.getY() + advance);
 				break;
-			case direction.RIGHT:
+			case RIGHT:
 				position.setX(position.getX() + advance);
 				break;
-			case direction.LEFT:
+			case LEFT:
 				position.setX(position.getX() - advance);
 				break;
 
@@ -38,56 +39,73 @@ public class Player extends Entity implements Movable /*, Breakable*/ {
 		alive = false;
 	}
 
-	/*
-	public Map breakIce(Map map){
+	@Override
+	public void powerUpIce(Map map) {
 
-		Map mapAux = map;
-		if(map.(direction, position)){
+		if (map.frontBlockIsIce(direction, position)){
+			breakIce(map);
+		} else {
+			putIce(map);
+		}
+
+	}
+
+	// FIXME
+	@Override
+	public void breakIce(Map map) {
+
+		Position auxPosition = new Position(position.getX(), position.getY());
+
+
+		// FIXME
+		while (map.getBlock(auxPosition.getFrontPosition(direction)) instanceof Ice){
+			map.setBlock(auxPosition, 0);auxPosition = auxPosition.getFrontPosition(direction);
+		}
+
+		System.out.println(map);
+		System.out.println(":)");
+	}
+
+	// FIXME
+	@Override
+	public void putIce(Map map) {
+
+		Position positionAux = position;
+		switch (direction) {
+
+			case UP:
+				map.setBlock(positionAux, 0);
+				while (!map.frontBlockIsIce(direction, positionAux)) {
+					positionAux.setY(positionAux.getY() - 1);
+					map.setIce(positionAux);
+				}
+				break;
+
+			case DOWN:
+				while (!map.frontBlockIsIce(direction, positionAux)) {
+					positionAux.setY(positionAux.getY() + 1);
+					map.setIce(positionAux);
+				}
+				break;
+
+			case RIGHT:
+				while (!map.frontBlockIsIce(direction, positionAux)) {
+					positionAux.setX(positionAux.getX() + 1);
+					map.setIce(positionAux);
+				}
+				break;
+
+
+			case LEFT:
+				while (!map.frontBlockIsIce(direction, positionAux)) {
+					positionAux.setX(positionAux.getX() - 1);
+					map.setIce(positionAux);
+				}
+				break;
 
 		}
 
-		//positionFront, refers to the direction in which the player´s view points (view of ice cream)
-		//Position positionFront = position;
-		//Position position1 = new Position(0, 1);
-
-		switch (direction){
-			case direction.UP:
-				//verificatedIfCanIBroke(mapAux.getBlock(positionFront.getPositionIn(direction));
-				//positionFront = positionFront.getX(), positionFront.getY() - 1
-				verificateIfIsIce(mapAux.getBlock(new Position(position.getX(), position.getY() - advance)));
-				break;
-			case direction.DOWN:
-				//position.getX();
-				verificateIfIsIce(mapAux.getBlock(new Position(position.getX(), position.getY() + advance)));
-				break;
-			case direction.RIGHT:
-				//position.setX(position.getX() + advance);
-				verificateIfIsIce(mapAux.getBlock(new Position(position.getX() + advance, position.getY())));
-				break;
-			case direction.LEFT:
-				verificateIfIsIce(mapAux.getBlock(new Position(position.getX() - advance, position.getY())));
-				break;
-				//position.setX(position.getX()- advance);
-		}
-
-		return mapAux;
+		System.out.println(map);
+		System.out.println(":)");
 	}
-	
-	public boolean verificateIfIsIce(Block block) {
-			// hielo
-		return false;
-	}
-
-	public void setLife(boolean lifeState){
-		this.life = lifeState;
-	}
-
-	// Muerte del jugador, estado de vivo o muerto, ya está jeje
-
-	public boolean playerIsAlive(){
-		return alive;
-	}
-
-	 */
-
 }

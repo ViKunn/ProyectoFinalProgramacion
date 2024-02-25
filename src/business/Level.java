@@ -11,7 +11,9 @@ public class Level{
 	private Map map;
 
 	// private fruit layers;
+	// won o passed o finished
 
+	// TODO disminuir las frutas cada que recoge jeje
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Fruit> fruits;
 
@@ -36,18 +38,6 @@ public class Level{
 	}
 
 	// TODO posición predeterminada de acuerdo con las capas de texto
-	/*
-	public Position getPlayerInitialPosition(){
-
-	}
-	 */
-
-	// FIXME
-	/*
-	public Fruit[][] loadFruits(){
-		return;
-	}
-	 */
 
 	public Position getPlayerInitialPosition(){
 		return new Position(2,2);
@@ -55,49 +45,29 @@ public class Level{
 
 	public boolean isCollidingWithAnEnemy(Position position) {
 
-		return troll1.getPosition().equals(position);
-
-		// FIXME
-		/*
 		for (Enemy enemy: enemies) {
-			if(equalPositions(enemy.getPosition(), position)){
+			if(enemy.getPosition().equals(position)){
 				return true;
 			}
 		}
 
 		return false;
 
-		 */
 	}
 
-	/*
 	public boolean isCollidingWithAFruit(Position playerPosition) {
 
 		for (Fruit fruit: fruits) {
-			if(comparePositions(fruit.getPosition(), playerPosition)){
+			if(fruit.getPosition().equals(playerPosition)){
 				return true;
 			}
 		}
 
 		return false;
 	}
-	 */
-	public boolean isCollidingWithABlock(Position position) {
-		return map.getBlock(position).isSolid();
-	}
-
-	private boolean equalPositions(Position p1, Position p2){
-		// fixme
-		return p1.equals(p2);
-	}
-
 
 	public Map getMap() {
 		return map;
-	}
-
-	public void presentarMapa(/*recibir entidades para permitir impresión de mapa con entidades*/){
-		System.out.println(map);
 	}
 
 
@@ -105,4 +75,5 @@ public class Level{
 	public Position getEnemyPosition() {
 		return troll1.getPosition();
 	}
+
 }

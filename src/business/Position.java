@@ -20,6 +20,23 @@ public class Position {
 		return y;
 	}
 
+	public Position getFrontPosition(Direction direction){
+
+		Position frontPosition = this;
+
+		switch (direction){
+
+			case UP:    frontPosition.y --;
+			case DOWN:  frontPosition.y ++;
+			case LEFT:  frontPosition.x --;
+			case RIGHT: frontPosition.x ++;
+
+		}
+
+		return frontPosition;
+
+	}
+
 	public void setX(int x){
 		this.x = x;
 	}

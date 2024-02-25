@@ -5,7 +5,6 @@ import Characters.Player;
 public class GameLogic {
 
 	private Player player;
-	// private ArrayList<business.Level> levels;
 	private Level level;
 	private boolean isRunning;
 
@@ -21,22 +20,12 @@ public class GameLogic {
 		collisionChecker = new CollisionChecker(level.getMap());
 	}
 
-
 	public void movePlayer(Direction direction){
 
 		if (collisionChecker.frontBlockIsSolid(direction, player.getPosition())){
 			System.out.println("No se puede mover porque hay un bloque");
 			return;
 		}
-
-
-		/*
-		if (isCollidingWithABlock()){
-			System.out.println("No se puede mover porque hay un bloque");
-			return;
-		}
-
-		 */
 
 		player.move(direction);
 
@@ -53,12 +42,11 @@ public class GameLogic {
 			System.out.println("Comiste una fruta!!");
 			level.decreaseFruitCounter();
 		}
-		/*
+
 		if(level.fruitsEqualZero()){
 			System.out.println("Felicidades!! Ganaste!!");
 			isRunning = false;
 		}
-
 		 */
 	}
 
@@ -70,28 +58,9 @@ public class GameLogic {
 /*	  TODO: AQUÍ SE VA ACTUALIZAR EL MAPA QUE SE MODIFICO POR EL PLAYER 
 
 	public void playerBreakIce(){
-		level.uploadMap(player.breakIce(level.getMap()));
+		player.breakIce(level.getMap());
 		System.out.println("Se ha roto los hielos");
 	}
-
-*/
-
-
-	/*
-	private boolean isThereAnIce() {//Aquí necesito que nivel me diga si hay o no (true or false)un hielo en la posición que le mando  ME PREGUNTAN SI NO ENTIENDEN
-		// Y que player me mande la posición frontal siguiente (la posición que está mirando de frente)
-		return level.isThereAnIce(player.getFrontPosition());
-	}
-
-
-	private boolean isCollidingWithAFruit() { //Estoy en eso
-		if (level.isCollidingWithAFruit(player.getPosition())){
-			return true;
-		}
-		return false;
-	}
-	*/
-
 
 	private boolean isCollidingWithAnEnemy() {
 
@@ -101,28 +70,28 @@ public class GameLogic {
 
 		return false;
 	}
-
-
-
-	private boolean isCollidingWithABlock() {
-
-		if (level.isCollidingWithABlock(player.getPosition())){
+	private boolean isCollidingWithABlock(Direction direction) {
+		return collisionChecker.frontBlockIsSolid(direction, player.getPosition());
+	}
+	/*
+	private boolean isCollidingWithAFruit() {
+		if (level.isCollidingWithAFruit(player.getPosition())){
 			return true;
 		}
 		return false;
 	}
+	*/
 
-
-	public Player getPlayer() {
-		return player;
+	public boolean isRunning(){
+		return isRunning;
 	}
 
-	// TODO
-	public void run(){
+	// TODO hilo de juego
+	public void run(Direction direction){
 
 	}
 
-
+	// TODO BORRAR AL FINAL
 	@Override
 	public String toString() {
 
@@ -141,7 +110,7 @@ public class GameLogic {
 					System.out.print("E ");
 
 				} else {
-					System.out.print(map.getBlock(new Position(row , col)));
+					System.out.print(map.getBlock(new Position(col , row)));
 				}
 			}
 			System.out.println("");
@@ -153,20 +122,4 @@ public class GameLogic {
 		return "";
 	}
 
-	/*
-
-		@Override
-	public String toString() {
-
-		for (int row = 0; row < mapSizeY; row++) {
-			for (int col = 0; col < mapSizeX; col++) {
-				System.out.print(blocks[row][col] + " ");
-			}
-			System.out.print("\n");
-		}
-
-		return "";
-	}
-
-	 */
 }

@@ -1,10 +1,7 @@
 package Characters;
-import business.CollisionChecker;
-import business.Direction;
-import business.Map;
-import business.Position;
+import business.*;
 
-public abstract class Enemy extends Entity {
+public abstract class Enemy extends Entity implements Movable {
 
 	protected CollisionChecker collisionChecker;
 
@@ -16,8 +13,6 @@ public abstract class Enemy extends Entity {
 
 	}
 
-
 	// Ya se creó la clase Troll (va a ser el primer monstruo).
-	//Movimiento
 	//Posición monstruos
 }

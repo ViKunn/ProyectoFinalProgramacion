@@ -20,52 +20,8 @@ public class DataManager {
 
 		return map;
 	}
-	private static Vector<Vector<Integer>> strVectorToIntVector(Vector<String> readLines){
 
-		Vector<Vector<Integer>> rows = new Vector<>();
-
-		for (int row = 0; row < readLines.size(); row++) {
-
-			Vector<Integer> lineIntegers = new Vector<>();
-
-			if (readLines.get(row) == null){
-				break;
-			}
-
-			String[] lineNumbers = DataManager.readLines.get(row).split("\t");
-
-			for (int col = 0; col < lineNumbers.length; col++) {
-
-				int num = Integer.parseInt(lineNumbers[col]);
-				lineIntegers.add(num);
-
-			}
-
-			rows.add(lineIntegers);
-
-		}
-
-		return rows;
-	}
-
-	/*
-	public static Score loadScore(String path) {
-
-		readTxtFile(path);
-
-		Score score = new Score("");
-
-		return score;
-	}
-
-
-
-	 */
-
-
-	// TODO fruit positions
-
-
+	// El resto de funciones que necesitan data
 
 	/**
 	 * Reads a .txt file
@@ -95,6 +51,34 @@ public class DataManager {
 
 	}
 
+	private static Vector<Vector<Integer>> strVectorToIntVector(Vector<String> readLines){
+
+		Vector<Vector<Integer>> rows = new Vector<>();
+
+		for (int row = 0; row < readLines.size(); row++) {
+
+			Vector<Integer> lineIntegers = new Vector<>();
+
+			if (readLines.get(row) == null){
+				break;
+			}
+
+			String[] lineNumbers = DataManager.readLines.get(row).split("\t");
+
+			for (int col = 0; col < lineNumbers.length; col++) {
+
+				int num = Integer.parseInt(lineNumbers[col]);
+				lineIntegers.add(num);
+
+			}
+
+			rows.add(lineIntegers);
+
+		}
+
+		return rows;
+	}
+
 	public static void writeFile(File archivo, Object object){
 
 		try {
@@ -111,7 +95,6 @@ public class DataManager {
 
 		}
 	}
-
 	public static Object readFile(File archivo){
 
 		Object object = new Object();
@@ -133,6 +116,5 @@ public class DataManager {
 
 		return object;
 	}
-
 
 }

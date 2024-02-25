@@ -9,7 +9,6 @@ public class LevelManager {
 
 	public LevelManager() {
 		levels = new HashMap<>();
-
 		levels.put(1, new Level("res/levels/level1/map01.txt") /*mandar array enemigos y frutas*/);
 
 	}

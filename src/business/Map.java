@@ -5,49 +5,67 @@ import java.util.Vector;
 
 public class Map {
 
-	private Block[][] blocks;
-
 	private final int mapSizeX;
 	private final int mapSizeY;
+
+	private Block[][] blocks;
+	BlockManager blockManager;
+
 
 	public Map(Vector<Vector<Integer>> numbers, int mapSizeX, int mapSizeY) {
 
 		this.mapSizeX = mapSizeX;
 		this.mapSizeY = mapSizeY;
 
+		blockManager = new BlockManager();
+
 		blocks = loadBlocks(numbers);
 	}
 
-	// TODO
 	public Block getBlock(Position position){
 		return blocks[position.getX()][position.getY()];
 	}
 
-	public ArrayList<Position> getFreePositions(){
-		ArrayList<Position> freePositions = new ArrayList<>();
+	public boolean frontBlockIsIce(Direction direction, Position position) {
 
-		for (int row = 0; row < mapSizeY; row++) {
-			for (int col = 0; col < mapSizeX; col++) {
+		Position frontPosition = new Position();
+		switch (direction) {
+			case UP:
 
-				Position position = new Position(row, col);
+				frontPosition = new Position(position.getX(), (position.getY() - 1));
+				break;
 
-				if (getBlock(position).isSolid()){
-					break;
-				}
+			case DOWN:
+				frontPosition = new Position(position.getX(), (position.getY()) + 1);
+				break;
 
-				freePositions.add(position);
-			}
+			case LEFT:
+				frontPosition = new Position((position.getX() - 1), position.getY());
+				break;
+
+			case RIGHT:
+				frontPosition = new Position((position.getX() + 1), position.getY());
+				break;
 		}
-		
-		return freePositions;
+		if ((getBlock(frontPosition) instanceof Ice)){
+			return false;
+		}
+		return true;
 	}
 
-	
+	public void setIce(Position position){
+		blocks[position.getY()][position.getX()] = (Ice)blockManager.getBlock(1);
+	}
+	public void setBlock(Position position, int block){
+		blocks[position.getY()][position.getX()] = blockManager.getBlock(block);
+	}
+
+
+
 	private Block[][] loadBlocks(Vector<Vector<Integer>> numbers) {
 
 		Block[][] loadedBlocks = new Block[mapSizeY][mapSizeX];
 
-		BlockManager blockManager = new BlockManager();
 		int blockNumber;
 
 		for (int i = 0; i < numbers.size(); i++) {
@@ -79,7 +97,6 @@ public class Map {
 	public int getMapSizeY() {
 		return mapSizeY;
 	}
-
 
 	@Override
 	public String toString() {
