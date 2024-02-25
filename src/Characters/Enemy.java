@@ -10,6 +10,7 @@ public abstract class Enemy extends Entity implements Movable {
 		this.position = position;
 		this.direction = direction;
 		this.advance = advance;
+		this.collisionChecker = collisionChecker;
 
 	}
 

@@ -8,7 +8,7 @@ public class Player extends Entity implements Movable, PowerUps {
 	private final int posibleSpeed = 1;
 	private boolean alive;
 
-	public Player(Position position ){
+	public Player(Position position){
 		this.position = position;
 		this.advance = 1;
 	}

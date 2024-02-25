@@ -23,7 +23,7 @@ public class Map {
 	}
 
 	public Block getBlock(Position position){
-		return blocks[position.getX()][position.getY()];
+		return blocks[position.getY()][position.getX()];
 	}
 
 	public boolean frontBlockIsIce(Direction direction, Position position) {

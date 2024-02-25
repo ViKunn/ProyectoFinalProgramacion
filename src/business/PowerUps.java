@@ -2,7 +2,8 @@ package business;
 
 public interface PowerUps {
 
-	abstract public Map breakIce(Map map);
-
+	void breakIce(Map map);
+	void putIce(Map map);
+	void powerUpIce(Map map);
 
 }

@@ -35,7 +35,4 @@ public class CollisionChecker {
 
 		return map.getBlock(frontPosition).isSolid();
 	}
-
-	// TODO frontBlockIsIce()
-
 }
