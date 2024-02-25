@@ -38,7 +38,9 @@ public class Main {
 					break;
 			}
 
-			System.out.println(gameLogic.getPlayer().getPosition());
+			System.out.println(gameLogic);
+
+			// System.out.println(gameLogic.getPlayer().getPosition());
 		}
 
 		System.out.println("EL NIVEL SE PASÓ!! AQUÍ SE PRESENTARÍA EL MENU PRINCIPAL");
@@ -49,6 +51,10 @@ public class Main {
 /*
 
 // EN LA MAÑANA
+
+
+TODO player muera
+TODO el enemigo se mueva
 
 TODO presentación en consola
 TODO posición frutas
@@ -70,9 +76,7 @@ TODO
 - player.breakIce()
 - enemy.breakIce()
 - player.incrementCollectionCounter()
-- level.getNumCollectableElements() // TODO
 - player.getFrontPosition()
-
 
 
 TODO BUSINESS

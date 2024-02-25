@@ -15,6 +15,10 @@ public class Level{
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Fruit> fruits;
 
+
+	// TODO consider
+	private ArrayList<Position> fruitPositions;
+
 	// enemigo quemado;
 	private Enemy troll1;
 
@@ -97,5 +101,8 @@ public class Level{
 	}
 
 
-
+	// TODO erase
+	public Position getEnemyPosition() {
+		return troll1.getPosition();
+	}
 }

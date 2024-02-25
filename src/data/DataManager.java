@@ -14,6 +14,8 @@ public class DataManager {
 		readTxtFile(path);
 
 		Vector<Vector<Integer>> numbers = strVectorToIntVector(DataManager.readLines);
+
+		// TODO tamaño de la matriz
 		Map map = new Map(numbers, 18, 18);
 
 		return map;
@@ -59,6 +61,11 @@ public class DataManager {
 
 
 	 */
+
+
+	// TODO fruit positions
+
+
 
 	/**
 	 * Reads a .txt file

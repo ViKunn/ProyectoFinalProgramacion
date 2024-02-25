@@ -94,9 +94,4 @@ public class Map {
 		return "";
 	}
 
-	/*
-	public boolean verificateIfIsIce(Direction direction, Position position) {
-	}
-
-	 */
 }

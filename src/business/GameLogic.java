@@ -24,18 +24,19 @@ public class GameLogic {
 
 	public void movePlayer(Direction direction){
 
-		/*
 		if (collisionChecker.frontBlockIsSolid(direction, player.getPosition())){
 			System.out.println("No se puede mover porque hay un bloque");
 			return;
 		}
 
-		 */
 
+		/*
 		if (isCollidingWithABlock()){
 			System.out.println("No se puede mover porque hay un bloque");
 			return;
 		}
+
+		 */
 
 		player.move(direction);
 
@@ -43,6 +44,7 @@ public class GameLogic {
 		if (isCollidingWithAnEnemy()){
 			player.die();
 			System.out.println("TE MORISTE!!");
+			isRunning = false;
 			return;
 		}
 
@@ -121,5 +123,50 @@ public class GameLogic {
 	}
 
 
+	@Override
+	public String toString() {
 
+		Map map = level.getMap();
+
+		for (int row = 0; row < map.getMapSizeY(); row++) {
+			for (int col = 0; col < map.getMapSizeY(); col++) {
+
+				if (player.getPosition().equals(level.getEnemyPosition())) {
+					System.out.print("X ");
+
+				} else if (player.getPosition().equals(new Position(col , row))){
+					System.out.print("P ");
+
+				} else if (level.getEnemyPosition().equals(new Position(col , row))){
+					System.out.print("E ");
+
+				} else {
+					System.out.print(map.getBlock(new Position(row , col)));
+				}
+			}
+			System.out.println("");
+		}
+
+		System.out.println("Player:  " + player.getPosition());
+
+
+		return "";
+	}
+
+	/*
+
+		@Override
+	public String toString() {
+
+		for (int row = 0; row < mapSizeY; row++) {
+			for (int col = 0; col < mapSizeX; col++) {
+				System.out.print(blocks[row][col] + " ");
+			}
+			System.out.print("\n");
+		}
+
+		return "";
+	}
+
+	 */
 }
