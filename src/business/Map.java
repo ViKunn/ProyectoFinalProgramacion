@@ -1,7 +1,6 @@
 package business;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Vector;
 
 public class Map {
@@ -94,4 +93,10 @@ public class Map {
 
 		return "";
 	}
+
+	/*
+	public boolean verificateIfIsIce(Direction direction, Position position) {
+	}
+
+	 */
 }

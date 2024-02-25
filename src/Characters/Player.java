@@ -12,8 +12,10 @@ public class Player extends Entity implements Movable /*, Breakable*/ {
 		this.advance = 1;
 	}
 
-	public void move(Direction direction){ //ya esta :)
+	public void move(Direction direction){
+
 		this.direction = direction;
+
 		switch (direction){
 			case direction.UP:
 				position.setY(position.getY() - advance);
@@ -29,8 +31,11 @@ public class Player extends Entity implements Movable /*, Breakable*/ {
 		}
 	}
 
-	//TODO: GENIOS CONTINUAN TRABAJANDO
+	public void die() {
+		alive = false;
+	}
 
+	/*
 	public Map breakIce(Map map){
 
 		Map mapAux = map;
@@ -61,15 +66,9 @@ public class Player extends Entity implements Movable /*, Breakable*/ {
 
 		return mapAux;
 	}
-
-	public boolean verificateIfICanBroke(Block block) {
-		// Unanse a la reu de nuevo ;3
-		// Ya vamos jeje
-		//mañana jsjasjsdjfkasd
-		// Mateo grosero, quien es ?
-		// así son :(
-		// onvrez, mateos
-
+	
+	public boolean verificateIfIsIce(Block block) {
+			// hielo
 		return false;
 	}
 }

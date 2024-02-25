@@ -1,57 +1,34 @@
-import business.BadIceCream;
+import business.GameLogic;
 import business.Direction;
-import com.sun.source.tree.WhileLoopTree;
+
 import java.util.Scanner;
 public class Main {
 
 	/*--------------------------------------------------*/
 
 	public static void main(String[] args) {
-		// SOLO PROGRA 2 (modo fácil)
 
-		/*
-
-	    //Dado: que existe un player y un enemigo:
-        Player player;
-        Monstruo monstruo;
-
-        //Cuando: Estos dos se encuentran en la misma posición el player muere
-        player = new Player(2,2);
-        monstruo = new Monstruo(2,2);
-
-        //ENTONCES:
-        assertTrue(player.estaMuerto());
-w
-
-		//Dado: que existe un player y una fruta:
-		Player player;
-		Fruta fruta;
-		//Cuando: Estos dos se encuentran en la misma posición
-		player = new Player(5,5);
-        fruta = new Fruta(5, 5);
-		//ENTONCES: el player aumenta sus objetosRecolectados
-		assert(1, player.getObjetosRecolectados());
-
-
-		*/
-		BadIceCream badIceCream = new BadIceCream();
+		GameLogic gameLogic = new GameLogic();
 
 		Scanner scanner = new Scanner(System.in);
-		while (badIceCream.isRunning()){
+
+		while (gameLogic.isRunning()){
+
 			System.out.println("Ingrese una tecla (w/a/s/d):");
 			String tecla = scanner.nextLine();
+
 			switch (tecla) {
 				case "w":
-					badIceCream.movePlayer(Direction.UP);
+					gameLogic.movePlayer(Direction.UP);
 					break;
 				case "a":
-					badIceCream.movePlayer(Direction.LEFT);
+					gameLogic.movePlayer(Direction.LEFT);
 					break;
 				case "s":
-					badIceCream.movePlayer(Direction.DOWN);
+					gameLogic.movePlayer(Direction.DOWN);
 					break;
 				case "d":
-					badIceCream.movePlayer(Direction.RIGHT);
+					gameLogic.movePlayer(Direction.RIGHT);
 					break;
 			//	case "f":
 				//	badIceCream.playerBreakIce();
@@ -61,12 +38,28 @@ w
 					break;
 			}
 
-			System.out.println(badIceCream.getPlayer().getPosition());
-
+			System.out.println(gameLogic.getPlayer().getPosition());
 		}
+
+		System.out.println("EL NIVEL SE PASÓ!! AQUÍ SE PRESENTARÍA EL MENU PRINCIPAL");
 
 	}
 }
+
+/*
+
+// EN LA MAÑANA
+
+TODO presentación en consola
+TODO posición frutas
+TODO recolección frutas
+TODO jugador gana el nivel
+
+TODO Test nivel 1 con frutas
+
+TODO posición monstruos
+
+ */
 
 /*
 
@@ -84,8 +77,6 @@ TODO
 
 TODO BUSINESS
 
-- que el jugador se pueda mover
-	badIceCream.movePlayer()
 
 - que los enemigos se puedan mover
 
@@ -108,19 +99,8 @@ TODO BUSINESS
 
 - como se inicializan las posiciones en nivel
 
-- que el jugador muera cuando toca un enemigo
 - que el jugador pueda recoger las frutas
-
-- bucle while
-
-	badIceCream.run()
-	main{
-		while(...)
-	}
 
 - badIceCream.passLevel()
 
-
-
-
- */
+*/

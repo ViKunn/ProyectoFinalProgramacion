@@ -5,9 +5,9 @@ public class Block {
 	private String name;
 	private final boolean solid;
 
-	public Block(String name, boolean collisionable) {
+	public Block(String name, boolean solid) {
 		this.name = name;
-		this.solid = collisionable;
+		this.solid = solid;
 	}
 
 	public boolean isSolid() {

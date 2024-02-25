@@ -12,9 +12,7 @@ public abstract class Entity  {
 	public Position getPosition(){
 		return position;
 	}
-	public int getSpeed(){
-		return advance;
-	}
+
 	public Direction getDirection(){
 		return direction;
 	}

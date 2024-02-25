@@ -2,8 +2,11 @@ package business;
 
 public class Position {
 
-	int x;
-	int y;
+	private int x;
+	private int y;
+
+	public Position() {
+	}
 
 	public Position(int x, int y) {
 		this.x = x;
@@ -27,5 +30,9 @@ public class Position {
 	@Override
 	public String toString() {
 		return "x: " + x + ", y: " + y;
+	}
+
+	public boolean equals(Position p2) {
+		return (x == p2.x && y == p2.y);
 	}
 }

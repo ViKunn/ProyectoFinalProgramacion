@@ -2,42 +2,57 @@ package business;
 
 import Characters.Player;
 
-public class BadIceCream {
+public class GameLogic {
 
 	private Player player;
 	// private ArrayList<business.Level> levels;
 	private Level level;
 	private boolean isRunning;
 
+	private CollisionChecker collisionChecker;
 
-	public BadIceCream(){
+	public GameLogic(){
 
 		LevelManager levelManager = new LevelManager();
 		level = levelManager.getLevel(1);
 
 		player = new Player(level.getPlayerInitialPosition());
 		isRunning = true;
+
+		collisionChecker = new CollisionChecker(level.getMap());
 	}
 
 
 	public void movePlayer(Direction direction){
 
+		/*
+		if (collisionChecker.frontBlockIsSolid(direction, player.getPosition())){
+			System.out.println("No se puede mover porque hay un bloque");
+			return;
+		}
+
+		 */
+
 		if (isCollidingWithABlock()){
 			System.out.println("No se puede mover porque hay un bloque");
 			return;
 		}
+
 		player.move(direction);
 
-		/*
+
 		if (isCollidingWithAnEnemy()){
 			System.out.println("TE MORISTE!!");
 			return;
 		}
+
+		/*
 		if (isCollidingWithAFruit()){
 			System.out.println("Comiste una fruta!!");
 			player.incrementCollectionCounter();
 		}
-		if(player.getCollectionCounter() == level.getNumOfCollectableElements()){
+		/*
+		if(level.fruitsEqualZero()){
 			System.out.println("Felicidades!! Ganaste!!");
 			isRunning = false;
 		}
@@ -75,6 +90,7 @@ public class BadIceCream {
 		}
 		return false;
 	}
+	*/
 
 
 	private boolean isCollidingWithAnEnemy() {

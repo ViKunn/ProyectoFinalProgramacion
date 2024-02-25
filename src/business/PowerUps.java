@@ -1,5 +1,8 @@
 package business;
 
-public interface Breakable {
+public interface PowerUps {
+
 	abstract public Map breakIce(Map map);
+
+
 }
