@@ -1,5 +1,7 @@
 package Characters;
+import business.CollisionChecker;
 import business.Direction;
+import business.Map;
 import business.Position;
 
 public abstract class Enemy extends Entity {

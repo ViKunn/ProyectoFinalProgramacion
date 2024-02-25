@@ -6,6 +6,7 @@ import business.*;
 public class Player extends Entity implements Movable /*, Breakable*/ {
 
 	private int posibleSpeed = 1;
+	private boolean alive;
 
 	public Player(Position position ){
 		this.position = position;
@@ -39,6 +40,9 @@ public class Player extends Entity implements Movable /*, Breakable*/ {
 	public Map breakIce(Map map){
 
 		Map mapAux = map;
+		if(map.(direction, position)){
+
+		}
 
 		//positionFront, refers to the direction in which the player´s view points (view of ice cream)
 		//Position positionFront = position;
@@ -48,18 +52,18 @@ public class Player extends Entity implements Movable /*, Breakable*/ {
 			case direction.UP:
 				//verificatedIfCanIBroke(mapAux.getBlock(positionFront.getPositionIn(direction));
 				//positionFront = positionFront.getX(), positionFront.getY() - 1
-				verificateIfICanBroke(mapAux.getBlock(new Position(position.getX(), position.getY() - 1)));
+				verificateIfIsIce(mapAux.getBlock(new Position(position.getX(), position.getY() - advance)));
 				break;
 			case direction.DOWN:
 				//position.getX();
-				verificateIfICanBroke(mapAux.getBlock(new Position(position.getX(), position.getY() + 1)));
+				verificateIfIsIce(mapAux.getBlock(new Position(position.getX(), position.getY() + advance)));
 				break;
 			case direction.RIGHT:
 				//position.setX(position.getX() + advance);
-				verificateIfICanBroke(mapAux.getBlock(new Position(position.getX() + 1, position.getY())));
+				verificateIfIsIce(mapAux.getBlock(new Position(position.getX() + advance, position.getY())));
 				break;
 			case direction.LEFT:
-				verificateIfICanBroke(mapAux.getBlock(new Position(position.getX() - 1, position.getY())));
+				verificateIfIsIce(mapAux.getBlock(new Position(position.getX() - advance, position.getY())));
 				break;
 				//position.setX(position.getX()- advance);
 		}
