@@ -15,7 +15,6 @@ public class GameLogic {
 
 		LevelManager levelManager = new LevelManager();
 		level = levelManager.getLevel(1);
-
 		player = new Player(level.getPlayerInitialPosition());
 		isRunning = true;
 
@@ -42,6 +41,7 @@ public class GameLogic {
 
 
 		if (isCollidingWithAnEnemy()){
+			player.die();
 			System.out.println("TE MORISTE!!");
 			return;
 		}
@@ -49,7 +49,7 @@ public class GameLogic {
 		/*
 		if (isCollidingWithAFruit()){
 			System.out.println("Comiste una fruta!!");
-			player.incrementCollectionCounter();
+			level.decreaseFruitCounter();
 		}
 		/*
 		if(level.fruitsEqualZero()){
@@ -82,9 +82,7 @@ public class GameLogic {
 	}
 
 
-
 	private boolean isCollidingWithAFruit() { //Estoy en eso
-
 		if (level.isCollidingWithAFruit(player.getPosition())){
 			return true;
 		}
@@ -102,7 +100,7 @@ public class GameLogic {
 		return false;
 	}
 
-	 */
+
 
 	private boolean isCollidingWithABlock() {
 
@@ -119,8 +117,6 @@ public class GameLogic {
 
 	// TODO
 	public void run(){
-
-
 
 	}
 
