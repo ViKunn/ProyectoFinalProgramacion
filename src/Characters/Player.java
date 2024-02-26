@@ -56,26 +56,40 @@ public class Player extends Entity implements Movable, PowerUps {
 
 		Position auxPosition = new Position(position.getX(), position.getY());
 
-
 		// FIXME
 		while (map.getBlock(auxPosition.getFrontPosition(direction)) instanceof Ice){
-			map.setBlock(auxPosition, 0);auxPosition = auxPosition.getFrontPosition(direction);
+			auxPosition = auxPosition.getFrontPosition(direction);
+			map.setBlock(auxPosition, 0);
 		}
 
-		System.out.println(map);
-		System.out.println(":)");
+
 	}
 
+
+	@Override
+	public void putIce(Map map) {
+
+		Position auxPosition1 = new Position(this.position.getX(), this.position.getY());
+
+		// FIXME
+		while (!(map.isBlockSolid(auxPosition1.getFrontPosition(direction)))){
+			auxPosition1 = auxPosition1.getFrontPosition(direction);
+			map.setIce(auxPosition1);
+
+		}
+
+
+	}
+/*
 	// FIXME
 	@Override
 	public void putIce(Map map) {
 
-		Position positionAux = position;
-		switch (direction) {
+		Position positionAux = new Position(this.position.getX(), this.position.getY());
+		switch (this.direction) {
 
 			case UP:
-				map.setBlock(positionAux, 0);
-				while (!map.frontBlockIsIce(direction, positionAux)) {
+				while (!(map.frontBlockIsIce(direction, positionAux))) {
 					positionAux.setY(positionAux.getY() - 1);
 					map.setIce(positionAux);
 				}
@@ -104,8 +118,8 @@ public class Player extends Entity implements Movable, PowerUps {
 				break;
 
 		}
-
+		System.out.println("______________");
 		System.out.println(map);
-		System.out.println(":)");
-	}
+		System.out.println("______________");
+	} */
 }

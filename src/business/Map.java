@@ -48,9 +48,9 @@ public class Map {
 				break;
 		}
 		if ((getBlock(frontPosition) instanceof Ice)){
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	public void setIce(Position position){
@@ -111,4 +111,7 @@ public class Map {
 		return "";
 	}
 
+	public boolean isBlockSolid(Position frontPosition) {
+		return blocks[frontPosition.getY()][frontPosition.getX()].isSolid();
+	}
 }

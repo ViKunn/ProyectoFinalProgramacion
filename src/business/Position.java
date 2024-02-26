@@ -22,14 +22,18 @@ public class Position {
 
 	public Position getFrontPosition(Direction direction){
 
-		Position frontPosition = this;
+		Position frontPosition = new Position(x, y);
 
 		switch (direction){
-
+			//Jaja faltó el break
 			case UP:    frontPosition.y --;
+			break;
 			case DOWN:  frontPosition.y ++;
+			break;
 			case LEFT:  frontPosition.x --;
+			break;
 			case RIGHT: frontPosition.x ++;
+			break;
 
 		}
 

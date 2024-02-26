@@ -33,7 +33,7 @@ public class Main {
 					break;
 
 				case "f":
-					gameLogic.playerBreakIce();
+					gameLogic.playerPowerUps();
 					break;
 
 				default:

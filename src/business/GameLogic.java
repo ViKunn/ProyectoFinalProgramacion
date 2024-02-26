@@ -50,9 +50,9 @@ public class GameLogic {
 		}
 		 */
 	}
-	public void playerBreakIce(){
-		player.breakIce(level.getMap());
-		System.out.println("Se ha roto los hielos");
+	public void playerPowerUps(){
+		player.powerUpIce(level.getMap());
+		System.out.println("Se ejecuto los poderes");
 	}
 
 	private boolean isCollidingWithAnEnemy() {
