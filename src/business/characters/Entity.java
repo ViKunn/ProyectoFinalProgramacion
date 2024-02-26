@@ -7,7 +7,7 @@ public abstract class Entity  {
 
 	protected Position position;
 	protected Direction direction;
-	protected int advance;
+	protected static int advance =1;
 
 	public Position getPosition(){
 		return position;
