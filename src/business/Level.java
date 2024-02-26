@@ -15,7 +15,7 @@ public class Level {
 
 	// TODO disminuir las frutas cada que recoge jeje
 	private ArrayList<Enemy> enemies;
-	private ArrayList<Fruit> fruits;
+	private ArrayList<ArrayList<Fruit>> fruits;
 
 
 	// TODO consider
@@ -28,6 +28,7 @@ public class Level {
 
 		map = DataManager.loadMap(mapPath);
 		// enemies = DataManager.loadEnemies(enemiesPath);
+
 		fruits = DataManager.loadFruits(fruitsPath);
 		Thread threadEnemy = null;
 
