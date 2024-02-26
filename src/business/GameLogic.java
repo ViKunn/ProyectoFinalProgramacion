@@ -26,6 +26,8 @@ public class GameLogic {
 
 	public void movePlayer(Direction direction){
 
+		player.changeDirection(direction);
+
 		if (isCollidingWithABlock(direction)){
 			System.out.println("No se puede mover porque hay un bloque");
 			return;
