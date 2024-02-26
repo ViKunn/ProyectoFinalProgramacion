@@ -1,4 +1,6 @@
-package business;
+package business.managers;
+
+import business.Level;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +11,7 @@ public class LevelManager {
 
 	public LevelManager() {
 		levels = new HashMap<>();
-		levels.put(1, new Level("res/levels/level1/map01.txt") /*mandar array enemigos y frutas*/);
+		levels.put(1, new Level("res/levels/level1/map01.txt", "res/levels/level1/fruitPositions.txt"));
 
 	}
 

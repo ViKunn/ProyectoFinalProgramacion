@@ -1,8 +1,14 @@
 package data;
 
+import business.Block;
+import business.Fruit;
 import business.Map;
+import business.Position;
+import business.characters.Enemy;
+import business.managers.FruitManager;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class DataManager {
@@ -12,16 +18,49 @@ public class DataManager {
 	public static Map loadMap(String path) {
 
 		readTxtFile(path);
-
 		Vector<Vector<Integer>> numbers = strVectorToIntVector(DataManager.readLines);
 
 		// TODO tamaño de la matriz
 		Map map = new Map(numbers, 18, 18);
-
 		return map;
 	}
+	public static ArrayList<Fruit> loadFruits(String path) {
 
-	// El resto de funciones que necesitan data
+		readTxtFile(path);
+		Vector<Vector<Integer>> numbers = strVectorToIntVector(DataManager.readLines);
+
+		FruitManager fruitManager = new FruitManager();
+		ArrayList<Fruit> fruits = new ArrayList<>();
+
+		int fruitNumber;
+		int row = numbers.size();
+		int col = numbers.get(1).size();
+
+		for (int i = 0; i < row; i++) {
+
+			for (int j = 0; j < col; j++) {
+
+				fruitNumber = numbers.get(i).get(j);
+
+				if (fruitNumber != 0){
+
+					Fruit fruit = fruitManager.getFruit(fruitNumber);
+					fruit.setPosition(new Position(j, i));
+
+					fruits.add(new Fruit(fruit.getName(), fruit.getPosition()));
+				}
+			}
+
+		}
+		
+
+		return fruits;
+	}
+	/*
+	public static ArrayList<Enemy> loadEnemies(String path){
+
+	}
+	 */
 
 	/**
 	 * Reads a .txt file
@@ -116,5 +155,6 @@ public class DataManager {
 
 		return object;
 	}
+
 
 }

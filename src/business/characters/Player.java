@@ -1,6 +1,8 @@
-package Characters;
+package business.characters;
 
 import business.*;
+import business.interfaces.Movable;
+import business.interfaces.PowerUps;
 
 
 public class Player extends Entity implements Movable, PowerUps {

@@ -1,5 +1,7 @@
-package Characters;
+package business.characters;
 import business.*;
+import business.interfaces.Movable;
+import business.managers.CollisionChecker;
 
 public abstract class Enemy extends Entity implements Movable {
 

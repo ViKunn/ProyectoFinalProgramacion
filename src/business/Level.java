@@ -1,7 +1,7 @@
 package business;
 
-import Characters.Enemy;
-import Characters.Troll;
+import business.characters.*;
+import business.managers.CollisionChecker;
 import data.DataManager;
 
 import java.util.ArrayList;
@@ -24,27 +24,35 @@ public class Level {
 	// enemigo quemado;
 	private Enemy troll1;
 
-	public Level(String mapPath) {
+	public Level(String mapPath, String fruitsPath) {
 
 		map = DataManager.loadMap(mapPath);
-		enemies = new ArrayList<Enemy>();
-		fruits = new ArrayList<Fruit>();
-
+		// enemies = DataManager.loadEnemies(enemiesPath);
+		fruits = DataManager.loadFruits(fruitsPath);
+		Thread threadEnemy = null;
 
 		// burned
+		enemies = new ArrayList<Enemy>();
 
 		troll1 = new Troll(new Position(3,3), Direction.DOWN, new CollisionChecker(map));
+		// troll2 = new Troll(new Position(5,5), Direction.UP, new CollisionChecker(map));
 		enemies.add(troll1);
-		Thread threadTroll1 = new Thread((Runnable) troll1);
-		threadTroll1.start();
+		/*BlueCow blueCow = new BlueCow(new Position(15,15), Direction.UP, new CollisionChecker(map));
+		enemies.add(BlueCow); */
+
+		for (Enemy enemy : enemies){
+			threadEnemy = new Thread((Runnable) enemy);
+		}
+		threadEnemy.start();
 
 	}
 
-	// TODO posición predeterminada de acuerdo con las capas de texto
-
+	// TODO inicializar correctamente la posición de player
 	public Position getPlayerInitialPosition(){
 		return new Position(2,2);
 	}
+
+
 
 	public boolean isCollidingWithAnEnemy(Position position) {
 
@@ -57,10 +65,10 @@ public class Level {
 		return false;
 
 	}
-
 	public boolean isCollidingWithAFruit(Position playerPosition) {
 
 		for (Fruit fruit: fruits) {
+
 			if(fruit.getPosition().equals(playerPosition)){
 				return true;
 			}
@@ -72,11 +80,24 @@ public class Level {
 	public Map getMap() {
 		return map;
 	}
+	private Fruit getFruit(Position position){
 
+		for (Fruit fruit: fruits) {
+			if (fruit.getPosition().equals(position)){
+				return fruit;
+			}
+		}
 
-	// TODO erase
-	public Position getEnemyPosition() {
-		return troll1.getPosition();
+		return null;
 	}
 
+
+	public void decreaseFruitCounter(Position position) {
+		Fruit fruit = getFruit(position);
+		fruits.remove(fruit);
+	}
+
+	public boolean fruitsEqualZero() {
+		return fruits.isEmpty();
+	}
 }

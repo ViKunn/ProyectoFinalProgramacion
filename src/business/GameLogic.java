@@ -1,6 +1,8 @@
 package business;
 
-import Characters.Player;
+import business.characters.Player;
+import business.managers.CollisionChecker;
+import business.managers.LevelManager;
 
 public class GameLogic {
 
@@ -38,17 +40,15 @@ public class GameLogic {
 			return;
 		}
 
-		/*
 		if (isCollidingWithAFruit()){
+			level.decreaseFruitCounter(player.getPosition());
 			System.out.println("Comiste una fruta!!");
-			level.decreaseFruitCounter();
 		}
 
-		if(level.fruitsEqualZero()){
+		if (level.fruitsEqualZero()){
 			System.out.println("Felicidades!! Ganaste!!");
 			isRunning = false;
 		}
-		 */
 	}
 	public void playerPowerUps(){
 		player.powerUpIce(level.getMap());
@@ -66,14 +66,15 @@ public class GameLogic {
 	private boolean isCollidingWithABlock(Direction direction) {
 		return collisionChecker.frontBlockIsSolid(direction, player.getPosition());
 	}
-	/*
+
 	private boolean isCollidingWithAFruit() {
+
 		if (level.isCollidingWithAFruit(player.getPosition())){
 			return true;
 		}
+
 		return false;
 	}
-	*/
 
 	public boolean isRunning(){
 		return isRunning;
@@ -93,24 +94,31 @@ public class GameLogic {
 		for (int row = 0; row < map.getMapSizeY(); row++) {
 			for (int col = 0; col < map.getMapSizeY(); col++) {
 
-				if (player.getPosition().equals(level.getEnemyPosition())) {
+				Position position = new Position(col , row);
+
+				if (isCollidingWithAnEnemy()){
 					System.out.print("X ");
 
-				} else if (player.getPosition().equals(new Position(col , row))){
+				} else if (player.getPosition().equals(position)) { //PRESENTA PLAYER
 					System.out.print("P ");
 
-				} else if (level.getEnemyPosition().equals(new Position(col , row))){
+				} else if (level.isCollidingWithAnEnemy(position)) { // PRESENTA ENEMIGOS
 					System.out.print("E ");
+
+				} else if (level.isCollidingWithAFruit(position)) {  // PRESENTA FRUTAS
+					System.out.print("F ");
+
 
 				} else {
 					System.out.print(map.getBlock(new Position(col , row)));
 				}
+
 			}
-			System.out.println("");
+
+			System.out.print("\n");
 		}
 
 		System.out.println("Player:  " + player.getPosition());
-
 
 		return "";
 	}

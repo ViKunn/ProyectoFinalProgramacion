@@ -9,15 +9,157 @@ ArrowColor Black
 BorderColor Black
 }
 
+package business {
+    class GameLogic {
+        -player: Player
+        -level: Level
+        -isRunning: boolean
+        -numLevel: int
+        +movePlayer(direction: Direction): void
+        +playerPowerUps(): void
+        -isCollidingWithAnEnemy(): boolean
+        -isCollidingWithABlock((direction: Direction): boolean
+        +isRunning(): boolean
+        +run(direction: Direction): void
+    }
 
-class BadIceCream
-abstract class Enemy{
+    class Level {
+        -map: Map
+        -enemies: ArrayList<Enemy>
+        -fruits: ArrayList<Fruit>
+        +getPlayerInitialPosition(): Position
+        +isCollidingWithAnEnemy((position: Position): boolean
+        +isCollidingWithAFruit(playerPosition: Position): boolean
+        +getMap(): Map
+        +getEnemyPosition(): Position
+    }
 
+    class Map {
+    /'no se pone final'/
+        -mapSizeX: int
+        -mapSizeY: int
+        -blocks: Block[][]
+        -blockManager: BlockManager
+        +getBlock(position: Position): Block
+        +frontBlockIsIce(direction: Direction, position: Position): boolean
+        +setIce( (position: Position): void
+        +setBlock((position: Position): void
+        -loadBlock(numbers: Vector<Vector<Integer>): Block[][]
+        +getMapSizeX(): int
+        +getMapSizeY(): int
+        +isBlockSolid(frontPosition: Position): boolean
+    }
+
+    class Block {
+        -name: String
+        -SOLID: boolean
+        +isSolid(): boolean
+    }
+
+    class Ice {
+        -breakable: boolean
+    }
+
+    class Fruit {
+        -name: String
+        +setPosition(position: Position): void
+        +getName(): String
+    }
+
+    class Position {
+        -x: int
+        -y: int
+        +getX(): int
+        +getY(): int
+        +getFrontPosition(): Position
+        +setX(): void
+        +setY(): setY
+        +equals(): boolean
+    }
+
+    enum Direction {
+        UP
+        DOWN
+        RIGHT
+        LEFT
+        SPACE
+    }
+
+    package managers{
+        class BlockManager{
+            -blocks: HashMap<Integer, Block>
+            +getBlock(blockNumber: int): Block
+        }
+
+        class CollisionChecker{
+            -map: Map
+            +frontBlockIsSolid(direction: Direction, position: Position): boolean
+        }
+
+        class FruitManager{
+            -fruits: HashMap<Integer,Fruit>
+            +getFruit(fruitNumber: int): Fruit
+        }
+
+        class LevelManager{
+            -levels: HashMap<Integer, Level>
+            +{static}getLevel(level: int): Level
+        }
+    }
+
+    package interfaces{
+        interface Movable{
+            +move(direction: Direction): void
+        }
+        interface PowerUps{
+            +breakIce(map: Map): void
+            +putIce(map: Map): void
+            +powerUpIce(map: Map): void
+        }
+    }
+
+    package characters {
+
+        abstract class Entity {
+            #position: Position
+            #direction: Direction
+            #advance: int
+            +getPosition(): Position
+            +getDirection(): Direction
+        }
+
+        class Player {
+            -POSIBLE_SPEED: int = 1
+            -alive: boolean
+            +changeDirection(directionExpect: Direction): void
+            +move(direction: Direction): void
+            +die(): void
+            +powerUpIce(map: Map): void
+            +breakIce(map: Map): void
+            +putIce(map: Map): void
+        }
+
+        abstract class Enemy{
+            #collisionChecker: CollisionChecker
+        }
+
+        class Troll{
+            +run(): void
+            +move(direction: Direction): void
+        }
+    }
 }
 
-class DataManager
-
-abstract class Entity
+package data{
+    class DataManager {
+        +{static}loadMap(): Map
+        +{static}loadFruits(): ArrayList<Fruit>
+        -{static}readTxtFile(): void
+        -{static}strVectorToIntVector():
+        +{static}writeFile(): void
+        +{static}readFile(): Object
+    }
+}
 
 Player ... Level
 Player ...> Map

@@ -1,4 +1,4 @@
-package business;
+package business.interfaces;
 
 import business.Direction;
 

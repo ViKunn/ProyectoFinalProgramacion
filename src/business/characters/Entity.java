@@ -1,6 +1,5 @@
-package Characters;
+package business.characters;
 
-import business.CollisionChecker;
 import business.Direction;
 import business.Position;
 

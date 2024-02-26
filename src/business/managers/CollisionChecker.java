@@ -1,4 +1,8 @@
-package business;
+package business.managers;
+
+import business.Direction;
+import business.Map;
+import business.Position;
 
 public class CollisionChecker {
 
