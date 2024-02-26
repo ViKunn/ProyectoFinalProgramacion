@@ -16,6 +16,8 @@ public class Level {
 	// TODO disminuir las frutas cada que recoge jeje
 	private ArrayList<Enemy> enemies;
 	private ArrayList<Fruit> fruits;
+	//CAMBIO CHIQUITO COMO EL DEL MATEO
+
 
 
 	// TODO consider

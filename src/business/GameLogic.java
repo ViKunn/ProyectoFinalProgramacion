@@ -19,7 +19,7 @@ public class GameLogic {
 
 		LevelManager levelManager = new LevelManager();
 		this.numLevel = numLevel;
-		level = levelManager.getLevel(1);
+		level = levelManager.getLevel(this.numLevel);
 		player = new Player(level.getPlayerInitialPosition());
 		isRunning = true;
 
