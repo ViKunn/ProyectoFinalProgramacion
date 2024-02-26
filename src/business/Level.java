@@ -72,7 +72,12 @@ public class Level {
 		return null;
 	}
 	private ArrayList<Fruit> getFruitLayer(int runningFruitLayer) {
-		return fruits.get(runningFruitLayer);
+		if (runningFruitLayer >= 0 && runningFruitLayer < fruits.size()) {
+			return fruits.get(runningFruitLayer);
+		} else {
+			// Manejar el caso donde runningFruitLayer está fuera de los límites válidos
+			return new ArrayList<Fruit>(); // Otra opción sería lanzar una excepción
+		}
 	}
 
 
