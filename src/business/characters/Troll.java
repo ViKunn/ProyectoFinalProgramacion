@@ -10,14 +10,11 @@ public class Troll extends Enemy implements Movable, Runnable {
 	public Troll() {
 		setDirection(Direction.DOWN);
 	}
-
-	@Override
-	protected void setCollisionChecker(CollisionChecker collisionChecker) {
+	public void setCollisionChecker(CollisionChecker collisionChecker) {
 		super.setCollisionChecker(collisionChecker);
 	}
 
-	@Override
-	protected void setPosition(Position positionExpect) {
+	public void setPosition(Position positionExpect) {
 		super.setPosition(positionExpect);
 	}
 

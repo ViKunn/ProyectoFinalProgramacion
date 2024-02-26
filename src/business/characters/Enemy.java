@@ -9,13 +9,13 @@ public abstract class Enemy extends Entity implements Movable {
 
 	public Enemy(){
 	}
-	protected void setPosition(Position positionExpect){
+	public void setPosition(Position positionExpect){
 		this.position = new Position(positionExpect.getX(), (positionExpect.getY()));
 	}
-	protected void setDirection(Direction direction){
+	public void setDirection(Direction direction){
 		this.direction = direction;
 	}
-	protected void setCollisionChecker(CollisionChecker collisionChecker){
+	public void setCollisionChecker(CollisionChecker collisionChecker){
 		this.collisionChecker = collisionChecker;
 	}
 
