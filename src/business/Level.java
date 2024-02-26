@@ -9,26 +9,28 @@ import java.util.ArrayList;
 public class Level {
 
 	private Map map;
-
-	// private fruit layers;
-	// won o passed o finished
-
-	// TODO disminuir las frutas cada que recoge jeje
 	private ArrayList<Enemy> enemies;
-	private ArrayList<Fruit> fruits;
+	private ArrayList<ArrayList<Fruit>> fruits;
+
+	private int runningFruitLayer;
 
 
-	// TODO consider
-	private ArrayList<Position> fruitPositions;
 
 	// enemigo quemado;
 	private Enemy troll1;
 
-	public Level(String mapPath, String fruitsPath) {
+	public Level(String mapPath, String ... fruitsPath) {
+
 
 		map = DataManager.loadMap(mapPath);
+
 		// enemies = DataManager.loadEnemies(enemiesPath);
 		fruits = DataManager.loadFruits(fruitsPath);
+		runningFruitLayer = 0;
+
+
+		// ENEMIES
+
 		Thread threadEnemy = null;
 
 		// burned
@@ -44,14 +46,50 @@ public class Level {
 			threadEnemy = new Thread((Runnable) enemy);
 		}
 		threadEnemy.start();
-
 	}
 
-	// TODO inicializar correctamente la posición de player
+	// FIXME inicializar correctamente la posición de player
 	public Position getPlayerInitialPosition(){
 		return new Position(2,2);
 	}
 
+
+	public Map getMap() {
+		return map;
+	}
+	private Fruit getFruit(Position position, int runningFruitLayer){
+
+		for (Fruit fruit: getFruitLayer(runningFruitLayer)) {
+
+			if (fruit.getPosition().equals(position)){
+				return fruit;
+			}
+		}
+
+		return null;
+	}
+	private ArrayList<Fruit> getFruitLayer(int runningFruitLayer) {
+		return fruits.get(runningFruitLayer);
+	}
+
+
+	public void decreaseFruitCounter(Position position) {
+
+		Fruit fruit = getFruit(position, runningFruitLayer);
+		getFruitLayer(runningFruitLayer).remove(fruit);
+
+	}
+	private boolean fruitLayerIsEmpty(int runningFruitLayer) {
+		return getFruitLayer(runningFruitLayer).isEmpty();
+	}
+	public boolean fruitsEqualZero() {
+
+		if (fruitLayerIsEmpty(runningFruitLayer)){
+			fruits.remove(runningFruitLayer);
+		}
+
+		return fruits.isEmpty();
+	}
 
 
 	public boolean isCollidingWithAnEnemy(Position position) {
@@ -67,7 +105,7 @@ public class Level {
 	}
 	public boolean isCollidingWithAFruit(Position playerPosition) {
 
-		for (Fruit fruit: fruits) {
+		for (Fruit fruit: getFruitLayer(runningFruitLayer)) {
 
 			if(fruit.getPosition().equals(playerPosition)){
 				return true;
@@ -77,27 +115,4 @@ public class Level {
 		return false;
 	}
 
-	public Map getMap() {
-		return map;
-	}
-	private Fruit getFruit(Position position){
-
-		for (Fruit fruit: fruits) {
-			if (fruit.getPosition().equals(position)){
-				return fruit;
-			}
-		}
-
-		return null;
-	}
-
-
-	public void decreaseFruitCounter(Position position) {
-		Fruit fruit = getFruit(position);
-		fruits.remove(fruit);
-	}
-
-	public boolean fruitsEqualZero() {
-		return fruits.isEmpty();
-	}
 }

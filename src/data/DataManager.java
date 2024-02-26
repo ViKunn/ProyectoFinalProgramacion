@@ -1,10 +1,8 @@
 package data;
 
-import business.Block;
 import business.Fruit;
 import business.Map;
 import business.Position;
-import business.characters.Enemy;
 import business.managers.FruitManager;
 
 import java.io.*;
@@ -24,7 +22,9 @@ public class DataManager {
 		Map map = new Map(numbers, 18, 18);
 		return map;
 	}
-	public static ArrayList<Fruit> loadFruits(String path) {
+
+	// TODO check
+	private static ArrayList<Fruit> loadFruitLayer(String path) {
 
 		readTxtFile(path);
 		Vector<Vector<Integer>> numbers = strVectorToIntVector(DataManager.readLines);
@@ -52,15 +52,28 @@ public class DataManager {
 			}
 
 		}
-		
 
 		return fruits;
 	}
-	/*
-	public static ArrayList<Enemy> loadEnemies(String path){
+	public static ArrayList<ArrayList<Fruit>> loadFruits(String[] fruitPaths){
+
+		ArrayList<ArrayList<Fruit>> fruits = new ArrayList<>();
+
+		for (String path : fruitPaths) {
+			fruits.add(loadFruitLayer(path));
+		}
+
+		return fruits;
 
 	}
-	 */
+
+
+
+
+
+
+
+
 
 	/**
 	 * Reads a .txt file

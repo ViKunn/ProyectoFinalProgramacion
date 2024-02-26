@@ -84,22 +84,7 @@ public class Main {
 
 /*
 
-TODO --> OBJETIVOS DEL DÍA
-
-	- El enemigo se mueva
-
-	- Posición frutas
-	- Recolección frutas
-	- Jugador gana el nivel
-
-	- Test nivel 1 con frutas
-
-	- Posición monstruos
-
-
-DOUBT --> BUSINESS
-
-	- Como se inicializan las posiciones en nivel?
-	- Que el jugador pueda recoger las frutas?
+	TODO --> OBJETIVOS DEL DÍA
+		- Posición monstruos
 
 */
