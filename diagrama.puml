@@ -165,14 +165,12 @@ Player ... Level
 Player ...> Map
 Enemy  .l.> Map
 
-BadIceCream --> Level
-BadIceCream -> Player
+GameLogic --> Level
+GameLogic -> Player
 
 Level --> Map
 Level --> Enemy
 Level --> Fruit
-
-Enemy <|-- Troll
 
 
 Map --> Block
@@ -180,6 +178,6 @@ Map --- DataManager
 
 Entity <|-- Player
 Entity <|-- Enemy
-Player --> keyHandler
+Enemy <|-- Troll
 
 @enduml

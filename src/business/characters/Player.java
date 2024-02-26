@@ -15,6 +15,10 @@ public class Player extends Entity implements Movable, PowerUps {
 		this.advance = 1;
 	}
 
+	public void changeDirection(Direction directionExpect){
+		this.direction = directionExpect;
+
+	}
 	public void move(Direction direction){
 
 		this.direction = direction;
@@ -82,46 +86,5 @@ public class Player extends Entity implements Movable, PowerUps {
 
 
 	}
-/*
-	// FIXME
-	@Override
-	public void putIce(Map map) {
 
-		Position positionAux = new Position(this.position.getX(), this.position.getY());
-		switch (this.direction) {
-
-			case UP:
-				while (!(map.frontBlockIsIce(direction, positionAux))) {
-					positionAux.setY(positionAux.getY() - 1);
-					map.setIce(positionAux);
-				}
-				break;
-
-			case DOWN:
-				while (!map.frontBlockIsIce(direction, positionAux)) {
-					positionAux.setY(positionAux.getY() + 1);
-					map.setIce(positionAux);
-				}
-				break;
-
-			case RIGHT:
-				while (!map.frontBlockIsIce(direction, positionAux)) {
-					positionAux.setX(positionAux.getX() + 1);
-					map.setIce(positionAux);
-				}
-				break;
-
-
-			case LEFT:
-				while (!map.frontBlockIsIce(direction, positionAux)) {
-					positionAux.setX(positionAux.getX() - 1);
-					map.setIce(positionAux);
-				}
-				break;
-
-		}
-		System.out.println("______________");
-		System.out.println(map);
-		System.out.println("______________");
-	} */
 }
