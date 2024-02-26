@@ -72,8 +72,15 @@ public class Level {
 		return null;
 	}
 	private ArrayList<Fruit> getFruitLayer(int runningFruitLayer) {
-		return fruits.get(runningFruitLayer);
+
+		try {
+			return fruits.get(runningFruitLayer);
+		} catch (Exception e){
+			return new ArrayList<>();
+		}
+
 	}
+
 
 
 	public void decreaseFruitCounter(Position position) {
@@ -93,6 +100,20 @@ public class Level {
 
 		return fruits.isEmpty();
 	}
+
+	/*
+
+	public boolean fruitsEqualZero() {
+
+		if (fruitLayerIsEmpty(runningFruitLayer)){
+			runningFruitLayer++;
+		}
+
+		return runningFruitLayer == fruits.size();
+	}
+
+	 */
+
 
 
 	public boolean isCollidingWithAnEnemy(Position position) {
