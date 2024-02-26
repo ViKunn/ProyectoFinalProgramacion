@@ -36,7 +36,10 @@ public class Level {
 		// burned
 		enemies = new ArrayList<Enemy>();
 
-		troll1 = new Troll(new Position(3,3), Direction.DOWN, new CollisionChecker(map));
+		troll1 = new Troll();
+		troll1.setPosition(new Position(3,3));
+		troll1.setDirection(Direction.DOWN);
+		troll1.setCollisionChecker(new CollisionChecker(map));
 		// troll2 = new Troll(new Position(5,5), Direction.UP, new CollisionChecker(map));
 		enemies.add(troll1);
 		/*BlueCow blueCow = new BlueCow(new Position(15,15), Direction.UP, new CollisionChecker(map));

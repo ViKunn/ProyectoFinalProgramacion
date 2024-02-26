@@ -1,6 +1,9 @@
 package business;
 
+import business.characters.Enemy;
+import business.characters.Entity;
 import business.characters.Player;
+import business.characters.Troll;
 import business.managers.CollisionChecker;
 import business.managers.LevelManager;
 
@@ -10,7 +13,6 @@ public class GameLogic {
 	private Level level;
 	private boolean isRunning;
 	private int numLevel;
-
 	private CollisionChecker collisionChecker;
 
 	public GameLogic(int numLevel){
