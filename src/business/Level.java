@@ -72,13 +72,15 @@ public class Level {
 		return null;
 	}
 	private ArrayList<Fruit> getFruitLayer(int runningFruitLayer) {
-		if (runningFruitLayer >= 0 && runningFruitLayer < fruits.size()) {
+
+		try {
 			return fruits.get(runningFruitLayer);
-		} else {
-			// Manejar el caso donde runningFruitLayer está fuera de los límites válidos
-			return new ArrayList<Fruit>(); // Otra opción sería lanzar una excepción
+		} catch (Exception e){
+			return new ArrayList<>();
 		}
+
 	}
+
 
 
 	public void decreaseFruitCounter(Position position) {
@@ -98,6 +100,20 @@ public class Level {
 
 		return fruits.isEmpty();
 	}
+
+	/*
+
+	public boolean fruitsEqualZero() {
+
+		if (fruitLayerIsEmpty(runningFruitLayer)){
+			runningFruitLayer++;
+		}
+
+		return runningFruitLayer == fruits.size();
+	}
+
+	 */
+
 
 
 	public boolean isCollidingWithAnEnemy(Position position) {
