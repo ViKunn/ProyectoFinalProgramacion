@@ -7,8 +7,18 @@ import business.Position;
 
 public class Troll extends Enemy implements Movable, Runnable {
 
-	public Troll(Position position, Direction direction, CollisionChecker collisionChecker) {
-		super(position, direction, 1, collisionChecker);
+	public Troll() {
+		setDirection(Direction.DOWN);
+	}
+
+	@Override
+	protected void setCollisionChecker(CollisionChecker collisionChecker) {
+		super.setCollisionChecker(collisionChecker);
+	}
+
+	@Override
+	protected void setPosition(Position positionExpect) {
+		super.setPosition(positionExpect);
 	}
 
 	// TODO thread troll / enemigos

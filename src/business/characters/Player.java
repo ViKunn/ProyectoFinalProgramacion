@@ -74,7 +74,6 @@ public class Player extends Entity implements Movable, PowerUps {
 
 	@Override
 	public void putIce(Map map) {
-
 		Position auxPosition1 = new Position(this.position.getX(), this.position.getY());
 
 		// FIXME
@@ -83,7 +82,6 @@ public class Player extends Entity implements Movable, PowerUps {
 			map.setIce(auxPosition1);
 
 		}
-
 
 	}
 
