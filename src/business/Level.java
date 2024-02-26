@@ -35,8 +35,8 @@ public class Level {
 
 		troll1 = new Troll(new Position(3,3), Direction.DOWN, new CollisionChecker(map));
 		enemies.add(troll1);
-		//Thread threadTroll1 = new Thread(troll1);
-		// threadTroll1.start();
+		Thread threadTroll1 = new Thread((Runnable) troll1);
+		threadTroll1.start();
 
 	}
 

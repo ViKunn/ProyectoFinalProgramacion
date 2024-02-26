@@ -20,7 +20,7 @@ public class Troll extends Enemy implements Movable, Runnable {
 
 
 			try {
-				Thread.sleep(1000); // Esperar un segundo entre cada movimiento
+				Thread.sleep(500); // Esperar un medio segundo entre cada movimiento
 			} catch (InterruptedException e) {
 				// Manejar interrupciones del hilo si es necesario
 				e.printStackTrace();
