@@ -15,10 +15,12 @@ package business {
         -level: Level
         -isRunning: boolean
         -numLevel: int
+        -collisionChecker: CollisionChecker
         +movePlayer(direction: Direction): void
         +playerPowerUps(): void
         -isCollidingWithAnEnemy(): boolean
-        -isCollidingWithABlock((direction: Direction): boolean
+        -isCollidingWithABlock(direction: Direction): boolean
+        -isCollidingWithAFruit(): boolean
         +isRunning(): boolean
         +run(direction: Direction): void
     }
@@ -26,12 +28,18 @@ package business {
     class Level {
         -map: Map
         -enemies: ArrayList<Enemy>
-        -fruits: ArrayList<Fruit>
+        -fruits: ArrayList<ArrayList<Fruit>>
+        -runningFruitLayer: int
+        -troll1: Enemy
         +getPlayerInitialPosition(): Position
-        +isCollidingWithAnEnemy((position: Position): boolean
-        +isCollidingWithAFruit(playerPosition: Position): boolean
         +getMap(): Map
-        +getEnemyPosition(): Position
+        -getFruit(position: Position, runningFruitLayer): Fruit
+        -getFruitLayer(runningFruitLayer): ArrayList<Fruit>
+        +decreaseFruitCounter((position: Position): void
+        -fruitLayerIsEmpty(runningFruitLayer): boolean
+        +fruitsEqualZero(): boolean
+        +isCollidingWithAnEnemy(position: Position): boolean
+        +isCollidingWithAFruit(playerPosition: Position): boolean
     }
 
     class Map {
@@ -43,7 +51,7 @@ package business {
         +getBlock(position: Position): Block
         +frontBlockIsIce(direction: Direction, position: Position): boolean
         +setIce( (position: Position): void
-        +setBlock((position: Position): void
+        +setBlock(position: Position, block): void
         -loadBlock(numbers: Vector<Vector<Integer>): Block[][]
         +getMapSizeX(): int
         +getMapSizeY(): int
@@ -109,7 +117,7 @@ package business {
 
     package interfaces{
         interface Movable{
-            +move(direction: Direction): void
+            +{abstract} move(direction: Direction): void
         }
         interface PowerUps{
             +breakIce(map: Map): void
@@ -123,7 +131,7 @@ package business {
         abstract class Entity {
             #position: Position
             #direction: Direction
-            #advance: int
+            #{static}advance: int
             +getPosition(): Position
             +getDirection(): Direction
         }
@@ -182,5 +190,10 @@ Map --- DataManager
 Entity <|-- Player
 Entity <|-- Enemy
 Enemy <|-- Troll
+
+Movable <|.. Enemy
+Movable <|.. Player
+PowerUps <|.. Player
+Movable <|.. Troll
 
 @enduml
