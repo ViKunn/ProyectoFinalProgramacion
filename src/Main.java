@@ -18,6 +18,10 @@ public class Main {
 
 		while (true) {
 			// Menú principal
+
+
+
+
 			System.out.println("===== MENÚ PRINCIPAL =====");
 			System.out.println("1. PLAY");
 			System.out.println("2. SCORES");
@@ -58,10 +62,9 @@ public class Main {
 						}
 						System.out.println(gameLogic);
 					}
-					System.out.println("EL NIVEL SE PASÓ!! AQUÍ SE PRESENTARÍA EL MENU PRINCIPAL");
 					break;
 				case 2:
-					System.out.println("Fernando: 100000pts \n Mateo: 0pts");
+					System.out.println("Fernando: 100000pts \nMateo: 0pts");
 					break;
 				case 3:
 					System.out.println("Solo llegaste al mundo, que te ayude dios");

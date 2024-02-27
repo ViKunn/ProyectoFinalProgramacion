@@ -11,6 +11,7 @@ public class Level {
 	private Map map;
 	private ArrayList<Enemy> enemies;
 	private ArrayList<ArrayList<Fruit>> fruits;
+	private boolean unlocked;
 
 	private int runningFruitLayer;
 
@@ -18,8 +19,9 @@ public class Level {
 
 	// enemigo quemado;
 	private Enemy troll1;
+	private BlueCow blueCow;
 
-	public Level(String mapPath, String ... fruitsPath) {
+	public Level(String mapPath,boolean unlocked, String ... fruitsPath) {
 
 
 		map = DataManager.loadMap(mapPath);
@@ -42,13 +44,17 @@ public class Level {
 		troll1.setCollisionChecker(new CollisionChecker(map));
 		// troll2 = new Troll(new Position(5,5), Direction.UP, new CollisionChecker(map));
 		enemies.add(troll1);
-		/*BlueCow blueCow = new BlueCow(new Position(15,15), Direction.UP, new CollisionChecker(map));
-		enemies.add(BlueCow); */
+		blueCow = new BlueCow();
+		blueCow.setPosition(new Position(12,6));
+		blueCow.setDirection(Direction.UP);
+		blueCow.setCollisionChecker(new CollisionChecker(map));
+		enemies.add(blueCow);
 
 		for (Enemy enemy : enemies){
 			threadEnemy = new Thread((Runnable) enemy);
+			threadEnemy.start();
 		}
-		threadEnemy.start();
+
 	}
 
 	// FIXME inicializar correctamente la posición de player
@@ -139,4 +145,11 @@ public class Level {
 		return false;
 	}
 
+	public void setUnlocked(boolean unlocked){
+		this.unlocked = unlocked;
+	}
+
+	public void sendPositionPlayer(Position position) {
+		blueCow.passPositionToFollow(position);
+	}
 }

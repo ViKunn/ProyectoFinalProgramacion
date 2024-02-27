@@ -12,7 +12,15 @@ public class CollisionChecker {
 		this.map = map;
 	}
 
-	// TODO corregir para ocupar método Position.getFrontPosition
+	public boolean trappedBetweenBlocks(Position position) {
+		return frontBlockIsSolid(Direction.UP, position) &&
+				frontBlockIsSolid(Direction.DOWN, position) &&
+				frontBlockIsSolid(Direction.RIGHT, position) &&
+				frontBlockIsSolid(Direction.LEFT, position);
+	}
+
+
+    // TODO corregir para ocupar método Position.getFrontPosition
 	// TODO verificar lineas de código duplicadas
 
 	public boolean frontBlockIsSolid(Direction direction, Position position){
