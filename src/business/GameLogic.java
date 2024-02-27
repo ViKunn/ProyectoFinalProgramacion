@@ -1,9 +1,6 @@
 package business;
 
-import business.characters.Enemy;
-import business.characters.Entity;
 import business.characters.Player;
-import business.characters.Troll;
 import business.managers.CollisionChecker;
 import business.managers.LevelManager;
 
@@ -19,6 +16,7 @@ public class GameLogic {
 
 		LevelManager levelManager = new LevelManager();
 		this.numLevel = numLevel;
+		level = levelManager.getLevel(this.numLevel);
 		level = levelManager.getLevel(1);
 
 
@@ -38,6 +36,7 @@ public class GameLogic {
 		}
 
 		player.move(direction);
+		level.sendPositionPlayer(player.getPosition());
 
 		if (isCollidingWithAnEnemy()){
 			player.die();
@@ -52,7 +51,8 @@ public class GameLogic {
 		}
 
 		if (level.fruitsEqualZero()){
-			System.out.println("Felicidades!! Ganaste!!");
+			System.out.println("Felicidades!! Pasaste de nivel!!");
+			level.setUnlocked(true);
 			isRunning = false;
 		}
 	}
@@ -86,10 +86,8 @@ public class GameLogic {
 		return isRunning;
 	}
 
-	// TODO hilo de juego
-	public void run(Direction direction){
 
-	}
+
 
 	// TODO BORRAR AL FINAL
 	@Override
@@ -128,5 +126,6 @@ public class GameLogic {
 
 		return "";
 	}
+
 
 }
