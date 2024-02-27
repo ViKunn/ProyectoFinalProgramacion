@@ -30,7 +30,8 @@ public class Main {
 			switch (opcion) {
 				case 1:
 					// Lógica para el menú PLAY
-					GameLogic gameLogic = inicializarGameLogic();
+					GameLogic gameLogic = initializeGameLogic();
+
 					while (gameLogic.isRunning()) {
 						System.out.println("Ingrese una tecla (w/a/s/d):");
 						String tecla = scanner.next();
@@ -76,7 +77,7 @@ public class Main {
 		}
 	}
 
-	public static GameLogic inicializarGameLogic() {
+	public static GameLogic initializeGameLogic() {
 		Scanner scanner = new Scanner(System.in);
 		int opcion;
 
