@@ -1,10 +1,19 @@
 import business.GameLogic;
 import business.Direction;
 
+import java.awt.*;
 import java.util.Scanner;
+
+import static presentation.Menu.mainMenu;
 
 public class Main {
 	public static void main(String[] args) {
+
+		mainMenu();
+	}
+}
+
+/*	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 
 		while (true) {
@@ -101,12 +110,10 @@ public class Main {
 
 		scanner.close();
 		return null;
-	}
-}
+	}*/
 
 
 /*
-
 	TODO --> OBJETIVOS DEL DÍA
 		- Posición monstruos
 
