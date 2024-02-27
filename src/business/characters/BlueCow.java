@@ -94,7 +94,6 @@ public class BlueCow extends Enemy implements Movable, Runnable {
 
         } else return;
 
-
     }
 
 
