@@ -50,7 +50,8 @@ public class GameLogic {
 		}
 
 		if (level.fruitsEqualZero()){
-			System.out.println("Felicidades!! Ganaste!!");
+			System.out.println("Felicidades!! Pasaste de nivel!!");
+			level.setUnlocked(true);
 			isRunning = false;
 		}
 	}
@@ -88,6 +89,8 @@ public class GameLogic {
 	public void run(Direction direction){
 
 	}
+
+
 
 	// TODO BORRAR AL FINAL
 	@Override

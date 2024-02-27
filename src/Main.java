@@ -52,7 +52,6 @@ public class Main {
 						}
 						System.out.println(gameLogic);
 					}
-					System.out.println("EL NIVEL SE PASÓ!! AQUÍ SE PRESENTARÍA EL MENU PRINCIPAL");
 					break;
 				case 2:
 					System.out.println("Fernando: 100000pts \nMateo: 0pts");
