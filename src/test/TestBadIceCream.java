@@ -22,7 +22,6 @@ public class TestBadIceCream extends TestCase{
 
 /*
 
-TODO: TESTERS
 
 	//Dado: que existe un player y un enemigo:
 	Player player;

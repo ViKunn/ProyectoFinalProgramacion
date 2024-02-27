@@ -24,7 +24,6 @@ public class Troll extends Enemy implements Movable, Runnable {
 		while (true) {
 			move(direction); // Mover el troll en la dirección actual
 
-
 			try {
 				Thread.sleep(500); // Esperar un medio segundo entre cada movimiento
 			} catch (InterruptedException e) {
@@ -35,6 +34,8 @@ public class Troll extends Enemy implements Movable, Runnable {
 	}
 
 	public void move(Direction direction) {
+
+		// FIXME (get front position)
 
 		if (!(collisionChecker.frontBlockIsSolid(direction, position))) {
 

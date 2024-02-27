@@ -23,7 +23,6 @@ public class DataManager {
 		return map;
 	}
 
-	// TODO check
 	private static ArrayList<Fruit> loadFruitLayer(String path) {
 
 		readTxtFile(path);

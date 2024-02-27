@@ -56,13 +56,11 @@ public class Player extends Entity implements Movable, PowerUps {
 
 	}
 
-	// FIXME
 	@Override
 	public void breakIce(Map map) {
 
 		Position auxPosition = new Position(position.getX(), position.getY());
 
-		// FIXME
 		while (map.getBlock(auxPosition.getFrontPosition(direction)) instanceof Ice){
 			auxPosition = auxPosition.getFrontPosition(direction);
 			map.setBlock(auxPosition, 0);
@@ -71,12 +69,10 @@ public class Player extends Entity implements Movable, PowerUps {
 
 	}
 
-
 	@Override
 	public void putIce(Map map) {
 		Position auxPosition1 = new Position(this.position.getX(), this.position.getY());
 
-		// FIXME
 		while (!(map.isBlockSolid(auxPosition1.getFrontPosition(direction)))){
 			auxPosition1 = auxPosition1.getFrontPosition(direction);
 			map.setIce(auxPosition1);

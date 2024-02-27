@@ -10,7 +10,7 @@ public class LevelManager {
 
 	public LevelManager() {
 		levels = new HashMap<>();
-																		// FIXME
+																		// FIXME, que pase un array de  direcciones
 		levels.put(1, new Level("res/levels/level1/map01.txt", "res/levels/level1/fruits01.txt", "res/levels/level1/fruits02.txt"));
 
 	}
