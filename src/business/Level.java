@@ -19,6 +19,7 @@ public class Level {
 
 	// enemigo quemado;
 	private Enemy troll1;
+	private BlueCow blueCow;
 
 	public Level(String mapPath,boolean unlocked, String ... fruitsPath) {
 
@@ -43,8 +44,8 @@ public class Level {
 		troll1.setCollisionChecker(new CollisionChecker(map));
 		// troll2 = new Troll(new Position(5,5), Direction.UP, new CollisionChecker(map));
 		enemies.add(troll1);
-		BlueCow blueCow = new BlueCow();
-		blueCow.setPosition(new Position(15,15));
+		blueCow = new BlueCow();
+		blueCow.setPosition(new Position(12,6));
 		blueCow.setDirection(Direction.UP);
 		blueCow.setCollisionChecker(new CollisionChecker(map));
 		enemies.add(blueCow);
@@ -77,8 +78,15 @@ public class Level {
 		return null;
 	}
 	private ArrayList<Fruit> getFruitLayer(int runningFruitLayer) {
-		return fruits.get(runningFruitLayer);
+
+		try {
+			return fruits.get(runningFruitLayer);
+		} catch (Exception e){
+			return new ArrayList<>();
+		}
+
 	}
+
 
 
 	public void decreaseFruitCounter(Position position) {
@@ -98,6 +106,20 @@ public class Level {
 
 		return fruits.isEmpty();
 	}
+
+	/*
+
+	public boolean fruitsEqualZero() {
+
+		if (fruitLayerIsEmpty(runningFruitLayer)){
+			runningFruitLayer++;
+		}
+
+		return runningFruitLayer == fruits.size();
+	}
+
+	 */
+
 
 
 	public boolean isCollidingWithAnEnemy(Position position) {
@@ -127,4 +149,7 @@ public class Level {
 		this.unlocked = unlocked;
 	}
 
+	public void sendPositionPlayer(Position position) {
+		blueCow.passPositionToFollow(position);
+	}
 }

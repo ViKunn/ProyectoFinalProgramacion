@@ -1,9 +1,6 @@
 package business;
 
-import business.characters.Enemy;
-import business.characters.Entity;
 import business.characters.Player;
-import business.characters.Troll;
 import business.managers.CollisionChecker;
 import business.managers.LevelManager;
 
@@ -20,6 +17,7 @@ public class GameLogic {
 		LevelManager levelManager = new LevelManager();
 		this.numLevel = numLevel;
 		level = levelManager.getLevel(this.numLevel);
+		level = levelManager.getLevel(1);
 		player = new Player(level.getPlayerInitialPosition());
 		isRunning = true;
 
@@ -36,6 +34,7 @@ public class GameLogic {
 		}
 
 		player.move(direction);
+		level.sendPositionPlayer(player.getPosition());
 
 		if (isCollidingWithAnEnemy()){
 			player.die();
@@ -85,10 +84,6 @@ public class GameLogic {
 		return isRunning;
 	}
 
-	// TODO hilo de juego
-	public void run(Direction direction){
-
-	}
 
 
 
@@ -129,5 +124,6 @@ public class GameLogic {
 
 		return "";
 	}
+
 
 }

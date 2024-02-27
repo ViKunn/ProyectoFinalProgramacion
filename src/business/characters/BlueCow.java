@@ -3,16 +3,21 @@ package business.characters;
 import business.Direction;
 import business.Position;
 import business.interfaces.Movable;
+import business.managers.CollisionChecker;
 
 public class BlueCow extends Enemy implements Movable, Runnable {
 
-    Player player = new Player( new Position(3,6));
+   Position positionToFollow;
+
+   public BlueCow(){
+       positionToFollow = new Position();
+   }
 
 
     @Override
     public void run() {
         while (true) {
-            followPlayer(player); // Mover el troll en la dirección actual
+            follow(positionToFollow); // Mover el troll en la dirección actual
 
             try {
                 Thread.sleep(500); // Esperar un medio segundo entre cada movimiento
@@ -23,18 +28,18 @@ public class BlueCow extends Enemy implements Movable, Runnable {
         }
     }
 
-    private void followPlayer(Player player) {
+    private void follow(Position position) {
 
-        Position playerPosition = player.getPosition();
+        Position positionFollow = position;
 
-        int distanceX = playerPosition.getX() - this.position.getX();
-        int distanceY = playerPosition.getY() - this.position.getY();
+        int distanceX = positionFollow.getX() - this.position.getX(); //Es la distancia en X entre el BlueCow y el player //3
+        int distanceY = positionFollow.getY() - this.position.getY(); //Es la distancia en Y entre el BlueCow y el player //3
 
-        int valorDistanceX = (distanceX >= 0) ? distanceX : -distanceX;
-        int valorDistanceY = (distanceY >= 0) ? distanceY : -distanceY;
+        int valorAbsolutoDistanceX = (distanceX >= 0) ? distanceX : -distanceX;
+        int valorAbsolutoDistanceY = (distanceY >= 0) ? distanceY : -distanceY;
 
-        if (valorDistanceX > valorDistanceY) {
-            if (distanceX > 0) {
+        if (valorAbsolutoDistanceX > valorAbsolutoDistanceY) {
+            if (distanceX > 0) {            // El movimiento del BlueCow (izquierda o derecha) depende del signo de la distancia
                 move(Direction.RIGHT);
             } else {
                 move(Direction.LEFT);
@@ -67,24 +72,33 @@ public class BlueCow extends Enemy implements Movable, Runnable {
                     break;
             }
 
-        } else {
+        } else if (!(collisionChecker.trappedBetweenBlocks(this.position))){
             switch (direction) {
                 case UP:
                     this.direction = Direction.RIGHT;
+                    move(Direction.RIGHT); //TODO: EXPONER SAMIRA hermoso, una belleza, como yo jeje
                     break;
                 case DOWN:
                     this.direction = Direction.LEFT;
+                    move(Direction.LEFT);
                     break;
                 case RIGHT:
                     this.direction = Direction.DOWN;
+                    move(Direction.DOWN);
                     break;
                 case LEFT:
                     this.direction = Direction.UP;
+                    move(Direction.UP);;
                     break;
             }
 
-        }
+        } else return;
 
 
+    }
+
+
+    public void passPositionToFollow(Position position) {
+        this.positionToFollow = position;
     }
 }

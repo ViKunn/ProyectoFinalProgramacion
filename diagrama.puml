@@ -141,6 +141,9 @@ package business {
 
         abstract class Enemy{
             #collisionChecker: CollisionChecker
+            +setPosition(positionExpect: Position): void
+            +setDirection(direction: Direction): void
+            +setCollisionChecker(collisionChecker: CollisionChecker): void
         }
 
         class Troll{
