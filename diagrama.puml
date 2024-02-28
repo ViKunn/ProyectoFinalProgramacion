@@ -33,10 +33,10 @@ package business {
         -troll1: Enemy
         +getPlayerInitialPosition(): Position
         +getMap(): Map
-        -getFruit(position: Position, runningFruitLayer): Fruit
-        -getFruitLayer(runningFruitLayer): ArrayList<Fruit>
-        +decreaseFruitCounter((position: Position): void
-        -fruitLayerIsEmpty(runningFruitLayer): boolean
+        -getFruit(position: Position, int runningFruitLayer): Fruit
+        -getFruitLayer(int runningFruitLayer): ArrayList<Fruit>
+        +decreaseFruitCounter(position: Position): void
+        -fruitLayerIsEmpty(int runningFruitLayer): boolean
         +fruitsEqualZero(): boolean
         +isCollidingWithAnEnemy(position: Position): boolean
         +isCollidingWithAFruit(playerPosition: Position): boolean
@@ -51,7 +51,7 @@ package business {
         +getBlock(position: Position): Block
         +frontBlockIsIce(direction: Direction, position: Position): boolean
         +setIce( (position: Position): void
-        +setBlock(position: Position, block): void
+        +setBlock(position: Position, int block): void
         -loadBlock(numbers: Vector<Vector<Integer>): Block[][]
         +getMapSizeX(): int
         +getMapSizeY(): int
@@ -79,10 +79,10 @@ package business {
         -y: int
         +getX(): int
         +getY(): int
-        +getFrontPosition(): Position
-        +setX(): void
-        +setY(): setY
-        +equals(): boolean
+        +getFrontPosition(direction: Direction): Position
+        +setX(int x): void
+        +setY(int y): void
+        +equals(p2: Position): boolean
     }
 
     enum Direction {
@@ -96,22 +96,23 @@ package business {
     package managers{
         class BlockManager{
             -blocks: HashMap<Integer, Block>
-            +getBlock(blockNumber: int): Block
+            +getBlock(int blockNumber): Block
         }
 
         class CollisionChecker{
             -map: Map
+            +trappedBetweenBlocks(position: Position): boolean
             +frontBlockIsSolid(direction: Direction, position: Position): boolean
         }
 
         class FruitManager{
             -fruits: HashMap<Integer,Fruit>
-            +getFruit(fruitNumber: int): Fruit
+            +getFruit(int fruitNumber): Fruit
         }
 
         class LevelManager{
-            -levels: HashMap<Integer, Level>
-            +{static}getLevel(level: int): Level
+            -{static}levels: HashMap<Integer, Level>
+            +{static}getLevel(int level): Level
         }
     }
 
@@ -158,17 +159,26 @@ package business {
             +run(): void
             +move(direction: Direction): void
         }
+
+        class BlueCow {
+            -potionToFollow: Position
+            -run(): void /'es runnable'/
+            -follow(position: Position): void
+            +move(direction: Direction): void
+            +passPositionToFollow(position: Position): void
+        }
     }
 }
 
 package data{
     class DataManager {
-        +{static}loadMap(): Map
-        +{static}loadFruits(): ArrayList<Fruit>
-        -{static}readTxtFile(): void
-        -{static}strVectorToIntVector():
-        +{static}writeFile(): void
-        +{static}readFile(): Object
+        +{static}loadMap(String path): Map
+        +{static}loadFruitLayer(String path): ArrayList<Fruit>
+        +loadFruits(String[] fruitPaths): ArrayList<ArrayList<Fruit>
+        -{static}readTxtFile(String path): void
+        -{static}strVectorToIntVector(Vector<String> readLines): Vector<Vector<Integer
+        +{static}writeFile(archivo: File, object: Object): void
+        +{static}readFile(archivo: File): Object
     }
 }
 
