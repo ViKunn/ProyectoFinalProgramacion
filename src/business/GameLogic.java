@@ -16,6 +16,7 @@ public class GameLogic {
 
 		LevelManager levelManager = new LevelManager();
 		this.numLevel = numLevel;
+
 		level = levelManager.getLevel(this.numLevel);
 		level = levelManager.getLevel(1);
 

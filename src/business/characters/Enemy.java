@@ -9,6 +9,7 @@ public abstract class Enemy extends Entity implements Movable {
 
 	public Enemy(){
 	}
+
 	public void setPosition(Position positionExpect){
 		this.position = new Position(positionExpect.getX(), (positionExpect.getY()));
 	}
