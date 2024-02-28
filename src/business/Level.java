@@ -107,21 +107,6 @@ public class Level {
 		return fruits.isEmpty();
 	}
 
-	/*
-
-	public boolean fruitsEqualZero() {
-
-		if (fruitLayerIsEmpty(runningFruitLayer)){
-			runningFruitLayer++;
-		}
-
-		return runningFruitLayer == fruits.size();
-	}
-
-	 */
-
-
-
 	public boolean isCollidingWithAnEnemy(Position position) {
 
 		for (Enemy enemy: enemies) {
@@ -145,6 +130,7 @@ public class Level {
 		return false;
 	}
 
+	// TODO check
 	public void setUnlocked(boolean unlocked){
 		this.unlocked = unlocked;
 	}

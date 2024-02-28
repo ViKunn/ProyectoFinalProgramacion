@@ -53,6 +53,8 @@ public class GameLogic {
 
 		if (level.fruitsEqualZero()){
 			System.out.println("Felicidades!! Pasaste de nivel!!");
+
+			// TODO
 			level.setUnlocked(true);
 			isRunning = false;
 		}
