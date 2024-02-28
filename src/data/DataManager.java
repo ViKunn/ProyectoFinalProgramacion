@@ -131,22 +131,24 @@ public class DataManager {
 		return rows;
 	}
 
-	public static void writeFile(File archivo, Object object){
+
+	public static Object writeFile(File archivo) {
+
+		Object object = new Object();
 
 		try {
 
 			FileOutputStream flujoDeSalida = new FileOutputStream(archivo);
 			ObjectOutputStream manejadorDeEscritura = new ObjectOutputStream(flujoDeSalida);
-
 			manejadorDeEscritura.writeObject(object);
 			manejadorDeEscritura.close();
 
 		} catch (IOException e) {
-
-			throw new RuntimeException(e);
-
+			e.printStackTrace();
 		}
+		return object;
 	}
+
 	public static Object readFile(File archivo){
 
 		Object object = new Object();
