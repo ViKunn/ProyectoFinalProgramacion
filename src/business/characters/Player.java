@@ -3,16 +3,19 @@ package business.characters;
 import business.*;
 import business.interfaces.Movable;
 import business.interfaces.PowerUps;
+import business.Score;
 
 
 public class Player extends Entity implements Movable, PowerUps {
 
 	private final int posibleSpeed = 1;
 	private boolean alive;
+	private Score score;
 
 	public Player(Position position){
 		this.position = position;
 		this.advance = 1;
+		this.score = new Score();
 	}
 
 	public void changeDirection(Direction directionExpect){
@@ -83,6 +86,10 @@ public class Player extends Entity implements Movable, PowerUps {
 
 		}
 
+	}
+
+	public void increaseScore() {
+		score.increaseScore();
 	}
 
 }

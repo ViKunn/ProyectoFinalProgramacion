@@ -5,6 +5,7 @@ import business.characters.Entity;
 public class Fruit extends Entity {
 
 	private String name;
+	private static int scoreFruit = 50;
 
 	public Fruit() {
 		position = new Position();
@@ -32,5 +33,8 @@ public class Fruit extends Entity {
 		return name;
 	}
 
+	public static int getScoreFruit() {
+		return scoreFruit;
+	}
 
 }

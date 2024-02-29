@@ -11,9 +11,11 @@ public class GameLogic {
 	private boolean isRunning;
 	private int numLevel;
 	private CollisionChecker collisionChecker;
+	private Score score;
 
 	public GameLogic(int numLevel){
 
+		this.score = new Score();
 		LevelManager levelManager = new LevelManager();
 		this.numLevel = numLevel;
 		level = levelManager.getLevel(this.numLevel);
@@ -76,6 +78,8 @@ public class GameLogic {
 	private boolean isCollidingWithAFruit() {
 
 		if (level.isCollidingWithAFruit(player.getPosition())){
+			//score.increaseScore();
+			//System.out.println("Puntaje total: " + score.increaseScore());
 			return true;
 		}
 

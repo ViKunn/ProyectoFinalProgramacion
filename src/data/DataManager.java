@@ -67,14 +67,6 @@ public class DataManager {
 
 	}
 
-
-
-
-
-
-
-
-
 	/**
 	 * Reads a .txt file
 	 * @param path
