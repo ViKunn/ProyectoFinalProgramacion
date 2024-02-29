@@ -51,6 +51,17 @@ public class GameLogic  implements Runnable {
 
 		player.move(direction);
 		level.sendPositionPlayer(player.getPosition());
+		if (isCollidingWithAFruit()){
+			level.decreaseFruitCounter(player.getPosition());
+			System.out.println("Comiste una fruta!!");
+
+		}
+
+		if (level.fruitsEqualZero()){
+			System.out.println("Felicidades!! Pasaste de nivel!!");
+			level.setUnlocked(true);
+			running = false;
+		}
 
 
 	}
@@ -102,17 +113,6 @@ public class GameLogic  implements Runnable {
 
 				System.out.println("TE MORISTE!!");
 				System.out.println("wuruwrur, me muero por thread");
-			}
-			if (isCollidingWithAFruit()){
-				level.decreaseFruitCounter(player.getPosition());
-				System.out.println("Comiste una fruta!!");
-
-			}
-
-			if (level.fruitsEqualZero()){
-				System.out.println("Felicidades!! Pasaste de nivel!!");
-				level.setUnlocked(true);
-				running = false;
 			}
 
 			level.isCollidingBetweenEnemies();
