@@ -13,7 +13,7 @@ public class Score {
     private int totalScore;
 
 
-    public int getTotalScore(){
+  /*  public int getTotalScore(){
         return this.totalScore = 0;
     }
     public Score(){
@@ -25,7 +25,7 @@ public class Score {
 
     public void showScore() {
 
-    }
+    }*/
 }
 
 
