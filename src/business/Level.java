@@ -20,19 +20,22 @@ public class Level {
 	private BlueCow blueCow;
 
 
-	public Level(String mapPath,boolean unlocked, String ... fruitsPath) {
+	public Level(String mapPath, String playerInitialPositionPath, String enemiesPath, String ... fruitsPath){
 
+		unlocked = false;
 
-		map = DataManager.loadMap(mapPath);
-
+		map     = DataManager.loadMap(mapPath);
 		// enemies = DataManager.loadEnemies(enemiesPath);
-		fruits = DataManager.loadFruits(fruitsPath);
+
+		// TODO control de errores en caso de que no reciba ninguna fruta
+		fruits  = DataManager.loadFruits(fruitsPath);
+
+		// DOUBT: check
 		runningFruitLayer = 0;
 
+		// TODO ????
 
-		// ENEMIES
-
-/***************************************************/
+		/***************************************************/
 		// burned
 		enemies = new ArrayList<Enemy>();
 
@@ -56,6 +59,7 @@ public class Level {
 		blueCow.setCollisionChecker(new CollisionChecker(map));
 		enemies.add(blueCow);
 		/************************************/
+
 
 	}
 
