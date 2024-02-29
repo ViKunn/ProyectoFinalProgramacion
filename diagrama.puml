@@ -182,6 +182,17 @@ package data{
     }
 }
 
+package presentation{
+    class Menu{
+        +{static}mainMenu(): void
+        +{static}characterMenu(): void
+        +{static}menuLevel: GameLogic
+        +pauseMenu(): void
+        +{static}playGame(int level): void
+        -{static}saveGame(): void
+    }
+}
+
 Player ... Level
 Player ...> Map
 Enemy  .l.> Map
@@ -192,18 +203,22 @@ GameLogic -> Player
 Level --> Map
 Level --> Enemy
 Level --> Fruit
-
-
+Player --> Score
 Map --> Block
 Map --- DataManager
 
 Entity <|-- Player
 Entity <|-- Enemy
 Enemy <|-- Troll
+Enemy <|-- BlueCow
+Entity <|-- Fruit
+Block <|-- Ice
 
 Movable <|.. Enemy
 Movable <|.. Player
 PowerUps <|.. Player
 Movable <|.. Troll
+Movable <|..BlueCow
+
 
 @enduml

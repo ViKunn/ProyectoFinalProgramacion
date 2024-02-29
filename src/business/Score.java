@@ -12,6 +12,10 @@ public class Score {
     private String name;
     private int totalScore;
 
+    public void increaseScore() {
+
+    }
+
 
   /*  public int getTotalScore(){
         return this.totalScore = 0;
