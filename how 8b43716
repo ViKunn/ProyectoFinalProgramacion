@@ -1,0 +1,483 @@
+[33mcommit 8b43716ef94a7d3bd06624810b71a81cc7f956dc[m[33m ([m[1;36mHEAD -> [m[1;32mrecuperacion_cambios[m[33m)[m
+Author: FernandoHuilca <fernando.huilca@epn.edu.ec>
+Date:   Thu Feb 29 15:07:49 2024 -0500
+
+    Subiendo correccion error comer frutas
+
+[33mcommit 28161cc1492444dbb21bffeca8cb5e2e085f5a99[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Thu Feb 29 14:43:53 2024 -0500
+
+    funcional con enemigos y menus
+
+[33mcommit cb016b7a60bdd754a483eb532ef319003ae2e81b[m
+Merge: e712627 67715bf
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Thu Feb 29 14:39:45 2024 -0500
+
+    Merge remote-tracking branch 'proyectoFinal/scores' into badIceCream
+    
+    # Conflicts:
+    #       src/business/GameLogic.java
+    #       src/data/DataManager.java
+
+[33mcommit 67715bf7dff6c85cc312c3d177e4315ed4346676[m
+Author: Alison <alison.betancourt01@epn.edu.ec>
+Date:   Thu Feb 29 14:35:39 2024 -0500
+
+    UML nuevamente actualizado
+
+[33mcommit e7126276570ca0f3d8d296939c059ae7d596d55c[m
+Merge: bbae848 2b212d4
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Thu Feb 29 14:30:45 2024 -0500
+
+    Merge remote-tracking branch 'proyectoFinal/HiloParaEnemigos' into badIceCream
+    
+    # Conflicts:
+    #       src/business/GameLogic.java
+    #       src/business/Level.java
+    #       src/business/characters/Troll.java
+
+[33mcommit bbae8489a3e6428c5041541194827acac238a6f8[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Thu Feb 29 14:26:12 2024 -0500
+
+    enemy implements cloneable
+
+[33mcommit 2b212d4d67c9119cdcfc17a1bcd5aee74754746b[m[33m ([m[1;31morigin/HiloParaEnemigos[m[33m, [m[1;32mHiloParaEnemigos[m[33m)[m
+Author: Mateo <juan.quisilema@epn.edu.ec>
+Date:   Wed Feb 28 22:16:31 2024 -0500
+
+    Funciona Hilo con enemies y colisiones entre enemies. :)
+
+[33mcommit ae19c2b58f5cb3c66f0f1e7b04b625ff332461ea[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Wed Feb 28 21:35:34 2024 -0500
+
+    Empezando lectura posiciones de enemigos
+
+[33mcommit dd2c6baf45b70761dbd62c3c20c2b8b81ad35c79[m
+Author: Alison <alison.betancourt01@epn.edu.ec>
+Date:   Wed Feb 28 21:22:13 2024 -0500
+
+    Falta controlar el menu
+
+[33mcommit 3c70b7c3225fb4b7193e8f99cc0375f1a9274a6a[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Wed Feb 28 21:12:35 2024 -0500
+
+    Empezando lectura posiciones de enemigos
+
+[33mcommit 415981cc2163b743be911c978eeb515c080817c3[m[33m ([m[1;31morigin/posicionesEnemigos[m[33m)[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Wed Feb 28 21:07:13 2024 -0500
+
+    Empezando lectura posiciones de enemigos
+
+[33mcommit 6dd16ef52c9523066657d38ae7093c48add5b83f[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Wed Feb 28 19:55:37 2024 -0500
+
+    Funciona constructor de Level pero faltan correcciones
+
+[33mcommit 074a67cc2fa016dbe6ceb2feffc7cea85fc865b6[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Wed Feb 28 19:55:06 2024 -0500
+
+    Funciona constructor de Level pero faltan correcciones
+
+[33mcommit b290f66cbcfac8c3654fdda7136bd73138d3029c[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Wed Feb 28 19:50:16 2024 -0500
+
+    Funciona constructor de Level pero faltan correcciones
+
+[33mcommit cb007417b8e6a854c23585cacac08069af4d445a[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Wed Feb 28 19:48:54 2024 -0500
+
+    Funciona constructor de Level pero faltan correcciones
+
+[33mcommit 3ee165ee5cdb6b3a76f62f500e2e4e59379ebb99[m
+Author: Alison <alison.betancourt01@epn.edu.ec>
+Date:   Wed Feb 28 19:20:44 2024 -0500
+
+    Score comentado xdd
+
+[33mcommit 591574217356abf2dc8c570de625ca028d870f89[m
+Author: Alison <alison.betancourt01@epn.edu.ec>
+Date:   Wed Feb 28 19:06:39 2024 -0500
+
+    Cambios
+
+[33mcommit 84183815c7f3b2ffc173901d19d5858c156e5ace[m
+Author: Alison <alison.betancourt01@epn.edu.ec>
+Date:   Wed Feb 28 15:51:34 2024 -0500
+
+    Score para un solo player
+
+[33mcommit 8536e7d4cb766b4573fa91d3c41a61b14edfe01c[m
+Merge: f133de4 0e31ef2
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Wed Feb 28 15:06:25 2024 -0500
+
+    Merge remote-tracking branch 'proyectoFinal/badIceCream' into badIceCream
+
+[33mcommit f133de45715b30db6af673d337100e57da17d851[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Wed Feb 28 15:02:04 2024 -0500
+
+    organización de archivos
+
+[33mcommit e61ce51f03554b36ba1236159405535e36527920[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Wed Feb 28 14:43:40 2024 -0500
+
+    organización de archivos
+
+[33mcommit 0e31ef21788be768fdedb6ccc2dfbf2a75bd3aa7[m
+Author: Alison <alison.betancourt01@epn.edu.ec>
+Date:   Tue Feb 27 20:50:59 2024 -0500
+
+    actualización del UML
+
+[33mcommit dfeb91746f6b36f54f8fa6680ca58d8c7dfb180d[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Tue Feb 27 20:38:45 2024 -0500
+
+    organización de archivos
+
+[33mcommit dbb07641dafb4bf74a2c5538a9d81b13a70eea9f[m
+Merge: fa0abc8 aab8845
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Tue Feb 27 15:57:08 2024 -0500
+
+    Merge branch 'badIceCream' of https://github.com/ViKunn/ProyectoFinalProgramacion into badIceCream
+
+[33mcommit aab88453261de33ad1823296a73bd367194d3c2b[m
+Merge: 7c15a04 835e280
+Author: Alison <alison.betancourt01@epn.edu.ec>
+Date:   Tue Feb 27 15:52:46 2024 -0500
+
+    Merge branch 'badIceCream' of https://github.com/ViKunn/ProyectoFinalProgramacion into badIceCream
+
+[33mcommit 7c15a043512900e0633b05f03f5bde67305d02b8[m
+Author: Alison <alison.betancourt01@epn.edu.ec>
+Date:   Tue Feb 27 15:52:09 2024 -0500
+
+    Changes by PC
+
+[33mcommit 2a3181f73fdb3ce6fc6964509e0a8e4a5fb5af6f[m
+Author: Alison <alison.betancourt01@epn.edu.ec>
+Date:   Tue Feb 27 15:51:58 2024 -0500
+
+    commit menus
+
+[33mcommit 835e280a0421b140d1577acae48e4b04371b322d[m
+Merge: 7603a68 762c950
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Tue Feb 27 15:47:37 2024 -0500
+
+    Merge remote-tracking branch 'origin/menus' into badIceCream
+
+[33mcommit fa0abc82c06198df5ac3f7e0df1d344241d95f9d[m
+Merge: c52ee76 7603a68
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Tue Feb 27 15:46:34 2024 -0500
+
+    Merge branch 'badIceCream' of https://github.com/ViKunn/ProyectoFinalProgramacion into badIceCream
+    
+    # Conflicts:
+    #       src/business/managers/LevelManager.java
+
+[33mcommit c52ee7640a1b9163e6c5a7639ce9845abb0fe301[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Tue Feb 27 15:45:56 2024 -0500
+
+    limpieza del código
+
+[33mcommit 7603a68f37dc4bb0ec4bb578ba6b848232e090e6[m
+Merge: 06ae8e7 95c076c
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Tue Feb 27 15:42:46 2024 -0500
+
+    Merge remote-tracking branch 'origin/recuperacion_cambios' into badIceCream
+
+[33mcommit 95c076c6141154bee623a1c5466f80e8982505ad[m
+Author: FernandoHuilca <fernando.huilca@epn.edu.ec>
+Date:   Tue Feb 27 15:29:07 2024 -0500
+
+    Funciona movimiento BlueCow
+
+[33mcommit a596868bb5a0105e82f880f8812b5aeadf8dfe01[m
+Author: Alison <alison.betancourt01@epn.edu.ec>
+Date:   Tue Feb 27 15:24:09 2024 -0500
+
+    Para hacer el pull
+
+[33mcommit 762c950766ddc6f44100c737374a6219a267d4cf[m
+Author: Alison <alison.betancourt01@epn.edu.ec>
+Date:   Mon Feb 26 23:22:56 2024 -0500
+
+    Implementación de menu principal, faltarían algunas funciones como guardar partida en el pauseMenu
+
+[33mcommit feffb5b2dd15f2bc2a544fe06e672dd9c9b6a54b[m
+Author: FernandoHuilca <fernando.huilca@epn.edu.ec>
+Date:   Mon Feb 26 23:05:04 2024 -0500
+
+    Enemy BlueCow se mueve solo, 100% funcional
+
+[33mcommit 2a1bf40c70edbb0313366fc7f34f59865da1996b[m
+Author: FernandoHuilca <fernando.huilca@epn.edu.ec>
+Date:   Mon Feb 26 20:06:27 2024 -0500
+
+    Agregando otro enemigo
+
+[33mcommit 4b55be9b8dbde9f5bf20eba121cf5fb7c2829ffb[m
+Merge: a0dc072 06ae8e7
+Author: Alison <alison.betancourt01@epn.edu.ec>
+Date:   Mon Feb 26 16:19:27 2024 -0500
+
+    Merge branch 'badIceCream' of https://github.com/ViKunn/ProyectoFinalProgramacion into badIceCream
+    
+    # Conflicts:
+    #       src/business/Level.java
+
+[33mcommit a0dc0722f1aea3df25f6bc7c1d96ecc166121a9f[m
+Author: Alison <alison.betancourt01@epn.edu.ec>
+Date:   Mon Feb 26 16:19:06 2024 -0500
+
+    level
+
+[33mcommit 1ea7b9afd5dc20e0a8550c6b73f0bef0c5853f7c[m
+Author: Alison <alison.betancourt01@epn.edu.ec>
+Date:   Mon Feb 26 16:14:47 2024 -0500
+
+    Actualización de UML
+
+[33mcommit 06ae8e703b7f47ca54aae33807a11a44cf331c8d[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Mon Feb 26 16:13:36 2024 -0500
+
+    Funciona capas de frutas
+
+[33mcommit 864ca57a573f8e90174a18575f96e2f68d0f961d[m
+Merge: 6fa2e5a 4d35781
+Author: FernandoHuilca <fernando.huilca@epn.edu.ec>
+Date:   Mon Feb 26 15:36:38 2024 -0500
+
+    Merge remote-tracking branch 'origin/badIceCream' into badIceCream
+    
+    # Conflicts:
+    #       src/business/Level.java
+
+[33mcommit 6fa2e5a1c0588971a1f7ce2812c7fe514fd1ad84[m
+Author: FernandoHuilca <fernando.huilca@epn.edu.ec>
+Date:   Mon Feb 26 15:33:27 2024 -0500
+
+    Cambio chiquito
+
+[33mcommit 67591af8d762c2dfcbef550357d463ca0053d72b[m
+Merge: 2e017f2 4d35781
+Author: Alison <alison.betancourt01@epn.edu.ec>
+Date:   Mon Feb 26 15:33:09 2024 -0500
+
+    Merge branch 'badIceCream' of https://github.com/ViKunn/ProyectoFinalProgramacion into badIceCream
+    
+    # Conflicts:
+    #       src/business/Level.java
+
+[33mcommit 2e017f261601c9604465b28845063c620e55811b[m
+Author: Alison <alison.betancourt01@epn.edu.ec>
+Date:   Mon Feb 26 15:32:49 2024 -0500
+
+    fruits layers
+
+[33mcommit 4d3578119253029505ccddfdfcb375901816cb3c[m
+Merge: ece0f84 57992af
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Mon Feb 26 15:26:50 2024 -0500
+
+    Merge remote-tracking branch 'proyectoFinal/badIceCream' into badIceCream
+
+[33mcommit ece0f84402bb61dc202d87128c34c5f0ae9e1731[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Mon Feb 26 15:26:25 2024 -0500
+
+    Funciona varias frutas por nivel
+
+[33mcommit 57992af61f9cd5369404ada87babd535fe1f54af[m
+Merge: 2408549 f8b4a35
+Author: Mateo <juan.quisilema@epn.edu.ec>
+Date:   Mon Feb 26 15:10:54 2024 -0500
+
+    Merge remote-tracking branch 'origin/badIceCream' into badIceCream
+
+[33mcommit 240854921e40999628e923c936c39ffb800222fd[m
+Author: Mateo <juan.quisilema@epn.edu.ec>
+Date:   Mon Feb 26 15:10:35 2024 -0500
+
+    Correción en level del constructor
+
+[33mcommit f8b4a35aad6b81c339fd0e167ffb5f9aadcc5395[m
+Author: FernandoHuilca <fernando.huilca@epn.edu.ec>
+Date:   Mon Feb 26 15:09:49 2024 -0500
+
+    MenuPrincipal
+
+[33mcommit ff6ac8504e2dc636c41b0e4f5eff149ca02c0505[m
+Author: Mateo <juan.quisilema@epn.edu.ec>
+Date:   Mon Feb 26 14:47:53 2024 -0500
+
+    Solo cambie el constructor de Enemy y de Trol :'(
+
+[33mcommit b2becb7dd277f010b299602ba820262f773c31ca[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Mon Feb 26 00:24:35 2024 -0500
+
+    Arreglo lógica PowerUps
+
+[33mcommit d970ce106b48be6313cdd83175a2e09b682a3623[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Mon Feb 26 00:24:20 2024 -0500
+
+    Arreglo direccion powerUps
+
+[33mcommit 24c1635d213bfeca61eda2eca253256bc9a2588d[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Mon Feb 26 00:23:19 2024 -0500
+
+    Posiciones de frutas
+
+[33mcommit a412c66c658e3c41ebc41d47fabfd208b295157f[m
+Author: FernandoHuilca <fernando.huilca@epn.edu.ec>
+Date:   Sun Feb 25 22:15:18 2024 -0500
+
+    Ya quita y pone hielos correctamente
+
+[33mcommit 65d488dc07d93d4f3ea623c004706f18e665da81[m
+Author: FernandoHuilca <fernando.huilca@epn.edu.ec>
+Date:   Sun Feb 25 20:55:30 2024 -0500
+
+    Troll ya se mueve solito
+
+[33mcommit 1b92b6c8c524c3e7b0a85f3b1277c30f45411c19[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Sun Feb 25 12:33:40 2024 -0500
+
+    Changes by usariop
+
+[33mcommit 560b7fe37980bf5197faea3b83622c78a1d28b04[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Sun Feb 25 12:33:27 2024 -0500
+
+    Logica RomperHielos (Mateo)
+
+[33mcommit 21e27fa12cc21b890843f0eb38d1a31ce9ea9c0f[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Sun Feb 25 12:33:14 2024 -0500
+
+    Inicios del Hilo de Juego (Fer)
+
+[33mcommit f89c574899836c1736fb46c513474380ca91d9f0[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Sun Feb 25 12:32:58 2024 -0500
+
+    Funciona medianamente romperHielos
+
+[33mcommit b3497c03b1996caae0f609fd5395174fb52ea75c[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Sun Feb 25 09:00:17 2024 -0500
+
+    Funciona presentación en consola y collision
+
+[33mcommit 017bb303c602419b564c397fdc98eff6b562e9b8[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Sat Feb 24 21:45:23 2024 -0500
+
+    Changes by usariop
+
+[33mcommit acdbb980078551dc4eaf34e9dd5ec0fedef8cd19[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Sat Feb 24 21:45:17 2024 -0500
+
+    Changes by PC
+
+[33mcommit 9d5394670eb4cc1e18eae1117f9bbc06cc678647[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Sat Feb 24 21:45:13 2024 -0500
+
+    Changes by pc
+
+[33mcommit ded8285812f48053c438be298776930c1f4dda19[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Sat Feb 24 21:45:07 2024 -0500
+
+    Changes by Fernando_Huilca
+
+[33mcommit 2995ccb79c026a718880a202e0fe4ff2365b00d3[m
+Author: Alisson Espin <alisson.espin@epn.edu.ec>
+Date:   Sat Feb 24 21:44:19 2024 -0500
+
+    Funciona muerte player
+
+[33mcommit bf7993bfe67c52646d1db211ea25ee9f8be0ce99[m
+Author: ViKunn <alisson.espin@epn.edu.ec>
+Date:   Sat Feb 24 15:00:59 2024 -0500
+
+    Changes by usariop
+
+[33mcommit bf588d67a12b5da1e44fb235d987368c6ef4fab5[m
+Author: ViKunn <alisson.espin@epn.edu.ec>
+Date:   Sat Feb 24 15:00:52 2024 -0500
+
+    Changes by PC
+
+[33mcommit 12a7a5ff6f6c20dd00d55745d514994d0b62cf5c[m
+Author: ViKunn <alisson.espin@epn.edu.ec>
+Date:   Sat Feb 24 15:00:45 2024 -0500
+
+    Changes by LabP3E003
+
+[33mcommit 7ebd8e5efcd8a2ce2a4bc9e8c3c40fd7632a7a1a[m
+Author: ViKunn <alisson.espin@epn.edu.ec>
+Date:   Sat Feb 24 15:00:39 2024 -0500
+
+    Funciona movimiento de Player
+
+[33mcommit b8073beac83efeeada81534cea134cd0701cf1d2[m
+Author: ViKunn <alisson.espin@epn.edu.ec>
+Date:   Sat Feb 24 15:00:31 2024 -0500
+
+    Funciona movimiento de Player
+
+[33mcommit 4fec79deb73bf8f934a46e81052d86a9e2c99a5b[m
+Author: ViKunn <alisson.espin@epn.edu.ec>
+Date:   Sun Feb 18 14:58:37 2024 -0500
+
+    Map is working
+
+[33mcommit 02547d8f1210d975d1ab02a79943d7f9f84f2b27[m
+Author: ViKunn <alisson.espin@epn.edu.ec>
+Date:   Sun Feb 18 13:34:33 2024 -0500
+
+    Funciona lectura de bloques en la matriz de Mapa
+
+[33mcommit 041e9e985d67d34e35f889fbeb893f03aba84c08[m
+Author: ViKunn <alisson.espin@epn.edu.ec>
+Date:   Sun Feb 18 13:33:47 2024 -0500
+
+    Funciona lectura de mapa
+
+[33mcommit 0b21ef08beaf0a4179b3f543e659083f1ae92289[m
+Author: ViKunn <alisson.espin@epn.edu.ec>
+Date:   Sun Feb 18 13:32:18 2024 -0500
+
+    Funciona la lectura de bloques de mapa
+
+[33mcommit 85464eaed22b23ee898a0cdd16d53dbda16b572e[m
+Author: ViKunn <alisson.espin@epn.edu.ec>
+Date:   Sat Feb 17 22:25:34 2024 -0500
+
+    Funciona movimiento del player
