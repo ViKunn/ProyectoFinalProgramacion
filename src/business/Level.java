@@ -5,6 +5,7 @@ import business.managers.CollisionChecker;
 import data.DataManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Level {
 
@@ -21,8 +22,44 @@ public class Level {
 	private Enemy troll1;
 	private BlueCow blueCow;
 
-	public Level(String mapPath,boolean unlocked, String ... fruitsPath) {
+	// TODO
+	public Level(String mapPath, String playerInitialPositionPath, String enemiesPath, String ... fruitsPath){
 
+		unlocked = false;
+
+		map     = DataManager.loadMap(mapPath);
+		enemies = DataManager.loadEnemies(enemiesPath);
+		fruits  = DataManager.loadFruits(fruitsPath);
+
+		// DOUBT: check
+		runningFruitLayer = 0;
+
+		// TODO ???
+		Thread threadEnemy = null;
+		enemies = new ArrayList<Enemy>();
+
+		troll1 = new Troll();
+		troll1.setPosition(new Position(3,3));
+		troll1.setDirection(Direction.DOWN);
+		troll1.setCollisionChecker(new CollisionChecker(map));
+		// troll2 = new Troll(new Position(5,5), Direction.UP, new CollisionChecker(map));
+		enemies.add(troll1);
+		blueCow = new BlueCow();
+		blueCow.setPosition(new Position(12,6));
+		blueCow.setDirection(Direction.UP);
+		blueCow.setCollisionChecker(new CollisionChecker(map));
+		enemies.add(blueCow);
+
+		for (Enemy enemy : enemies){
+			threadEnemy = new Thread((Runnable) enemy);
+			threadEnemy.start();
+		}
+
+	}
+
+	public Level(String mapPath, boolean unlocked, String ... fruitsPath) {
+
+		unlocked = false;
 
 		map = DataManager.loadMap(mapPath);
 
@@ -31,8 +68,8 @@ public class Level {
 		runningFruitLayer = 0;
 
 
+		// TODO ????
 		// ENEMIES
-
 		Thread threadEnemy = null;
 
 		// burned
@@ -138,4 +175,5 @@ public class Level {
 	public void sendPositionPlayer(Position position) {
 		blueCow.passPositionToFollow(position);
 	}
+
 }

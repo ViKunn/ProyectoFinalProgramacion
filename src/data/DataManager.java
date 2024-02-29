@@ -3,6 +3,7 @@ package data;
 import business.Fruit;
 import business.Map;
 import business.Position;
+import business.characters.Enemy;
 import business.managers.FruitManager;
 
 import java.io.*;
@@ -19,8 +20,7 @@ public class DataManager {
 		Vector<Vector<Integer>> numbers = strVectorToIntVector(DataManager.readLines);
 
 		// TODO tamaño de la matriz
-		Map map = new Map(numbers, 18, 18);
-		return map;
+		return new Map(numbers, 18, 18);
 	}
 
 	private static ArrayList<Fruit> loadFruitLayer(String path) {
@@ -54,6 +54,7 @@ public class DataManager {
 
 		return fruits;
 	}
+
 	public static ArrayList<ArrayList<Fruit>> loadFruits(String[] fruitPaths){
 
 		ArrayList<ArrayList<Fruit>> fruits = new ArrayList<>();
@@ -66,7 +67,12 @@ public class DataManager {
 
 	}
 
+	public static ArrayList<Enemy> loadEnemies(String enemiesPath) {
 
+		// TODO
+
+		return new ArrayList<>();
+	}
 
 
 
@@ -76,8 +82,7 @@ public class DataManager {
 
 	/**
 	 * Reads a .txt file
-	 * @param path
-	 * @return ArrayList of the read lines
+	 * @param path file to read
 	 */
 	private static void readTxtFile(String path){
 
@@ -97,6 +102,7 @@ public class DataManager {
 			} while (line != null);
 
 		} catch (IOException e) {
+			System.out.println("Error en la lectura de archivo de texto");
 			e.printStackTrace();
 		}
 
@@ -155,7 +161,7 @@ public class DataManager {
 			FileInputStream flujoDeEntrada = new FileInputStream(archivo);
 			ObjectInputStream manejadorDeLectura = new ObjectInputStream(flujoDeEntrada);
 
-			object = (Object) manejadorDeLectura.readObject();
+			object = manejadorDeLectura.readObject();
 
 			manejadorDeLectura.close();
 
@@ -167,6 +173,5 @@ public class DataManager {
 
 		return object;
 	}
-
 
 }
