@@ -2,7 +2,6 @@ package business.managers;
 
 import business.Level;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LevelManager {
@@ -16,6 +15,7 @@ public class LevelManager {
 
 
 		addLevel1();
+		addLevel2();
 
 	}
 

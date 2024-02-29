@@ -5,7 +5,6 @@ import business.managers.CollisionChecker;
 import data.DataManager;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Level {
 
