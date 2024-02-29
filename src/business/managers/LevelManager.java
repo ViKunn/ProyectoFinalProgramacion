@@ -17,8 +17,6 @@ public class LevelManager {
 
 	}
 
-
-
 	public void addLevel1() {
 
 		String mapPath         = "res/levels/level1/map.txt";
@@ -31,7 +29,6 @@ public class LevelManager {
 		levels.put(1, level);
 
 	}
-
 	public void addLevel2() {
 
 		String mapPath         = "res/levels/level2/map.txt";

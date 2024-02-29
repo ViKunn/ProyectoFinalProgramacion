@@ -28,12 +28,14 @@ public class Level {
 
 		map     = DataManager.loadMap(mapPath);
 		enemies = DataManager.loadEnemies(enemiesPath);
+
+		// TODO control de errores en caso de que no reciba ninguna fruta
 		fruits  = DataManager.loadFruits(fruitsPath);
 
 		// DOUBT: check
 		runningFruitLayer = 0;
 
-		// TODO ???
+		// TODO ????
 		Thread threadEnemy = null;
 		enemies = new ArrayList<Enemy>();
 

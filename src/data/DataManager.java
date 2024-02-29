@@ -4,6 +4,7 @@ import business.Fruit;
 import business.Map;
 import business.Position;
 import business.characters.Enemy;
+import business.managers.EnemyManager;
 import business.managers.FruitManager;
 
 import java.io.*;
@@ -23,16 +24,19 @@ public class DataManager {
 		return new Map(numbers, 18, 18);
 	}
 
+	// TODO control de errores en caso de que no exista la fruta
 	private static ArrayList<Fruit> loadFruitLayer(String path) {
 
 		readTxtFile(path);
-		Vector<Vector<Integer>> numbers = strVectorToIntVector(DataManager.readLines);
+		Vector<Vector<Integer>> numbers = strVectorToIntVector(readLines);
 
 		FruitManager fruitManager = new FruitManager();
 		ArrayList<Fruit> fruits = new ArrayList<>();
 
 		int fruitNumber;
 		int row = numbers.size();
+
+		// TODO control de errores
 		int col = numbers.get(1).size();
 
 		for (int i = 0; i < row; i++) {
@@ -43,6 +47,7 @@ public class DataManager {
 
 				if (fruitNumber != 0){
 
+					// TODO control de errores
 					Fruit fruit = fruitManager.getFruit(fruitNumber);
 					fruit.setPosition(new Position(j, i));
 
@@ -54,7 +59,6 @@ public class DataManager {
 
 		return fruits;
 	}
-
 	public static ArrayList<ArrayList<Fruit>> loadFruits(String[] fruitPaths){
 
 		ArrayList<ArrayList<Fruit>> fruits = new ArrayList<>();
@@ -69,7 +73,37 @@ public class DataManager {
 
 	public static ArrayList<Enemy> loadEnemies(String enemiesPath) {
 
-		// TODO
+		readTxtFile(enemiesPath);
+		Vector<Vector<Integer>> numbers = strVectorToIntVector(readLines);
+
+		EnemyManager enemyManager = new EnemyManager();
+		ArrayList<Enemy> enemies = new ArrayList<>();
+
+		int enemyNumber;
+		int row = numbers.size();
+
+		// TODO control de errores para el tamaño de la matriz
+		int col = numbers.get(1).size();
+
+		for (int i = 0; i < row; i++) {
+
+			for (int j = 0; j < col; j++) {
+
+				enemyNumber = numbers.get(i).get(j);
+
+				if (enemyNumber != 0){
+
+					// TODO control de errores para el hashmap de EnemyManager
+					Enemy enemy = enemyManager.getEnemy(enemyNumber);
+
+					enemies.add(enemyManager.getEnemy(enemyNumber));
+					enemies.getLast().setPosition(new Position(j, i));
+
+				}
+			}
+
+		}
+
 
 		return new ArrayList<>();
 	}

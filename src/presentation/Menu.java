@@ -152,6 +152,7 @@ public class Menu {
     }
 
     public static void playGame(int level) {
+
         GameLogic gameLogic = new GameLogic(level);
         System.out.println("Game started - Level " + level);
 
@@ -187,4 +188,3 @@ public class Menu {
         // TODO: Implementar la función de guardar datos
     }
 }
-
