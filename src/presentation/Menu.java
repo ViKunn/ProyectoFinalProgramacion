@@ -25,35 +25,6 @@ public class Menu {
 
             switch (option) {
                 case 1:
-                    /*
-                    GameLogic gameLogic = characterMenu();
-                    while (gameLogic.isRunning()) {
-                        System.out.println("Enter a key (W/A/S/D): ");
-                        String key = scanner.next().toLowerCase();
-
-                        switch (key) {
-                            case "w":
-                                gameLogic.movePlayer(Direction.UP);
-                                break;
-                            case "a":
-                                gameLogic.movePlayer(Direction.LEFT);
-                                break;
-                            case "s":
-                                gameLogic.movePlayer(Direction.DOWN);
-                                break;
-                            case "d":
-                                gameLogic.movePlayer(Direction.RIGHT);
-                                break;
-                            case "f":
-                                gameLogic.playerPowerUps();
-                                break;
-                            default:
-                                System.out.println("Invalid key.");
-                                break;
-                        }
-                        System.out.println(gameLogic);
-                    }
-                    */
                     characterMenu();
                     break;
                 case 2:
