@@ -5,7 +5,7 @@ import business.Position;
 import business.interfaces.Movable;
 import business.managers.CollisionChecker;
 
-public class BlueCow extends Enemy implements Movable, Runnable {
+public class BlueCow extends Enemy implements Movable{
 
    Position positionToFollow;
 
@@ -13,24 +13,9 @@ public class BlueCow extends Enemy implements Movable, Runnable {
        positionToFollow = new Position();
    }
 
+    public void follow() {
 
-    @Override
-    public void run() {
-        while (true) {
-            follow(positionToFollow); // Mover el troll en la dirección actual
-
-            try {
-                Thread.sleep(500); // Esperar un medio segundo entre cada movimiento
-            } catch (InterruptedException e) {
-                // Manejar interrupciones del hilo si es necesario
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private void follow(Position position) {
-
-        Position positionFollow = position;
+        Position positionFollow = this.positionToFollow;
 
         int distanceX = positionFollow.getX() - this.position.getX(); //Es la distancia en X entre el BlueCow y el player //3
         int distanceY = positionFollow.getY() - this.position.getY(); //Es la distancia en Y entre el BlueCow y el player //3

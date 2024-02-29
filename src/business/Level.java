@@ -12,14 +12,13 @@ public class Level {
 	private ArrayList<Enemy> enemies;
 	private ArrayList<ArrayList<Fruit>> fruits;
 	private boolean unlocked;
-
 	private int runningFruitLayer;
-
-
 
 	// enemigo quemado;
 	private Enemy troll1;
+	private Enemy troll2;
 	private BlueCow blueCow;
+
 
 	public Level(String mapPath,boolean unlocked, String ... fruitsPath) {
 
@@ -33,8 +32,7 @@ public class Level {
 
 		// ENEMIES
 
-		Thread threadEnemy = null;
-
+/***************************************************/
 		// burned
 		enemies = new ArrayList<Enemy>();
 
@@ -43,17 +41,21 @@ public class Level {
 		troll1.setDirection(Direction.DOWN);
 		troll1.setCollisionChecker(new CollisionChecker(map));
 		// troll2 = new Troll(new Position(5,5), Direction.UP, new CollisionChecker(map));
+
+		troll2 = new Troll();
+		troll2.setPosition(new Position(3,10));
+		troll2.setDirection(Direction.UP);
+		troll2.setCollisionChecker(new CollisionChecker(map));
+
 		enemies.add(troll1);
+		enemies.add(troll2);
+
 		blueCow = new BlueCow();
 		blueCow.setPosition(new Position(12,6));
 		blueCow.setDirection(Direction.UP);
 		blueCow.setCollisionChecker(new CollisionChecker(map));
 		enemies.add(blueCow);
-
-		for (Enemy enemy : enemies){
-			threadEnemy = new Thread((Runnable) enemy);
-			threadEnemy.start();
-		}
+		/************************************/
 
 	}
 
@@ -151,5 +153,20 @@ public class Level {
 
 	public void sendPositionPlayer(Position position) {
 		blueCow.passPositionToFollow(position);
+	}
+
+	public ArrayList<Enemy> getEnemies() {
+		return enemies;
+	}
+
+	public void isCollidingBetweenEnemies() {
+		for(int i =0; i < enemies.size(); i++){
+			for(int j =0; j< enemies.size(); j++){
+				if(enemies.get(i).getPosition().equals(enemies.get(j).getPosition())){
+					enemies.get(i).changeContraryDirection();
+					enemies.get(j).changeContraryDirection();
+				}
+			}
+		}
 	}
 }

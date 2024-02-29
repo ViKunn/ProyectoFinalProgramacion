@@ -19,6 +19,22 @@ public abstract class Enemy extends Entity implements Movable {
 		this.collisionChecker = collisionChecker;
 	}
 
+	public void changeContraryDirection() {
+		switch (this.direction){
+			case Direction.UP:
+				this.direction = Direction.DOWN;
+				break;
+			case Direction.DOWN:
+				this.direction = Direction.UP;
+				break;
+			case Direction.RIGHT:
+				this.direction = Direction.LEFT;
+				break;
+			case Direction.LEFT:
+				this.direction = Direction.RIGHT;
+				break;
+		}
+	}
 
 	// Ya se creó la clase Troll (va a ser el primer monstruo).
 	//Posición monstruos
