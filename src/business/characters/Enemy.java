@@ -3,7 +3,7 @@ import business.*;
 import business.interfaces.Movable;
 import business.managers.CollisionChecker;
 
-public abstract class Enemy extends Entity implements Movable {
+public abstract class Enemy extends Entity implements Movable, Cloneable {
 
 	protected CollisionChecker collisionChecker;
 

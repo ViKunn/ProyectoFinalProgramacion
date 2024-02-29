@@ -95,16 +95,17 @@ public class DataManager {
 				if (enemyNumber != 0){
 
 					// TODO control de errores para el hashmap de EnemyManager
+
 					Enemy enemy = enemyManager.getEnemy(enemyNumber);
 
-					enemies.add(enemyManager.getEnemy(enemyNumber));
-					enemies.getLast().setPosition(new Position(j, i));
+					// Aqui la logica de copiado del objeto sin hacer referencia a la misma dirección de memoria que estoy obteniendo
+
+					// luego se añade al array de enemies
 
 				}
 			}
 
 		}
-
 
 		return new ArrayList<>();
 	}
