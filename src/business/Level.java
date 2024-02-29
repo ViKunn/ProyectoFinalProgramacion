@@ -11,7 +11,7 @@ public class Level {
 	private Map map;
 	private ArrayList<Enemy> enemies;
 	private ArrayList<ArrayList<Fruit>> fruits;
-	private boolean unlocked;
+	private boolean locked;
 	private int runningFruitLayer;
 
 	// enemigo quemado;
@@ -19,10 +19,9 @@ public class Level {
 	private Enemy troll2;
 	private BlueCow blueCow;
 
-
 	public Level(String mapPath, String playerInitialPositionPath, String enemiesPath, String ... fruitsPath){
 
-		unlocked = false;
+		locked = false;
 
 		map     = DataManager.loadMap(mapPath);
 		// enemies = DataManager.loadEnemies(enemiesPath);
@@ -94,7 +93,6 @@ public class Level {
 	}
 
 
-
 	public void decreaseFruitCounter(Position position) {
 
 		Fruit fruit = getFruit(position, runningFruitLayer);
@@ -112,33 +110,6 @@ public class Level {
 
 		return fruits.isEmpty();
 	}
-
-	/*
-
-	public boolean fruitsEqualZero() {
-
-		if (fruitLayerIsEmpty(runningFruitLayer)){
-			runningFruitLayer++;
-		}
-
-		return runningFruitLayer == fruits.size();
-	}
-
-	 */
-
-
-
-	public boolean isCollidingWithAnEnemy(Position position) {
-
-		for (Enemy enemy: enemies) {
-			if(enemy.getPosition().equals(position)){
-				return true;
-			}
-		}
-
-		return false;
-
-	}
 	public boolean isCollidingWithAFruit(Position playerPosition) {
 
 		for (Fruit fruit: getFruitLayer(runningFruitLayer)) {
@@ -151,18 +122,17 @@ public class Level {
 		return false;
 	}
 
-	public void setUnlocked(boolean unlocked){
-		this.unlocked = unlocked;
-	}
+	public boolean isCollidingWithAnEnemy(Position position) {
 
-	public void sendPositionPlayer(Position position) {
-		blueCow.passPositionToFollow(position);
-	}
+		for (Enemy enemy: enemies) {
+			if(enemy.getPosition().equals(position)){
+				return true;
+			}
+		}
 
-	public ArrayList<Enemy> getEnemies() {
-		return enemies;
-	}
+		return false;
 
+	}
 	public void isCollidingBetweenEnemies() {
 		for(int i =0; i < enemies.size(); i++){
 			for(int j =0; j< enemies.size(); j++){
@@ -173,4 +143,18 @@ public class Level {
 			}
 		}
 	}
+
+
+	public void setLocked(boolean locked){
+		this.locked = locked;
+	}
+
+	public void sendPositionPlayer(Position position) {
+		blueCow.passPositionToFollow(position);
+	}
+
+	public ArrayList<Enemy> getEnemies() {
+		return enemies;
+	}
+
 }

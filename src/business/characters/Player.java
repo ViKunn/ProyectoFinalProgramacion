@@ -5,7 +5,6 @@ import business.interfaces.Movable;
 import business.interfaces.PowerUps;
 import business.Score;
 
-
 public class Player extends Entity implements Movable, PowerUps {
 
 	private final int posibleSpeed = 1;
@@ -42,6 +41,10 @@ public class Player extends Entity implements Movable, PowerUps {
 				break;
 
 		}
+	}
+
+	public void increaseScore() {
+		score.increaseScore();
 	}
 
 	public void die() {
@@ -82,10 +85,6 @@ public class Player extends Entity implements Movable, PowerUps {
 
 		}
 
-	}
-
-	public void increaseScore() {
-		score.increaseScore();
 	}
 
 }

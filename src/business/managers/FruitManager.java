@@ -17,7 +17,9 @@ public class FruitManager {
 
 	}
 
+	// TODO control de errores
 	public Fruit getFruit(int fruitNumber) {
 		return fruits.get(fruitNumber);
 	}
+
 }

@@ -39,6 +39,7 @@ public class GameLogic  implements Runnable {
 	private void startThread() {
 		threadLevel.start();
 	}
+
 	public void movePlayer(Direction direction){
 
 
@@ -59,7 +60,7 @@ public class GameLogic  implements Runnable {
 
 		if (level.fruitsEqualZero()){
 			System.out.println("Felicidades!! Pasaste de nivel!!");
-			level.setUnlocked(true);
+			level.setLocked(true);
 			running = false;
 		}
 
@@ -81,7 +82,6 @@ public class GameLogic  implements Runnable {
 	private boolean isCollidingWithABlock(Direction direction) {
 		return collisionChecker.frontBlockIsSolid(direction, player.getPosition());
 	}
-
 	private boolean isCollidingWithAFruit() {
 
 		if (level.isCollidingWithAFruit(player.getPosition())){
@@ -92,21 +92,23 @@ public class GameLogic  implements Runnable {
 
 		return false;
 	}
-
 	public boolean isRunning(){
 		return running;
 	}
 
 	@Override
 	public void run() {
+
 		while(this.running){
-			for(Enemy allEnemies: level.getEnemies()){
-				if(allEnemies instanceof BlueCow){
-					((BlueCow) allEnemies).follow();
+
+			for(Enemy enemy: level.getEnemies()){
+				if(enemy instanceof BlueCow){
+					((BlueCow) enemy).follow();
 				}else{
-					allEnemies.move(allEnemies.getDirection());
+					enemy.move(enemy.getDirection());
 				}
 			}
+
 			if(level.isCollidingWithAnEnemy(player.getPosition())){
 				player.die();
 				running = false;
@@ -116,6 +118,7 @@ public class GameLogic  implements Runnable {
 			}
 
 			level.isCollidingBetweenEnemies();
+
 			try {
 				Thread.sleep(500); // Esperar un medio segundo entre cada movimiento
 			}catch (InterruptedException e){
@@ -125,9 +128,6 @@ public class GameLogic  implements Runnable {
 		}
 	}
 
-
-
-	// TODO BORRAR AL FINAL
 	@Override
 	public String toString() {
 

@@ -21,7 +21,7 @@ public class CollisionChecker {
 
 
     // TODO corregir para ocupar método Position.getFrontPosition
-	// TODO verificar lineas de código duplicadas
+	// TODO verificar lineas de código duplicadas (en Map - front block is solid creo)
 
 	public boolean frontBlockIsSolid(Direction direction, Position position){
 
@@ -47,4 +47,5 @@ public class CollisionChecker {
 
 		return map.getBlock(frontPosition).isSolid();
 	}
+
 }

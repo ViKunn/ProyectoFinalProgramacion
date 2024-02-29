@@ -12,7 +12,6 @@ public abstract class Entity  {
 	public Position getPosition(){
 		return position;
 	}
-
 	public Direction getDirection(){
 		return direction;
 	}

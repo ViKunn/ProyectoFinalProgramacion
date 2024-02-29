@@ -81,8 +81,8 @@ public class BlueCow extends Enemy implements Movable{
 
     }
 
-
     public void passPositionToFollow(Position position) {
         this.positionToFollow = position;
     }
+
 }

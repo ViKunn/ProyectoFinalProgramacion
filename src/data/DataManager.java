@@ -23,7 +23,6 @@ public class DataManager {
 		// TODO tamaño de la matriz
 		return new Map(numbers, 18, 18);
 	}
-
 	// TODO control de errores en caso de que no exista la fruta
 	private static ArrayList<Fruit> loadFruitLayer(String path) {
 
@@ -70,8 +69,6 @@ public class DataManager {
 		return fruits;
 
 	}
-
-	// TODO
 	public static ArrayList<Enemy> loadEnemies(String enemiesPath) {
 
 		readTxtFile(enemiesPath);
@@ -99,7 +96,6 @@ public class DataManager {
 					Enemy enemy = enemyManager.getEnemy(enemyNumber);
 
 					// Aqui la logica de copiado del objeto sin hacer referencia a la misma dirección de memoria que estoy obteniendo
-
 					// luego se añade al array de enemies
 
 				}
@@ -108,6 +104,7 @@ public class DataManager {
 		}
 
 		return new ArrayList<>();
+
 	}
 
 
@@ -143,7 +140,6 @@ public class DataManager {
 		}
 
 	}
-
 	private static Vector<Vector<Integer>> strVectorToIntVector(Vector<String> readLines){
 
 		Vector<Vector<Integer>> rows = new Vector<>();

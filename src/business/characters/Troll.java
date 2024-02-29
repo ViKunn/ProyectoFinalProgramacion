@@ -19,7 +19,7 @@ public class Troll extends Enemy implements Movable{
 	}
 
 	// TODO thread troll / enemigos
-
+	// TODO actualizar para position.getFrontPosition
 	public void move(Direction direction) {
 
 		if (!(collisionChecker.frontBlockIsSolid(direction, position))) {

@@ -12,7 +12,6 @@ public class Map {
 	private Block[][] blocks;
 	BlockManager blockManager;
 
-
 	public Map(Vector<Vector<Integer>> numbers, int mapSizeX, int mapSizeY) {
 
 		this.mapSizeX = mapSizeX;
@@ -23,8 +22,21 @@ public class Map {
 		blocks = loadBlocks(numbers);
 	}
 
+	public int getMapSizeX() {
+		return mapSizeX;
+	}
+	public int getMapSizeY() {
+		return mapSizeY;
+	}
 	public Block getBlock(Position position){
 		return blocks[position.getY()][position.getX()];
+	}
+
+	public void setIce(Position position){
+		blocks[position.getY()][position.getX()] = (Ice)blockManager.getBlock(1);
+	}
+	public void setBlock(Position position, int block){
+		blocks[position.getY()][position.getX()] = blockManager.getBlock(block);
 	}
 
 	public boolean frontBlockIsIce(Direction direction, Position position) {
@@ -53,15 +65,9 @@ public class Map {
 		}
 		return false;
 	}
-
-	public void setIce(Position position){
-		blocks[position.getY()][position.getX()] = (Ice)blockManager.getBlock(1);
+	public boolean isBlockSolid(Position frontPosition) {
+		return blocks[frontPosition.getY()][frontPosition.getX()].isSolid();
 	}
-	public void setBlock(Position position, int block){
-		blocks[position.getY()][position.getX()] = blockManager.getBlock(block);
-	}
-
-
 
 	private Block[][] loadBlocks(Vector<Vector<Integer>> numbers) {
 
@@ -92,13 +98,6 @@ public class Map {
 
 	}
 
-	public int getMapSizeX() {
-		return mapSizeX;
-	}
-	public int getMapSizeY() {
-		return mapSizeY;
-	}
-
 	@Override
 	public String toString() {
 
@@ -112,7 +111,5 @@ public class Map {
 		return "";
 	}
 
-	public boolean isBlockSolid(Position frontPosition) {
-		return blocks[frontPosition.getY()][frontPosition.getX()].isSolid();
-	}
+
 }

@@ -8,6 +8,7 @@ public class Ice extends Block{
 
 		super(name, solid);
 		this.breakable = breakable;
+
 	}
 
 }

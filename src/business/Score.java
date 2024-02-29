@@ -9,6 +9,7 @@ public class Score {
         uva: 50
         sandía: 50
     */
+
     private String name;
     private int totalScore;
 
@@ -16,8 +17,8 @@ public class Score {
 
     }
 
-
-  /*  public int getTotalScore(){
+    /*
+    public int getTotalScore(){
         return this.totalScore = 0;
     }
     public Score(){
@@ -29,8 +30,7 @@ public class Score {
 
     public void showScore() {
 
-    }*/
+    }
+    */
+
 }
-
-
-
