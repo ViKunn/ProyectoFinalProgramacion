@@ -52,6 +52,7 @@ public class GameLogic  implements Runnable {
 		player.move(direction);
 		level.sendPositionPlayer(player.getPosition());
 
+
 	}
 	public void playerPowerUps(){
 		player.powerUpIce(level.getMap());
@@ -95,35 +96,32 @@ public class GameLogic  implements Runnable {
 					allEnemies.move(allEnemies.getDirection());
 				}
 			}
-			try {
-				Thread.sleep(500); // Esperar un medio segundo entre cada movimiento
-			}catch (InterruptedException e){
-				// Manejar interrupciones del hilo si es necesario
-				e.printStackTrace();
-			}
 			if(level.isCollidingWithAnEnemy(player.getPosition())){
 				player.die();
 				running = false;
 
 				System.out.println("TE MORISTE!!");
 				System.out.println("wuruwrur, me muero por thread");
-
-				break;
 			}
 			if (isCollidingWithAFruit()){
 				level.decreaseFruitCounter(player.getPosition());
 				System.out.println("Comiste una fruta!!");
 
-				break;
 			}
 
 			if (level.fruitsEqualZero()){
 				System.out.println("Felicidades!! Pasaste de nivel!!");
 				level.setUnlocked(true);
 				running = false;
-				break;
 			}
+
 			level.isCollidingBetweenEnemies();
+			try {
+				Thread.sleep(500); // Esperar un medio segundo entre cada movimiento
+			}catch (InterruptedException e){
+				// Manejar interrupciones del hilo si es necesario
+				e.printStackTrace();
+			}
 		}
 	}
 
