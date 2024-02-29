@@ -1,33 +1,46 @@
 package business;
 
+import business.characters.BlueCow;
+import business.characters.Enemy;
 import business.characters.Player;
 import business.managers.CollisionChecker;
 import business.managers.LevelManager;
 
-public class GameLogic {
+public class GameLogic  implements Runnable {
 
 	private Player player;
 	private Level level;
-	private boolean isRunning;
+	private boolean running;
 	private int numLevel;
 	private CollisionChecker collisionChecker;
+	private Thread threadLevel;
 
 	public GameLogic(int numLevel){
 
 		LevelManager levelManager = new LevelManager();
 		this.numLevel = numLevel;
-
 		level = levelManager.getLevel(this.numLevel);
 		level = levelManager.getLevel(1);
 
 
 		player = new Player(level.getPlayerInitialPosition());
-		isRunning = true;
+		running = true;
 
 		collisionChecker = new CollisionChecker(level.getMap());
+
+		level.sendPositionPlayer(player.getPosition());
+
+		threadLevel = new Thread(this);
+
+		startThread();
+
 	}
 
+	private void startThread() {
+		threadLevel.start();
+	}
 	public void movePlayer(Direction direction){
+
 
 		player.changeDirection(direction);
 
@@ -39,25 +52,6 @@ public class GameLogic {
 		player.move(direction);
 		level.sendPositionPlayer(player.getPosition());
 
-		if (isCollidingWithAnEnemy()){
-			player.die();
-			System.out.println("TE MORISTE!!");
-			isRunning = false;
-			return;
-		}
-
-		if (isCollidingWithAFruit()){
-			level.decreaseFruitCounter(player.getPosition());
-			System.out.println("Comiste una fruta!!");
-		}
-
-		if (level.fruitsEqualZero()){
-			System.out.println("Felicidades!! Pasaste de nivel!!");
-
-			// TODO
-			level.setUnlocked(true);
-			isRunning = false;
-		}
 	}
 	public void playerPowerUps(){
 		player.powerUpIce(level.getMap());
@@ -86,9 +80,50 @@ public class GameLogic {
 	}
 
 	public boolean isRunning(){
-		return isRunning;
+		return running;
 	}
 
+	@Override
+	public void run() {
+		while(this.running){
+			for(Enemy allEnemies: level.getEnemies()){
+				if(allEnemies instanceof BlueCow){
+					((BlueCow) allEnemies).follow();
+				}else{
+					allEnemies.move(allEnemies.getDirection());
+				}
+			}
+			try {
+				Thread.sleep(500); // Esperar un medio segundo entre cada movimiento
+			}catch (InterruptedException e){
+				// Manejar interrupciones del hilo si es necesario
+				e.printStackTrace();
+			}
+			if(level.isCollidingWithAnEnemy(player.getPosition())){
+				player.die();
+				running = false;
+
+				System.out.println("TE MORISTE!!");
+				System.out.println("wuruwrur, me muero por thread");
+
+				break;
+			}
+			if (isCollidingWithAFruit()){
+				level.decreaseFruitCounter(player.getPosition());
+				System.out.println("Comiste una fruta!!");
+
+				break;
+			}
+
+			if (level.fruitsEqualZero()){
+				System.out.println("Felicidades!! Pasaste de nivel!!");
+				level.setUnlocked(true);
+				running = false;
+				break;
+			}
+			level.isCollidingBetweenEnemies();
+		}
+	}
 
 
 
@@ -129,6 +164,5 @@ public class GameLogic {
 
 		return "";
 	}
-
 
 }

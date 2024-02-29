@@ -5,7 +5,7 @@ import business.Direction;
 import business.interfaces.Movable;
 import business.Position;
 
-public class Troll extends Enemy implements Movable, Runnable {
+public class Troll extends Enemy implements Movable{
 
 	public Troll() {
 		setDirection(Direction.DOWN);
@@ -19,23 +19,8 @@ public class Troll extends Enemy implements Movable, Runnable {
 	}
 
 	// TODO thread troll / enemigos
-	@Override
-	public void run() {
-		while (true) {
-			move(direction); // Mover el troll en la dirección actual
-
-			try {
-				Thread.sleep(500); // Esperar un medio segundo entre cada movimiento
-			} catch (InterruptedException e) {
-				// Manejar interrupciones del hilo si es necesario
-				e.printStackTrace();
-			}
-		}
-	}
 
 	public void move(Direction direction) {
-
-		// FIXME (get front position)
 
 		if (!(collisionChecker.frontBlockIsSolid(direction, position))) {
 
@@ -71,4 +56,5 @@ public class Troll extends Enemy implements Movable, Runnable {
 			}
 		}
 	}
+
 }
