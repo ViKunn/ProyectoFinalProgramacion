@@ -27,7 +27,7 @@ public class Level {
 		unlocked = false;
 
 		map     = DataManager.loadMap(mapPath);
-		enemies = DataManager.loadEnemies(enemiesPath);
+		// enemies = DataManager.loadEnemies(enemiesPath);
 
 		// TODO control de errores en caso de que no reciba ninguna fruta
 		fruits  = DataManager.loadFruits(fruitsPath);
