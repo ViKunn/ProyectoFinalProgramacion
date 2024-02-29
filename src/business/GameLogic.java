@@ -73,6 +73,8 @@ public class GameLogic  implements Runnable {
 	private boolean isCollidingWithAFruit() {
 
 		if (level.isCollidingWithAFruit(player.getPosition())){
+			//score.increaseScore();
+			//System.out.println("Puntaje total: " + score.increaseScore());
 			return true;
 		}
 
