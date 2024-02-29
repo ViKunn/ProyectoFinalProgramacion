@@ -41,7 +41,7 @@ public class LevelManager {
 		String fruits02        = "res/levels/level2/fruits02.txt";
 
 		Level level = new Level(mapPath, playersPosition, enemiesPath, fruits01, fruits02);
-		levels.put(1, level);
+		levels.put(2, level);
 
 	}
 
