@@ -16,12 +16,6 @@ public class DataManager {
 
 	private static Vector<String> readLines = new Vector<>();
 
-	public static void main(String[] args) {
-
-		loadPositions("res/levels/level1/players.txt");
-
-		System.out.println(":)");
-	}
 
 	public static Map loadMap(String path) {
 
@@ -208,9 +202,6 @@ public class DataManager {
 		return rows;
 	}
 
-	private static int strToInt(String string){
-		return Integer.parseInt(string);
-	}
 
 	public static void writeFile(File archivo, Object object){
 
