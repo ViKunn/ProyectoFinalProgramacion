@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class LevelManager {
 
-	private static HashMap<Integer, Level> levels;
+	private HashMap<Integer, Level> levels;
 
 	public LevelManager() {
 
@@ -43,7 +43,7 @@ public class LevelManager {
 	}
 
 	// TODO control de errores
-	public static Level getLevel(int level) {
+	public Level getLevel(int level) {
 		return levels.get(level);
 	}
 
