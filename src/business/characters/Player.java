@@ -7,13 +7,18 @@ import business.Score;
 
 public class Player extends Entity implements Movable, PowerUps {
 
-	private final int posibleSpeed = 1;
 	private boolean alive;
 	private Score score;
 
+	public Player(){
+		// this.advance = 1;
+		this.score = new Score();
+	}
+
+
 	public Player(Position position){
 		this.position = position;
-		this.advance = 1;
+		// this.advance = 1;
 		this.score = new Score();
 	}
 
@@ -49,6 +54,10 @@ public class Player extends Entity implements Movable, PowerUps {
 
 	public void die() {
 		alive = false;
+	}
+
+	public void setPosition(Position position){
+		this.position = position;
 	}
 
 	@Override

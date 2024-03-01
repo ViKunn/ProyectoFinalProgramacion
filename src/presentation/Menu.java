@@ -6,7 +6,9 @@ import java.util.Scanner;
 
 public class Menu {
 
-    static Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
+    private static GameLogic gameLogic = new GameLogic();
+
 
     public static void main(String[] args) {
         mainMenu();
@@ -77,7 +79,8 @@ public class Menu {
 
     }
 
-    public static GameLogic menuLevel() {
+    public static void menuLevel() {
+
         System.out.println("****** LEVEL MENU ******");
         System.out.println("1. LEVEL 1");
         System.out.println("2. LEVEL 2");
@@ -88,17 +91,18 @@ public class Menu {
         switch (number) {
             case 1:
                 // Initialize and return level 1 GameLogic
-                playGame(1);
+                playGame(1); break;
             case 2:
                 // Initialize and return level 2 GameLogic
-                playGame(2);
+                playGame(2); break;
             default:
                 System.out.println("There are no more levels.");
-                return null;
         }
+
     }
 
     public void pauseMenu() {
+
         System.out.println("1. CONTINUE");
         System.out.println("2. SAVE GAME");
         System.out.println("3. BACK TO MENU");
@@ -120,14 +124,17 @@ public class Menu {
                 System.out.println("Invalid option, choose 1, 2 or 3.");
                 break;
         }
+
     }
 
-    public static void playGame(int level) {
+    public static void playGame(int levelNumber) {
 
-        GameLogic gameLogic = new GameLogic(level);
-        System.out.println("Game started - Level " + level);
+        System.out.println("Game started - Level " + levelNumber);
+
+        gameLogic.startLevel(levelNumber);
 
         while (gameLogic.isRunning()) {
+
             System.out.println("Enter a key (W/A/S/D): ");
             String key = scanner.next().toLowerCase();
 
@@ -145,16 +152,20 @@ public class Menu {
                     gameLogic.movePlayer(Direction.RIGHT);
                     break;
                 case "f":
-                    gameLogic.playerPowerUps();
+                    gameLogic.playerActivatePowerUp();
                     break;
                 default:
                     System.out.println("Invalid key.");
                     break;
             }
+
             System.out.println(gameLogic);
         }
+
         System.out.println("LEVEL CLEARED!! BACK TO MAIN MENU");
+
     }
+
     private static void saveGame() {
         // TODO: Implementar la función de guardar datos
     }

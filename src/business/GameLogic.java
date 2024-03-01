@@ -10,38 +10,33 @@ public class GameLogic  implements Runnable {
 
 	private Player player;
 	private Level level;
+	private LevelManager levelManager;
 	private boolean running;
-	private int numLevel;
 	private CollisionChecker collisionChecker;
-	private Thread threadLevel;
+	private Thread levelThread;
 
-	public GameLogic(int numLevel){
+	public GameLogic(){
 
-		LevelManager levelManager = new LevelManager();
-		this.numLevel = numLevel;
-		level = levelManager.getLevel(this.numLevel);
-		level = levelManager.getLevel(1);
-
-
-		player = new Player(level.getPlayerInitialPosition());
-		running = true;
-
-		collisionChecker = new CollisionChecker(level.getMap());
-
-		level.sendPositionPlayer(player.getPosition());
-
-		threadLevel = new Thread(this);
-
-		startThread();
+		player = new Player();
+		levelManager = new LevelManager();
 
 	}
 
-	private void startThread() {
-		threadLevel.start();
+	public void startLevel(int levelNum){
+
+		level = levelManager.getLevel(levelNum);
+		collisionChecker = new CollisionChecker(level.getMap());
+
+		player.setPosition(level.getPlayerInitialPosition());
+		level.sendPositionPlayer(player.getPosition());
+
+		running = true;
+		levelThread = new Thread(this);
+		levelThread.start();
+
 	}
 
 	public void movePlayer(Direction direction){
-
 
 		player.changeDirection(direction);
 
@@ -64,20 +59,14 @@ public class GameLogic  implements Runnable {
 			running = false;
 		}
 
-
 	}
-	public void playerPowerUps(){
+	public void playerActivatePowerUp(){
 		player.powerUpIce(level.getMap());
 		System.out.println("Se ejecuto los poderes");
 	}
 
 	private boolean isCollidingWithAnEnemy() {
-
-		if (level.isCollidingWithAnEnemy(player.getPosition())){
-			return true;
-		}
-
-		return false;
+		return level.isCollidingWithAnEnemy(player.getPosition());
 	}
 	private boolean isCollidingWithABlock(Direction direction) {
 		return collisionChecker.frontBlockIsSolid(direction, player.getPosition());
@@ -102,28 +91,40 @@ public class GameLogic  implements Runnable {
 		while(this.running){
 
 			for(Enemy enemy: level.getEnemies()){
+
+				// Todo: corregir para que sea unicamente enemy.move()
+				
 				if(enemy instanceof BlueCow){
 					((BlueCow) enemy).follow();
-				}else{
+
+				} else{
 					enemy.move(enemy.getDirection());
 				}
 			}
 
 			if(level.isCollidingWithAnEnemy(player.getPosition())){
+
 				player.die();
 				running = false;
 
 				System.out.println("TE MORISTE!!");
 				System.out.println("wuruwrur, me muero por thread");
+
+				break;
 			}
 
 			level.isCollidingBetweenEnemies();
 
 			try {
-				Thread.sleep(500); // Esperar un medio segundo entre cada movimiento
-			}catch (InterruptedException e){
+
+				// Esperar un medio segundo entre cada movimiento
+				Thread.sleep(500);
+
+			} catch (InterruptedException e){
+
 				// Manejar interrupciones del hilo si es necesario
 				e.printStackTrace();
+
 			}
 		}
 	}
