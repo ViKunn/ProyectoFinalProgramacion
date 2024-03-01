@@ -1,5 +1,6 @@
 package data;
 
+import business.Direction;
 import business.Fruit;
 import business.Map;
 import business.Position;
@@ -14,6 +15,13 @@ import java.util.Vector;
 public class DataManager {
 
 	private static Vector<String> readLines = new Vector<>();
+
+	public static void main(String[] args) {
+
+		loadPositions("res/levels/level1/players.txt");
+
+		System.out.println(":)");
+	}
 
 	public static Map loadMap(String path) {
 
@@ -58,20 +66,21 @@ public class DataManager {
 
 		return fruits;
 	}
-	public static ArrayList<ArrayList<Fruit>> loadFruits(String[] fruitPaths){
+	public static ArrayList<ArrayList<Fruit>> loadFruits(String[] fruitsPaths){
 
 		ArrayList<ArrayList<Fruit>> fruits = new ArrayList<>();
 
-		for (String path : fruitPaths) {
+		for (String path : fruitsPaths) {
 			fruits.add(loadFruitLayer(path));
 		}
 
 		return fruits;
 
 	}
-	public static ArrayList<Enemy> loadEnemies(String enemiesPath) {
+	// TODO control de errores en caso de que no exista el enemigo
+	public static ArrayList<Enemy> loadEnemies(String path) {
 
-		readTxtFile(enemiesPath);
+		readTxtFile(path);
 		Vector<Vector<Integer>> numbers = strVectorToIntVector(readLines);
 
 		EnemyManager enemyManager = new EnemyManager();
@@ -85,6 +94,8 @@ public class DataManager {
 
 		for (int i = 0; i < row; i++) {
 
+			// int col = numbers.get(i).size();
+
 			for (int j = 0; j < col; j++) {
 
 				enemyNumber = numbers.get(i).get(j);
@@ -96,6 +107,12 @@ public class DataManager {
 					try {
 
 						Enemy enemy = (Enemy) enemyManager.getEnemy(enemyNumber).clone();
+						enemy.setPosition(new Position(j, i));
+
+						// DOUBT check
+						enemy.setDirection(Direction.UP);
+
+						enemies.add(enemy);
 
 					} catch (CloneNotSupportedException e) {
 						throw new RuntimeException(e);
@@ -106,12 +123,32 @@ public class DataManager {
 
 		}
 
-		return new ArrayList<>();
+		return enemies;
 
 	}
+	// TODO control de errores en la lectura del archivo
+	public static ArrayList<Position> loadPositions(String path){
 
+		ArrayList<Position> positions = new ArrayList<>();
 
+		readTxtFile(path);
+		Vector<Vector<Integer>> numbers = strVectorToIntVector(readLines);
 
+		for (Vector line : numbers) {
+
+			int x = (int) line.get(0);
+			int y = (int) line.get(1);
+
+			positions.add(new Position(x, y));
+
+		}
+
+		if (positions.isEmpty()){
+			return null;
+		}
+
+		return positions;
+	}
 
 
 
@@ -169,6 +206,10 @@ public class DataManager {
 		}
 
 		return rows;
+	}
+
+	private static int strToInt(String string){
+		return Integer.parseInt(string);
 	}
 
 	public static void writeFile(File archivo, Object object){
