@@ -11,30 +11,31 @@ public class Level {
 	private Map map;
 	private ArrayList<Enemy> enemies;
 	private ArrayList<ArrayList<Fruit>> fruits;
+	private ArrayList<Position> playersPositions;
 	private boolean locked;
 	private int runningFruitLayer;
 
 	// enemigo quemado;
-	private Enemy troll1;
-	private Enemy troll2;
-	private BlueCow blueCow;
+	// private Enemy troll1;
+	// private Enemy troll2;
+	// private BlueCow blueCow;
 
 	public Level(String mapPath, String playerInitialPositionPath, String enemiesPath, String ... fruitsPath){
 
 		locked = false;
 
 		map     = DataManager.loadMap(mapPath);
-		// enemies = DataManager.loadEnemies(enemiesPath);
+		enemies = DataManager.loadEnemies(enemiesPath);
+		setEnemiesCollisionChecker(new CollisionChecker(map));
+
+		playersPositions = DataManager.loadPositions(playerInitialPositionPath);
 
 		// TODO control de errores en caso de que no reciba ninguna fruta
 		fruits  = DataManager.loadFruits(fruitsPath);
-
 		// DOUBT: check
 		runningFruitLayer = 0;
 
-		// TODO ????
-
-		/***************************************************/
+		/*
 		// burned
 		enemies = new ArrayList<Enemy>();
 
@@ -57,14 +58,31 @@ public class Level {
 		blueCow.setDirection(Direction.UP);
 		blueCow.setCollisionChecker(new CollisionChecker(map));
 		enemies.add(blueCow);
-		/************************************/
+
+		*/
 
 
 	}
 
-	// FIXME inicializar correctamente la posición de player
-	public Position getPlayerInitialPosition(){
-		return new Position(2,2);
+	public Level(String mapPath, ArrayList<Enemy> enemies, Position position ,String ... fruitsPath){
+
+		locked = false;
+
+		this.map     = DataManager.loadMap(mapPath);
+		this.enemies = enemies;
+		this.fruits  = DataManager.loadFruits(fruitsPath);
+
+
+		setEnemiesCollisionChecker(new CollisionChecker(map));
+
+		runningFruitLayer = 0;
+
+	}
+
+	private void setEnemiesCollisionChecker(CollisionChecker collisionChecker){
+		for (Enemy enemy : enemies) {
+			enemy.setCollisionChecker(collisionChecker);
+		}
 	}
 
 
@@ -90,6 +108,17 @@ public class Level {
 			return new ArrayList<>();
 		}
 
+	}
+
+	// FIXME inicializar correctamente la posición de player
+	public Position getPlayerInitialPosition(int player){
+
+		if (playersPositions.isEmpty()){
+
+			// TODO posiciones por defecto o que no permita en caso de ser null
+		}
+
+		return playersPositions.get(player - 1);
 	}
 
 
@@ -149,8 +178,9 @@ public class Level {
 		this.locked = locked;
 	}
 
+	// TODO tienen que corregir esto sin quemar blueCow
 	public void sendPositionPlayer(Position position) {
-		blueCow.passPositionToFollow(position);
+		// blueCow.passPositionToFollow(position);
 	}
 
 	public ArrayList<Enemy> getEnemies() {

@@ -27,7 +27,7 @@ public class GameLogic  implements Runnable {
 		level = levelManager.getLevel(levelNum);
 		collisionChecker = new CollisionChecker(level.getMap());
 
-		player.setPosition(level.getPlayerInitialPosition());
+		player.setPosition(level.getPlayerInitialPosition(1));
 		level.sendPositionPlayer(player.getPosition());
 
 		running = true;

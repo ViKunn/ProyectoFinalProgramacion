@@ -84,11 +84,10 @@ public class DataManager {
 		int row = numbers.size();
 
 		// TODO control de errores para el tamaño de la matriz
-		int col = numbers.get(1).size();
 
 		for (int i = 0; i < row; i++) {
 
-			// int col = numbers.get(i).size();
+			int col = numbers.get(i).size();
 
 			for (int j = 0; j < col; j++) {
 
