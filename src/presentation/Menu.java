@@ -133,8 +133,7 @@ public class Menu {
 
         gameLogic.startLevel(levelNumber);
 
-        while (gameLogic.isRunning()) {
-
+        do {
             System.out.println("Enter a key (W/A/S/D): ");
             String key = scanner.next().toLowerCase();
 
@@ -160,7 +159,7 @@ public class Menu {
             }
 
             System.out.println(gameLogic);
-        }
+        }while(gameLogic.isRunningAndAlive());
 
         System.out.println("LEVEL CLEARED!! BACK TO MAIN MENU");
 

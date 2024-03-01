@@ -81,19 +81,17 @@ public class GameLogic  implements Runnable {
 
 		return false;
 	}
-	public boolean isRunning(){
-		return running;
+	public boolean isRunningAndAlive(){
+		return player.isAlive() && running;
 	}
 
 	@Override
 	public void run() {
-
-		while(this.running){
-
+		do {
 			for(Enemy enemy: level.getEnemies()){
 
 				// Todo: corregir para que sea unicamente enemy.move()
-				
+
 				if(enemy instanceof BlueCow){
 					((BlueCow) enemy).follow();
 
@@ -118,7 +116,7 @@ public class GameLogic  implements Runnable {
 			try {
 
 				// Esperar un medio segundo entre cada movimiento
-				Thread.sleep(500);
+				levelThread.sleep(500);
 
 			} catch (InterruptedException e){
 
@@ -126,7 +124,8 @@ public class GameLogic  implements Runnable {
 				e.printStackTrace();
 
 			}
-		}
+		}while(isRunningAndAlive());
+
 	}
 
 	@Override
