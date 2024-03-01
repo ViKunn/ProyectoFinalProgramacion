@@ -55,7 +55,7 @@ public class GameLogic  implements Runnable {
 
 		if (level.fruitsEqualZero()){
 			System.out.println("Felicidades!! Pasaste de nivel!!");
-			level.setLocked(true);
+			level.setLocked(false);
 			running = false;
 		}
 

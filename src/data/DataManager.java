@@ -103,7 +103,7 @@ public class DataManager {
 						enemy.setPosition(new Position(j, i));
 
 						// DOUBT check
-						enemy.setDirection(Direction.UP);
+						enemy.setDirection(Direction.DOWN);
 
 						enemies.add(enemy);
 

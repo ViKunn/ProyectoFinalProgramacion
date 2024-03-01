@@ -22,7 +22,7 @@ public class Level {
 
 	public Level(String mapPath, String playerInitialPositionPath, String enemiesPath, String ... fruitsPath){
 
-		locked = false;
+		locked = true;
 
 		map     = DataManager.loadMap(mapPath);
 		enemies = DataManager.loadEnemies(enemiesPath);
@@ -64,7 +64,8 @@ public class Level {
 
 	}
 
-	public Level(String mapPath, ArrayList<Enemy> enemies, Position position ,String ... fruitsPath){
+	/*
+	public Level(String mapPath, ArrayList<Enemy> enemies, Position position, String ... fruitsPath){
 
 		locked = false;
 
@@ -78,6 +79,7 @@ public class Level {
 		runningFruitLayer = 0;
 
 	}
+	 */
 
 	private void setEnemiesCollisionChecker(CollisionChecker collisionChecker){
 		for (Enemy enemy : enemies) {
