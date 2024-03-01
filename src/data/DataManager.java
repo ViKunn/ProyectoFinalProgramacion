@@ -93,10 +93,13 @@ public class DataManager {
 
 					// TODO control de errores para el hashmap de EnemyManager
 
-					Enemy enemy = enemyManager.getEnemy(enemyNumber);
+					try {
 
-					// Aqui la logica de copiado del objeto sin hacer referencia a la misma dirección de memoria que estoy obteniendo
-					// luego se añade al array de enemies
+						Enemy enemy = (Enemy) enemyManager.getEnemy(enemyNumber).clone();
+
+					} catch (CloneNotSupportedException e) {
+						throw new RuntimeException(e);
+					}
 
 				}
 			}

@@ -37,4 +37,9 @@ public abstract class Enemy extends Entity implements Movable, Cloneable {
 		}
 	}
 
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
+
 }
