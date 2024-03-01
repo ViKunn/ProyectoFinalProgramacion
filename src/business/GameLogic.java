@@ -91,19 +91,26 @@ public class GameLogic  implements Runnable {
 		while(this.running){
 
 			for(Enemy enemy: level.getEnemies()){
+
+				// Todo: corregir para que sea unicamente enemy.move()
+				
 				if(enemy instanceof BlueCow){
 					((BlueCow) enemy).follow();
-				}else{
+
+				} else{
 					enemy.move(enemy.getDirection());
 				}
 			}
 
 			if(level.isCollidingWithAnEnemy(player.getPosition())){
+
 				player.die();
 				running = false;
 
 				System.out.println("TE MORISTE!!");
 				System.out.println("wuruwrur, me muero por thread");
+
+				break;
 			}
 
 			level.isCollidingBetweenEnemies();
