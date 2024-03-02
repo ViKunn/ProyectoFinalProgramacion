@@ -1,8 +1,8 @@
 package business.managers;
 
-import business.characters.BlueCow;
-import business.characters.Enemy;
-import business.characters.Troll;
+import business.entities.enemies.BlueCow;
+import business.entities.enemies.Enemy;
+import business.entities.enemies.Troll;
 
 import java.util.HashMap;
 

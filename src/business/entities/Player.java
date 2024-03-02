@@ -1,4 +1,4 @@
-package business.characters;
+package business.entities;
 
 import business.*;
 import business.interfaces.Movable;

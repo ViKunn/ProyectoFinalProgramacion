@@ -1,10 +1,10 @@
 package data;
 
-import business.Fruit;
+import business.entities.fruits.Fruit;
 import business.Map;
 import business.Position;
 import business.Score;
-import business.characters.Enemy;
+import business.entities.enemies.Enemy;
 import business.managers.EnemyManager;
 import business.managers.FruitManager;
 
@@ -96,7 +96,7 @@ public class DataManager {
 
 					Enemy enemy = enemyManager.getEnemy(enemyNumber);
 
-					// Aqui la logica de copiado del objeto sin hacer referencia a la misma dirección de memoria que estoy obteniendo
+					// Aquí la lógica de copiado del objeto sin hacer referencia a la misma dirección de memoria que estoy obteniendo
 					// luego se añade al array de enemies
 
 				}

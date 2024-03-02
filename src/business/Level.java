@@ -1,6 +1,9 @@
 package business;
 
-import business.characters.*;
+import business.entities.enemies.BlueCow;
+import business.entities.enemies.Enemy;
+import business.entities.enemies.Troll;
+import business.entities.fruits.Fruit;
 import business.managers.CollisionChecker;
 import data.DataManager;
 

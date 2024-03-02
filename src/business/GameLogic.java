@@ -1,8 +1,8 @@
 package business;
 
-import business.characters.BlueCow;
-import business.characters.Enemy;
-import business.characters.Player;
+import business.entities.enemies.BlueCow;
+import business.entities.enemies.Enemy;
+import business.entities.Player;
 import business.managers.CollisionChecker;
 import business.managers.LevelManager;
 
