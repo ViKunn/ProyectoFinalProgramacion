@@ -9,28 +9,17 @@ public class Score {
         uva: 50
         sandía: 50
     */
-
-    private String name;
     private int totalScore;
 
-    public void increaseScore() {
-
-    }
-
-    /*
-    public int getTotalScore(){
-        return this.totalScore = 0;
-    }
     public Score(){
+        this.totalScore = 0;
+    }
+    public void icreaseScore(Score scoreFruit) {
+        totalScore += scoreFruit.getTotalScore();
+    }
+    public int getTotalScore(){
+        return this.totalScore;
     }
 
-    public int increaseScore() {
-        return totalScore += Fruit.getScoreFruit();
-    }
-
-    public void showScore() {
-
-    }
-    */
 
 }

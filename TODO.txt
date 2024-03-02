@@ -1,15 +1,21 @@
 TODO corrección del constructor de level para que reciba un array de posiciones de frutas
 
-TODO inicialización posiciones de enemigos
-TODO menú cuando se pierde el nivel
+TODO revisar el estado de locked de level
 
-TODO el enemigo mata al player cuando no se está moviendo
-TODO colisiones entre enemigos
+TODO reiniciar el nivel en caso de que el player muera
+TODO corregir el hecho de que no puede volver a jugar el nivel porque se eliminaron todas las frutas
+
+TODO
+
+
+
+
+
+TODO menú cuando se pierde el nivel
 
 TODO lógica de scores
 TODO guardado de scores
 
 TODO modificación del constructor de entidades para que reciban las imágenes de la interfaz gráfica
 
-TODO imágenes player, enemies, blocks
-TODO sprites player, enemies
+TODO sprites player, enemies-

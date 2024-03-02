@@ -5,7 +5,6 @@ import business.Fruit;
 import java.util.HashMap;
 
 public class FruitManager {
-
 	private HashMap<Integer, Fruit> fruits;
 
 	public FruitManager() {
@@ -14,7 +13,6 @@ public class FruitManager {
 
 		fruits.put(1, new Fruit("S"));  // sandía
 		fruits.put(2, new Fruit("U"));  // uvas
-
 	}
 
 	// TODO control de errores
