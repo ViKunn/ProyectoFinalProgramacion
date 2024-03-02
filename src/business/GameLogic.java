@@ -49,8 +49,8 @@ public class GameLogic  implements Runnable {
 		level.sendPositionPlayer(player.getPosition());
 		if (isCollidingWithAFruit()){
 			level.decreaseFruitCounter(player.getPosition());
+			player.increaseScore(level.getFruitScore(player.getPosition()));
 			System.out.println("Comiste una fruta!!");
-
 		}
 
 		if (level.fruitsEqualZero()){
@@ -74,26 +74,22 @@ public class GameLogic  implements Runnable {
 	private boolean isCollidingWithAFruit() {
 
 		if (level.isCollidingWithAFruit(player.getPosition())){
-			//score.increaseScore();
-			//System.out.println("Puntaje total: " + score.increaseScore());
 			return true;
 		}
 
 		return false;
 	}
-	public boolean isRunning(){
-		return running;
+	public boolean isRunningAndAlive(){
+		return player.isAlive() && running;
 	}
 
 	@Override
 	public void run() {
-
-		while(this.running){
-
+		do {
 			for(Enemy enemy: level.getEnemies()){
 
 				// Todo: corregir para que sea unicamente enemy.move()
-				
+
 				if(enemy instanceof BlueCow){
 					((BlueCow) enemy).follow();
 
@@ -118,7 +114,7 @@ public class GameLogic  implements Runnable {
 			try {
 
 				// Esperar un medio segundo entre cada movimiento
-				Thread.sleep(500);
+				levelThread.sleep(500);
 
 			} catch (InterruptedException e){
 
@@ -126,7 +122,8 @@ public class GameLogic  implements Runnable {
 				e.printStackTrace();
 
 			}
-		}
+		}while(isRunningAndAlive());
+
 	}
 
 	@Override

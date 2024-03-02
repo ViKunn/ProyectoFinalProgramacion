@@ -5,22 +5,22 @@ import business.characters.Entity;
 public class Fruit extends Entity {
 
 	private String name;
-	private static int scoreFruit = 50;
+	private Score fruitScore; //TODO el Score está manejado como una clase
 
 
-	public Fruit(String name) {
+	public Fruit(String name, Score score) { //TODO Implementar el score como un entero a recibir o un objeto
 		this.name = name;
+		fruitScore = score;
 	}
-	public Fruit(String name, Position position) {
+
+	public Fruit(String name, Position position, Score score) {
 		this.name = name;
 		this.position = position;
+		fruitScore = score;
 	}
 
 	public String getName() {
 		return name;
-	}
-	public static int getScoreFruit() {
-		return scoreFruit;
 	}
 
 	public void setPosition(Position position) {
@@ -30,6 +30,10 @@ public class Fruit extends Entity {
 	@Override
 	public String toString() {
 		return name;
+	}
+
+	public int getScore() {
+		return fruitScore.getTotalScore();
 	}
 
 }

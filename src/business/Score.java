@@ -1,36 +1,23 @@
 package business;
-import business.Fruit;
 
 public class Score {
 
-    /*
-    Todas las frutas valen lo mismo
-        banana: 50
-        uva: 50
-        sandía: 50
-    */
-
-    private String name;
     private int totalScore;
 
-    public void increaseScore() {
-
-    }
-
-    /*
-    public int getTotalScore(){
-        return this.totalScore = 0;
-    }
     public Score(){
+        this.totalScore = 0;
     }
 
-    public int increaseScore() {
-        return totalScore += Fruit.getScoreFruit();
+    public Score(int totalScore){
+        this.totalScore = totalScore;
     }
 
-    public void showScore() {
-
+    public void increaseScore(int fruitScore) {
+        totalScore += fruitScore;
     }
-    */
+    public int getTotalScore(){
+        return this.totalScore;
+    }
+
 
 }

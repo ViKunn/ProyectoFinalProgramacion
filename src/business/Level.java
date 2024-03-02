@@ -189,4 +189,20 @@ public class Level {
 		return enemies;
 	}
 
+	public int getFruitScore(Position position) {
+
+		ArrayList<Fruit> fruitLayer;
+		fruitLayer = getFruitLayer(runningFruitLayer);
+		//fruitLayer = new ArrayList<>(getFruitLayer(runningFruitLayer)); //TODO SE PODRÍA CAMBIAR A PUNTEROS
+
+		for (Fruit fruit: fruitLayer) {
+			if (fruit.getPosition().equals(position)) {
+				return fruit.getScore();
+			}
+		}
+
+		return 0;
+
+	}
+
 }

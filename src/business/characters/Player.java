@@ -13,13 +13,14 @@ public class Player extends Entity implements Movable, PowerUps {
 	public Player(){
 		// this.advance = 1;
 		this.score = new Score();
+		this.alive = true;
 	}
-
 
 	public Player(Position position){
 		this.position = position;
 		// this.advance = 1;
 		this.score = new Score();
+		this.alive = true;
 	}
 
 	public void changeDirection(Direction directionExpect){
@@ -46,10 +47,6 @@ public class Player extends Entity implements Movable, PowerUps {
 				break;
 
 		}
-	}
-
-	public void increaseScore() {
-		score.increaseScore();
 	}
 
 	public void die() {
@@ -96,4 +93,11 @@ public class Player extends Entity implements Movable, PowerUps {
 
 	}
 
+	public void increaseScore(int fruitScore) {
+		this.score.increaseScore(fruitScore);
+	}
+
+	public boolean isAlive() {
+		return alive;
+	}
 }

@@ -18,4 +18,4 @@ TODO guardado de scores
 
 TODO modificación del constructor de entidades para que reciban las imágenes de la interfaz gráfica
 
-TODO sprites player, enemies
+TODO sprites player, enemies-

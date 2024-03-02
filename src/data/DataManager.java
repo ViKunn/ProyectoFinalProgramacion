@@ -4,6 +4,7 @@ import business.Direction;
 import business.Fruit;
 import business.Map;
 import business.Position;
+import business.Score;
 import business.characters.Enemy;
 import business.managers.EnemyManager;
 import business.managers.FruitManager;
@@ -52,7 +53,7 @@ public class DataManager {
 					Fruit fruit = fruitManager.getFruit(fruitNumber);
 					fruit.setPosition(new Position(j, i));
 
-					fruits.add(new Fruit(fruit.getName(), fruit.getPosition()));
+					fruits.add(new Fruit(fruit.getName(), fruit.getPosition(), new Score(fruit.getScore())));
 				}
 			}
 
