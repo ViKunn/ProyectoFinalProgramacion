@@ -49,7 +49,7 @@ public class GameLogic  implements Runnable {
 		level.sendPositionPlayer(player.getPosition());
 		if (isCollidingWithAFruit()){
 			level.decreaseFruitCounter(player.getPosition());
-			player.increaseScore(level.getScoreFruit(player.getPosition()));
+			player.increaseScore(level.getFruitScore(player.getPosition()));
 			System.out.println("Comiste una fruta!!");
 		}
 

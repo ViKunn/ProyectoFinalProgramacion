@@ -16,7 +16,6 @@ public class Player extends Entity implements Movable, PowerUps {
 		this.alive = true;
 	}
 
-
 	public Player(Position position){
 		this.position = position;
 		// this.advance = 1;
@@ -94,8 +93,8 @@ public class Player extends Entity implements Movable, PowerUps {
 
 	}
 
-	public void increaseScore(Score scoreFruit) {
-		this.score.icreaseScore(scoreFruit);
+	public void increaseScore(int fruitScore) {
+		this.score.increaseScore(fruitScore);
 	}
 
 	public boolean isAlive() {
