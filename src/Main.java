@@ -1,10 +1,4 @@
-import business.GameLogic;
-import business.Direction;
-
-import java.awt.*;
-import java.util.Scanner;
-
-import static presentation.Menu.mainMenu;
+import static presentation.MenuState.mainMenu;
 
 public class Main {
 

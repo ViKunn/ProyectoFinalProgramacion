@@ -46,6 +46,12 @@ public class GameLogic  implements Runnable {
 		}
 
 		player.move(direction);
+
+		if(isCollidingPlayerWithAnEnemy()){
+			player.die();
+			return;
+		}
+
 		level.sendPositionPlayer(player.getPosition());
 		if (isCollidingWithAFruit()){
 			level.decreaseFruitCounter(player.getPosition());
@@ -65,7 +71,7 @@ public class GameLogic  implements Runnable {
 		System.out.println("Se ejecuto los poderes");
 	}
 
-	private boolean isCollidingWithAnEnemy() {
+	private boolean isCollidingPlayerWithAnEnemy() {
 		return level.isCollidingWithAnEnemy(player.getPosition());
 	}
 	private boolean isCollidingWithABlock(Direction direction) {
@@ -136,7 +142,7 @@ public class GameLogic  implements Runnable {
 
 				Position position = new Position(col , row);
 
-				if (isCollidingWithAnEnemy()){
+				if (isCollidingPlayerWithAnEnemy()){
 					System.out.print("X ");
 
 				} else if (player.getPosition().equals(position)) { //PRESENTA PLAYER
@@ -163,4 +169,7 @@ public class GameLogic  implements Runnable {
 		return "";
 	}
 
+	public Score getScorePlayerWhenFinish() {
+		return player.getScore();
+	}
 }

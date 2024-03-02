@@ -100,4 +100,8 @@ public class Player extends Entity implements Movable, PowerUps {
 	public boolean isAlive() {
 		return alive;
 	}
+
+	public Score getScore() {
+		return this.score;
+	}
 }

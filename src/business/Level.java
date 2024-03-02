@@ -171,9 +171,6 @@ public class Level {
 				return fruit.getScore();
 			}
 		}
-
 		return 0;
-
 	}
-
 }
