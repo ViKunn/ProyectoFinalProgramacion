@@ -7,7 +7,7 @@ import business.Score;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class PlayState {
+public class GameState {
     private static Scanner scanner = new Scanner(System.in);
     private static GameLogic gameLogic = new GameLogic();
     ArrayList<Score> lisScoreReturn = new ArrayList<Score>();

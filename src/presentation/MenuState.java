@@ -6,7 +6,7 @@ public class MenuState {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    private static PlayState playState = new PlayState();
+    private static GameState gameState = new GameState();
     private static ScoreState scoreState = new ScoreState();
 
     public static void mainMenu() {
@@ -22,7 +22,7 @@ public class MenuState {
 
             switch (option) {
                 case 1:
-                    playState.characterMenu();
+                    gameState.characterMenu();
                     //getScores();
                     //characterMenu();
                     break;
@@ -49,6 +49,6 @@ public class MenuState {
         scoreState.showScore();
     }
     private static void getScores() {
-        scoreState.saveScore(playState.getScoreOfPlayer());
+        scoreState.saveScore(gameState.getScoreOfPlayer());
     }
 }
