@@ -13,6 +13,7 @@ public class Player extends Entity implements Movable, PowerUps {
 	public Player(){
 		// this.advance = 1;
 		this.score = new Score();
+		this.alive = true;
 	}
 
 
@@ -20,6 +21,7 @@ public class Player extends Entity implements Movable, PowerUps {
 		this.position = position;
 		// this.advance = 1;
 		this.score = new Score();
+		this.alive = true;
 	}
 
 	public void changeDirection(Direction directionExpect){
