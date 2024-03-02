@@ -48,10 +48,6 @@ public class Player extends Entity implements Movable, PowerUps {
 		}
 	}
 
-	public void increaseScore() {
-		score.increaseScore();
-	}
-
 	public void die() {
 		alive = false;
 	}
@@ -96,4 +92,7 @@ public class Player extends Entity implements Movable, PowerUps {
 
 	}
 
+	public void increaseScore(Score scoreFruit) {
+		this.score.icreaseScore(scoreFruit);
+	}
 }
