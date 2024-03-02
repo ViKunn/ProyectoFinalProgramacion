@@ -95,4 +95,8 @@ public class Player extends Entity implements Movable, PowerUps {
 	public void increaseScore(Score scoreFruit) {
 		this.score.icreaseScore(scoreFruit);
 	}
+
+	public boolean isAlive() {
+		return alive;
+	}
 }
