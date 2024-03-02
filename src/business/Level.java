@@ -167,6 +167,7 @@ public class Level {
 		//fruitLayer = new ArrayList<>(getFruitLayer(runningFruitLayer)); //TODO SE PODRÍA CAMBIAR A PUNTEROS
 
 		for (Fruit fruit: fruitLayer) {
+			System.out.println(fruit.getScore());
 			if (fruit.getPosition().equals(position)) {
 				return fruit.getScore();
 			}
