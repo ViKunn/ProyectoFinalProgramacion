@@ -5,12 +5,6 @@ TODO revisar el estado de locked de level
 TODO reiniciar el nivel en caso de que el player muera
 TODO corregir el hecho de que no puede volver a jugar el nivel porque se eliminaron todas las frutas
 
-TODO
-
-
-
-
-
 TODO menú cuando se pierde el nivel
 
 TODO lógica de scores
