@@ -15,11 +15,6 @@ public class Level {
 	private boolean locked;
 	private int runningFruitLayer;
 
-	// enemigo quemado;
-	// private Enemy troll1;
-	// private Enemy troll2;
-	// private BlueCow blueCow;
-
 	public Level(String mapPath, String playerInitialPositionPath, String enemiesPath, String ... fruitsPath){
 
 		locked = true;
@@ -65,6 +60,7 @@ public class Level {
 	}
 
 	/*
+	TODO
 	public Level(String mapPath, ArrayList<Enemy> enemies, Position position, String ... fruitsPath){
 
 		locked = false;
