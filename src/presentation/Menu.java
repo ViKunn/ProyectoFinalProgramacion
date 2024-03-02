@@ -9,11 +9,6 @@ public class Menu {
     private static Scanner scanner = new Scanner(System.in);
     private static GameLogic gameLogic = new GameLogic();
 
-
-    public static void main(String[] args) {
-        mainMenu();
-    }
-
     public static void mainMenu() {
         while (true) {
             System.out.println("===== MAIN MENU =====");
@@ -131,7 +126,10 @@ public class Menu {
 
         System.out.println("Game started - Level " + levelNumber);
 
+        gameLogic = new GameLogic();
         gameLogic.startLevel(levelNumber);
+
+        // gameLogic.startLevel(levelNumber);
 
         do {
             System.out.println("Enter a key (W/A/S/D): ");
