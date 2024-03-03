@@ -10,6 +10,8 @@ import business.level.map.Map;
 import business.managers.CollisionChecker;
 import business.managers.LevelManager;
 
+import java.awt.*;
+
 public class GameLogic  implements Runnable {
 
 	private Player player;
@@ -213,5 +215,22 @@ public class GameLogic  implements Runnable {
 	public void pauseGame() {
 		running = false;
 	}
+
+	// TODO
+	public void update() {
+
+		// player.update(); // --> actualizar posiciones de player
+		// level.update(); // --> actualizar posiciones de enemigos y frutas
+
+	}
+
+	public void draw(Graphics2D g2){
+
+		level.getMap().draw(g2);
+		// player.draw();
+
+	}
+
+
 
 }

@@ -3,6 +3,9 @@ package business.managers;
 import business.level.map.Block;
 import business.level.map.Ice;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class BlockManager {
@@ -13,11 +16,20 @@ public class BlockManager {
 
 		blocks = new HashMap<Integer, Block>();
 
-		blocks.put(0, new Block(               "- ",               false));                  // snow
-		blocks.put(1, new Ice  ("\u001B[34m" + "* " + "\u001B[0m", true , true));   // ice
-		blocks.put(2, new Block("\u001B[31m" + "# " + "\u001B[0m", true ));                   // block
+		blocks.put(0, new Block("-", loadImage("res/images/blocks/snow.png"), false));                  // snow
+		blocks.put(1, new Ice  ("*", loadImage("res/images/blocks/ice.png") , true, true));   // ice
+		blocks.put(2, new Block("#", loadImage("res/images/blocks/iron.png"), true ));                  // iron
 
 	}
+
+	public BufferedImage loadImage(String imagePath){
+		try {
+			return ImageIO.read(getClass().getResourceAsStream(imagePath));
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 
 	// TODO control de errores
 	public Block getBlock(int blockNumber) {

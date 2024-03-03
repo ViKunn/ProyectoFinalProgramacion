@@ -1,4 +1,4 @@
-package presentation;
+package presentationEnConsola;
 
 import java.util.Scanner;
 

@@ -4,6 +4,7 @@ import business.entities.Direction;
 import business.entities.Position;
 import business.managers.BlockManager;
 
+import java.awt.*;
 import java.util.Vector;
 
 public class Map {
@@ -112,6 +113,57 @@ public class Map {
 
 		return "";
 	}
+
+
+	public void draw(Graphics2D g2) {
+
+		int col = 0;
+		int row = 0;
+
+		int x = 0;
+		int y = 0;
+
+		int tileSize = 10;
+
+		while (col < mapSizeX && row < mapSizeY){
+
+			g2.drawImage(blocks[row][col].getImage(), x, y, tileSize, tileSize, null);
+
+			col++;
+			x += tileSize;
+
+			if (col == mapSizeX){
+				col = 0 ;
+				x = 0;
+				row++;
+				y += tileSize;
+			}
+
+		}
+
+	}
+
+	/*
+	    public void draw(Graphics2D g2){
+        int col = 0;
+        int row = 0;
+        int x = 0;
+        int y = 0;
+        while (col < gp.maxScreenCol && row < gp.maxScreenRow){
+            int tileNum = mapTileNum[col][row];
+            g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
+            col++;
+            x += gp.tileSize;
+            if (col == gp.maxScreenCol){
+                col = 0 ;
+                x = 0;
+                row++;
+                y += gp.tileSize;
+            }
+        }
+    }
+
+	 */
 
 
 }

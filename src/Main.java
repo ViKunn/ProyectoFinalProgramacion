@@ -1,4 +1,4 @@
-import static presentation.MenuState.mainMenu;
+import static presentationEnConsola.MenuState.mainMenu;
 
 public class Main {
 

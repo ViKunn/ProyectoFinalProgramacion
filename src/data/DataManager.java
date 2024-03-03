@@ -8,6 +8,8 @@ import business.entities.enemies.Enemy;
 import business.managers.EnemyManager;
 import business.managers.FruitManager;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -107,8 +109,6 @@ public class DataManager {
 		return new ArrayList<>();
 
 	}
-
-
 
 
 

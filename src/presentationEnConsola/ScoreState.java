@@ -1,4 +1,4 @@
-package presentation;
+package presentationEnConsola;
 import business.Score;
 
 import java.util.ArrayList;

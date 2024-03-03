@@ -1,4 +1,4 @@
-package presentation;
+package presentationEnConsola;
 
 import business.entities.Direction;
 import business.GameLogic;
