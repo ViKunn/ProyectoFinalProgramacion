@@ -19,7 +19,6 @@ public class EnemyManager {
 
 	}
 
-	// TODO control de errores
 	public Enemy getEnemy(int enemyNumber){
 		return enemies.get(enemyNumber);
 	}

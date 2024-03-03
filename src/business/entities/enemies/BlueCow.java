@@ -60,7 +60,7 @@ public class BlueCow extends Enemy implements Movable{
             switch (direction) {
                 case UP:
                     this.direction = Direction.RIGHT;
-                    move(Direction.RIGHT); //TODO: EXPONER SAMIRA hermoso, una belleza, como yo jeje
+                    move(Direction.RIGHT);
                     break;
                 case DOWN:
                     this.direction = Direction.LEFT;

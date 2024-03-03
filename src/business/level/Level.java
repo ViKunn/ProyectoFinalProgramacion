@@ -1,10 +1,8 @@
 package business.level;
 
-import business.entities.Direction;
 import business.entities.Position;
 import business.entities.enemies.BlueCow;
 import business.entities.enemies.Enemy;
-import business.entities.enemies.Troll;
 import business.entities.fruits.Fruit;
 import business.level.map.Map;
 import business.managers.CollisionChecker;
@@ -31,57 +29,10 @@ public class Level {
 
 		playersPositions = DataManager.loadPositions(playerInitialPositionPath);
 
-		// TODO control de errores en caso de que no reciba ninguna fruta
 		fruits  = DataManager.loadFruits(fruitsPath);
-		// DOUBT: check
-		runningFruitLayer = 0;
-
-		/*
-		// burned
-		enemies = new ArrayList<Enemy>();
-
-		troll1 = new Troll();
-		troll1.setPosition(new Position(3,3));
-		troll1.setDirection(Direction.DOWN);
-		troll1.setCollisionChecker(new CollisionChecker(map));
-		// troll2 = new Troll(new Position(5,5), Direction.UP, new CollisionChecker(map));
-
-		troll2 = new Troll();
-		troll2.setPosition(new Position(3,10));
-		troll2.setDirection(Direction.UP);
-		troll2.setCollisionChecker(new CollisionChecker(map));
-
-		enemies.add(troll1);
-		enemies.add(troll2);
-
-		blueCow = new BlueCow();
-		blueCow.setPosition(new Position(12,6));
-		blueCow.setDirection(Direction.UP);
-		blueCow.setCollisionChecker(new CollisionChecker(map));
-		enemies.add(blueCow);
-
-		*/
-
-
-	}
-
-	/*
-	TODO
-	public Level(String mapPath, ArrayList<Enemy> enemies, Position position, String ... fruitsPath){
-
-		locked = false;
-
-		this.map     = DataManager.loadMap(mapPath);
-		this.enemies = enemies;
-		this.fruits  = DataManager.loadFruits(fruitsPath);
-
-
-		setEnemiesCollisionChecker(new CollisionChecker(map));
 
 		runningFruitLayer = 0;
-
 	}
-	 */
 
 	private void setEnemiesCollisionChecker(CollisionChecker collisionChecker){
 		for (Enemy enemy : enemies) {
@@ -114,7 +65,6 @@ public class Level {
 
 	}
 
-	// FIXME inicializar correctamente la posición de player
 	public Position getPlayerInitialPosition(int player){
 
 		if (playersPositions.isEmpty()){
@@ -170,8 +120,8 @@ public class Level {
 		for(int i =0; i < enemies.size(); i++){
 			for(int j =0; j< enemies.size(); j++){
 				if(enemies.get(i).getPosition().equals(enemies.get(j).getPosition())){
-					enemies.get(i).changeContraryDirection();
-					enemies.get(j).changeContraryDirection();
+					enemies.get(i).changeToOpositeDirection();
+					enemies.get(j).changeToOpositeDirection();
 				}
 			}
 		}
@@ -184,6 +134,14 @@ public class Level {
 
 	// TODO tienen que corregir esto sin quemar blueCow
 	public void sendPositionPlayer(Position position) {
+
+		for (Enemy enemy : enemies) {
+			if (enemy instanceof BlueCow){
+				((BlueCow) enemy).passPositionToFollow(position);
+			}
+		}
+
+
 		// blueCow.passPositionToFollow(position);
 	}
 
@@ -195,7 +153,6 @@ public class Level {
 
 		ArrayList<Fruit> fruitLayer;
 		fruitLayer = getFruitLayer(runningFruitLayer);
-		//fruitLayer = new ArrayList<>(getFruitLayer(runningFruitLayer)); //TODO SE PODRÍA CAMBIAR A PUNTEROS
 
 		for (Fruit fruit: fruitLayer) {
 			System.out.println(fruit.getScore());

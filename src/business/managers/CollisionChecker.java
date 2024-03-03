@@ -19,10 +19,6 @@ public class CollisionChecker {
 				frontBlockIsSolid(Direction.LEFT, position);
 	}
 
-
-    // TODO corregir para ocupar método Position.getFrontPosition
-	// TODO verificar lineas de código duplicadas (en Map - front block is solid creo)
-
 	public boolean frontBlockIsSolid(Direction direction, Position position){
 
 		Position frontPosition = new Position();

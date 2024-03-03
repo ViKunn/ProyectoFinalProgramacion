@@ -1,11 +1,15 @@
 package data;
 
-import business.Direction;
-import business.Fruit;
-import business.Map;
-import business.Position;
+import business.entities.Direction;
+import business.entities.Position;
+
+import business.entities.fruits.Fruit;
+import business.entities.enemies.Enemy;
+
+import business.level.map.Map;
+
 import business.Score;
-import business.characters.Enemy;
+
 import business.managers.EnemyManager;
 import business.managers.FruitManager;
 
@@ -23,10 +27,8 @@ public class DataManager {
 		readTxtFile(path);
 		Vector<Vector<Integer>> numbers = strVectorToIntVector(DataManager.readLines);
 
-		// TODO tamaño de la matriz
 		return new Map(numbers, 18, 18);
 	}
-	// TODO control de errores en caso de que no exista la fruta
 	private static ArrayList<Fruit> loadFruitLayer(String path) {
 
 		readTxtFile(path);
@@ -38,10 +40,9 @@ public class DataManager {
 		int fruitNumber;
 		int row = numbers.size();
 
-		// TODO control de errores
-		int col = numbers.get(1).size();
-
 		for (int i = 0; i < row; i++) {
+
+			int col = numbers.get(i).size();
 
 			for (int j = 0; j < col; j++) {
 
@@ -49,7 +50,6 @@ public class DataManager {
 
 				if (fruitNumber != 0){
 
-					// TODO control de errores
 					Fruit fruit = fruitManager.getFruit(fruitNumber);
 					fruit.setPosition(new Position(j, i));
 
@@ -72,7 +72,6 @@ public class DataManager {
 		return fruits;
 
 	}
-	// TODO control de errores en caso de que no exista el enemigo
 	public static ArrayList<Enemy> loadEnemies(String path) {
 
 		readTxtFile(path);
@@ -84,8 +83,6 @@ public class DataManager {
 		int enemyNumber;
 		int row = numbers.size();
 
-		// TODO control de errores para el tamaño de la matriz
-
 		for (int i = 0; i < row; i++) {
 
 			int col = numbers.get(i).size();
@@ -96,14 +93,11 @@ public class DataManager {
 
 				if (enemyNumber != 0){
 
-					// TODO control de errores para el hashmap de EnemyManager
-
 					try {
 
 						Enemy enemy = (Enemy) enemyManager.getEnemy(enemyNumber).clone();
 						enemy.setPosition(new Position(j, i));
 
-						// DOUBT check
 						enemy.setDirection(Direction.DOWN);
 
 						enemies.add(enemy);
@@ -120,7 +114,7 @@ public class DataManager {
 		return enemies;
 
 	}
-	// TODO control de errores en la lectura del archivo
+
 	public static ArrayList<Position> loadPositions(String path){
 
 		ArrayList<Position> positions = new ArrayList<>();
@@ -233,8 +227,11 @@ public class DataManager {
 			manejadorDeLectura.close();
 
 		} catch (IOException e){
+
 			e.printStackTrace();
+
 		} catch (ClassNotFoundException e) {
+
 			throw new RuntimeException(e);
 		}
 

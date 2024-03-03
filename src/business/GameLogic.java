@@ -156,8 +156,6 @@ public class GameLogic  implements Runnable {
 
 				for(Enemy enemy: level.getEnemies()){
 
-					// Todo: corregir para que sea unicamente enemy.move()
-
 					if(enemy instanceof BlueCow){
 						((BlueCow) enemy).follow();
 
@@ -206,7 +204,7 @@ public class GameLogic  implements Runnable {
 	public void restartGame() {
 		synchronized (this) {
 			running = true;
-			notify(); // Notificar al hilo que debe reanudarse
+			notify();
 		}
 	}
 

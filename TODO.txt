@@ -1,15 +1,26 @@
-TODO corrección del constructor de level para que reciba un array de posiciones de frutas
-
-TODO revisar el estado de locked de level
-
-TODO reiniciar el nivel en caso de que el player muera
-TODO corregir el hecho de que no puede volver a jugar el nivel porque se eliminaron todas las frutas
+TODO control de errores en caso de que no exista el enemigo
+TODO control de errores en caso de que no exista la fruta
 
 TODO menú cuando se pierde el nivel
 
-TODO lógica de scores
-TODO guardado de scores
+TODO guardado de Data, Scores y "Partida" en archivos
 
-TODO modificación del constructor de entidades para que reciban las imágenes de la interfaz gráfica
 
-TODO sprites player, enemies-
+TODO control de errores para el tamaño de la matriz
+TODO control de errores para el hashmap de EnemyManager en DataManager.loadEnemies()
+
+TODO control de errores en la lectura del archivo DataManager.loadPositions
+
+En Level
+ - TODO control de errores en caso de que no reciba ninguna fruta
+ - TODO verificar si es necesario runningFruitLayer
+
+ - TODO posiciones player
+
+
+En CollisionChecker
+ - TODO corregir para ocupar método Position.getFrontPosition
+ - TODO verificar lineas de código duplicadas (en Map - front block is solid creo)
+
+ En Troll
+ - TODO actualizar move para que ocupe position.getFrontPosition
