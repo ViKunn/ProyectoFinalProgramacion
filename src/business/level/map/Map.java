@@ -1,5 +1,7 @@
-package business;
+package business.level.map;
 
+import business.entities.Direction;
+import business.entities.Position;
 import business.managers.BlockManager;
 
 import java.util.Vector;

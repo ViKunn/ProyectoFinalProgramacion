@@ -19,5 +19,12 @@ public class Score {
         return this.totalScore;
     }
 
+    @Override
+    public String toString() {
+        return "Score: " + this.totalScore;
+    }
 
+    public void setScore(int newScore) {
+        this.totalScore = newScore;
+    }
 }

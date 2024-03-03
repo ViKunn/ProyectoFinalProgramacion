@@ -1,7 +1,4 @@
-package business.characters;
-
-import business.Direction;
-import business.Position;
+package business.entities;
 
 public abstract class Entity  {
 

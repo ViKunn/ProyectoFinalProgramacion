@@ -1,4 +1,4 @@
-package business;
+package business.entities;
 
 public class Position implements Cloneable{
 

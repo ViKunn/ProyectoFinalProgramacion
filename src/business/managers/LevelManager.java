@@ -1,6 +1,6 @@
 package business.managers;
 
-import business.Level;
+import business.level.Level;
 
 import java.util.HashMap;
 

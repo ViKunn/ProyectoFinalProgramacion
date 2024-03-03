@@ -1,6 +1,8 @@
-package business;
+package business.entities.fruits;
 
-import business.characters.Entity;
+import business.entities.Position;
+import business.Score;
+import business.entities.Entity;
 
 public class Fruit extends Entity {
 

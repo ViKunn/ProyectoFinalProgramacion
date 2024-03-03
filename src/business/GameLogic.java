@@ -1,8 +1,12 @@
 package business;
 
-import business.characters.BlueCow;
-import business.characters.Enemy;
-import business.characters.Player;
+import business.entities.Direction;
+import business.entities.Position;
+import business.entities.enemies.BlueCow;
+import business.entities.enemies.Enemy;
+import business.entities.Player;
+import business.level.Level;
+import business.level.map.Map;
 import business.managers.CollisionChecker;
 import business.managers.LevelManager;
 
@@ -46,10 +50,17 @@ public class GameLogic  implements Runnable {
 		}
 
 		player.move(direction);
+
+		if(isCollidingPlayerWithAnEnemy()){
+			player.die();
+			return;
+		}
+
 		level.sendPositionPlayer(player.getPosition());
+
 		if (isCollidingWithAFruit()){
-			level.decreaseFruitCounter(player.getPosition());
 			player.increaseScore(level.getFruitScore(player.getPosition()));
+			level.decreaseFruitCounter(player.getPosition());
 			System.out.println("Comiste una fruta!!");
 		}
 
@@ -57,6 +68,7 @@ public class GameLogic  implements Runnable {
 			System.out.println("Felicidades!! Pasaste de nivel!!");
 			level.setLocked(false);
 			running = false;
+
 		}
 
 	}
@@ -65,7 +77,7 @@ public class GameLogic  implements Runnable {
 		System.out.println("Se ejecuto los poderes");
 	}
 
-	private boolean isCollidingWithAnEnemy() {
+	private boolean isCollidingPlayerWithAnEnemy() {
 		return level.isCollidingWithAnEnemy(player.getPosition());
 	}
 	private boolean isCollidingWithABlock(Direction direction) {
@@ -84,49 +96,6 @@ public class GameLogic  implements Runnable {
 	}
 
 	@Override
-	public void run() {
-		do {
-			for(Enemy enemy: level.getEnemies()){
-
-				// Todo: corregir para que sea unicamente enemy.move()
-
-				if(enemy instanceof BlueCow){
-					((BlueCow) enemy).follow();
-
-				} else{
-					enemy.move(enemy.getDirection());
-				}
-			}
-
-			if(level.isCollidingWithAnEnemy(player.getPosition())){
-
-				player.die();
-				running = false;
-
-				System.out.println("TE MORISTE!!");
-				System.out.println("wuruwrur, me muero por thread");
-
-				break;
-			}
-
-			level.isCollidingBetweenEnemies();
-
-			try {
-
-				// Esperar un medio segundo entre cada movimiento
-				levelThread.sleep(500);
-
-			} catch (InterruptedException e){
-
-				// Manejar interrupciones del hilo si es necesario
-				e.printStackTrace();
-
-			}
-		}while(isRunningAndAlive());
-
-	}
-
-	@Override
 	public String toString() {
 
 		Map map = level.getMap();
@@ -136,7 +105,7 @@ public class GameLogic  implements Runnable {
 
 				Position position = new Position(col , row);
 
-				if (isCollidingWithAnEnemy()){
+				if (isCollidingPlayerWithAnEnemy()){
 					System.out.print("X ");
 
 				} else if (player.getPosition().equals(position)) { //PRESENTA PLAYER
@@ -161,6 +130,88 @@ public class GameLogic  implements Runnable {
 		System.out.println("Player:  " + player.getPosition());
 
 		return "";
+	}
+
+	public Score getScorePlayerWhenFinish() {
+		return player.getScore();
+	}
+
+	public void restartPlayerScore() {
+		player.restartScore();
+	}
+	@Override
+	public void run() {
+		do {
+			synchronized (this) {
+				while (!isRunningAndAlive()) {
+					try {
+						wait(); // Esperar hasta que running sea verdadero
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
+			do{
+
+				for(Enemy enemy: level.getEnemies()){
+
+					// Todo: corregir para que sea unicamente enemy.move()
+
+					if(enemy instanceof BlueCow){
+						((BlueCow) enemy).follow();
+
+					} else{
+						enemy.move(enemy.getDirection());
+					}
+				}
+
+				if(level.isCollidingWithAnEnemy(player.getPosition())){
+
+					player.die();
+					running = false;
+
+					System.out.println("TE MORISTE!!");
+					System.out.println("wuruwrur, me muero por thread");
+
+					break;
+				}
+
+				level.isCollidingBetweenEnemies();
+
+				try {
+
+					// Esperar un medio segundo entre cada movimiento
+					levelThread.sleep(500);
+
+				} catch (InterruptedException e){
+
+					// Manejar interrupciones del hilo si es necesario
+					e.printStackTrace();
+
+				}
+				while(!(running)){
+					// Se va a pusar el hilo un momento para poner pausa
+				}
+			} while (isRunningAndAlive());
+
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		} while (isRunningAndAlive());
+	}
+
+	public void restartGame() {
+		synchronized (this) {
+			running = true;
+			notify(); // Notificar al hilo que debe reanudarse
+		}
+	}
+
+	public void pauseGame() {
+		running = false;
 	}
 
 }

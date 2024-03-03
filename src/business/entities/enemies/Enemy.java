@@ -1,5 +1,7 @@
-package business.characters;
-import business.*;
+package business.entities.enemies;
+import business.entities.Direction;
+import business.entities.Entity;
+import business.entities.Position;
 import business.interfaces.Movable;
 import business.managers.CollisionChecker;
 

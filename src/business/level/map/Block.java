@@ -1,4 +1,4 @@
-package business;
+package business.level.map;
 
 public class Block {
 

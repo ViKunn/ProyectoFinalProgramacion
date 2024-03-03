@@ -1,9 +1,10 @@
-package business.characters;
+package business.entities;
 
-import business.*;
 import business.interfaces.Movable;
 import business.interfaces.PowerUps;
 import business.Score;
+import business.level.map.Ice;
+import business.level.map.Map;
 
 public class Player extends Entity implements Movable, PowerUps {
 
@@ -51,6 +52,7 @@ public class Player extends Entity implements Movable, PowerUps {
 
 	public void die() {
 		alive = false;
+		//this.score.setScore(0);
 	}
 
 	public void setPosition(Position position){
@@ -99,5 +101,13 @@ public class Player extends Entity implements Movable, PowerUps {
 
 	public boolean isAlive() {
 		return alive;
+	}
+
+	public Score getScore() {
+		return this.score;
+	}
+
+	public void restartScore() {
+		score.setScore(0);
 	}
 }

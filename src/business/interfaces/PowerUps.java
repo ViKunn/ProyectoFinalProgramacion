@@ -1,6 +1,6 @@
 package business.interfaces;
 
-import business.Map;
+import business.level.map.Map;
 
 public interface PowerUps {
 

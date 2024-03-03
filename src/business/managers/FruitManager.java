@@ -1,6 +1,6 @@
 package business.managers;
 
-import business.Fruit;
+import business.entities.fruits.Fruit;
 import business.Score;
 
 import java.util.HashMap;

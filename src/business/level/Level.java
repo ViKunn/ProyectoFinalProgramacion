@@ -1,6 +1,12 @@
-package business;
+package business.level;
 
-import business.characters.*;
+import business.entities.Direction;
+import business.entities.Position;
+import business.entities.enemies.BlueCow;
+import business.entities.enemies.Enemy;
+import business.entities.enemies.Troll;
+import business.entities.fruits.Fruit;
+import business.level.map.Map;
 import business.managers.CollisionChecker;
 import data.DataManager;
 
@@ -192,13 +198,11 @@ public class Level {
 		//fruitLayer = new ArrayList<>(getFruitLayer(runningFruitLayer)); //TODO SE PODRÍA CAMBIAR A PUNTEROS
 
 		for (Fruit fruit: fruitLayer) {
+			System.out.println(fruit.getScore());
 			if (fruit.getPosition().equals(position)) {
 				return fruit.getScore();
 			}
 		}
-
 		return 0;
-
 	}
-
 }
