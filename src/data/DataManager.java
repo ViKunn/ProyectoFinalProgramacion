@@ -1,8 +1,8 @@
 package data;
 
 import business.entities.fruits.Fruit;
-import business.Map;
-import business.Position;
+import business.level.map.Map;
+import business.entities.Position;
 import business.Score;
 import business.entities.enemies.Enemy;
 import business.managers.EnemyManager;

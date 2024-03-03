@@ -1,9 +1,10 @@
 package business.entities;
 
-import business.*;
 import business.interfaces.Movable;
 import business.interfaces.PowerUps;
 import business.Score;
+import business.level.map.Ice;
+import business.level.map.Map;
 
 public class Player extends Entity implements Movable, PowerUps {
 

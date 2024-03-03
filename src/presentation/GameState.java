@@ -1,6 +1,6 @@
 package presentation;
 
-import business.Direction;
+import business.entities.Direction;
 import business.GameLogic;
 import business.Score;
 

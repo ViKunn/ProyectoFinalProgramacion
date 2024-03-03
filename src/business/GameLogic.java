@@ -1,8 +1,12 @@
 package business;
 
+import business.entities.Direction;
+import business.entities.Position;
 import business.entities.enemies.BlueCow;
 import business.entities.enemies.Enemy;
 import business.entities.Player;
+import business.level.Level;
+import business.level.map.Map;
 import business.managers.CollisionChecker;
 import business.managers.LevelManager;
 

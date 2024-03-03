@@ -1,8 +1,5 @@
 package business.entities;
 
-import business.Direction;
-import business.Position;
-
 public abstract class Entity  {
 
 	protected Position position;

@@ -1,6 +1,6 @@
 package business.interfaces;
 
-import business.Direction;
+import business.entities.Direction;
 
 public interface Movable {
 

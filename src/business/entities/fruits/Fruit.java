@@ -1,6 +1,6 @@
 package business.entities.fruits;
 
-import business.Position;
+import business.entities.Position;
 import business.Score;
 import business.entities.Entity;
 

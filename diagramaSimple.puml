@@ -1,0 +1,132 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam Linetype ortho
+skinparam class {
+BackgroundColor LightBlue
+ArrowColor Black
+BorderColor Black
+}
+
+
+package presentation{
+
+    class BadIceCream
+    class MenuState
+    class GameState
+    class HelpState
+    class ScoreState
+
+}
+
+package business{
+
+    class GameLogic
+
+    package level{
+
+        class Level
+
+        package map{
+            class Map
+            class Block
+            class Ice
+        }
+    }
+
+    package entities{
+
+        class Entity
+        class Player
+
+        class Direction
+        class Position
+
+        package enemies{
+
+            class Enemy
+            class Troll
+            class BlueCow
+
+        }
+
+        package fruits{
+            class Fruit
+        }
+
+    }
+
+    class Score
+
+
+    package managers{
+
+        class BlockManager
+        class FruitManager
+        class EnemyManager
+        class LevelManager
+        class CollisionChecker
+
+    }
+
+    package interfaces{
+        interface Movable
+        interface PowerUps
+    }
+
+}
+
+package data{
+    class DataManager
+}
+
+
+
+BadIceCream --> MenuState
+
+MenuState --> GameState
+MenuState --> ScoreState
+MenuState --> HelpState
+
+GameState --> GameLogic
+
+GameLogic --> Level
+GameLogic --> Player
+
+Player --> Score
+
+Level --> Enemy
+Level --> Map
+Level --> Fruit
+
+Map --> BlockManager
+Map --> Block
+
+Entity --> Position
+Entity --> Direction
+Entity --> CollisionChecker
+
+Entity <|-- Player
+Entity <|-- Enemy
+Entity <|-- Fruit
+
+Enemy <|-- Troll
+Enemy <|-- BlueCow
+Block <|-- Ice
+
+
+Level --- DataManager
+
+Player ...|> Movable
+Player ...|> PowerUps
+
+Enemy ...|> Movable
+
+DataManager ... BlockManager
+DataManager ... EnemyManager
+DataManager ... FruitManager
+
+GameLogic ... CollisionChecker
+Level ... CollisionChecker
+
+@enduml

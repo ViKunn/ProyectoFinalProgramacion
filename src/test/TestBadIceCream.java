@@ -1,7 +1,7 @@
 package test;
 
-import business.Direction;
-import business.Position;
+import business.entities.Direction;
+import business.entities.Position;
 import junit.framework.TestCase;
 
 public class TestBadIceCream extends TestCase{

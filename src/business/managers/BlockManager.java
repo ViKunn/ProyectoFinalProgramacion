@@ -1,7 +1,7 @@
 package business.managers;
 
-import business.Block;
-import business.Ice;
+import business.level.map.Block;
+import business.level.map.Ice;
 
 import java.util.HashMap;
 

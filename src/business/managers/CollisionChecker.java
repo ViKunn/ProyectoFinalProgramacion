@@ -1,8 +1,8 @@
 package business.managers;
 
-import business.Direction;
-import business.Map;
-import business.Position;
+import business.entities.Direction;
+import business.level.map.Map;
+import business.entities.Position;
 
 public class CollisionChecker {
 

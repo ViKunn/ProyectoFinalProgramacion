@@ -1,8 +1,7 @@
 package business.entities.enemies;
 
-import business.Direction;
-import business.Position;
-import business.entities.enemies.Enemy;
+import business.entities.Direction;
+import business.entities.Position;
 import business.interfaces.Movable;
 
 public class BlueCow extends Enemy implements Movable{
