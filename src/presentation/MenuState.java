@@ -10,7 +10,9 @@ public class MenuState {
     private static ScoreState scoreState = new ScoreState();
 
     public static void mainMenu() {
+
         while (true) {
+
             System.out.println("===== MAIN MENU =====");
             System.out.println("1. PLAY");
             System.out.println("2. SCORES");
