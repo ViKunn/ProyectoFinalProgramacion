@@ -123,7 +123,7 @@ public class Map {
 		int x = 0;
 		int y = 0;
 
-		int tileSize = 10;
+		int tileSize = 24;
 
 		while (col < mapSizeX && row < mapSizeY){
 
