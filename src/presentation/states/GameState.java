@@ -2,7 +2,6 @@ package presentation.states;
 
 import business.GameLogic;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class GameState extends State{
@@ -72,10 +71,9 @@ public class GameState extends State{
 
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
-
 		gameLogic.draw(g2, tileSize);
-
 		g2.dispose();
+
 	}
 
 }
