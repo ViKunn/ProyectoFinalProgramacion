@@ -82,7 +82,7 @@ public class MenuState extends JLayeredPane {
 			public void actionPerformed(ActionEvent e) {
 
 				state.setLayout(new BorderLayout());
-				state.setBounds(0, 0, dimension.width, dimension.height);
+				state.setBounds(192, 10, 32*18, 32*18);
 
 				state.addMouseListener(new MouseAdapter() {
 					@Override

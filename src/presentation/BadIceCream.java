@@ -9,11 +9,21 @@ public class BadIceCream extends JFrame {
 
 	private MenuState menuState;
 
-	private int width = 1000;
-	private int height = 600;
-	private final Dimension dimension = new Dimension(width, height);
+	private final int tileSize = 32;
 
-	private String backgroundImage = "res/presentation/Background.jpg";
+	private final int maxScreenCol = 30;
+	private final int maxScreenRow = 20;
+
+	private final int screenWidth = tileSize * maxScreenCol;   // ancho // 960
+	private final int screenHeight = tileSize * maxScreenRow;   // alto // 640
+
+	
+
+
+
+	private final Dimension dimension = new Dimension(screenWidth, screenHeight);
+
+	private String backgroundImage = "res/presentation/img.png";
 	private Panel layeredPanel;
 
 	public BadIceCream() {

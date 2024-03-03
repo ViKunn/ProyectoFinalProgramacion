@@ -16,12 +16,19 @@ public class GameState extends State{
 	public GameState(Dimension dimension) {
 
 		this.dimension = dimension;
-		setPreferredSize(dimension);
 		gameLogic = new GameLogic();
+		setInitialValues();
 
 		// TODO
 		gameLogic.startLevel(1);
 		gameLogic.pauseGame();
+
+	}
+
+	private void setInitialValues(){
+
+		setPreferredSize(dimension);
+		setBounds(192, 16, 576, 576);
 
 	}
 
@@ -58,6 +65,7 @@ public class GameState extends State{
 	public void update(){
 		gameLogic.update();
 	}
+
 	public void paintComponent(Graphics g){
 
 		super.paintComponent(g);
