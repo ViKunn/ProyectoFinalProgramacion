@@ -6,6 +6,8 @@ import business.Score;
 import business.level.map.Ice;
 import business.level.map.Map;
 
+import java.awt.*;
+
 public class Player extends Entity implements Movable, PowerUps {
 
 	private boolean alive;
@@ -110,4 +112,5 @@ public class Player extends Entity implements Movable, PowerUps {
 	public void restartScore() {
 		score.setScore(0);
 	}
+
 }

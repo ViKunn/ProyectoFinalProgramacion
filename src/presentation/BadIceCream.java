@@ -54,7 +54,7 @@ public class BadIceCream extends JFrame {
 
 	}
 	public void addMenu(){
-		menuState = new MenuState(dimension);
+		menuState = new MenuState(dimension, tileSize);
 		layeredPanel.add(menuState);
 	}
 	public void sleep(int milliseconds){

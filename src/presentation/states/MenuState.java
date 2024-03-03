@@ -9,6 +9,7 @@ import java.awt.event.*;
 public class MenuState extends JLayeredPane {
 
 	private final Dimension dimension;
+	private final int tileSize;
 
 	private final String backgroundImage  = "res/presentation/menuState/Background.png";
 
@@ -23,9 +24,11 @@ public class MenuState extends JLayeredPane {
 	private GameState gameState;
 
 
-	public MenuState(Dimension dimension) {
+	public MenuState(Dimension dimension, int tileSize) {
 
 		this.dimension = dimension;
+		this.tileSize = tileSize;
+
 		setPreferredSize(dimension);
 		setInitialValues();
 		initializeStates();
@@ -44,11 +47,12 @@ public class MenuState extends JLayeredPane {
 
 		menu.setLayout(new GridLayout(3, 1));
 		menu.setOpaque(false);
-		menu.setBounds(307, 350, 400, 200);
+		menu.setBounds(tileSize * 7 + 9, tileSize * 12 - 7, tileSize * 16, tileSize * 5);
 
 	}
+
 	private void initializeStates(){
-		gameState = new GameState(dimension);
+		gameState = new GameState(dimension, tileSize);
 	}
 
 	private void addButtons(){

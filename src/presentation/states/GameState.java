@@ -11,11 +11,13 @@ public class GameState extends State{
 	private GameLogic gameLogic;
 
 	private static final int FPS = 60;
+	private final int tileSize;
 
-
-	public GameState(Dimension dimension) {
+	public GameState(Dimension dimension, int tileSize) {
 
 		this.dimension = dimension;
+		this.tileSize = tileSize;
+
 		gameLogic = new GameLogic();
 		setInitialValues();
 
@@ -28,7 +30,7 @@ public class GameState extends State{
 	private void setInitialValues(){
 
 		setPreferredSize(dimension);
-		setBounds(192, 16, 576, 576);
+		setBounds(tileSize * 5, 7, tileSize * 18, tileSize * 18);
 
 	}
 
@@ -71,7 +73,7 @@ public class GameState extends State{
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 
-		gameLogic.draw(g2);
+		gameLogic.draw(g2, tileSize);
 
 		g2.dispose();
 	}

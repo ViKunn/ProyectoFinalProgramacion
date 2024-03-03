@@ -115,12 +115,10 @@ public class Map {
 	}
 
 
-	public void draw(Graphics2D g2) {
+	public void draw(Graphics2D g2, int tileSize) {
 
 		int col = 0;
 		int row = 0;
-
-		int tileSize = 32;
 
 		int x = 0;
 		int y = 0;

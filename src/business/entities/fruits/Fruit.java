@@ -4,6 +4,8 @@ import business.entities.Position;
 import business.Score;
 import business.entities.Entity;
 
+import java.awt.*;
+
 public class Fruit extends Entity {
 
 	private String name;

@@ -227,13 +227,12 @@ public class GameLogic  implements Runnable {
 
 	}
 
-	public void draw(Graphics2D g2){
+	public void draw(Graphics2D g2, int tileSize){
 
-		level.getMap().draw(g2);
-		// player.draw();
+		level.getMap().draw(g2, tileSize);
+		// player.draw(g2, tileSize);
 
 	}
-
 
 
 }
