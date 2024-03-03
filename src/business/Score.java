@@ -23,4 +23,8 @@ public class Score {
     public String toString() {
         return "Score: " + this.totalScore;
     }
+
+    public void setScore(int newScore) {
+        this.totalScore = newScore;
+    }
 }

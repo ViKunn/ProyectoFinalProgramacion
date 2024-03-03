@@ -97,21 +97,28 @@ public class GameState {
                     gameLogic.playerActivatePowerUp();
                     break;
                 case "p":
+                    gameLogic.pauseGame();
                     pauseMenu();
                     break;
                 default:
                     System.out.println("Invalid key.");
                     break;
             }
-            saveScoreOfPlayer();
+
             System.out.println(gameLogic);
         }while(gameLogic.isRunningAndAlive());
 
+        saveScoreOfPlayer();
+        gameLogic.restartPlayerScore();
         System.out.println("LEVEL CLEARED!! BACK TO MAIN MENU");
 
     }
     public void saveScoreOfPlayer() {
-        this.lisScoreReturn.add(gameLogic.getScorePlayerWhenFinish());
+        if (gameLogic.getScorePlayerWhenFinish()== null){
+            return;
+        }
+        Score scoreAux = new Score(gameLogic.getScorePlayerWhenFinish().getTotalScore());
+        this.lisScoreReturn.add(scoreAux);
     }
     public ArrayList<Score> getScoreOfPlayer(){
         return lisScoreReturn;
@@ -127,6 +134,7 @@ public class GameState {
 
         switch (number) {
             case 1:
+                gameLogic.restartGame();
                 // Continue game
                 break;
             case 2:

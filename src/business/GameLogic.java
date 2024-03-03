@@ -64,6 +64,7 @@ public class GameLogic  implements Runnable {
 			System.out.println("Felicidades!! Pasaste de nivel!!");
 			level.setLocked(true);
 			running = false;
+
 		}
 
 	}
@@ -88,49 +89,6 @@ public class GameLogic  implements Runnable {
 	}
 	public boolean isRunningAndAlive(){
 		return player.isAlive() && running;
-	}
-
-	@Override
-	public void run() {
-		do {
-			for(Enemy enemy: level.getEnemies()){
-
-				// Todo: corregir para que sea unicamente enemy.move()
-
-				if(enemy instanceof BlueCow){
-					((BlueCow) enemy).follow();
-
-				} else{
-					enemy.move(enemy.getDirection());
-				}
-			}
-
-			if(level.isCollidingWithAnEnemy(player.getPosition())){
-
-				player.die();
-				running = false;
-
-				System.out.println("TE MORISTE!!");
-				System.out.println("wuruwrur, me muero por thread");
-
-				break;
-			}
-
-			level.isCollidingBetweenEnemies();
-
-			try {
-
-				// Esperar un medio segundo entre cada movimiento
-				levelThread.sleep(500);
-
-			} catch (InterruptedException e){
-
-				// Manejar interrupciones del hilo si es necesario
-				e.printStackTrace();
-
-			}
-		}while(isRunningAndAlive());
-
 	}
 
 	@Override
@@ -173,4 +131,83 @@ public class GameLogic  implements Runnable {
 	public Score getScorePlayerWhenFinish() {
 		return player.getScore();
 	}
+
+	public void restartPlayerScore() {
+		player.restartScore();
+	}
+	@Override
+	public void run() {
+		do {
+			synchronized (this) {
+				while (!isRunningAndAlive()) {
+					try {
+						wait(); // Esperar hasta que running sea verdadero
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
+			do{
+
+				for(Enemy enemy: level.getEnemies()){
+
+					// Todo: corregir para que sea unicamente enemy.move()
+
+					if(enemy instanceof BlueCow){
+						((BlueCow) enemy).follow();
+
+					} else{
+						enemy.move(enemy.getDirection());
+					}
+				}
+
+				if(level.isCollidingWithAnEnemy(player.getPosition())){
+
+					player.die();
+					running = false;
+
+					System.out.println("TE MORISTE!!");
+					System.out.println("wuruwrur, me muero por thread");
+
+					break;
+				}
+
+				level.isCollidingBetweenEnemies();
+
+				try {
+
+					// Esperar un medio segundo entre cada movimiento
+					levelThread.sleep(500);
+
+				} catch (InterruptedException e){
+
+					// Manejar interrupciones del hilo si es necesario
+					e.printStackTrace();
+
+				}
+				while(!(running)){
+					// Se va a pusar el hilo un momento para poner pausa
+				}
+			} while (isRunningAndAlive());
+
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		} while (isRunningAndAlive());
+	}
+
+	public void restartGame() {
+		synchronized (this) {
+			running = true;
+			notify(); // Notificar al hilo que debe reanudarse
+		}
+	}
+
+	public void pauseGame() {
+		running = false;
+	}
+
 }

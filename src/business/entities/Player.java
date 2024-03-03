@@ -51,6 +51,7 @@ public class Player extends Entity implements Movable, PowerUps {
 
 	public void die() {
 		alive = false;
+		//this.score.setScore(0);
 	}
 
 	public void setPosition(Position position){
@@ -103,5 +104,9 @@ public class Player extends Entity implements Movable, PowerUps {
 
 	public Score getScore() {
 		return this.score;
+	}
+
+	public void restartScore() {
+		score.setScore(0);
 	}
 }
