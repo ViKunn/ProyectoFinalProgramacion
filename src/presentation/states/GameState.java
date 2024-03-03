@@ -18,6 +18,9 @@ public class GameState extends State{
 		this.dimension = dimension;
 		setPreferredSize(dimension);
 		gameLogic = new GameLogic();
+		// TODO
+		gameLogic.startLevel(1);
+		gameLogic.pauseGame();
 
 	}
 

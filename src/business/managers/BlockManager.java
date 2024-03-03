@@ -5,6 +5,7 @@ import business.level.map.Ice;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -22,6 +23,17 @@ public class BlockManager {
 
 	}
 
+
+	public BufferedImage loadImage(String imagePath) {
+		try {
+			File file = new File(imagePath);
+			return ImageIO.read(file);
+		} catch (IOException e) {
+			throw new RuntimeException("Error al cargar la imagen: " + e.getMessage());
+		}
+	}
+
+	/*
 	public BufferedImage loadImage(String imagePath){
 		try {
 			return ImageIO.read(getClass().getResourceAsStream(imagePath));
@@ -29,6 +41,8 @@ public class BlockManager {
 			throw new RuntimeException(e);
 		}
 	}
+
+	 */
 
 
 	// TODO control de errores
