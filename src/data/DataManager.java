@@ -1,10 +1,15 @@
 package data;
 
-import business.entities.fruits.Fruit;
-import business.level.map.Map;
+import business.entities.Direction;
 import business.entities.Position;
-import business.Score;
+
+import business.entities.fruits.Fruit;
 import business.entities.enemies.Enemy;
+
+import business.level.map.Map;
+
+import business.Score;
+
 import business.managers.EnemyManager;
 import business.managers.FruitManager;
 
@@ -18,15 +23,14 @@ public class DataManager {
 
 	private static Vector<String> readLines = new Vector<>();
 
+
 	public static Map loadMap(String path) {
 
 		readTxtFile(path);
 		Vector<Vector<Integer>> numbers = strVectorToIntVector(DataManager.readLines);
 
-		// TODO tamaño de la matriz
 		return new Map(numbers, 18, 18);
 	}
-	// TODO control de errores en caso de que no exista la fruta
 	private static ArrayList<Fruit> loadFruitLayer(String path) {
 
 		readTxtFile(path);
@@ -38,10 +42,9 @@ public class DataManager {
 		int fruitNumber;
 		int row = numbers.size();
 
-		// TODO control de errores
-		int col = numbers.get(1).size();
-
 		for (int i = 0; i < row; i++) {
+
+			int col = numbers.get(i).size();
 
 			for (int j = 0; j < col; j++) {
 
@@ -49,7 +52,6 @@ public class DataManager {
 
 				if (fruitNumber != 0){
 
-					// TODO control de errores
 					Fruit fruit = fruitManager.getFruit(fruitNumber);
 					fruit.setPosition(new Position(j, i));
 
@@ -61,20 +63,20 @@ public class DataManager {
 
 		return fruits;
 	}
-	public static ArrayList<ArrayList<Fruit>> loadFruits(String[] fruitPaths){
+	public static ArrayList<ArrayList<Fruit>> loadFruits(String[] fruitsPaths){
 
 		ArrayList<ArrayList<Fruit>> fruits = new ArrayList<>();
 
-		for (String path : fruitPaths) {
+		for (String path : fruitsPaths) {
 			fruits.add(loadFruitLayer(path));
 		}
 
 		return fruits;
 
 	}
-	public static ArrayList<Enemy> loadEnemies(String enemiesPath) {
+	public static ArrayList<Enemy> loadEnemies(String path) {
 
-		readTxtFile(enemiesPath);
+		readTxtFile(path);
 		Vector<Vector<Integer>> numbers = strVectorToIntVector(readLines);
 
 		EnemyManager enemyManager = new EnemyManager();
@@ -83,10 +85,9 @@ public class DataManager {
 		int enemyNumber;
 		int row = numbers.size();
 
-		// TODO control de errores para el tamaño de la matriz
-		int col = numbers.get(1).size();
-
 		for (int i = 0; i < row; i++) {
+
+			int col = numbers.get(i).size();
 
 			for (int j = 0; j < col; j++) {
 
@@ -94,24 +95,50 @@ public class DataManager {
 
 				if (enemyNumber != 0){
 
-					// TODO control de errores para el hashmap de EnemyManager
+					try {
 
-					Enemy enemy = enemyManager.getEnemy(enemyNumber);
+						Enemy enemy = (Enemy) enemyManager.getEnemy(enemyNumber).clone();
+						enemy.setPosition(new Position(j, i));
 
-					// Aquí la lógica de copiado del objeto sin hacer referencia a la misma dirección de memoria que estoy obteniendo
-					// luego se añade al array de enemies
+						enemy.setDirection(Direction.DOWN);
+
+						enemies.add(enemy);
+
+					} catch (CloneNotSupportedException e) {
+						throw new RuntimeException(e);
+					}
 
 				}
 			}
 
 		}
 
-		return new ArrayList<>();
+		return enemies;
 
 	}
 
+	public static ArrayList<Position> loadPositions(String path){
 
+		ArrayList<Position> positions = new ArrayList<>();
 
+		readTxtFile(path);
+		Vector<Vector<Integer>> numbers = strVectorToIntVector(readLines);
+
+		for (Vector line : numbers) {
+
+			int x = (int) line.get(0);
+			int y = (int) line.get(1);
+
+			positions.add(new Position(x, y));
+
+		}
+
+		if (positions.isEmpty()){
+			return null;
+		}
+
+		return positions;
+	}
 
 
 	/**
@@ -169,6 +196,7 @@ public class DataManager {
 		return rows;
 	}
 
+
 	public static void writeFile(File archivo, Object object){
 
 		try {
@@ -199,8 +227,11 @@ public class DataManager {
 			manejadorDeLectura.close();
 
 		} catch (IOException e){
+
 			e.printStackTrace();
+
 		} catch (ClassNotFoundException e) {
+
 			throw new RuntimeException(e);
 		}
 

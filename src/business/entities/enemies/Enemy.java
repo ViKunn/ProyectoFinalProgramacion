@@ -22,7 +22,7 @@ public abstract class Enemy extends Entity implements Movable, Cloneable {
 		this.collisionChecker = collisionChecker;
 	}
 
-	public void changeContraryDirection() {
+	public void changeToOpositeDirection() {
 		switch (this.direction){
 			case Direction.UP:
 				this.direction = Direction.DOWN;
@@ -37,6 +37,11 @@ public abstract class Enemy extends Entity implements Movable, Cloneable {
 				this.direction = Direction.RIGHT;
 				break;
 		}
+	}
+
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return super.clone();
 	}
 
 }

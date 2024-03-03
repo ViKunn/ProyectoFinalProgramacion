@@ -9,10 +9,10 @@ import java.awt.*;
 public class Fruit extends Entity {
 
 	private String name;
-	private Score fruitScore; //TODO el Score está manejado como una clase
+	private Score fruitScore;
 
 
-	public Fruit(String name, Score score) { //TODO Implementar el score como un entero a recibir o un objeto
+	public Fruit(String name, Score score) {
 		this.name = name;
 		fruitScore = score;
 	}

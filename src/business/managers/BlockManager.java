@@ -45,7 +45,6 @@ public class BlockManager {
 	 */
 
 
-	// TODO control de errores
 	public Block getBlock(int blockNumber) {
 		return blocks.get(blockNumber);
 	}

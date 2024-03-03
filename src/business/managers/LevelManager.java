@@ -42,7 +42,6 @@ public class LevelManager {
 
 	}
 
-	// TODO control de errores
 	public Level getLevel(int level) {
 		return levels.get(level);
 	}

@@ -1,6 +1,6 @@
 package business.entities;
 
-public class Position {
+public class Position implements Cloneable{
 
 	private int x;
 	private int y;
@@ -44,6 +44,11 @@ public class Position {
 
 	public boolean equals(Position p2) {
 		return (x == p2.x && y == p2.y);
+	}
+
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
 	}
 
 	@Override

@@ -1,10 +1,8 @@
 package business.level;
 
-import business.entities.Direction;
 import business.entities.Position;
 import business.entities.enemies.BlueCow;
 import business.entities.enemies.Enemy;
-import business.entities.enemies.Troll;
 import business.entities.fruits.Fruit;
 import business.level.map.Map;
 import business.managers.CollisionChecker;
@@ -17,60 +15,29 @@ public class Level {
 	private Map map;
 	private ArrayList<Enemy> enemies;
 	private ArrayList<ArrayList<Fruit>> fruits;
+	private ArrayList<Position> playersPositions;
 	private boolean locked;
 	private int runningFruitLayer;
 
-	// enemigo quemado;
-	private Enemy troll1;
-	private Enemy troll2;
-	private BlueCow blueCow;
-
 	public Level(String mapPath, String playerInitialPositionPath, String enemiesPath, String ... fruitsPath){
 
-		locked = false;
+		locked = true;
 
 		map     = DataManager.loadMap(mapPath);
-		// enemies = DataManager.loadEnemies(enemiesPath);
+		enemies = DataManager.loadEnemies(enemiesPath);
+		setEnemiesCollisionChecker(new CollisionChecker(map));
 
-		// TODO control de errores en caso de que no reciba ninguna fruta
+		playersPositions = DataManager.loadPositions(playerInitialPositionPath);
+
 		fruits  = DataManager.loadFruits(fruitsPath);
 
-		// DOUBT: check
 		runningFruitLayer = 0;
-
-		// TODO ????
-
-		/***************************************************/
-		// burned
-		enemies = new ArrayList<Enemy>();
-
-		troll1 = new Troll();
-		troll1.setPosition(new Position(3,3));
-		troll1.setDirection(Direction.DOWN);
-		troll1.setCollisionChecker(new CollisionChecker(map));
-		// troll2 = new Troll(new Position(5,5), Direction.UP, new CollisionChecker(map));
-
-		troll2 = new Troll();
-		troll2.setPosition(new Position(3,10));
-		troll2.setDirection(Direction.UP);
-		troll2.setCollisionChecker(new CollisionChecker(map));
-
-		enemies.add(troll1);
-		enemies.add(troll2);
-
-		blueCow = new BlueCow();
-		blueCow.setPosition(new Position(12,6));
-		blueCow.setDirection(Direction.UP);
-		blueCow.setCollisionChecker(new CollisionChecker(map));
-		enemies.add(blueCow);
-		/************************************/
-
-
 	}
 
-	// FIXME inicializar correctamente la posición de player
-	public Position getPlayerInitialPosition(){
-		return new Position(2,2);
+	private void setEnemiesCollisionChecker(CollisionChecker collisionChecker){
+		for (Enemy enemy : enemies) {
+			enemy.setCollisionChecker(collisionChecker);
+		}
 	}
 
 
@@ -96,6 +63,16 @@ public class Level {
 			return new ArrayList<>();
 		}
 
+	}
+
+	public Position getPlayerInitialPosition(int player){
+
+		if (playersPositions.isEmpty()){
+
+			// TODO posiciones por defecto o que no permita en caso de ser null
+		}
+
+		return playersPositions.get(player - 1);
 	}
 
 
@@ -143,8 +120,8 @@ public class Level {
 		for(int i =0; i < enemies.size(); i++){
 			for(int j =0; j< enemies.size(); j++){
 				if(enemies.get(i).getPosition().equals(enemies.get(j).getPosition())){
-					enemies.get(i).changeContraryDirection();
-					enemies.get(j).changeContraryDirection();
+					enemies.get(i).changeToOpositeDirection();
+					enemies.get(j).changeToOpositeDirection();
 				}
 			}
 		}
@@ -155,8 +132,17 @@ public class Level {
 		this.locked = locked;
 	}
 
+	// TODO tienen que corregir esto sin quemar blueCow
 	public void sendPositionPlayer(Position position) {
-		blueCow.passPositionToFollow(position);
+
+		for (Enemy enemy : enemies) {
+			if (enemy instanceof BlueCow){
+				((BlueCow) enemy).passPositionToFollow(position);
+			}
+		}
+
+
+		// blueCow.passPositionToFollow(position);
 	}
 
 	public ArrayList<Enemy> getEnemies() {
@@ -167,7 +153,6 @@ public class Level {
 
 		ArrayList<Fruit> fruitLayer;
 		fruitLayer = getFruitLayer(runningFruitLayer);
-		//fruitLayer = new ArrayList<>(getFruitLayer(runningFruitLayer)); //TODO SE PODRÍA CAMBIAR A PUNTEROS
 
 		for (Fruit fruit: fruitLayer) {
 			System.out.println(fruit.getScore());

@@ -33,7 +33,7 @@ public class GameLogic  implements Runnable {
 		level = levelManager.getLevel(levelNum);
 		collisionChecker = new CollisionChecker(level.getMap());
 
-		player.setPosition(level.getPlayerInitialPosition());
+		player.setPosition(level.getPlayerInitialPosition(1));
 		level.sendPositionPlayer(player.getPosition());
 
 		running = true;
@@ -67,7 +67,7 @@ public class GameLogic  implements Runnable {
 
 		if (level.fruitsEqualZero()){
 			System.out.println("Felicidades!! Pasaste de nivel!!");
-			level.setLocked(true);
+			level.setLocked(false);
 			running = false;
 
 		}
@@ -157,8 +157,6 @@ public class GameLogic  implements Runnable {
 
 				for(Enemy enemy: level.getEnemies()){
 
-					// Todo: corregir para que sea unicamente enemy.move()
-
 					if(enemy instanceof BlueCow){
 						((BlueCow) enemy).follow();
 
@@ -207,7 +205,7 @@ public class GameLogic  implements Runnable {
 	public void restartGame() {
 		synchronized (this) {
 			running = true;
-			notify(); // Notificar al hilo que debe reanudarse
+			notify();
 		}
 	}
 
