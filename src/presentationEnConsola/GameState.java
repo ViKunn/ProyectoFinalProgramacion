@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameState {
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
     private static GameLogic gameLogic = new GameLogic();
-    ArrayList<Score> lisScoreReturn = new ArrayList<Score>();
+    ArrayList<Score> lisScoreReturn = new ArrayList<>();
 
     public void characterMenu() {
         System.out.println("1. Chocolate Ice Cream");

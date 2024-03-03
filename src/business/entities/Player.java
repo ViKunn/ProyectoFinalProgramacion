@@ -6,12 +6,10 @@ import business.Score;
 import business.level.map.Ice;
 import business.level.map.Map;
 
-import java.awt.*;
-
 public class Player extends Entity implements Movable, PowerUps {
 
 	private boolean alive;
-	private Score score;
+	private final Score score;
 
 	public Player(){
 		// this.advance = 1;

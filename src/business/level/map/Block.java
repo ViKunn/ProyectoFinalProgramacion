@@ -1,15 +1,12 @@
 package business.level.map;
 
-import data.DataManager;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 public class Block {
 
-	private String name;
-	private BufferedImage image;
+	private final String name;
+	private final BufferedImage image;
 	private final boolean solid;
 
 	public Block(String name, BufferedImage image, boolean solid) {

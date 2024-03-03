@@ -17,11 +17,12 @@ public class BlockManager {
 
 		blocks = new HashMap<>();
 
-		blocks.put(0, new Block("- ",                    loadImage("res/images/blocks/snow.png"), false));                  // snow
-		blocks.put(1, new Ice  ("\u001B[34m* \u001B[0m", loadImage("res/images/blocks/ice.png") , true, true));   // ice
-		blocks.put(2, new Block("\u001B[31m# \u001B[0m", loadImage("res/images/blocks/iron.png"), true ));                  // iron
+		blocks.put(0, new Block("- ",                    loadImage("res/images/blocks/snow.png"), false));  // snow
+		blocks.put(1, new Ice  ("\u001B[34m* \u001B[0m", loadImage("res/images/blocks/ice.png") , true ));  // ice
+		blocks.put(2, new Block("\u001B[31m# \u001B[0m", loadImage("res/images/blocks/iron.png"), true ));  // iron
 
 	}
+
 
 
 	public BufferedImage loadImage(String imagePath) {
@@ -37,5 +38,9 @@ public class BlockManager {
 	public Block getBlock(int blockNumber) {
 		return blocks.get(blockNumber);
 	}
+	public Block getIce(){
+		return blocks.get(1);
+	}
+
 
 }

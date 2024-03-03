@@ -7,8 +7,6 @@ import java.awt.*;
 
 public class BadIceCream extends JFrame {
 
-	private MenuState menuState;
-
 	private final int tileSize = 32;
 
 	private final int maxScreenCol = 30;
@@ -17,28 +15,15 @@ public class BadIceCream extends JFrame {
 	private final int screenWidth = tileSize * maxScreenCol;   // ancho // 960
 	private final int screenHeight = tileSize * maxScreenRow;   // alto // 640
 
-	
-
-
+	private final String backgroundImage = "res/presentation/img.png";
 
 	private final Dimension dimension = new Dimension(screenWidth, screenHeight);
 
-	private String backgroundImage = "res/presentation/img.png";
 	private Panel layeredPanel;
+	private MenuState menuState;
+
 
 	public BadIceCream() {
-
-		setInitialValues();
-
-		addBackground();
-		setVisible(true);
-		sleep(2000);
-		addMenu();
-
-		setVisible(true);
-	}
-
-	public void setInitialValues(){
 
 		setTitle("BAD ICE CREAM");
 		setSize(dimension);
@@ -47,6 +32,7 @@ public class BadIceCream extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
+
 	public void addBackground(){
 
 		layeredPanel = new Panel(backgroundImage);
@@ -63,6 +49,16 @@ public class BadIceCream extends JFrame {
 		} catch (InterruptedException e) {
 			e.getMessage();
 		}
+	}
+
+	public void start() {
+
+		addBackground();
+		setVisible(true);
+		sleep(2000);
+		addMenu();
+
+		setVisible(true);
 	}
 
 }

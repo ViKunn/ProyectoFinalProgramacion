@@ -4,7 +4,7 @@ import business.Score;
 import java.util.ArrayList;
 
 public class ScoreState {
-    private static ArrayList<Score> listScores = new ArrayList<Score>();
+    private static ArrayList<Score> listScores = new ArrayList<>();
     public static void  saveScore(ArrayList<Score> score) {
         listScores = score;
     }
@@ -14,4 +14,5 @@ public class ScoreState {
             System.out.println(scores);
         }
     }
+
 }

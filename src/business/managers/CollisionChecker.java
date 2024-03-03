@@ -6,7 +6,7 @@ import business.entities.Position;
 
 public class CollisionChecker {
 
-	private Map map;
+	private final Map map;
 
 	public CollisionChecker(Map map) {
 		this.map = map;
@@ -20,27 +20,7 @@ public class CollisionChecker {
 	}
 
 	public boolean frontBlockIsSolid(Direction direction, Position position){
-
-		Position frontPosition = new Position();
-
-		switch (direction){
-			case UP:
-				frontPosition = new Position (position.getX(), (position.getY() - 1));
-				break;
-
-			case DOWN:
-				frontPosition = new Position(position.getX(), (position.getY()) + 1);
-				break;
-
-			case LEFT:
-				frontPosition = new Position((position.getX() - 1), position.getY());
-				break;
-
-			case RIGHT:
-				frontPosition = new Position((position.getX() + 1), position.getY());
-				break;
-		}
-
+		Position frontPosition = position.getFrontPosition(direction);
 		return map.getBlock(frontPosition).isSolid();
 	}
 

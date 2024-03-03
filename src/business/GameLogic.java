@@ -14,9 +14,9 @@ import java.awt.*;
 
 public class GameLogic  implements Runnable {
 
-	private Player player;
+	private final Player player;
 	private Level level;
-	private LevelManager levelManager;
+	private final LevelManager levelManager;
 	private boolean running;
 	private CollisionChecker collisionChecker;
 	private Thread levelThread;
@@ -67,7 +67,6 @@ public class GameLogic  implements Runnable {
 
 		if (level.fruitsEqualZero()){
 			System.out.println("Felicidades!! Pasaste de nivel!!");
-			level.setLocked(false);
 			running = false;
 
 		}
@@ -85,12 +84,7 @@ public class GameLogic  implements Runnable {
 		return collisionChecker.frontBlockIsSolid(direction, player.getPosition());
 	}
 	private boolean isCollidingWithAFruit() {
-
-		if (level.isCollidingWithAFruit(player.getPosition())){
-			return true;
-		}
-
-		return false;
+		return level.isCollidingWithAFruit(player.getPosition());
 	}
 	public boolean isRunningAndAlive(){
 		return player.isAlive() && running;
@@ -102,7 +96,7 @@ public class GameLogic  implements Runnable {
 		Map map = level.getMap();
 
 		for (int row = 0; row < map.getMapSizeY(); row++) {
-			for (int col = 0; col < map.getMapSizeY(); col++) {
+			for (int col = 0; col < map.getMapSizeX(); col++) {
 
 				Position position = new Position(col , row);
 
@@ -140,9 +134,12 @@ public class GameLogic  implements Runnable {
 	public void restartPlayerScore() {
 		player.restartScore();
 	}
+
 	@Override
 	public void run() {
+
 		do {
+
 			synchronized (this) {
 				while (!isRunningAndAlive()) {
 					try {

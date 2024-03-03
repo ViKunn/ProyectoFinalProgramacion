@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class MenuState {
 
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
-    private static GameState gameState = new GameState();
-    private static ScoreState scoreState = new ScoreState();
+    private static final GameState gameState = new GameState();
+    private static final ScoreState scoreState = new ScoreState();
 
     public static void mainMenu() {
 
@@ -25,13 +25,10 @@ public class MenuState {
             switch (option) {
                 case 1:
                     gameState.characterMenu();
-                    //getScores();
-                    //characterMenu();
                     break;
                 case 2:
                     getScores();
                     showScores();
-                    //System.out.println("Pro: 100000pts \n Juan Mateo: 0pts");
                     break;
                 case 3:
                     System.out.println("You just entered the world, may god help you");
@@ -51,7 +48,7 @@ public class MenuState {
         scoreState.showScore();
     }
     private static void getScores() {
-        scoreState.saveScore(gameState.getScoreOfPlayer());
+        ScoreState.saveScore(gameState.getScoreOfPlayer());
     }
 
 }

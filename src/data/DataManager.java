@@ -13,28 +13,26 @@ import business.Score;
 import business.managers.EnemyManager;
 import business.managers.FruitManager;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Vector;
 
 public class DataManager {
 
-	private static Vector<String> readLines = new Vector<>();
+	private static final Vector<String> readLines = new Vector<>();
 
 
 	public static Map loadMap(String path) {
 
 		readTxtFile(path);
-		Vector<Vector<Integer>> numbers = strVectorToIntVector(DataManager.readLines);
+		Vector<Vector<Integer>> numbers = strVectorToIntVector();
 
 		return new Map(numbers, 18, 18);
 	}
 	private static ArrayList<Fruit> loadFruitLayer(String path) {
 
 		readTxtFile(path);
-		Vector<Vector<Integer>> numbers = strVectorToIntVector(readLines);
+		Vector<Vector<Integer>> numbers = strVectorToIntVector();
 
 		FruitManager fruitManager = new FruitManager();
 		ArrayList<Fruit> fruits = new ArrayList<>();
@@ -77,7 +75,7 @@ public class DataManager {
 	public static ArrayList<Enemy> loadEnemies(String path) {
 
 		readTxtFile(path);
-		Vector<Vector<Integer>> numbers = strVectorToIntVector(readLines);
+		Vector<Vector<Integer>> numbers = strVectorToIntVector();
 
 		EnemyManager enemyManager = new EnemyManager();
 		ArrayList<Enemy> enemies = new ArrayList<>();
@@ -122,12 +120,12 @@ public class DataManager {
 		ArrayList<Position> positions = new ArrayList<>();
 
 		readTxtFile(path);
-		Vector<Vector<Integer>> numbers = strVectorToIntVector(readLines);
+		Vector<Vector<Integer>> numbers = strVectorToIntVector();
 
-		for (Vector line : numbers) {
+		for (Vector<Integer> line : numbers) {
 
-			int x = (int) line.get(0);
-			int y = (int) line.get(1);
+			int x = line.get(0);
+			int y = line.get(1);
 
 			positions.add(new Position(x, y));
 
@@ -168,23 +166,23 @@ public class DataManager {
 		}
 
 	}
-	private static Vector<Vector<Integer>> strVectorToIntVector(Vector<String> readLines){
+	private static Vector<Vector<Integer>> strVectorToIntVector(){
 
 		Vector<Vector<Integer>> rows = new Vector<>();
 
-		for (int row = 0; row < readLines.size(); row++) {
+		for (int row = 0; row < DataManager.readLines.size(); row++) {
 
 			Vector<Integer> lineIntegers = new Vector<>();
 
-			if (readLines.get(row) == null){
+			if (DataManager.readLines.get(row) == null){
 				break;
 			}
 
 			String[] lineNumbers = DataManager.readLines.get(row).split("\t");
 
-			for (int col = 0; col < lineNumbers.length; col++) {
+			for (String lineNumber : lineNumbers) {
 
-				int num = Integer.parseInt(lineNumbers[col]);
+				int num = Integer.parseInt(lineNumber);
 				lineIntegers.add(num);
 
 			}

@@ -7,7 +7,7 @@ import java.awt.*;
 public class GameState extends State{
 
 	private final Dimension dimension;
-	private GameLogic gameLogic;
+	private final GameLogic gameLogic;
 
 	private static final int FPS = 60;
 	private final int tileSize;
@@ -42,7 +42,7 @@ public class GameState extends State{
 	@Override
 	public void run(){
 
-		double drawInterval = 1000000000/FPS;
+		double drawInterval = (double) 1000000000 /FPS;
 		double delta = 0;
 		long lastTime = System.nanoTime();
 		long currentTime;

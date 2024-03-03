@@ -12,16 +12,13 @@ import java.util.ArrayList;
 
 public class Level {
 
-	private Map map;
-	private ArrayList<Enemy> enemies;
-	private ArrayList<ArrayList<Fruit>> fruits;
-	private ArrayList<Position> playersPositions;
-	private boolean locked;
-	private int runningFruitLayer;
+	private final Map map;
+	private final ArrayList<Enemy> enemies;
+	private final ArrayList<ArrayList<Fruit>> fruits;
+	private final ArrayList<Position> playersPositions;
+	private final int runningFruitLayer;
 
 	public Level(String mapPath, String playerInitialPositionPath, String enemiesPath, String ... fruitsPath){
-
-		locked = true;
 
 		map     = DataManager.loadMap(mapPath);
 		enemies = DataManager.loadEnemies(enemiesPath);
@@ -66,12 +63,6 @@ public class Level {
 	}
 
 	public Position getPlayerInitialPosition(int player){
-
-		if (playersPositions.isEmpty()){
-
-			// TODO posiciones por defecto o que no permita en caso de ser null
-		}
-
 		return playersPositions.get(player - 1);
 	}
 
@@ -118,21 +109,15 @@ public class Level {
 	}
 	public void isCollidingBetweenEnemies() {
 		for(int i =0; i < enemies.size(); i++){
-			for(int j =0; j< enemies.size(); j++){
-				if(enemies.get(i).getPosition().equals(enemies.get(j).getPosition())){
+			for (Enemy enemy : enemies) {
+				if (enemies.get(i).getPosition().equals(enemy.getPosition())) {
 					enemies.get(i).changeToOpositeDirection();
-					enemies.get(j).changeToOpositeDirection();
+					enemy.changeToOpositeDirection();
 				}
 			}
 		}
 	}
 
-
-	public void setLocked(boolean locked){
-		this.locked = locked;
-	}
-
-	// TODO tienen que corregir esto sin quemar blueCow
 	public void sendPositionPlayer(Position position) {
 
 		for (Enemy enemy : enemies) {
@@ -141,8 +126,6 @@ public class Level {
 			}
 		}
 
-
-		// blueCow.passPositionToFollow(position);
 	}
 
 	public ArrayList<Enemy> getEnemies() {
@@ -162,4 +145,5 @@ public class Level {
 		}
 		return 0;
 	}
+
 }

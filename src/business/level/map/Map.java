@@ -12,7 +12,7 @@ public class Map {
 	private final int mapSizeX;
 	private final int mapSizeY;
 
-	private Block[][] blocks;
+	private final Block[][] blocks;
 	BlockManager blockManager;
 
 	public Map(Vector<Vector<Integer>> numbers, int mapSizeX, int mapSizeY) {
@@ -36,7 +36,7 @@ public class Map {
 	}
 
 	public void setIce(Position position){
-		blocks[position.getY()][position.getX()] = (Ice)blockManager.getBlock(1);
+		blocks[position.getY()][position.getX()] = blockManager.getIce();
 	}
 	public void setBlock(Position position, int block){
 		blocks[position.getY()][position.getX()] = blockManager.getBlock(block);
@@ -44,30 +44,10 @@ public class Map {
 
 	public boolean frontBlockIsIce(Direction direction, Position position) {
 
-		Position frontPosition = new Position();
-		switch (direction) {
-			case UP:
-
-				frontPosition = new Position(position.getX(), (position.getY() - 1));
-				break;
-
-			case DOWN:
-				frontPosition = new Position(position.getX(), (position.getY()) + 1);
-				break;
-
-			case LEFT:
-				frontPosition = new Position((position.getX() - 1), position.getY());
-				break;
-
-			case RIGHT:
-				frontPosition = new Position((position.getX() + 1), position.getY());
-				break;
-		}
-		if ((getBlock(frontPosition) instanceof Ice)){
-			return true;
-		}
-		return false;
+		Position frontPosition = position.getFrontPosition(direction);
+		return getBlock(frontPosition) instanceof Ice;
 	}
+
 	public boolean isBlockSolid(Position frontPosition) {
 		return blocks[frontPosition.getY()][frontPosition.getX()].isSolid();
 	}
@@ -114,7 +94,6 @@ public class Map {
 		return "";
 	}
 
-
 	public void draw(Graphics2D g2, int tileSize) {
 
 		int col = 0;
@@ -123,46 +102,32 @@ public class Map {
 		int x = 0;
 		int y = 0;
 
+		while (col < mapSizeX && row < mapSizeY) {
 
-		while (col < mapSizeX && row < mapSizeY){
+			Block currentBlock = blocks[row][col];
 
-			g2.drawImage(blocks[row][col].getImage(), x, y, tileSize, tileSize, null);
+			// Comprueba si el bloque actual es un bloque de hielo y si está en la posición especificada
+			if (currentBlock instanceof Ice) {
+				// Establece la transparencia del bloque de hielo
+				float alpha = 0.5f; // Puedes ajustar este valor (0.0f a 1.0f)
+				g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+			}
+
+			g2.drawImage(currentBlock.getImage(), x, y, tileSize, tileSize, null);
+
+			// Restaura la transparencia a su estado predeterminado después de dibujar el bloque
+			g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
 
 			col++;
 			x += tileSize;
 
-			if (col == mapSizeX){
-				col = 0 ;
+			if (col == mapSizeX) {
+				col = 0;
 				x = 0;
 				row++;
 				y += tileSize;
 			}
-
 		}
-
 	}
-
-	/*
-	    public void draw(Graphics2D g2){
-        int col = 0;
-        int row = 0;
-        int x = 0;
-        int y = 0;
-        while (col < gp.maxScreenCol && row < gp.maxScreenRow){
-            int tileNum = mapTileNum[col][row];
-            g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
-            col++;
-            x += gp.tileSize;
-            if (col == gp.maxScreenCol){
-                col = 0 ;
-                x = 0;
-                row++;
-                y += gp.tileSize;
-            }
-        }
-    }
-
-	 */
-
 
 }

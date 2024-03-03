@@ -4,6 +4,6 @@ import business.entities.Direction;
 
 public interface Movable {
 
-	abstract public void move(Direction direction);
+	void move(Direction direction);
 
 }

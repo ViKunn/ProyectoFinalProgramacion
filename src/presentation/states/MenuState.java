@@ -11,14 +11,14 @@ public class MenuState extends JLayeredPane {
 	private final Dimension dimension;
 	private final int tileSize;
 
-	private final String backgroundImage  = "res/presentation/menuState/Background.png";
+	private static final String backgroundImage  = "res/presentation/menuState/Background.png";
 
-	private final String playButtonImage  = "res/presentation/menuState/PlayButton.png";
-	private final String scoreButtonImage = "res/presentation/menuState/ScoreButton.png";
-	private final String helpButtonImage  = "res/presentation/menuState/HelpButton.png";
+	private static final String playButtonImage  = "res/presentation/menuState/PlayButton.png";
+	private static final String scoreButtonImage = "res/presentation/menuState/ScoreButton.png";
+	private static final String helpButtonImage  = "res/presentation/menuState/HelpButton.png";
 
 
-	private JPanel menu = new Panel(backgroundImage);
+	private final JPanel menu = new Panel(backgroundImage);
 	private JButton playButton, scoreButton, helpButton;
 
 	private GameState gameState;
@@ -50,7 +50,6 @@ public class MenuState extends JLayeredPane {
 		menu.setBounds(tileSize * 7 + 9, tileSize * 12 - 7, tileSize * 16, tileSize * 5);
 
 	}
-
 	private void initializeStates(){
 		gameState = new GameState(dimension, tileSize);
 	}

@@ -6,7 +6,8 @@ import business.Score;
 import java.util.HashMap;
 
 public class FruitManager {
-	private HashMap<Integer, Fruit> fruits;
+
+	private final HashMap<Integer, Fruit> fruits;
 
 	public FruitManager() {
 

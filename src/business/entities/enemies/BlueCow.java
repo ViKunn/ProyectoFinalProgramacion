@@ -72,11 +72,11 @@ public class BlueCow extends Enemy implements Movable{
                     break;
                 case LEFT:
                     this.direction = Direction.UP;
-                    move(Direction.UP);;
+                    move(Direction.UP);
                     break;
             }
 
-        } else return;
+        }
 
     }
 

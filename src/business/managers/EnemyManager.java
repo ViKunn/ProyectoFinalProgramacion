@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class EnemyManager {
 
-	private static HashMap<Integer, Enemy> enemies;
+	private final HashMap<Integer, Enemy> enemies;
 
 	public EnemyManager() {
 

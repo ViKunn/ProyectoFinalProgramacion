@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class LevelManager {
 
-	private HashMap<Integer, Level> levels;
+	private final HashMap<Integer, Level> levels;
 
 	public LevelManager() {
 

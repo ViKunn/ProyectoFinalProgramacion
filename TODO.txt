@@ -24,3 +24,15 @@ En CollisionChecker
 
  En Troll
  - TODO actualizar move para que ocupe position.getFrontPosition
+
+
+
+TODO considerar si es necesario el uso de runningFruitLayer
+
+TODO refactor de movimiento de BlueCow, Player y Troll
+TODO posiciones por defecto o que no permita en caso de ser null
+TODO se eliminó breakable como atributo de Ice porque no se usaba.
+
+TODO organizar bien las funciones de GameLogic
+
+TODO probablemente haya que solucionar lo de volver a jugar un nivel
