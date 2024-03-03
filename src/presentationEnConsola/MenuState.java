@@ -53,4 +53,5 @@ public class MenuState {
     private static void getScores() {
         scoreState.saveScore(gameState.getScoreOfPlayer());
     }
+
 }
