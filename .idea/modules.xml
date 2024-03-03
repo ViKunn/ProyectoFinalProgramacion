@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BadIceCream.iml" filepath="$PROJECT_DIR$/BadIceCream.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BadIceCream/BadIceCream.iml" filepath="$PROJECT_DIR$/BadIceCream/BadIceCream.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyGame2D/MyGame2D.iml" filepath="$PROJECT_DIR$/MyGame2D/MyGame2D.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Proyecto Final version 0.1/Proyecto Final version 0.1.iml" filepath="$PROJECT_DIR$/Proyecto Final version 0.1/Proyecto Final version 0.1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ProyectoFinalProgramacion.iml" filepath="$PROJECT_DIR$/.idea/ProyectoFinalProgramacion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SnakeGame/SnakeGame.iml" filepath="$PROJECT_DIR$/SnakeGame/SnakeGame.iml" />
     </modules>
   </component>
 </project>
