@@ -120,10 +120,11 @@ public class Map {
 		int col = 0;
 		int row = 0;
 
+		int tileSize = 32;
+
 		int x = 0;
 		int y = 0;
 
-		int tileSize = 10;
 
 		while (col < mapSizeX && row < mapSizeY){
 
