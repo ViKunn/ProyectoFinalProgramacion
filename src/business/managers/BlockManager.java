@@ -11,11 +11,11 @@ import java.util.HashMap;
 
 public class BlockManager {
 
-	private HashMap<Integer, Block> blocks;
+	private final HashMap<Integer, Block> blocks;
 
 	public BlockManager() {
 
-		blocks = new HashMap<Integer, Block>();
+		blocks = new HashMap<>();
 
 		blocks.put(0, new Block("- ",                    loadImage("res/images/blocks/snow.png"), false));                  // snow
 		blocks.put(1, new Ice  ("\u001B[34m* \u001B[0m", loadImage("res/images/blocks/ice.png") , true, true));   // ice
@@ -32,17 +32,6 @@ public class BlockManager {
 			throw new RuntimeException("Error al cargar la imagen: " + e.getMessage());
 		}
 	}
-
-	/*
-	public BufferedImage loadImage(String imagePath){
-		try {
-			return ImageIO.read(getClass().getResourceAsStream(imagePath));
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	 */
 
 
 	public Block getBlock(int blockNumber) {
