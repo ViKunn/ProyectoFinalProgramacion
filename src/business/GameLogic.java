@@ -37,8 +37,7 @@ public class GameLogic  implements Runnable {
 		level.sendPositionPlayer(player.getPosition());
 
 		running = true;
-		levelThread = new Thread(this);
-		levelThread.start();
+
 
 	}
 
@@ -214,6 +213,10 @@ public class GameLogic  implements Runnable {
 
 	public void pauseGame() {
 		running = false;
+	}
+	public void starThread(){
+		levelThread = new Thread(this);
+		levelThread.start();
 	}
 
 	// TODO
