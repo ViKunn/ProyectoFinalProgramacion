@@ -73,6 +73,8 @@ public class GameState {
 
         gameLogic = new GameLogic();
         gameLogic.startLevel(levelNumber);
+        //Todo: aqui se debe inicializar el Hilo;
+        //gameLogic.starThread();
 
         // gameLogic.startLevel(levelNumber);
 
