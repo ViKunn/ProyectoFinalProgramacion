@@ -23,7 +23,7 @@ public class GameLogic  implements Runnable {
 
 	public GameLogic(){
 
-		player = new Player();
+		player = new Player(2);
 		levelManager = new LevelManager();
 
 	}
@@ -72,7 +72,6 @@ public class GameLogic  implements Runnable {
 		if (level.fruitsEqualZero()){
 			System.out.println("Felicidades!! Pasaste de nivel!!");
 			running = false;
-
 		}
 
 	}

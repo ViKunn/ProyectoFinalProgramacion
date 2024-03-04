@@ -34,8 +34,6 @@ public class GameState extends State {
         System.out.println("" + gameLogic.isRunningAndAlive());
 
 
-
-
     }
 
     private void setInitialValues() {
@@ -46,8 +44,9 @@ public class GameState extends State {
     @Override
     public void start() {
         threadGameState.start();
-        gameLogic.startLevel(1);
         gameLogic.startThread();
+        gameLogic.startLevel(1);
+
     }
 
     @Override
