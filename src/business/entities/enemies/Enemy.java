@@ -5,6 +5,8 @@ import business.entities.Position;
 import business.interfaces.Movable;
 import business.managers.CollisionChecker;
 
+import java.awt.*;
+
 public abstract class Enemy extends Entity implements Movable, Cloneable {
 
 	protected CollisionChecker collisionChecker;
@@ -42,6 +44,10 @@ public abstract class Enemy extends Entity implements Movable, Cloneable {
 	@Override
 	public Object clone() throws CloneNotSupportedException {
 		return super.clone();
+	}
+
+	public void draw(Graphics2D g2, int tileSize) {
+		// TODO
 	}
 
 }

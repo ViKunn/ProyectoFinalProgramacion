@@ -40,4 +40,8 @@ public class Fruit extends Entity {
 		return fruitScore.getTotalScore();
 	}
 
+	public void draw(Graphics2D g2, int tileSize) {
+		// TODO
+	}
+
 }

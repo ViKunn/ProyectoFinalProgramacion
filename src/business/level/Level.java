@@ -8,6 +8,7 @@ import business.level.map.Map;
 import business.managers.CollisionChecker;
 import data.DataManager;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Level {
@@ -146,4 +147,31 @@ public class Level {
 		return 0;
 	}
 
+	private void drawEnemies(Graphics2D g2, int tileSize){
+
+		for (Enemy enemy : enemies) {
+			enemy.draw(g2, tileSize);
+		}
+
+	}
+
+	private void drawFruits(Graphics2D g2, int tileSize){
+
+		for (ArrayList<Fruit> fruitLayer: fruits) {
+			for (Fruit fruit : fruitLayer) {
+				fruit.draw(g2, tileSize);
+			}
+		}
+
+	}
+
+
+
+	public void draw(Graphics2D g2, int tileSize) {
+
+		map.draw(g2, tileSize);
+		drawFruits(g2, tileSize);
+		drawEnemies(g2, tileSize);
+
+	}
 }
