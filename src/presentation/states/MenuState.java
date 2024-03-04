@@ -8,8 +8,8 @@ import java.awt.event.*;
 
 public class MenuState extends JLayeredPane {
 
-	private final Dimension dimension;
-	private final int tileSize;
+	private Dimension dimension;
+	private int tileSize;
 
 	private final String backgroundImage  = "res/presentation/menuState/Background.png";
 
@@ -22,6 +22,9 @@ public class MenuState extends JLayeredPane {
 	private JButton playButton, scoreButton, helpButton;
 
 	private GameState gameState;
+	private HelpState helpState;
+	private ScoreState scoreState;
+	private boolean helpStateVisible = false;
 
 
 	public MenuState(Dimension dimension, int tileSize) {
@@ -35,24 +38,32 @@ public class MenuState extends JLayeredPane {
 
 		addButtons();
 		configureButton(playButton, gameState);
-		// configureButton(button2, scoreState);
-		// configureButton(button3, helpState);
+		configureButton(scoreButton, scoreState);
+		configureButton(helpButton, helpState);
 
 		add(menu, JLayeredPane.PALETTE_LAYER);
 		setVisible(true);
 
 	}
 
+	public MenuState(JButton backToMenu) {
+		this.playButton = backToMenu;
+	}
+
 	private void setInitialValues(){
 
+		// botones
 		menu.setLayout(new GridLayout(3, 1));
 		menu.setOpaque(false);
+		//Centrarle
 		menu.setBounds(tileSize * 7 + 9, tileSize * 12 - 7, tileSize * 16, tileSize * 5);
 
 	}
 
 	private void initializeStates(){
 		gameState = new GameState(dimension, tileSize);
+		helpState = new HelpState(dimension, tileSize, this);
+		scoreState = new ScoreState(dimension, tileSize);
 	}
 
 	private void addButtons(){
@@ -77,16 +88,24 @@ public class MenuState extends JLayeredPane {
 		return button;
 	}
 
+	private void setHelpStateVisible(boolean visible){
+	    this.helpStateVisible = visible;
+	}
+
 
 	private void configureButton(JButton button, State state) {
 
 		ActionListener actionListener = new ActionListener() {
 
+			private boolean helpStateVisible = false;
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (state instanceof HelpState && helpStateVisible) {
+					return; // No hacer nada si HelpState ya está visible
+				}
 
 				state.setLayout(new BorderLayout());
-				state.setBounds(192, 10, 32*18, 32*18);
+				state.setBounds(192, 6, 32*18, 32*18);
 
 				state.addMouseListener(new MouseAdapter() {
 					@Override
@@ -107,5 +126,4 @@ public class MenuState extends JLayeredPane {
 
 		button.addActionListener(actionListener);
 	}
-
 }

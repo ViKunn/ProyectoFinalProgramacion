@@ -28,6 +28,7 @@ public class GameState extends State{
 	}
 
 	private void setInitialValues(){
+		//para centrar todo el panel
 
 		setPreferredSize(dimension);
 		setBounds(tileSize * 5, 7, tileSize * 18, tileSize * 18);
