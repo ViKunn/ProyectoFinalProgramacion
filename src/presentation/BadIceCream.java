@@ -25,6 +25,21 @@ public class BadIceCream extends JFrame {
 
 	public BadIceCream() {
 
+		ImageIcon icono = new ImageIcon("res/presentation/FrameIcon.png");
+		setIconImage(icono.getImage());
+
+		setInitialValues();
+
+		addBackground();
+		setVisible(true);
+		sleep(2000);
+		addMenu();
+
+		setVisible(true);
+	}
+
+	public void setInitialValues(){
+
 		setTitle("BAD ICE CREAM");
 		setSize(dimension);
 		setResizable(false);
@@ -49,16 +64,6 @@ public class BadIceCream extends JFrame {
 		} catch (InterruptedException e) {
 			e.getMessage();
 		}
-	}
-
-	public void start() {
-
-		addBackground();
-		setVisible(true);
-		sleep(2000);
-		addMenu();
-
-		setVisible(true);
 	}
 
 }
