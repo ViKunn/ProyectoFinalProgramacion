@@ -8,8 +8,8 @@ import java.awt.*;
 
 public class Fruit extends Entity {
 
-	private String name;
-	private Score fruitScore;
+	private final String name;
+	private final Score fruitScore;
 
 
 	public Fruit(String name, Score score) {
