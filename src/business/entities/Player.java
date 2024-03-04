@@ -6,7 +6,11 @@ import business.Score;
 import business.level.map.Ice;
 import business.level.map.Map;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Player extends Entity implements Movable, PowerUps {
 
@@ -17,6 +21,7 @@ public class Player extends Entity implements Movable, PowerUps {
 		// this.advance = 1;
 		this.score = new Score();
 		this.alive = true;
+		getPlayerImage();
 	}
 
 	public Player(Position position){
@@ -24,6 +29,7 @@ public class Player extends Entity implements Movable, PowerUps {
 		// this.advance = 1;
 		this.score = new Score();
 		this.alive = true;
+		getPlayerImage();
 	}
 
 	public void changeDirection(Direction directionExpect){
@@ -112,10 +118,40 @@ public class Player extends Entity implements Movable, PowerUps {
 	public void restartScore() {
 		score.setScore(0);
 	}
+	public void getPlayerImage() {
+		try {
+			up1 = ImageIO.read(new File("res/images/players/blueberry/strawberry.png"));
+			up2 = ImageIO.read(new File("res/images/players/blueberry/strawberry.png"));
+			down1 = ImageIO.read(new File("res/images/players/blueberry/strawberry.png"));
+			down2 = ImageIO.read(new File("res/images/players/blueberry/strawberry.png"));
+			right1 = ImageIO.read(new File("res/images/players/blueberry/strawberry.png"));
+			right2 = ImageIO.read(new File("res/images/players/blueberry/strawberry.png"));
+			left1 = ImageIO.read(new File("res/images/players/blueberry/strawberry.png"));
+			left2 = ImageIO.read(new File("res/images/players/blueberry/strawberry.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		}
+	}
 
 	@Override
-	public void draw(Graphics2D graphic2D, int tileSize) {
-		
+	public void draw(Graphics2D g2, int tileSize) {
+		BufferedImage image = null;
+		switch (direction) {
+			case UP:
+					image = up1;
+				break;
+			case DOWN:
+					image = down1;
+				break;
+			case LEFT:
+					image = left1;
+				break;
+			case RIGHT:
+					image = right2;
+				break;
+		}
+		g2.drawImage(image, this.position.getX() * tileSize, this.position.getY() * tileSize, tileSize, tileSize, null);
 
 	}
 }
