@@ -15,8 +15,6 @@ En Level
  - TODO control de errores en caso de que no reciba ninguna fruta
  - TODO verificar si es necesario runningFruitLayer
 
- - TODO posiciones player
-
 
 En CollisionChecker
  - TODO corregir para ocupar método Position.getFrontPosition
@@ -31,8 +29,9 @@ TODO considerar si es necesario el uso de runningFruitLayer
 
 TODO refactor de movimiento de BlueCow, Player y Troll
 TODO posiciones por defecto o que no permita en caso de ser null
-TODO se eliminó breakable como atributo de Ice porque no se usaba.
 
 TODO organizar bien las funciones de GameLogic
 
 TODO probablemente haya que solucionar lo de volver a jugar un nivel
+
+TODO error al terminar de recoger las frutas por array vacío
