@@ -157,11 +157,11 @@ public class Level {
 
 	private void drawFruits(Graphics2D g2, int tileSize){
 
-		for (ArrayList<Fruit> fruitLayer: fruits) {
-			for (Fruit fruit : fruitLayer) {
+
+			for (Fruit fruit : getFruitLayer(runningFruitLayer)) {
 				fruit.draw(g2, tileSize);
 			}
-		}
+
 
 	}
 
@@ -176,8 +176,6 @@ public class Level {
 	}
 
 	public void update() {
-		for (Enemy enemy : enemies) {
-			//enemy.update();
-		}
+
 	}
 }

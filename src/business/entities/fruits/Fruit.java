@@ -12,12 +12,12 @@ public class Fruit extends Entity {
 	private final Score fruitScore;
 
 
-	public Fruit(String name, Score score) {
+	public Fruit(String name, BufferedImage bufferedImageFruit, Score score) { // Se usa dentro de fruit manager
 		this.name = name;
 		fruitScore = score;
 	}
 
-	public Fruit(String name, Position position, Score score) {
+	public Fruit(String name, Position position, Score score, BufferedImage bufferedImageFruit) { // para posiciones data manager
 		this.name = name;
 		this.position = position;
 		fruitScore = score;
@@ -40,8 +40,14 @@ public class Fruit extends Entity {
 		return fruitScore.getTotalScore();
 	}
 
+
+	@Override
 	public void draw(Graphics2D g2, int tileSize) {
-		// TODO
+		BufferedImage image = bufferedImageFruit;
+		g2.drawImage(image, this.position.getX() * tileSize, this.position.getY() * tileSize, tileSize, tileSize, null);
 	}
 
+	public BufferedImage getBufferedImage() {
+		return this.bufferedImageFruit;
+	}
 }
