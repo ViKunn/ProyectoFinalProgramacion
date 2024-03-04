@@ -115,6 +115,7 @@ public class Player extends Entity implements Movable, PowerUps {
 
 	@Override
 	public void draw(Graphics2D graphic2D, int tileSize) {
+		
 
 	}
 }
