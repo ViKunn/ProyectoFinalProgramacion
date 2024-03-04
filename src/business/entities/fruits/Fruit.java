@@ -5,22 +5,26 @@ import business.Score;
 import business.entities.Entity;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Fruit extends Entity {
 
 	private final String name;
 	private final Score fruitScore;
+	private BufferedImage bufferedImageFruit;
 
 
 	public Fruit(String name, BufferedImage bufferedImageFruit, Score score) { // Se usa dentro de fruit manager
 		this.name = name;
-		fruitScore = score;
+		this.fruitScore = score;
+		this.bufferedImageFruit = bufferedImageFruit;
 	}
 
 	public Fruit(String name, Position position, Score score, BufferedImage bufferedImageFruit) { // para posiciones data manager
 		this.name = name;
 		this.position = position;
-		fruitScore = score;
+		this.fruitScore = score;
+		this.bufferedImageFruit = bufferedImageFruit;
 	}
 
 	public String getName() {

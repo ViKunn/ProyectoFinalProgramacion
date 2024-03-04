@@ -13,6 +13,7 @@ import business.Score;
 import business.managers.EnemyManager;
 import business.managers.FruitManager;
 
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -53,7 +54,7 @@ public class DataManager {
 					Fruit fruit = fruitManager.getFruit(fruitNumber);
 					fruit.setPosition(new Position(j, i));
 
-					fruits.add(new Fruit(fruit.getName(), fruit.getPosition(), new Score(fruit.getScore())));
+					fruits.add(new Fruit(fruit.getName(), fruit.getPosition(), new Score(fruit.getScore()), fruit.getBufferedImage()));
 				}
 			}
 
