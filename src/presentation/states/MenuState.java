@@ -7,26 +7,19 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class MenuState extends JLayeredPane {
-
 	private Dimension dimension;
 	private int tileSize;
-
 	private final String backgroundImage  = "res/presentation/menuState/Background.png";
-
 	private final String playButtonImage  = "res/presentation/menuState/PlayButton.png";
 	private final String scoreButtonImage = "res/presentation/menuState/ScoreButton.png";
 	private final String helpButtonImage  = "res/presentation/menuState/HelpButton.png";
-
-
 	private JPanel menu = new Panel(backgroundImage);
 	private JButton playButton, scoreButton, helpButton;
-
 	private GameState gameState;
 	private HelpState helpState;
 	private ScoreState scoreState;
 	private boolean helpStateVisible = false;
 	private boolean isTheHelpState = false;
-
 
 	public MenuState(Dimension dimension, int tileSize) {
 
@@ -47,10 +40,6 @@ public class MenuState extends JLayeredPane {
 
 	}
 
-	public MenuState(JButton backToMenu) {
-		this.playButton = backToMenu;
-	}
-
 	private void setInitialValues(){
 
 		// botones
@@ -66,7 +55,6 @@ public class MenuState extends JLayeredPane {
 		helpState = new HelpState(dimension, tileSize, this);
 		scoreState = new ScoreState(dimension, tileSize);
 	}
-
 	private void addButtons(){
 
 		playButton  = createButton(playButtonImage);
@@ -78,6 +66,10 @@ public class MenuState extends JLayeredPane {
 		menu.add(helpButton);
 
 	}
+	private void setHelpStateVisible(boolean visible){
+		this.helpStateVisible = visible;
+	}
+
 	private JButton createButton(String iconPath){
 
 		JButton button = new JButton(new ImageIcon(iconPath));
@@ -88,12 +80,6 @@ public class MenuState extends JLayeredPane {
 
 		return button;
 	}
-
-	private void setHelpStateVisible(boolean visible){
-	    this.helpStateVisible = visible;
-	}
-
-
 	private void configureButton(JButton button, State state) {
 
 		ActionListener actionListener = new ActionListener() {
@@ -137,4 +123,9 @@ public class MenuState extends JLayeredPane {
 			menu.setVisible(false); // Ocultar los botones del menú
 		}
 	}
+	public void showButtons() {
+		menu.setVisible(true); // Mostrar los botones del menú principal
+	}
+
+
 }

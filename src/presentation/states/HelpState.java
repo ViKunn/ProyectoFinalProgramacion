@@ -8,7 +8,6 @@ import presentation.Panel;
 import javax.swing.*;
 
 public class HelpState extends State{
-
     private Dimension dimensionHelp;
     private final int tileSize;
     private final String [] helpImages = {
@@ -26,6 +25,8 @@ public class HelpState extends State{
     private MenuState menuState;
     private String backgrounButtonPanel = "res/presentation/helpState/img.png";
 
+
+    public boolean menuVisibleOnReturn = false;
     public HelpState(Dimension dimensionHelp, int tileSize, MenuState menuState) {
 
         this.dimensionHelp = dimensionHelp;
@@ -40,6 +41,7 @@ public class HelpState extends State{
     }
 
     private void addButtons(){
+
         // Panel para los botones
         JPanel buttonPanel = new Panel(backgrounButtonPanel);
         buttonPanel.setLayout(new GridLayout(1, 3));
@@ -83,7 +85,6 @@ public class HelpState extends State{
             }
         });
     }
-
     private JButton createButton(String iconPath){
 
         JButton button = new JButton(new ImageIcon(iconPath));
@@ -94,11 +95,10 @@ public class HelpState extends State{
 
         return button;
     }
-
-    public void switchToMenuState(){
-        menuState.hideButtons();
-        this.setVisible(false);
-        menuState.setVisible(true);
+    public void switchToMenuState() {
+        menuState.setVisible(true); // Mostrar el menú principal
+        setVisible(false); // Ocultar el submenú de Help
+        menuState.showButtons(); // Mostrar los botones del menú principal
     }
     private void updateImage(String helpImage) {
         help.removeAll();
@@ -111,7 +111,6 @@ public class HelpState extends State{
         imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         help.add(imageLabel, BorderLayout.CENTER);
-
         // Volver a validar el panel para que se muestre la nueva imagen
         help.revalidate();
         help.repaint();
@@ -130,4 +129,5 @@ public class HelpState extends State{
 
         setVisible(true);
     }
+
 }
