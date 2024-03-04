@@ -218,7 +218,7 @@ public class GameLogic  implements Runnable {
 	// TODO
 	public void update() {
 
-		// player.update(); // --> actualizar posiciones de player
+		//player.update(); // --> actualizar posiciones de player
 		level.update(); // --> actualizar posiciones de enemigos y frutas
 
 	}
@@ -226,7 +226,7 @@ public class GameLogic  implements Runnable {
 	public void draw(Graphics2D g2, int tileSize){
 
 		level.draw(g2, tileSize);
-		// player.draw(g2, tileSize);
+		player.draw(g2, tileSize);
 		//level.getFru
 
 	}
