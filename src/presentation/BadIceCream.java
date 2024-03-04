@@ -28,6 +28,9 @@ public class BadIceCream extends JFrame {
 
 	public BadIceCream() {
 
+		ImageIcon icono = new ImageIcon("res/presentation/FrameIcon.png");
+		setIconImage(icono.getImage());
+
 		setInitialValues();
 
 		addBackground();

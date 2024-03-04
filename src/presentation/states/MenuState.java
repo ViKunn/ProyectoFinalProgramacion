@@ -25,6 +25,7 @@ public class MenuState extends JLayeredPane {
 	private HelpState helpState;
 	private ScoreState scoreState;
 	private boolean helpStateVisible = false;
+	private boolean isTheHelpState = false;
 
 
 	public MenuState(Dimension dimension, int tileSize) {
@@ -125,5 +126,15 @@ public class MenuState extends JLayeredPane {
 		};
 
 		button.addActionListener(actionListener);
+	}
+
+	public void switchToHelpState(){
+		isTheHelpState = true;
+	}
+	public void hideButtons() {
+		//menu.setVisible(false);
+		if (!isTheHelpState) {
+			menu.setVisible(false); // Ocultar los botones del menú
+		}
 	}
 }

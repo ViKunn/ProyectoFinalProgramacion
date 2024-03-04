@@ -1,11 +1,11 @@
 package presentation.states;
 
 import java.awt.*;
-        import java.awt.event.*;
+import java.awt.event.*;
 
-        import presentation.Panel;
+import presentation.Panel;
 
-        import javax.swing.*;
+import javax.swing.*;
 
 public class HelpState extends State{
 
@@ -19,6 +19,8 @@ public class HelpState extends State{
     };
     private int currentImageIndex = 0;
     private final String backToMenuButton = "res/presentation/helpState/backToMenuBotton.png";
+    private final String nextHelpButton = "res/presentation/helpState/nextHelpButton.png";
+    private final String prevHelpButton = "res/presentation/helpState/prevHelptButton.png";
     private JPanel help;
     private JButton backToMenu, nextHelp, prevHelp;
     private MenuState menuState;
@@ -40,13 +42,13 @@ public class HelpState extends State{
     private void addButtons(){
         // Panel para los botones
         JPanel buttonPanel = new Panel(backgrounButtonPanel);
-        //buttonPanel.setLayout(new GridLayout(1, 3));
+        buttonPanel.setLayout(new GridLayout(1, 3));
         buttonPanel.setOpaque(false);
-        JButton backToMenu = new JButton(new ImageIcon(backToMenuButton));
+        //JButton backToMenu = new JButton(new ImageIcon(backToMenuButton));
 
-        //backToMenu  = createButton("Back to Menu");
-        nextHelp = createButton("Next");
-        prevHelp  = createButton("Previous");
+        backToMenu  = createButton(backToMenuButton);
+        nextHelp = createButton(nextHelpButton);
+        prevHelp  = createButton(prevHelpButton);
 
         backToMenu.setOpaque(false);
         backToMenu.setContentAreaFilled(false);
@@ -82,9 +84,9 @@ public class HelpState extends State{
         });
     }
 
-    private JButton createButton(String icon){
+    private JButton createButton(String iconPath){
 
-        JButton button = new JButton();
+        JButton button = new JButton(new ImageIcon(iconPath));
 
         button.setOpaque(false);
         button.setContentAreaFilled(false);
@@ -94,6 +96,7 @@ public class HelpState extends State{
     }
 
     public void switchToMenuState(){
+        menuState.hideButtons();
         this.setVisible(false);
         menuState.setVisible(true);
     }
@@ -101,7 +104,10 @@ public class HelpState extends State{
         help.removeAll();
 
         ImageIcon imageIcon = new ImageIcon(helpImage);
-        JLabel imageLabel = new JLabel(imageIcon);
+        Image image = imageIcon.getImage();
+        Image scaledImage = image.getScaledInstance(help.getWidth(), help.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon scaledImageIcon = new ImageIcon(scaledImage);
+        JLabel imageLabel = new JLabel(scaledImageIcon);
         imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         help.add(imageLabel, BorderLayout.CENTER);
@@ -113,11 +119,15 @@ public class HelpState extends State{
     @Override
     public void start() {
         help = new Panel(helpImages[currentImageIndex]);
+        menuState.hideButtons();
         addButtons();
+
+        if (help.getComponentCount() == 0) {
+            addButtons(); // Agregar el panel de botones solo si no está presente
+        }
 
         add(help, BorderLayout.CENTER);
 
         setVisible(true);
     }
-    //Si llega la última que regrese una por una reiterador
 }
