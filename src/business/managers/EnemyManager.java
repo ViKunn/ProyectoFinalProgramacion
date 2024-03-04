@@ -1,9 +1,6 @@
 package business.managers;
 
-import business.entities.enemies.BlueCow;
-import business.entities.enemies.CarlosA;
-import business.entities.enemies.Enemy;
-import business.entities.enemies.Troll;
+import business.entities.enemies.*;
 
 import java.util.HashMap;
 
@@ -18,6 +15,7 @@ public class EnemyManager {
 		enemies.put(1, new Troll());
 		enemies.put(2, new BlueCow());
 		enemies.put(3, new CarlosA());
+		enemies.put(4, new PatricioZ());
 
 	}
 
