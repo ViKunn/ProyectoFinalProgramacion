@@ -9,6 +9,7 @@ public class Troll extends Enemy implements Movable{
 
 	public Troll() {
 		setDirection(Direction.DOWN);
+		getTrollImage();
 	}
 	public void setCollisionChecker(CollisionChecker collisionChecker) {
 		super.setCollisionChecker(collisionChecker);

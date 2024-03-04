@@ -11,6 +11,7 @@ public class GameState extends State{
 
 	private static final int FPS = 60;
 	private final int tileSize;
+	Thread threadGameState; 
 
 	public GameState(Dimension dimension, int tileSize) {
 
@@ -19,10 +20,11 @@ public class GameState extends State{
 
 		gameLogic = new GameLogic();
 		setInitialValues();
+		threadGameState = new Thread(this);
 
 		// TODO
 		gameLogic.startLevel(1);
-		gameLogic.pauseGame();
+		//gameLogic.pauseGame();
 
 	}
 
@@ -49,7 +51,6 @@ public class GameState extends State{
 
 		// TODO considerar variable
 		while (gameLogic.isRunningAndAlive()) {
-
 			currentTime = System.nanoTime();
 			delta += (currentTime - lastTime)/drawInterval;
 			lastTime = currentTime;

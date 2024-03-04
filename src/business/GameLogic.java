@@ -25,6 +25,7 @@ public class GameLogic  implements Runnable {
 
 		player = new Player();
 		levelManager = new LevelManager();
+		starThread();
 
 	}
 
@@ -218,7 +219,7 @@ public class GameLogic  implements Runnable {
 	public void update() {
 
 		// player.update(); // --> actualizar posiciones de player
-		// level.update(); // --> actualizar posiciones de enemigos y frutas
+		level.update(); // --> actualizar posiciones de enemigos y frutas
 
 	}
 
@@ -226,6 +227,7 @@ public class GameLogic  implements Runnable {
 
 		level.draw(g2, tileSize);
 		// player.draw(g2, tileSize);
+		//level.getFru
 
 	}
 

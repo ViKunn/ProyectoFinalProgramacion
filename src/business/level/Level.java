@@ -174,4 +174,10 @@ public class Level {
 		drawEnemies(g2, tileSize);
 
 	}
+
+	public void update() {
+		for (Enemy enemy : enemies) {
+			//enemy.update();
+		}
+	}
 }

@@ -6,9 +6,11 @@ import business.interfaces.Movable;
 import business.managers.CollisionChecker;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public abstract class Enemy extends Entity implements Movable, Cloneable {
 
+	protected BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
 	protected CollisionChecker collisionChecker;
 
 	public Enemy(){
