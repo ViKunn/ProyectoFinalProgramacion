@@ -3,6 +3,7 @@ package business;
 import business.entities.Direction;
 import business.entities.Position;
 import business.entities.enemies.BlueCow;
+import business.entities.enemies.CarlosA;
 import business.entities.enemies.Enemy;
 import business.entities.Player;
 import business.level.Level;
@@ -160,7 +161,10 @@ public class GameLogic  implements Runnable {
 					if(enemy instanceof BlueCow){
 						((BlueCow) enemy).follow();
 
-					} else{
+					}else if (enemy instanceof CarlosA){
+						((CarlosA) enemy).follow();
+					}
+					else{
 						enemy.move(enemy.getDirection());
 					}
 				}
