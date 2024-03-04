@@ -3,6 +3,7 @@ package business;
 import business.entities.Direction;
 import business.entities.Position;
 import business.entities.enemies.BlueCow;
+import business.entities.enemies.CarlosA;
 import business.entities.enemies.Enemy;
 import business.entities.Player;
 import business.level.Level;
@@ -23,9 +24,13 @@ public class GameLogic  implements Runnable {
 
 	public GameLogic(){
 
-		player = new Player();
+		player = new Player(2);
 		levelManager = new LevelManager();
 
+	}
+
+	public void startThread() {
+		starThread();
 	}
 
 	public void startLevel(int levelNum){
@@ -68,7 +73,6 @@ public class GameLogic  implements Runnable {
 		if (level.fruitsEqualZero()){
 			System.out.println("Felicidades!! Pasaste de nivel!!");
 			running = false;
-
 		}
 
 	}
@@ -157,7 +161,10 @@ public class GameLogic  implements Runnable {
 					if(enemy instanceof BlueCow){
 						((BlueCow) enemy).follow();
 
-					} else{
+					}else if (enemy instanceof CarlosA){
+						((CarlosA) enemy).follow();
+					}
+					else{
 						enemy.move(enemy.getDirection());
 					}
 				}

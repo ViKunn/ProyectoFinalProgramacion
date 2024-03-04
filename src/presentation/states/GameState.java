@@ -1,81 +1,88 @@
 package presentation.states;
 
 import business.GameLogic;
+import presentation.KeyControl;
 
 import java.awt.*;
+import java.awt.event.KeyListener;
+import javax.swing.*;
 
-public class GameState extends State{
+public class GameState extends State {
+    private final Dimension dimension;
+    private final GameLogic gameLogic;
+    private KeyControl keyControl;
 
-	private final Dimension dimension;
-	private final GameLogic gameLogic;
+    private static final int FPS = 60;
+    private final int tileSize;
+    private Thread threadGameState;
 
-	private static final int FPS = 60;
-	private final int tileSize;
-	Thread threadGameState; 
+    public GameState(Dimension dimension, int tileSize) {
+        this.dimension = dimension;
+        this.tileSize = tileSize;
 
-	public GameState(Dimension dimension, int tileSize) {
+        gameLogic = new GameLogic();
+        setInitialValues();
+        threadGameState = new Thread(this);
 
-		this.dimension = dimension;
-		this.tileSize = tileSize;
+        // Instancia y asigna KeyControl como KeyListener
+        keyControl = new KeyControl(gameLogic);
+        //this.addKeyListener(keyControl);
+        //setFocusable(true);
+        //requestFocusInWindow();
+        //keyControl.startThread();
 
-		gameLogic = new GameLogic();
-		setInitialValues();
-		threadGameState = new Thread(this);
-
-		// TODO
-		gameLogic.startLevel(1);
-		//gameLogic.pauseGame();
-
-	}
-
-	private void setInitialValues(){
-
-		setPreferredSize(dimension);
-		setBounds(tileSize * 5, 7, tileSize * 18, tileSize * 18);
-
-	}
+        System.out.println("" + gameLogic.isRunningAndAlive());
 
 
-	@Override
-	public void start() {
-		threadGameState.start();
-		gameLogic.starThread();
-	}
+    }
 
-	@Override
-	public void run(){
+    private void setInitialValues() {
+        setPreferredSize(dimension);
+        setBounds(tileSize * 5, 7, tileSize * 18, tileSize * 18);
+    }
 
-		double drawInterval = (double) 1000000000 /FPS;
-		double delta = 0;
-		long lastTime = System.nanoTime();
-		long currentTime;
+    @Override
+    public void start() {
+        threadGameState.start();
+        gameLogic.startThread();
+        gameLogic.startLevel(3);
 
-		// TODO considerar variable
-		while (gameLogic.isRunningAndAlive()) {
-			currentTime = System.nanoTime();
-			delta += (currentTime - lastTime)/drawInterval;
-			lastTime = currentTime;
+    }
 
-			if (delta >= 1){
-				update();
-				repaint();
-				delta--;
-			}
-		}
+    @Override
+    public void run() {
+        double drawInterval = (double) 1000000000 / FPS;
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currentTime;
+        this.addKeyListener(keyControl);
+        setFocusable(true);
+        requestFocusInWindow();
 
-	}
+        // TODO considerar variable
+        while (gameLogic.isRunningAndAlive()) {
+            currentTime = System.nanoTime();
+            delta += (currentTime - lastTime) / drawInterval;
+            lastTime = currentTime;
+            keyControl.delayForKeyboardInput(200);
 
-	public void update(){
-		gameLogic.update();
-	}
 
-	public void paintComponent(Graphics g){
+            if (delta >= 1) {
+                update();
+                repaint();
+                delta--;
+            }
+        }
+    }
 
-		super.paintComponent(g);
-		Graphics2D g2 = (Graphics2D) g;
-		gameLogic.draw(g2, tileSize);
-		g2.dispose();
+    public void update() {
+        gameLogic.update();
+    }
 
-	}
-
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        gameLogic.draw(g2, tileSize);
+        g2.dispose();
+    }
 }

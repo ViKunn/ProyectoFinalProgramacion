@@ -14,6 +14,7 @@ public class LevelManager {
 
 		addLevel1();
 		addLevel2();
+		addLevelPolitectico();
 
 	}
 
@@ -39,6 +40,18 @@ public class LevelManager {
 
 		Level level = new Level(mapPath, playersPosition, enemiesPath, fruits01, fruits02);
 		levels.put(2, level);
+
+	}
+	public void addLevelPolitectico() {
+
+		String mapPath         = "res/levels/levelPolitectico/map.txt";
+		String playersPosition = "res/levels/levelPolitectico/players.txt";
+		String enemiesPath     = "res/levels/levelPolitectico/enemies.txt";
+		String fruits01        = "res/levels/levelPolitectico/fruits01.txt" ;
+		String fruits02        = "res/levels/levelPolitectico/fruits02.txt";
+
+		Level level = new Level(mapPath, playersPosition, enemiesPath, fruits01, fruits02);
+		levels.put(3, level);
 
 	}
 

@@ -9,6 +9,7 @@ public abstract class Entity {
 	protected Position position;
 	protected Direction direction;
 	protected static int advance = 1;
+	protected BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
 
 	public Position getPosition(){
 		return position;

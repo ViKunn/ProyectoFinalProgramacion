@@ -2,6 +2,7 @@ package business.level;
 
 import business.entities.Position;
 import business.entities.enemies.BlueCow;
+import business.entities.enemies.CarlosA;
 import business.entities.enemies.Enemy;
 import business.entities.fruits.Fruit;
 import business.level.map.Map;
@@ -124,6 +125,8 @@ public class Level {
 		for (Enemy enemy : enemies) {
 			if (enemy instanceof BlueCow){
 				((BlueCow) enemy).passPositionToFollow(position);
+			} else if (enemy instanceof CarlosA){
+				((CarlosA) enemy).passPositionToFollow(position);
 			}
 		}
 

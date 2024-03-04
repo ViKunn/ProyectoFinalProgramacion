@@ -10,14 +10,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class BlueCow extends Enemy implements Movable{
+public class CarlosA extends Enemy implements Movable{
 
-   Position positionToFollow;
+    Position positionToFollow;
 
-   public BlueCow(){
-       positionToFollow = new Position();
-       getBlueCowImage();
-   }
+    public CarlosA(){
+        positionToFollow = new Position();
+        getBlueCowImage();
+    }
 
     public void follow() {
 
@@ -117,14 +117,14 @@ public class BlueCow extends Enemy implements Movable{
 
     public void getBlueCowImage() {
         try {
-            up1 = ImageIO.read(new File("res/images/enemies/blueCow/blueCow_up_1.png"));
-            up2 = ImageIO.read(new File("res/images/enemies/blueCow/blueCow_up_1.png"));
-            down1 = ImageIO.read(new File("res/images/enemies/blueCow/blueCow_down_1.png"));
-            down2 = ImageIO.read(new File("res/images/enemies/blueCow/blueCow_down_1.png"));
-            right1 = ImageIO.read(new File("res/images/enemies/blueCow/blueCow_right_1.png"));
-            right2 = ImageIO.read(new File("res/images/enemies/blueCow/blueCow_right_1.png"));
-            left1 = ImageIO.read(new File("res/images/enemies/blueCow/blueCow_left_1.png"));
-            left2 = ImageIO.read(new File("res/images/enemies/blueCow/blueCow_left_1.png"));
+            up1 = ImageIO.read(new File("res/images/enemies/Carlos/Carlos.png"));
+            up2 = ImageIO.read(new File("res/images/enemies/Carlos/Carlos.png"));
+            down1 = ImageIO.read(new File("res/images/enemies/Carlos/Carlos.png"));
+            down2 = ImageIO.read(new File("res/images/enemies/Carlos/Carlos.png"));
+            right1 = ImageIO.read(new File("res/images/enemies/Carlos/Carlos.png"));
+            right2 = ImageIO.read(new File("res/images/enemies/Carlos/Carlos.png"));
+            left1 = ImageIO.read(new File("res/images/enemies/Carlos/Carlos.png"));
+            left2 = ImageIO.read(new File("res/images/enemies/Carlos/Carlos.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
