@@ -38,7 +38,7 @@ public class GameState extends State{
 
 	@Override
 	public void start() {
-		run();
+		threadGameState.start();
 	}
 
 	@Override

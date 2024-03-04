@@ -31,7 +31,8 @@ public class BlueCow extends Enemy implements Movable{
 
         if (valorAbsolutoDistanceX > valorAbsolutoDistanceY) {
             if (distanceX > 0) {            // El movimiento del BlueCow (izquierda o derecha) depende del signo de la distancia
-                move(Direction.RIGHT);
+                this.direction = Direction.RIGHT;
+                move(this.direction);
             } else {
                 this.direction = Direction.LEFT;
                 move(Direction.LEFT);

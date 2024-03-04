@@ -48,8 +48,5 @@ public abstract class Enemy extends Entity implements Movable, Cloneable {
 		return super.clone();
 	}
 
-	public void draw(Graphics2D g2, int tileSize) {
-		// TODO
-	}
 
 }
