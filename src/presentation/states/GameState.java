@@ -55,23 +55,22 @@ public class GameState extends State {
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
+        this.addKeyListener(keyControl);
+        setFocusable(true);
+        requestFocusInWindow();
 
         // TODO considerar variable
         while (gameLogic.isRunningAndAlive()) {
             currentTime = System.nanoTime();
             delta += (currentTime - lastTime) / drawInterval;
             lastTime = currentTime;
+            keyControl.delayForKeyboardInput(200);
+
 
             if (delta >= 1) {
                 update();
                 repaint();
-                this.addKeyListener(keyControl);
-                setFocusable(true);
-                requestFocusInWindow();
-                keyControl.keyTyped(evento); // o keyControl.keyPressed(evento);
-                keyControl.delayForKeyboardInput(200); // 200 milisegundos de retraso
                 delta--;
-
             }
         }
     }
