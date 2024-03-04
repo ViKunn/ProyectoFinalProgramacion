@@ -35,7 +35,6 @@ public class BadIceCream extends JFrame {
 		sleep(2000);
 		addMenu();
 
-		setVisible(true);
 	}
 
 	public void setInitialValues(){
@@ -66,4 +65,7 @@ public class BadIceCream extends JFrame {
 		}
 	}
 
+	public void start() {
+		setVisible(true);
+	}
 }

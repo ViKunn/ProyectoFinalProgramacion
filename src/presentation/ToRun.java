@@ -5,6 +5,5 @@ public class ToRun {
 
 		BadIceCream badIceCream = new BadIceCream();
 		badIceCream.start();
-
 	}
 }
