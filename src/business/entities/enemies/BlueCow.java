@@ -117,14 +117,14 @@ public class BlueCow extends Enemy implements Movable{
 
     public void getBlueCowImage() {
         try {
-            up1 = ImageIO.read(new File("res/images/blueCow/blueCow_up_1.png"));
-            up2 = ImageIO.read(new File("res/images/blueCow/blueCow_up_1.png"));
-            down1 = ImageIO.read(new File("res/images/blueCow/blueCow_down_1.png"));
-            down2 = ImageIO.read(new File("res/images/blueCow/blueCow_down_1.png"));
-            right1 = ImageIO.read(new File("res/images/blueCow/blueCow_right_1.png"));
-            right2 = ImageIO.read(new File("res/images/blueCow/blueCow_right_1.png"));
-            left1 = ImageIO.read(new File("res/images/blueCow/blueCow_left_1.png"));
-            left2 = ImageIO.read(new File("res/images/blueCow/blueCow_left_1.png"));
+            up1 = ImageIO.read(new File("res/images/enemies/blueCow/blueCow_up_1.png"));
+            up2 = ImageIO.read(new File("res/images/enemies/blueCow/blueCow_up_1.png"));
+            down1 = ImageIO.read(new File("res/images/enemies/blueCow/blueCow_down_1.png"));
+            down2 = ImageIO.read(new File("res/images/enemies/blueCow/blueCow_down_1.png"));
+            right1 = ImageIO.read(new File("res/images/enemies/blueCow/blueCow_right_1.png"));
+            right2 = ImageIO.read(new File("res/images/enemies/blueCow/blueCow_right_1.png"));
+            left1 = ImageIO.read(new File("res/images/enemies/blueCow/blueCow_left_1.png"));
+            left2 = ImageIO.read(new File("res/images/enemies/blueCow/blueCow_left_1.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

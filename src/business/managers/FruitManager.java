@@ -18,6 +18,7 @@ public class FruitManager {
 
 		fruits.put(1, new Fruit("Bananas", loadImage("res/images/fruits/banana.png"), new Score(30)));  // bananas
 		fruits.put(2, new Fruit("Uva", loadImage("res/images/fruits/grape.png"), new Score(40)));  // uvas
+		fruits.put(3, new Fruit("Exam", loadImage("res/images/fruits/Exams/Exam.png"), new Score(20)));  // uvas
 
 	}
 
