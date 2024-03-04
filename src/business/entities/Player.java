@@ -22,6 +22,7 @@ public class Player extends Entity implements Movable, PowerUps {
 		this.score = new Score();
 		this.alive = true;
 		getPlayerImage();
+		this.direction = Direction.DOWN;
 	}
 
 	public Player(Position position){
@@ -30,6 +31,7 @@ public class Player extends Entity implements Movable, PowerUps {
 		this.score = new Score();
 		this.alive = true;
 		getPlayerImage();
+		this.direction = Direction.DOWN;
 	}
 
 	public void changeDirection(Direction directionExpect){
