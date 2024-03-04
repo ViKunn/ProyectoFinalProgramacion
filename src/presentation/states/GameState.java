@@ -39,6 +39,7 @@ public class GameState extends State{
 	@Override
 	public void start() {
 		threadGameState.start();
+		gameLogic.starThread();
 	}
 
 	@Override
