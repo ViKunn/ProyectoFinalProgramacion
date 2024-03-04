@@ -23,8 +23,7 @@ public class GameState extends State {
         gameLogic = new GameLogic();
         setInitialValues();
         threadGameState = new Thread(this);
-        // Inicia el juego
-        gameLogic.startLevel(1);
+
         // Instancia y asigna KeyControl como KeyListener
         keyControl = new KeyControl(gameLogic);
         //this.addKeyListener(keyControl);
@@ -47,6 +46,8 @@ public class GameState extends State {
     @Override
     public void start() {
         threadGameState.start();
+        gameLogic.startLevel(1);
+        gameLogic.startThread();
     }
 
     @Override

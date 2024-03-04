@@ -25,8 +25,11 @@ public class GameLogic  implements Runnable {
 
 		player = new Player();
 		levelManager = new LevelManager();
-		starThread();
 
+	}
+
+	public void startThread() {
+		starThread();
 	}
 
 	public void startLevel(int levelNum){
