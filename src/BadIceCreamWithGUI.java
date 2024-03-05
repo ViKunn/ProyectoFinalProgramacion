@@ -1,6 +1,6 @@
-package presentation;
+import presentation.BadIceCream;
 
-public class ToRun {
+public class BadIceCreamWithGUI {
 
 	public static void main(String[] args) {
 
@@ -10,10 +10,3 @@ public class ToRun {
 	}
 
 }
-
-
-
-
-
-
-
