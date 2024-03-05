@@ -212,4 +212,7 @@ public class GameLogic  implements Runnable {
 		running = false;
 	}
 
+	public int getScorePlayer() {
+		return player.getScore().getTotalScore();
+	}
 }
