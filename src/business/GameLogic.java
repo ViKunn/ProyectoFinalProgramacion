@@ -21,6 +21,7 @@ public class GameLogic  implements Runnable {
 	private boolean running;
 	private CollisionChecker collisionChecker;
 	private Thread levelThread;
+	private int levelNum;
 
 	public GameLogic(){
 
@@ -34,16 +35,13 @@ public class GameLogic  implements Runnable {
 	}
 
 	public void startLevel(int levelNum){
-
-		level = levelManager.getLevel(levelNum);
+		this.levelNum = levelNum;
+		level = levelManager.getLevel(this.levelNum);
 		collisionChecker = new CollisionChecker(level.getMap());
 
 		player.setPosition(level.getPlayerInitialPosition(1));
 		level.sendPositionPlayer(player.getPosition());
-
 		running = true;
-
-
 	}
 
 	public void movePlayer(Direction direction){
@@ -73,9 +71,19 @@ public class GameLogic  implements Runnable {
 		if (level.fruitsEqualZero()){
 			System.out.println("Felicidades!! Pasaste de nivel!!");
 			running = false;
+			this.levelNum++;
+			if (levelNum <= levelManager.getNumLevel()) {
+				nextLevel(levelNum);
+			}
 		}
 
 	}
+
+	private void nextLevel(int levelNum) {
+		startLevel(levelNum);
+		running = true;
+	}
+
 	public void playerActivatePowerUp(){
 		player.powerUpIce(level.getMap());
 		System.out.println("Se ejecuto los poderes");
@@ -170,7 +178,6 @@ public class GameLogic  implements Runnable {
 				}
 
 				if(level.isCollidingWithAnEnemy(player.getPosition())){
-
 					player.die();
 					running = false;
 
