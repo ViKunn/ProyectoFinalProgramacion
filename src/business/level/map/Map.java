@@ -47,11 +47,9 @@ public class Map {
 		Position frontPosition = position.getFrontPosition(direction);
 		return getBlock(frontPosition) instanceof Ice;
 	}
-
 	public boolean isBlockSolid(Position frontPosition) {
 		return blocks[frontPosition.getY()][frontPosition.getX()].isSolid();
 	}
-
 	private Block[][] loadBlocks(Vector<Vector<Integer>> numbers) {
 
 		Block[][] loadedBlocks = new Block[mapSizeY][mapSizeX];
@@ -105,18 +103,7 @@ public class Map {
 		while (col < mapSizeX && row < mapSizeY) {
 
 			Block currentBlock = blocks[row][col];
-
-			// Comprueba si el bloque actual es un bloque de hielo y si está en la posición especificada
-			if (currentBlock instanceof Ice) {
-				// Establece la transparencia del bloque de hielo
-				float alpha = 0.5f; // Puedes ajustar este valor (0.0f a 1.0f)
-				g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
-			}
-
 			g2.drawImage(currentBlock.getImage(), x, y, tileSize, tileSize, null);
-
-			// Restaura la transparencia a su estado predeterminado después de dibujar el bloque
-			g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
 
 			col++;
 			x += tileSize;
