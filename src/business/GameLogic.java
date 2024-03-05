@@ -1,6 +1,7 @@
 package business;
 
 import business.entities.Direction;
+import business.entities.Entity;
 import business.entities.Position;
 import business.entities.enemies.BlueCow;
 import business.entities.enemies.Enemy;
@@ -214,5 +215,17 @@ public class GameLogic  implements Runnable {
 
 	public int getScorePlayer() {
 		return player.getScore().getTotalScore();
+	}
+
+	public Position getPositionPlayer() {
+		return player.getPosition();
+	}
+
+	public Entity getPlayer() {
+		return player;
+	}
+
+	public boolean isIceHere(Position position) {
+		return level.isCollidingWithAFruit(position);
 	}
 }
