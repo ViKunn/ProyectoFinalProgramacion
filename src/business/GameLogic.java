@@ -70,10 +70,11 @@ public class GameLogic  implements Runnable {
 
 		if (level.fruitsEqualZero()){
 			System.out.println("Felicidades!! Pasaste de nivel!!");
-			running = false;
 			this.levelNum++;
 			if (levelNum <= levelManager.getNumLevel()) {
 				nextLevel(levelNum);
+			}else {
+				running = false;
 			}
 		}
 
@@ -82,6 +83,7 @@ public class GameLogic  implements Runnable {
 	private void nextLevel(int levelNum) {
 		startLevel(levelNum);
 		running = true;
+
 	}
 
 	public void playerActivatePowerUp(){
@@ -183,7 +185,6 @@ public class GameLogic  implements Runnable {
 
 					System.out.println("TE MORISTE!!");
 					System.out.println("wuruwrur, me muero por thread");
-
 					break;
 				}
 
