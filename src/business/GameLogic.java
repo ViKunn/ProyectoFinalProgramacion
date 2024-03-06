@@ -10,6 +10,8 @@ import business.level.Level;
 import business.level.map.Map;
 import business.managers.CollisionChecker;
 import business.managers.LevelManager;
+import presentation.FinishGameWindow;
+import presentation.PlayerDieWindow;
 
 import java.awt.*;
 
@@ -75,6 +77,8 @@ public class GameLogic  implements Runnable {
 				nextLevel(levelNum);
 			}else {
 				running = false;
+				FinishGameWindow finishGameWindow = new FinishGameWindow();
+				finishGameWindow.setVisible(true);
 			}
 		}
 
@@ -182,6 +186,8 @@ public class GameLogic  implements Runnable {
 				if(level.isCollidingWithAnEnemy(player.getPosition())){
 					player.die();
 					running = false;
+					PlayerDieWindow playerDieWindow = new PlayerDieWindow();
+					playerDieWindow.setVisible(true);
 
 					System.out.println("TE MORISTE!!");
 					System.out.println("wuruwrur, me muero por thread");
