@@ -1,17 +1,18 @@
 @startuml
 /'Esto de aquí ignoren'/
 skinparam Linetype ortho
+
 skinparam class {
-    BackgroundColor LightGray
+    BackgroundColor #E3E3E3
     ArrowColor Black
     BorderColor Black
 }
 
-package business #D4D4D4 {
+package business #57B5A4{
 
-    package entities #57B5A4{
+    package entities #74CCAC{
 
-        package enemies #6BD1CE{
+        package enemies #87EDC8{
 
             class BlueCow {
                 -potionToFollow: Position
@@ -64,7 +65,7 @@ package business #D4D4D4 {
             }
         }
 
-        package fruits #6BD1CE{
+        package fruits #87EDC8{
            class Fruit {
                -name: String
                -fruitScore: Score
@@ -131,7 +132,7 @@ package business #D4D4D4 {
         }
     }
 
-    package interfaces #8DE0A9{
+    package interfaces #74CCAC{
         interface Movable{
             +move(direction: Direction): void
         }
@@ -142,8 +143,8 @@ package business #D4D4D4 {
         }
     }
 
-    package level #57B5A4{
-        package map #6BD1CE{
+    package level #74CCAC {
+        package map #87EDC8{
             class Map {
                 -mapSizeX: int
                 -mapSizeY: int
@@ -200,7 +201,7 @@ package business #D4D4D4 {
         }
     }
 
-    package managers #57B5A4{
+    package managers #74CCAC{
 
         class BlockManager{
             - blocks: HashMap<Integer, Block>
@@ -236,7 +237,7 @@ package business #D4D4D4 {
         }
     }
 
-    class GameLogic #6BD1CE{
+    class GameLogic #CCF0EC{
         - player: Player
         - level: Level
         - levelManager: LevelManager
@@ -271,7 +272,7 @@ package business #D4D4D4 {
     }
 }
 
-package data #DF7DF5{
+package data #B08AA1{
     class DataManager {
         -{static}readLines: Vector<String>
         +{static}loadMap(String path): Map
@@ -286,8 +287,8 @@ package data #DF7DF5{
     }
 }
 
-package presentation #77C56E{
-    package states #A2FF8E{
+package presentation #7AC995{
+    package states #9ADB9D{
         class GameState{
             - dimension: Dimension
             - gameLogic: GameLogic
@@ -432,6 +433,9 @@ Entity --> Position
 Entity --> Direction
 Entity --> CollisionChecker
 
+MenuState -u-> Panel
+GameState --> KeyControl
+
 Entity <|-- Player
 Entity <|-- Enemy
 Entity <|-- Fruit
@@ -441,9 +445,10 @@ Enemy <|-- BlueCow
 Enemy <|-l- PatricioZ
 Enemy <|- CarlosA
 Block <|-- Ice
-HelpState --|> State
-GameState --|> State
-ScoreState --|> State
+
+State <|-u- ScoreState
+State <|-- HelpState
+State <|-- GameState
 
 Level --- DataManager
 Player ...|> Movable
