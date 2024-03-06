@@ -1,6 +1,4 @@
 @startuml
-
-
 /'Esto de aquí ignoren'/
 skinparam Linetype ortho
 skinparam class {
@@ -9,116 +7,131 @@ ArrowColor Black
 BorderColor Black
 }
 
-package business {
-    class GameLogic {
-        -player: Player
-        -level: Level
-        -isRunning: boolean
-        -numLevel: int
-        -collisionChecker: CollisionChecker
-        +movePlayer(direction: Direction): void
-        +playerPowerUps(): void
-        -isCollidingWithAnEnemy(): boolean
-        -isCollidingWithABlock(direction: Direction): boolean
-        -isCollidingWithAFruit(): boolean
-        +isRunning(): boolean
-        +run(direction: Direction): void
-    }
+package business #F0E3BB{
 
-    class Level {
-        -map: Map
-        -enemies: ArrayList<Enemy>
-        -fruits: ArrayList<ArrayList<Fruit>>
-        -runningFruitLayer: int
-        -troll1: Enemy
-        +getPlayerInitialPosition(): Position
-        +getMap(): Map
-        -getFruit(position: Position, int runningFruitLayer): Fruit
-        -getFruitLayer(int runningFruitLayer): ArrayList<Fruit>
-        +decreaseFruitCounter(position: Position): void
-        -fruitLayerIsEmpty(int runningFruitLayer): boolean
-        +fruitsEqualZero(): boolean
-        +isCollidingWithAnEnemy(position: Position): boolean
-        +isCollidingWithAFruit(playerPosition: Position): boolean
-    }
+    package entities  #8DE0A9{
+        package enemies #D9C4F0{
+            class BlueCow {
+                -potionToFollow: Position
+                -follow(position: Position): void
+                +move(direction: Direction): void
+                +passPositionToFollow(position: Position): void
+                +draw(g2: Graphics2D, int tileSize): void
+                +getBlueCowImage(): void
+            }
 
-    class Map {
-    /'no se pone final'/
-        -mapSizeX: int
-        -mapSizeY: int
-        -blocks: Block[][]
-        -blockManager: BlockManager
-        +getBlock(position: Position): Block
-        +frontBlockIsIce(direction: Direction, position: Position): boolean
-        +setIce( (position: Position): void
-        +setBlock(position: Position, int block): void
-        -loadBlock(numbers: Vector<Vector<Integer>): Block[][]
-        +getMapSizeX(): int
-        +getMapSizeY(): int
-        +isBlockSolid(frontPosition: Position): boolean
-    }
+            abstract class Enemy{
+                #up1: BufferedImage
+                #up2: BufferedImage
+                #down1: BufferedImage
+                #down2: BufferedImage
+                #left1: BufferedImage
+                #left2: BufferedImage
+                #right1: BufferedImage
+                #right2: BufferedImage
+                #collisionChecker: CollisionChecker
+                +setPosition(positionExpect: Position): void
+                +setDirection(direction: Direction): void
+                +setCollisionChecker(collisionChecker: CollisionChecker): void
+                +changeToOpositeDirection(): void
+            }
 
-    class Block {
-        -name: String
-        -SOLID: boolean
-        +isSolid(): boolean
-    }
+            class Troll{
+                +setCollisionChecker(collisionChecker: CollisionChecker): void
+                +setPosition(positionExpect: Position): void
+                +getTrollImage(): void
+                +move(direction: Direction): void
+                +draw(g2: Graphics2D, int tileSize): void
+            }
 
-    class Ice {
-        -breakable: boolean
-    }
+            class CarlosA{
+                -potionToFollow: Position
+                +follow(): void
+                +move(direction: Direction): void
+                +passPositionToFollow(position: Position): void
+                +draw(g2: Graphics2D, int tileSize): void
+                +getCarlosAImage(): void
+            }
 
-    class Fruit {
-        -name: String
-        +setPosition(position: Position): void
-        +getName(): String
-    }
-
-    class Position {
-        -x: int
-        -y: int
-        +getX(): int
-        +getY(): int
-        +getFrontPosition(direction: Direction): Position
-        +setX(int x): void
-        +setY(int y): void
-        +equals(p2: Position): boolean
-    }
-
-    enum Direction {
-        UP
-        DOWN
-        RIGHT
-        LEFT
-        SPACE
-    }
-
-    package managers{
-        class BlockManager{
-            -blocks: HashMap<Integer, Block>
-            +getBlock(int blockNumber): Block
+            class PatricioZ{
+                +setCollisionChecker(collisionChecker: CollisionChecker): void
+                +setPosition(positionExpect: Position): void
+                +getPatricioZImage(): void
+                +move(direction: Direction): void
+                +draw(g2: Graphics2D, int tileSize): void
+            }
         }
 
-        class CollisionChecker{
-            -map: Map
-            +trappedBetweenBlocks(position: Position): boolean
-            +frontBlockIsSolid(direction: Direction, position: Position): boolean
+        package fruits  #EFA5D2{
+           class Fruit {
+               -name: String
+               -fruitScore: Score
+               -bufferedImageFruit: BufferedImage
+               +setPosition(position: Position): void
+               +getName(): String
+               +getScore(): int
+               +draw(g2: Graphics2D, int tileSize): void
+               +getBufferedImage(): BufferedImage
+           }
         }
 
-        class FruitManager{
-            -fruits: HashMap<Integer,Fruit>
-            +getFruit(int fruitNumber): Fruit
+        abstract class Entity {
+            #position: Position
+            #direction: Direction
+            #{static}advance: int
+            #up1: BufferedImage
+            #up2: BufferedImage
+            #down1: BufferedImage
+            #down2: BufferedImage
+            #left1: BufferedImage
+            #left2: BufferedImage
+            #right1: BufferedImage
+            #right2: BufferedImage
+            +getPosition(): Position
+            +getDirection(): Direction
+            +{abstract}draw(g2: Graphics2D, int tileSize): void
         }
 
-        class LevelManager{
-            -{static}levels: HashMap<Integer, Level>
-            +{static}getLevel(int level): Level
+        class Player {
+            -alive: boolean
+            -score: Score
+            +changeDirection(directionExpect: Direction): void
+            +move(direction: Direction): void
+            +die(): void
+            +setPosition(position: Position): void
+            +powerUpIce(map: Map): void
+            +breakIce(map: Map): void
+            +putIce(map: Map): void
+            +increaseScore(int fruitScore): void
+            +isAlive(): boolean
+            +getScore(): Score
+            +restartScore(): void
+            +getPlayerImage(int i): void
+            +draw(g2: Graphics2D, int tileSize): void
+        }
+
+        class Position {
+            -x: int
+            -y: int
+            +getX(): int
+            +getY(): int
+            +getFrontPosition(direction: Direction): Position
+            +setX(int x): void
+            +setY(int y): void
+            +equals(p2: Position): boolean
+        }
+
+        enum Direction {
+            UP
+            DOWN
+            RIGHT
+            LEFT
         }
     }
 
-    package interfaces{
+    package interfaces #8DE0A9{
         interface Movable{
-            +{abstract} move(direction: Direction): void
+            +move(direction: Direction): void
         }
         interface PowerUps{
             +breakIce(map: Map): void
@@ -127,98 +140,317 @@ package business {
         }
     }
 
-    package characters {
+    package level  #BBBBBB{
+        package map #D1F0A4{
+            class Map {
+                -mapSizeX: int
+                -mapSizeY: int
+                -blocks: Block[][]
+                -blockManager: BlockManager
+                +getBlock(position: Position): Block
+                +frontBlockIsIce(direction: Direction, position: Position): boolean
+                +setIce( (position: Position): void
+                +setBlock(position: Position, int block): void
+                -loadBlocks(numbers: Vector<Vector<Integer>): Block[][]
+                +getMapSizeX(): int
+                +getMapSizeY(): int
+                +isBlockSolid(frontPosition: Position): boolean
+                +draw(g2: Graphics2D, int tileSize): void
+            }
 
-        abstract class Entity {
-            #position: Position
-            #direction: Direction
-            #{static}advance: int
-            +getPosition(): Position
-            +getDirection(): Direction
+            class Block {
+                -name: String
+                -solid: boolean
+                -image: BufferedImage
+                +isSolid(): boolean
+                +getImage(): BufferedImage
+            }
+
+            class Ice {
+
+            }
         }
 
-        class Player {
-            -POSIBLE_SPEED: int = 1
-            -alive: boolean
-            +changeDirection(directionExpect: Direction): void
-            +move(direction: Direction): void
-            +die(): void
-            +powerUpIce(map: Map): void
-            +breakIce(map: Map): void
-            +putIce(map: Map): void
+        class Level {
+            - map: Map
+            - enemies: ArrayList<Enemy>
+            - fruits: ArrayList<ArrayList<Fruit>>
+            - playersPositions: ArrayList<Position>
+            - runningFruitLayer: int
+            + getMap(): Map
+            + getPlayerInitialPosition(player: int): Position
+            + decreaseFruitCounter(position: Position): void
+            + fruitsEqualZero(): boolean
+            + isCollidingWithAFruit(playerPosition: Position): boolean
+            + isCollidingWithAnEnemy(position: Position): boolean
+            + isCollidingBetweenEnemies(): void
+            + sendPositionPlayer(position: Position): void
+            + getEnemies(): ArrayList<Enemy>
+            + getFruitScore(position: Position): int
+            + draw(g2: Graphics2D, tileSize: int): void
+            + update(): void
+            - setEnemiesCollisionChecker(collisionChecker: CollisionChecker): void
+            - getFruit(position: Position, runningFruitLayer: int): Fruit
+            - getFruitLayer(runningFruitLayer: int): ArrayList<Fruit>
+            - fruitLayerIsEmpty(runningFruitLayer: int): boolean
+            - drawEnemies(g2: Graphics2D, tileSize: int): void
+            - drawFruits(g2: Graphics2D, tileSize: int): void
+        }
+    }
+
+    package managers #F0E3BB{
+        class BlockManager{
+            - blocks: HashMap<Integer, Block>
+            + loadImage(imagePath: String): BufferedImage
+            + getBlock(int blockNumber): Block
+            + getIce(): Block
         }
 
-        abstract class Enemy{
-            #collisionChecker: CollisionChecker
-            +setPosition(positionExpect: Position): void
-            +setDirection(direction: Direction): void
-            +setCollisionChecker(collisionChecker: CollisionChecker): void
+        class CollisionChecker{
+            -map: Map
+            + CollisionChecker(map: Map)
+            + trappedBetweenBlocks(position: Position): boolean
+            + frontBlockIsSolid(direction: Direction, position: Position): boolean
         }
 
-        class Troll{
-            +run(): void
-            +move(direction: Direction): void
+        class FruitManager{
+            -fruits: HashMap<Integer,Fruit
+            +loadImage(String imagePath): BufferedImage
+            +getFruit(int fruitNumber): Fruit
         }
 
-        class BlueCow {
-            -potionToFollow: Position
-            -run(): void /'es runnable'/
-            -follow(position: Position): void
-            +move(direction: Direction): void
-            +passPositionToFollow(position: Position): void
+        class LevelManager{
+            -levels: HashMap<Integer, Level>
+            +addLevel1(): void
+            +addLevel2(): void
+            +addLevelPolitecnico(): void
+            +getLevel(int Level): Level
         }
+
+        class EnemyManager{
+            -enemies: HashMap<Integer, Enemy>
+            +getEnemy(int enemyNumber): Enemy
+        }
+    }
+
+    class GameLogic {
+        - player: Player
+        - level: Level
+        - levelManager: LevelManager
+        - running: boolean
+        - collisionChecker: CollisionChecker
+        - levelThread: Thread
+        - levelNum: int
+        + startThread()
+        + startLevel(int levelNum)
+        + movePlayer(direction: Direction)
+        -nextLevel(int levelNum): void
+        + playerActivatePowerUp(): void
+        - isCollidingPlayerWithAnEnemy(): boolean
+        - isCollidingWithABlock(direction: Direction): boolean
+        - isCollidingWithAFruit(): boolean
+        + isRunningAndAlive(): boolean
+        + getScorePlayerWhenFinish(): Score
+        + restartPlayerScore(): void
+        + run(): void
+        + restartGame(): void
+        + pauseGame(): void
+        + starThread(): void
+        + update(): void
+        + draw(Graphics2D, int): void
+    }
+
+    class Score{
+        - totalScore: int
+        +increaseScore(int fruitScore): void
+        +getTotalScore(): int
+        +setScore(int newScore): void
     }
 }
 
-package data{
+package data #E985FF{
     class DataManager {
+        -{static}readLines: Vector<String>
         +{static}loadMap(String path): Map
         +{static}loadFruitLayer(String path): ArrayList<Fruit>
-        +loadFruits(String[] fruitPaths): ArrayList<ArrayList<Fruit>
+        +{static}loadFruits(String[] fruitPaths): ArrayList<ArrayList<Fruit>
+        +{static}loadEnemies(String path)): ArrayList<Enemy>
+        +{static}loadPositions(String path): ArrayList<Position>
         -{static}readTxtFile(String path): void
-        -{static}strVectorToIntVector(Vector<String> readLines): Vector<Vector<Integer
+        -{static}strVectorToIntVector(): Vector<Vector<Integer
         +{static}writeFile(archivo: File, object: Object): void
         +{static}readFile(archivo: File): Object
     }
 }
 
-package presentation{
-    class Menu{
-        +{static}mainMenu(): void
-        +{static}characterMenu(): void
-        +{static}menuLevel: GameLogic
-        +pauseMenu(): void
-        +{static}playGame(int level): void
-        -{static}saveGame(): void
+package presentation #FFED8A{
+    package states #A2FF8E{
+        class GameState{
+            - dimension: Dimension
+            - gameLogic: GameLogic
+            - keyControl: KeyControl
+            - tileSize: int
+            - threadGameState: Thread
+            + start(): void
+            + run(): void
+            + update(): void
+            + paintComponent(g: Graphics): void
+        }
+
+        class HelpState{
+            - dimensionHelp: Dimension
+            - tileSize: int
+            - helpImages: String[]
+            - currentImageIndex: int
+            - backToMenuButton: String
+            - nextHelpButton: String
+            - prevHelpButton: String
+            - help: JPanel
+            - backToMenu: JButton
+            - nextHelp: JButton
+            - prevHelp: JButton
+            - menuState: MenuState
+            - backgrounButtonPanel: String
+            - menuVisibleOnReturn: boolean
+            + addButtons(): void
+            + createButton(String iconPath): JButton
+            + switchToMenuState(): void
+            + updateImage(String helpImage): void
+            + start(): void
+        }
+        class MenuState{
+            - dimension: Dimension
+            - tileSize: int
+            - backgroundImage: String
+            - playButtonImage: String
+            - scoreButtonImage: String
+            - helpButtonImage: String
+            - characterSelection: String
+            - backgroundButtonPanel1: String
+            - backgroundButtonPanel2: String
+            - strawberryIceCreamButton: String
+            - chocolateIceCreamButton: String
+            - vanillaIceCreamButton: String
+            - fernandoAvatarButton: String
+            - backMenuButton: String
+            - menu: JPanel
+            - characterPanel: JPanel
+            - buttonsPanel1: JPanel
+            - buttonsPanel2: JPanel
+            - playButton: JButton
+            - scoreButton: JButton
+            - helpButton: JButton
+            - strawberryIceCream: JButton
+            - chocolateIceCream: JButton
+            - vanillaIceCream: JButton
+            - fernandoAvatar: JButton
+            - backToMenuButton: JButton
+            - gameState: GameState
+            - helpState: HelpState
+            - scoreState: ScoreState
+            - helpStateVisible: boolean
+            - isTheHelpState: boolean
+            + setInitialValues(): void
+            + initializeStates(): void
+            + addButtons(): void
+            + setHelpStateVisible(boolean visible): void
+            + createCharacterMenuPanel(): JPanel
+            + createButton(String iconPath): JButton
+            + configuraCharacterButtons(): void
+            + configureBackToMenuButton(): void
+            + configurePlayButton(): void
+            + configureScoreButton(): void
+            + configureHelpButton(): void
+            + switchToHelpState(): void
+            + hideButtons(): void
+            + showButtons(): void
+        }
+        class ScoreState{
+            - dimension: Dimension
+            - tileSize: int
+            + setInitialValues(): void
+            + start(): void
+        }
+        abstract class State{
+            +setSize(dimension: Dimension): void
+            +{abstract}start(): void
+        }
+    }
+    class BadIceCream{
+        - tileSize: int
+        - maxScreenCol: int
+        - maxScreenRow: int
+        - screenWidth: int
+        - screenHeight: int
+        - backgroundImage: String
+        - dimension: Dimension
+        - layeredPanel: Panel
+        - menuState: MenuState
+        + setInitialValues(): void
+        + addBackground(): void
+        + addMenu(): void
+        + sleep(int milliseconds): void
+        + start(): void
+    }
+    class KeyControl{
+        -gameLogic: GameLogic
+        + keyTyped(e: KeyEvent): void
+        + keyPressed(e: KeyEvent): void
+        + keyReleased(e: KeyEvent): void
+        + delayForKeyboardInput(int delay): void
+    }
+    class Panel{
+        -image: Image
+        #paintComponent(g: Graphics): void
     }
 }
 
-Player ... Level
-Player ...> Map
-Enemy  .l.> Map
+BadIceCream --> MenuState
+
+MenuState --> GameState
+MenuState --> ScoreState
+MenuState --> HelpState
+
+GameState --> GameLogic
 
 GameLogic --> Level
-GameLogic -> Player
+GameLogic --> Player
 
-Level --> Map
-Level --> Enemy
-Level --> Fruit
 Player --> Score
+
+Level --> Enemy
+Level --> Map
+Level --> Fruit
+
+Map --> BlockManager
 Map --> Block
-Map --- DataManager
+
+Entity --> Position
+Entity --> Direction
+Entity --> CollisionChecker
 
 Entity <|-- Player
 Entity <|-- Enemy
+Entity <|-- Fruit
+
 Enemy <|-- Troll
 Enemy <|-- BlueCow
-Entity <|-- Fruit
 Block <|-- Ice
+HelpState --|> State
+GameState --|> State
+ScoreState --|> State
 
-Movable <|.. Enemy
-Movable <|.. Player
-PowerUps <|.. Player
-Movable <|.. Troll
-Movable <|..BlueCow
+Level --- DataManager
+Player ...|> Movable
+Player ...|> PowerUps
+Enemy ...|> Movable
 
+
+DataManager ... BlockManager
+DataManager ... EnemyManager
+DataManager ... FruitManager
+
+GameLogic ... CollisionChecker
+Level ... CollisionChecker
 
 @enduml
