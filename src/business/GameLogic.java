@@ -10,8 +10,8 @@ import business.level.Level;
 import business.level.map.Map;
 import business.managers.CollisionChecker;
 import business.managers.LevelManager;
-import presentation.FinishGameWindow;
-import presentation.PlayerDieWindow;
+import presentation.states.FinishGameWindow;
+import presentation.states.PlayerDieWindow;
 
 import java.awt.*;
 
