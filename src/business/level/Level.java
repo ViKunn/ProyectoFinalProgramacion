@@ -142,8 +142,8 @@ public class Level {
 		fruitLayer = getFruitLayer(runningFruitLayer);
 
 		for (Fruit fruit: fruitLayer) {
-			System.out.println(fruit.getScore());
 			if (fruit.getPosition().equals(position)) {
+				System.out.println(fruit.getScore());
 				return fruit.getScore();
 			}
 		}
