@@ -1,0 +1,175 @@
+import java.awt.*;
+import java.awt.event.*;
+
+import presentation.Panel;
+
+import javax.swing.*;
+
+public class HelpState extends State{
+
+    private Dimension dimensionHelp;
+    private final int tileSize;
+    private final String [] helpImages = {
+            "res/presentation/helpState/help1.jpg",
+            "res/presentation/helpState/help2.jpg",
+            "res/presentation/helpState/help3.jpg",
+            "res/presentation/helpState/help4.jpg",
+    };
+    private int currentImageIndex = 0;
+    private final String backToMenuButton = "res/presentation/helpState/backToMenuBotton.png";
+    private JPanel help;
+    private JButton backToMenu, nextHelp, prevHelp;
+    private MenuState menuState;
+
+    public HelpState(Dimension dimensionHelp, int tileSize, MenuState menuState) {
+
+        this.dimensionHelp = dimensionHelp;
+        this.tileSize = tileSize;
+        this.menuState = menuState;
+        this.help =  new JPanel();
+
+        setPreferredSize(dimensionHelp);
+        setLayout(new BorderLayout());
+        setInitialValues();
+        addButtons();
+
+
+    }
+
+    private void setInitialValues(){
+        //para centrar todo el panel
+        /*
+        help.setOpaque(false);
+        help.setLayout(new FlowLayout()); // Ajusta el diseño del panel de ayuda según tus necesidades
+        add(help, BorderLayout.CENTER);
+        */
+        //setPreferredSize(dimensionHelp);
+        help.setBounds(tileSize * 100, 7, tileSize * 30, tileSize * 20);
+
+    }
+
+    private void addButtons(){
+
+        JButton backToMenu = new JButton(new ImageIcon(backToMenuButton));
+
+        //backToMenu  = createButton("Back to Menu");
+        nextHelp = createButton("Next", 9, 6);
+        prevHelp  = createButton("Previous", 11, 6);
+
+        backToMenu.setOpaque(false);
+        backToMenu.setContentAreaFilled(false);
+        backToMenu.setBorderPainted(false);
+
+        // Crea una nueva instancia de GridBagConstraints para cada botón
+        GridBagConstraints gbcBackToMenu = new GridBagConstraints();
+        GridBagConstraints gbcNextHelp = new GridBagConstraints();
+        GridBagConstraints gbcPrevHelp = new GridBagConstraints();
+
+        // Establecer la alineación vertical
+        gbcBackToMenu.anchor = GridBagConstraints.WEST;
+        gbcNextHelp.anchor = GridBagConstraints.WEST;
+        gbcPrevHelp.anchor = GridBagConstraints.WEST;
+
+        // Establece las coordenadas X e Y para cada botón
+        gbcBackToMenu.gridx = 1;
+        gbcBackToMenu.gridy = 16;
+
+        gbcNextHelp.gridx = 3;
+        gbcNextHelp.gridy = 16;
+
+        gbcPrevHelp.gridx = 2;
+        gbcPrevHelp.gridy = 16;
+
+        /*
+        gbcBackToMenu.anchor = GridBagConstraints.WEST;
+        gbcNextHelp.anchor = GridBagConstraints.WEST;
+        gbcPrevHelp.anchor = GridBagConstraints.WEST;
+*/
+
+        //help.setLayout(new BoxLayout(help, BoxLayout.Y_AXIS));
+        //Agrega botones a HelpPanel
+        help.setLayout(new GridBagLayout());
+        help.add(backToMenu, gbcBackToMenu);
+        help.add(nextHelp, gbcNextHelp);
+        help.add(prevHelp, gbcPrevHelp);
+
+        // Agrega ActionListener a cada botón
+        backToMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switchToMenuState();
+            }
+        });
+
+        nextHelp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                currentImageIndex = (currentImageIndex + 1) % helpImages.length;
+                updateImage(helpImages[currentImageIndex]);
+            }
+        });
+
+        prevHelp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Agrega aquí la lógica para la acción del botón Previous
+            }
+        });
+    }
+
+    private void updateImage(String helpImage) {
+        help.removeAll();
+
+        // Crear una nueva etiqueta de imagen con la imagen proporcionada
+        ImageIcon imageIcon = new ImageIcon(helpImage);
+        JLabel imageLabel = new JLabel(imageIcon);
+
+        // Agregar la etiqueta de imagen al panel de imágenes
+        help.add(imageLabel);
+
+        // Volver a validar el panel para que se muestre la nueva imagen
+        help.revalidate();
+        help.repaint();
+    }
+
+    private JButton createButton(String iconPath, int x, int y){
+
+        JButton button = new JButton();
+
+        button.setOpaque(true);
+        button.setContentAreaFilled(true);
+        button.setBorderPainted(true);
+
+        /* no pude generalizar :(
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = x;
+        gbc.gridy = y;
+        gbc.insets = new Insets(5, 5, 5, 5); // Espaciado entre botones
+        gbc.anchor = GridBagConstraints.WEST; // Alineación
+
+        // Agregar el botón al panel help
+        help.setLayout(new GridBagLayout());
+        help.add(button, gbc);
+        */
+        return button;
+    }
+
+    public void switchToMenuState(){
+        this.setVisible(false);
+        menuState.setVisible(true);
+    }
+    @Override
+    public void start() {
+        help = new Panel(helpImages[currentImageIndex]);
+
+        // Agregar los botones al panel de ayuda
+        addButtons();
+
+        // Agregar el panel de ayuda al centro del BorderLayout del estado
+        add(help, BorderLayout.CENTER);
+
+        // Hacer visible el estado
+        setVisible(true);
+    }
+    //Si llega la última que regrese una por una reiterador
+}

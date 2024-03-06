@@ -7,8 +7,10 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class MenuState extends JLayeredPane {
+
 	private Dimension dimension;
 	private int tileSize;
+
 	private final String backgroundImage  = "res/presentation/menuState/Background.png";
 	private final String playButtonImage  = "res/presentation/menuState/PlayButton.png";
 	private final String scoreButtonImage = "res/presentation/menuState/ScoreButton.png";
