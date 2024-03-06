@@ -36,3 +36,9 @@ TODO se eliminó breakable como atributo de Ice porque no se usaba.
 TODO organizar bien las funciones de GameLogic
 
 TODO probablemente haya que solucionar lo de volver a jugar un nivel
+
+
+TODO fernandoMateoEsteSi
+TODO corregir nivel politecnico
+TODO corregir nivel 2 para que sea mas facil
+TODO badIceCreamEnConsolaTestFernando

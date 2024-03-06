@@ -47,6 +47,8 @@ package business{
             class Enemy
             class Troll
             class BlueCow
+            class CarlosA
+            class PatricioZ
 
         }
 
@@ -58,6 +60,9 @@ package business{
 
     class Score
 
+skinparam managers{
+    top to bottom direction
+}
 
     package managers{
 
@@ -112,6 +117,8 @@ Entity <|-- Fruit
 
 Enemy <|-- Troll
 Enemy <|-- BlueCow
+Enemy <|- CarlosA
+Enemy <|-l- PatricioZ
 Block <|-- Ice
 
 
@@ -122,8 +129,8 @@ Player ...|> PowerUps
 
 Enemy ...|> Movable
 
-DataManager ... BlockManager
 DataManager ... EnemyManager
+DataManager ... BlockManager
 DataManager ... FruitManager
 
 GameLogic ... CollisionChecker

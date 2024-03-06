@@ -2,15 +2,17 @@
 /'Esto de aquí ignoren'/
 skinparam Linetype ortho
 skinparam class {
-BackgroundColor LightBlue
-ArrowColor Black
-BorderColor Black
+    BackgroundColor LightGray
+    ArrowColor Black
+    BorderColor Black
 }
 
-package business #F0E3BB{
+package business #D4D4D4 {
 
-    package entities  #8DE0A9{
-        package enemies #D9C4F0{
+    package entities #57B5A4{
+
+        package enemies #6BD1CE{
+
             class BlueCow {
                 -potionToFollow: Position
                 -follow(position: Position): void
@@ -62,7 +64,7 @@ package business #F0E3BB{
             }
         }
 
-        package fruits  #EFA5D2{
+        package fruits #6BD1CE{
            class Fruit {
                -name: String
                -fruitScore: Score
@@ -140,8 +142,8 @@ package business #F0E3BB{
         }
     }
 
-    package level  #BBBBBB{
-        package map #D1F0A4{
+    package level #57B5A4{
+        package map #6BD1CE{
             class Map {
                 -mapSizeX: int
                 -mapSizeY: int
@@ -198,7 +200,8 @@ package business #F0E3BB{
         }
     }
 
-    package managers #F0E3BB{
+    package managers #57B5A4{
+
         class BlockManager{
             - blocks: HashMap<Integer, Block>
             + loadImage(imagePath: String): BufferedImage
@@ -233,7 +236,7 @@ package business #F0E3BB{
         }
     }
 
-    class GameLogic {
+    class GameLogic #6BD1CE{
         - player: Player
         - level: Level
         - levelManager: LevelManager
@@ -268,7 +271,7 @@ package business #F0E3BB{
     }
 }
 
-package data #E985FF{
+package data #DF7DF5{
     class DataManager {
         -{static}readLines: Vector<String>
         +{static}loadMap(String path): Map
@@ -283,7 +286,7 @@ package data #E985FF{
     }
 }
 
-package presentation #FFED8A{
+package presentation #77C56E{
     package states #A2FF8E{
         class GameState{
             - dimension: Dimension
@@ -435,6 +438,8 @@ Entity <|-- Fruit
 
 Enemy <|-- Troll
 Enemy <|-- BlueCow
+Enemy <|-l- PatricioZ
+Enemy <|- CarlosA
 Block <|-- Ice
 HelpState --|> State
 GameState --|> State
@@ -449,6 +454,7 @@ Enemy ...|> Movable
 DataManager ... BlockManager
 DataManager ... EnemyManager
 DataManager ... FruitManager
+GameLogic ... LevelManager
 
 GameLogic ... CollisionChecker
 Level ... CollisionChecker
