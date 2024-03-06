@@ -1,4 +1,4 @@
-import presentation.BadIceCream;
+import newTryOfPresentation.BadIceCream;
 
 public class BadIceCreamWithGUI {
 
