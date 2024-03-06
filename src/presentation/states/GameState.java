@@ -45,7 +45,7 @@ public class GameState extends State {
     public void start() {
         threadGameState.start();
         gameLogic.startThread();
-        gameLogic.startLevel(3);
+        gameLogic.startLevel(1);
 
     }
 
