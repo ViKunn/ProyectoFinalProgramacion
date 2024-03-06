@@ -59,7 +59,6 @@ public class GameState extends State {
         setFocusable(true);
         requestFocusInWindow();
 
-        // TODO considerar variable
         while (gameLogic.isRunningAndAlive()) {
             currentTime = System.nanoTime();
             delta += (currentTime - lastTime) / drawInterval;

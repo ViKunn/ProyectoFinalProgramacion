@@ -13,8 +13,9 @@ public class LevelManager {
 		levels = new HashMap<>();
 
 		addLevel1();
-		addLevel2();
-		addLevelPolitectico();
+		// addLevel2();
+		addLevelEPN();
+		addLevelPolitecnico();
 
 	}
 
@@ -42,13 +43,26 @@ public class LevelManager {
 		levels.put(2, level);
 
 	}
-	public void addLevelPolitectico() {
 
-		String mapPath         = "res/levels/levelPolitectico/map.txt";
-		String playersPosition = "res/levels/levelPolitectico/players.txt";
-		String enemiesPath     = "res/levels/levelPolitectico/enemies.txt";
-		String fruits01        = "res/levels/levelPolitectico/fruits01.txt" ;
-		String fruits02        = "res/levels/levelPolitectico/fruits02.txt";
+	public void addLevelEPN() {
+
+		String mapPath         = "res/levels/levelEPN/enemies.txt";
+		String playersPosition = "res/levels/levelEPN/players.txt";
+		String enemiesPath     = "res/levels/levelEPN/enemies.txt";
+		String fruits01        = "res/levels/levelEPN/fruits01.txt" ;
+
+		Level level = new Level(mapPath, playersPosition, enemiesPath, fruits01);
+		levels.put(3, level);
+
+	}
+
+	public void addLevelPolitecnico() {
+
+		String mapPath         = "res/levels/levelPolitecnico/map.txt";
+		String playersPosition = "res/levels/levelPolitecnico/players.txt";
+		String enemiesPath     = "res/levels/levelPolitecnico/enemies.txt";
+		String fruits01        = "res/levels/levelPolitecnico/fruits01.txt" ;
+		String fruits02        = "res/levels/levelPolitecnico/fruits02.txt";
 
 		Level level = new Level(mapPath, playersPosition, enemiesPath, fruits01, fruits02);
 		levels.put(3, level);

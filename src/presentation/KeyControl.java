@@ -17,7 +17,6 @@ public class KeyControl implements KeyListener {
     public void keyTyped(KeyEvent e) {
         // Este método se llama cuando se presiona y luego se libera una tecla
         char keyChar = e.getKeyChar();
-        System.out.println("Key typed: " + keyChar);
 
         // Aquí puedes implementar las acciones que desees realizar con la tecla presionada
         // Por ejemplo:
@@ -46,13 +45,11 @@ public class KeyControl implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         // Este método se llama cuando se presiona una tecla
-        System.out.println("Key pressed: " + e.getKeyChar());
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         // Este método se llama cuando se libera una tecla que estaba presionada
-        System.out.println("Key released: " + e.getKeyChar());
     }
 
     public void delayForKeyboardInput(int delay) {
