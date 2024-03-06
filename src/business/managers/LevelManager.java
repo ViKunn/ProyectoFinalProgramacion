@@ -48,10 +48,9 @@ public class LevelManager {
 		String playersPosition = "res/levels/levelEPN/players.txt";
 		String enemiesPath     = "res/levels/levelEPN/enemies.txt";
 		String fruits01        = "res/levels/levelEPN/fruits01.txt" ;
-		String fruits02        = "res/levels/levelEPN/fruits02.txt";
 
-		Level level = new Level(mapPath, playersPosition, enemiesPath, fruits01, fruits02);
-		levels.put(2, level);
+		Level level = new Level(mapPath, playersPosition, enemiesPath, fruits01);
+		levels.put(3, level);
 	}
 
 	public Level getLevel(int level) {
