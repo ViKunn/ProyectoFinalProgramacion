@@ -15,8 +15,7 @@ import presentation.states.PlayerDieWindow;
 
 import java.awt.*;
 
-public class GameLogic  implements Runnable {
-
+public class GameLogic implements Runnable {
 	private final Player player;
 	private Level level;
 	private final LevelManager levelManager;
@@ -24,18 +23,17 @@ public class GameLogic  implements Runnable {
 	private CollisionChecker collisionChecker;
 	private Thread levelThread;
 	private int levelNum;
-
 	public GameLogic(){
 
 		player = new Player(2);
 		levelManager = new LevelManager();
-
 	}
 
 	public void startThread() {
 		starThread();
 	}
 
+	//Inicia nivel específico
 	public void startLevel(int levelNum){
 		this.levelNum = levelNum;
 		level = levelManager.getLevel(this.levelNum);
@@ -45,7 +43,7 @@ public class GameLogic  implements Runnable {
 		level.sendPositionPlayer(player.getPosition());
 		running = true;
 	}
-
+	//Maneja movimiento de jugador y colisiones con los bloques, enemigos y frutas
 	public void movePlayer(Direction direction){
 
 		player.changeDirection(direction);
@@ -59,6 +57,9 @@ public class GameLogic  implements Runnable {
 
 		if(isCollidingPlayerWithAnEnemy()){
 			player.die();
+			PlayerDieWindow playerDieWindow = new PlayerDieWindow();
+			playerDieWindow.setVisible(true);
+
 			return;
 		}
 
@@ -81,15 +82,12 @@ public class GameLogic  implements Runnable {
 				finishGameWindow.setVisible(true);
 			}
 		}
-
 	}
 
 	private void nextLevel(int levelNum) {
 		startLevel(levelNum);
 		running = true;
-
 	}
-
 	public void playerActivatePowerUp(){
 		player.powerUpIce(level.getMap());
 		System.out.println("Se ejecuto los poderes");
@@ -107,7 +105,6 @@ public class GameLogic  implements Runnable {
 	public boolean isRunningAndAlive(){
 		return player.isAlive() && running;
 	}
-
 	@Override
 	public String toString() {
 
@@ -149,13 +146,12 @@ public class GameLogic  implements Runnable {
 		return player.getScore();
 	}
 
+	//MATEO EXPLICA
 	public void restartPlayerScore() {
 		player.restartScore();
 	}
-
 	@Override
 	public void run() {
-
 		do {
 
 			synchronized (this) {
@@ -167,7 +163,6 @@ public class GameLogic  implements Runnable {
 					}
 				}
 			}
-
 			do{
 
 				for(Enemy enemy: level.getEnemies()){
@@ -226,7 +221,6 @@ public class GameLogic  implements Runnable {
 			notify();
 		}
 	}
-
 	public void pauseGame() {
 		running = false;
 	}
@@ -237,10 +231,8 @@ public class GameLogic  implements Runnable {
 
 	// TODO
 	public void update() {
-
 		//player.update(); // --> actualizar posiciones de player
 		level.update(); // --> actualizar posiciones de enemigos y frutas
-
 	}
 
 	public void draw(Graphics2D g2, int tileSize){
@@ -248,8 +240,5 @@ public class GameLogic  implements Runnable {
 		level.draw(g2, tileSize);
 		player.draw(g2, tileSize);
 		//level.getFru
-
 	}
-
-
 }

@@ -6,7 +6,5 @@ public class BadIceCreamWithGUI {
 
 		BadIceCream badIceCream = new BadIceCream();
 		badIceCream.start();
-
 	}
-
 }

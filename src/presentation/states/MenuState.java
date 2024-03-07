@@ -10,7 +10,6 @@ public class MenuState extends JLayeredPane {
 
 	private Dimension dimension;
 	private int tileSize;
-
 	private final String backgroundImage  = "res/presentation/menuState/Background.png";
 	private final String playButtonImage  = "res/presentation/menuState/PlayButton.png";
 	private final String scoreButtonImage = "res/presentation/menuState/ScoreButton.png";
@@ -22,7 +21,6 @@ public class MenuState extends JLayeredPane {
 	private ScoreState scoreState;
 	private boolean helpStateVisible = false;
 	private boolean isTheHelpState = false;
-
 	public MenuState(Dimension dimension, int tileSize) {
 
 		this.dimension = dimension;
@@ -108,7 +106,6 @@ public class MenuState extends JLayeredPane {
 				repaint();
 
 				state.start();
-
 			}
 
 		};
@@ -128,6 +125,4 @@ public class MenuState extends JLayeredPane {
 	public void showButtons() {
 		menu.setVisible(true); // Mostrar los botones del menú principal
 	}
-
-
 }

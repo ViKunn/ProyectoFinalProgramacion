@@ -48,5 +48,4 @@ public abstract class Enemy extends Entity implements Movable, Cloneable {
 		return super.clone();
 	}
 
-
 }

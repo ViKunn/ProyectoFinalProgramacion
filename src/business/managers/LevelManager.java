@@ -58,7 +58,7 @@ public class LevelManager {
 	}
 
 	public int getNumLevel() {
-	return levels.size();
+		return levels.size();
 	}
 
 }

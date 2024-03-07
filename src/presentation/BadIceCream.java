@@ -25,6 +25,7 @@ public class BadIceCream extends JFrame {
 
 	public BadIceCream() {
 
+		//Ícono a la ventana emergente
 		ImageIcon icono = new ImageIcon("res/presentation/FrameIcon.png");
 		setIconImage(icono.getImage());
 
@@ -50,11 +51,13 @@ public class BadIceCream extends JFrame {
 	public void addBackground(){
 
 		layeredPanel = new Panel(backgroundImage);
+		//Hace que layeredPanel sea un contenedor (se puede poner Panel o Botón)
 		getContentPane().add(layeredPanel);
 
 	}
 	public void addMenu(){
 		menuState = new MenuState(dimension, tileSize);
+		//Agregar el menu a layeredPanel
 		layeredPanel.add(menuState);
 	}
 	public void sleep(int milliseconds){
@@ -64,7 +67,6 @@ public class BadIceCream extends JFrame {
 			e.getMessage();
 		}
 	}
-
 	public void start() {
 		setVisible(true);
 	}

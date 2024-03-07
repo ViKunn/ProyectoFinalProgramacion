@@ -1,6 +1,5 @@
 package business.level.map;
 
-
 import java.awt.image.BufferedImage;
 
 public class Block {

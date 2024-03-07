@@ -12,6 +12,7 @@ public class CollisionChecker {
 		this.map = map;
 	}
 
+	//Verifica si la posición esta atrapada entre bloques sólidos
 	public boolean trappedBetweenBlocks(Position position) {
 		return frontBlockIsSolid(Direction.UP, position) &&
 				frontBlockIsSolid(Direction.DOWN, position) &&
@@ -19,6 +20,7 @@ public class CollisionChecker {
 				frontBlockIsSolid(Direction.LEFT, position);
 	}
 
+	//Verifica si el bloque en la posición frontal es sólido
 	public boolean frontBlockIsSolid(Direction direction, Position position){
 		Position frontPosition = position.getFrontPosition(direction);
 		return map.getBlock(frontPosition).isSolid();

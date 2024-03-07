@@ -77,7 +77,6 @@ public class Player extends Entity implements Movable, PowerUps {
 		} else {
 			putIce(map);
 		}
-
 	}
 
 	@Override
@@ -102,7 +101,6 @@ public class Player extends Entity implements Movable, PowerUps {
 			map.setIce(auxPosition1);
 
 		}
-
 	}
 
 	public void increaseScore(int fruitScore) {

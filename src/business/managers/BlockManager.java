@@ -24,7 +24,6 @@ public class BlockManager {
 	}
 
 
-
 	public BufferedImage loadImage(String imagePath) {
 		try {
 			File file = new File(imagePath);
@@ -33,7 +32,6 @@ public class BlockManager {
 			throw new RuntimeException("Error al cargar la imagen: " + e.getMessage());
 		}
 	}
-
 
 	public Block getBlock(int blockNumber) {
 		return blocks.get(blockNumber);

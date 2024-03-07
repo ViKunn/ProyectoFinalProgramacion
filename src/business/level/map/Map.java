@@ -31,25 +31,33 @@ public class Map {
 	public int getMapSizeY() {
 		return mapSizeY;
 	}
+	//Devuelve bloque en posición específica
 	public Block getBlock(Position position){
 		return blocks[position.getY()][position.getX()];
 	}
 
+	//Estable un bloque de hielo en dicha posición x, y
 	public void setIce(Position position){
 		blocks[position.getY()][position.getX()] = blockManager.getIce();
 	}
+	//Estable un bloque en dicha posición x, y
 	public void setBlock(Position position, int block){
 		blocks[position.getY()][position.getX()] = blockManager.getBlock(block);
 	}
 
+	//Devuelve true si el bloque en la posición x, y es un bloque de hielo
 	public boolean frontBlockIsIce(Direction direction, Position position) {
 
 		Position frontPosition = position.getFrontPosition(direction);
 		return getBlock(frontPosition) instanceof Ice;
 	}
+
+	//Devuelve true si el bloque en la posición x, y es un bloque solido
 	public boolean isBlockSolid(Position frontPosition) {
 		return blocks[frontPosition.getY()][frontPosition.getX()].isSolid();
 	}
+
+    //Carga bloquees del mapa dependiendo los números proporcionados por el vector
 	private Block[][] loadBlocks(Vector<Vector<Integer>> numbers) {
 
 		Block[][] loadedBlocks = new Block[mapSizeY][mapSizeX];
@@ -79,6 +87,7 @@ public class Map {
 
 	}
 
+	//Representación del mapa mostrando bloque en cada posición, no se imprima unido
 	@Override
 	public String toString() {
 

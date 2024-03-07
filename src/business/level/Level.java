@@ -33,16 +33,19 @@ public class Level {
 		runningFruitLayer = 0;
 	}
 
+	//Configura el verificador de colisiones para los enemigos
 	private void setEnemiesCollisionChecker(CollisionChecker collisionChecker){
 		for (Enemy enemy : enemies) {
 			enemy.setCollisionChecker(collisionChecker);
 		}
 	}
 
-
+	//Devuelve el mapa de cada nivel
 	public Map getMap() {
 		return map;
 	}
+
+	//Devuelve la fruta en la posición especificada y capa de frutas
 	private Fruit getFruit(Position position, int runningFruitLayer){
 
 		for (Fruit fruit: getFruitLayer(runningFruitLayer)) {
@@ -51,9 +54,10 @@ public class Level {
 				return fruit;
 			}
 		}
-
 		return null;
 	}
+
+	//Devuelve la capa de frutas actual
 	private ArrayList<Fruit> getFruitLayer(int runningFruitLayer) {
 
 		try {
@@ -61,23 +65,27 @@ public class Level {
 		} catch (Exception e){
 			return new ArrayList<>();
 		}
-
 	}
 
+	//Devuelve la posición inicial del jugador especificado
 	public Position getPlayerInitialPosition(int player){
 		return playersPositions.get(player - 1);
 	}
 
-
+	//Decrementa el contador de frutas en la posición específicada
 	public void decreaseFruitCounter(Position position) {
 
 		Fruit fruit = getFruit(position, runningFruitLayer);
 		getFruitLayer(runningFruitLayer).remove(fruit);
 
 	}
+
+	//Comprueba si la capa de frutas está vacía
 	private boolean fruitLayerIsEmpty(int runningFruitLayer) {
 		return getFruitLayer(runningFruitLayer).isEmpty();
 	}
+
+	//Comprueba si no hay frutas restantes en el nivel
 	public boolean fruitsEqualZero() {
 
 		if (fruitLayerIsEmpty(runningFruitLayer)){
@@ -86,6 +94,8 @@ public class Level {
 
 		return fruits.isEmpty();
 	}
+
+	//Comprueba si el jugador está colisionando con una fruta en su posición
 	public boolean isCollidingWithAFruit(Position playerPosition) {
 
 		for (Fruit fruit: getFruitLayer(runningFruitLayer)) {
@@ -98,6 +108,7 @@ public class Level {
 		return false;
 	}
 
+	//Comprueba si hay una colisión entre el jugador y un enemigo en la posición específicada
 	public boolean isCollidingWithAnEnemy(Position position) {
 
 		for (Enemy enemy: enemies) {
@@ -105,10 +116,11 @@ public class Level {
 				return true;
 			}
 		}
-
 		return false;
 
 	}
+
+	//Comprueba si hay una colisión entre el jugador y un enemigo en la posición especificada
 	public void isCollidingBetweenEnemies() {
 		for(int i =0; i < enemies.size(); i++){
 			for (Enemy enemy : enemies) {
@@ -120,6 +132,7 @@ public class Level {
 		}
 	}
 
+	//Envía la posición del jugador a los enemigos que necesitan seguir al player
 	public void sendPositionPlayer(Position position) {
 
 		for (Enemy enemy : enemies) {
@@ -129,13 +142,13 @@ public class Level {
 				((CarlosA) enemy).passPositionToFollow(position);
 			}
 		}
-
 	}
-
+	//Devuelve la lista de enemigos
 	public ArrayList<Enemy> getEnemies() {
 		return enemies;
 	}
 
+	//Devuelve la puntuación de la fruta en la posición especificada
 	public int getFruitScore(Position position) {
 
 		ArrayList<Fruit> fruitLayer;
@@ -150,26 +163,23 @@ public class Level {
 		return 0;
 	}
 
+	//Dibuja los enemigos en el nivel
 	private void drawEnemies(Graphics2D g2, int tileSize){
 
 		for (Enemy enemy : enemies) {
 			enemy.draw(g2, tileSize);
 		}
-
 	}
 
+	//Dibuja las frutas en el nivel
 	private void drawFruits(Graphics2D g2, int tileSize){
 
 
 			for (Fruit fruit : getFruitLayer(runningFruitLayer)) {
 				fruit.draw(g2, tileSize);
 			}
-
-
 	}
-
-
-
+	//Dibuja el mapa en el nivel
 	public void draw(Graphics2D g2, int tileSize) {
 
 		map.draw(g2, tileSize);
@@ -177,7 +187,6 @@ public class Level {
 		drawEnemies(g2, tileSize);
 
 	}
-
 	public void update() {
 
 	}

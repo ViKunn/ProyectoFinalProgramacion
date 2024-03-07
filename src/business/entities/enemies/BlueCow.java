@@ -29,6 +29,7 @@ public class BlueCow extends Enemy implements Movable{
         int valorAbsolutoDistanceX = (distanceX >= 0) ? distanceX : -distanceX;
         int valorAbsolutoDistanceY = (distanceY >= 0) ? distanceY : -distanceY;
 
+        //Si la distancia horizontal es mayor que la vertical
         if (valorAbsolutoDistanceX > valorAbsolutoDistanceY) {
             if (distanceX > 0) {            // El movimiento del BlueCow (izquierda o derecha) depende del signo de la distancia
                 this.direction = Direction.RIGHT;
@@ -37,6 +38,7 @@ public class BlueCow extends Enemy implements Movable{
                 this.direction = Direction.LEFT;
                 move(Direction.LEFT);
             }
+        //Si la distancia horizontal es menor que la vertical
         } else {
             if (distanceY > 0) {
                 this.direction = Direction.DOWN;
@@ -91,6 +93,7 @@ public class BlueCow extends Enemy implements Movable{
 
     }
 
+    //Actualiza posición a seguir por Blue Cow
     public void passPositionToFollow(Position position) {
         this.positionToFollow = position;
     }

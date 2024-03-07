@@ -16,5 +16,4 @@ public class Panel extends JPanel {
 		super.paintComponent(g);
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 	}
-
 }

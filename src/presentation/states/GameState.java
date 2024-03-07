@@ -11,7 +11,6 @@ public class GameState extends State {
     private final Dimension dimension;
     private final GameLogic gameLogic;
     private KeyControl keyControl;
-
     private static final int FPS = 60;
     private final int tileSize;
     private Thread threadGameState;
@@ -33,7 +32,6 @@ public class GameState extends State {
 
         System.out.println("" + gameLogic.isRunningAndAlive());
 
-
     }
 
     private void setInitialValues() {
@@ -46,9 +44,7 @@ public class GameState extends State {
         threadGameState.start();
         gameLogic.startThread();
         gameLogic.startLevel(1);
-
     }
-
     @Override
     public void run() {
         double drawInterval = (double) 1000000000 / FPS;
