@@ -66,7 +66,7 @@ public class GameLogic implements Runnable {
 
 		level.sendPositionPlayer(player.getPosition());
 
-		if (isCollidingWithAFruit()){
+		if (isCollidingWithAFruit(player.getPosition())){
 			player.increaseScore(level.getFruitScore(player.getPosition()));
 			level.decreaseFruitCounter(player.getPosition());
 			System.out.println("Comiste una fruta!!");
@@ -100,8 +100,8 @@ public class GameLogic implements Runnable {
 	private boolean isCollidingWithABlock(Direction direction) {
 		return collisionChecker.frontBlockIsSolid(direction, player.getPosition());
 	}
-	private boolean isCollidingWithAFruit() {
-		return level.isCollidingWithAFruit(player.getPosition());
+	private boolean isCollidingWithAFruit(Position position) {
+		return level.isCollidingWithAFruit(position);
 	}
 	public boolean isRunningAndAlive(){
 		return player.isAlive() && running;
@@ -168,6 +168,11 @@ public class GameLogic implements Runnable {
 
 				for(Enemy enemy: level.getEnemies()){
 
+					// TODO: aquí cambia para que el enemigo no pueda pasar por encima de las frutas
+					if (isCollidingWithAFruit(enemy.getPosition().getFrontPosition(enemy.getDirection()))){
+						enemy.changeToOpositeDirection();
+					}
+
 					if(enemy instanceof BlueCow){
 						((BlueCow) enemy).follow();
 
@@ -219,7 +224,7 @@ public class GameLogic implements Runnable {
 	public void restartGame() {
 		synchronized (this) {
 			running = true;
-			notify();
+			notify();notify();
 		}
 	}
 	public void pauseGame() {
