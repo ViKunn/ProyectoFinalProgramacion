@@ -18,6 +18,7 @@ import java.awt.*;
 public class GameLogic  implements Runnable {
 
 	private final Player player;
+	private Player player2;
 	private Level level;
 	private final LevelManager levelManager;
 	private boolean running;
@@ -28,6 +29,7 @@ public class GameLogic  implements Runnable {
 	public GameLogic(){
 
 		player = new Player(2);
+		player2 = new Player(1);
 		levelManager = new LevelManager();
 
 	}
@@ -43,6 +45,7 @@ public class GameLogic  implements Runnable {
 
 		player.setPosition(level.getPlayerInitialPosition(1));
 		level.sendPositionPlayer(player.getPosition());
+		player2.setPosition(new Position(level.getPlayerInitialPosition(1).getX()+1, level.getPlayerInitialPosition(1).getY()+1));
 		running = true;
 	}
 
@@ -50,23 +53,65 @@ public class GameLogic  implements Runnable {
 
 		player.changeDirection(direction);
 
-		if (isCollidingWithABlock(direction)){
+		if (isCollidingWithABlock(direction, player)){
 			System.out.println("No se puede mover porque hay un bloque");
 			return;
 		}
 
 		player.move(direction);
 
-		if(isCollidingPlayerWithAnEnemy()){
+		if(isCollidingPlayerWithAnEnemy(player)){
 			player.die();
+			PlayerDieWindow playerDieWindow = new PlayerDieWindow();
+			playerDieWindow.setVisible(true);
 			return;
 		}
 
 		level.sendPositionPlayer(player.getPosition());
 
-		if (isCollidingWithAFruit()){
+		if (isCollidingWithAFruit(player)){
 			player.increaseScore(level.getFruitScore(player.getPosition()));
 			level.decreaseFruitCounter(player.getPosition());
+			System.out.println("Comiste una fruta!!");
+		}
+
+		if (level.fruitsEqualZero()){
+			System.out.println("Felicidades!! Pasaste de nivel!!");
+			this.levelNum++;
+			if (levelNum <= levelManager.getNumLevel()) {
+				nextLevel(levelNum);
+			}else {
+				running = false;
+				FinishGameWindow finishGameWindow = new FinishGameWindow();
+				finishGameWindow.setVisible(true);
+			}
+		}
+
+	}
+
+	public void movePlayer2(Direction direction){
+
+		player2.changeDirection(direction);
+
+		if (isCollidingWithABlock(direction, player2)){
+			System.out.println("No se puede mover porque hay un bloque");
+			return;
+		}
+
+		player2.move(direction);
+
+		if(isCollidingPlayerWithAnEnemy(player2)){
+			player2.die();
+			PlayerDieWindow playerDieWindow = new PlayerDieWindow();
+			playerDieWindow.setVisible(true);
+			return;
+		}
+
+		level.sendPositionPlayer(player2.getPosition());
+
+		if (isCollidingWithAFruit(player2)){
+			player2.increaseScore(level.getFruitScore(player2.getPosition()));
+			level.decreaseFruitCounter(player2.getPosition());
 			System.out.println("Comiste una fruta!!");
 		}
 
@@ -95,17 +140,22 @@ public class GameLogic  implements Runnable {
 		System.out.println("Se ejecuto los poderes");
 	}
 
-	private boolean isCollidingPlayerWithAnEnemy() {
-		return level.isCollidingWithAnEnemy(player.getPosition());
+	public void playerActivatePowerUp2(){
+		player2.powerUpIce(level.getMap());
+		System.out.println("Se ejecuto los poderes");
 	}
-	private boolean isCollidingWithABlock(Direction direction) {
-		return collisionChecker.frontBlockIsSolid(direction, player.getPosition());
+
+	private boolean isCollidingPlayerWithAnEnemy(Player playerChoose) {
+		return level.isCollidingWithAnEnemy(playerChoose.getPosition());
 	}
-	private boolean isCollidingWithAFruit() {
-		return level.isCollidingWithAFruit(player.getPosition());
+	private boolean isCollidingWithABlock(Direction direction, Player playerChoose) {
+		return collisionChecker.frontBlockIsSolid(direction, playerChoose.getPosition());
+	}
+	private boolean isCollidingWithAFruit(Player playerChoose) {
+		return level.isCollidingWithAFruit(playerChoose.getPosition());
 	}
 	public boolean isRunningAndAlive(){
-		return player.isAlive() && running;
+		return player.isAlive() && running && player2.isAlive();
 	}
 
 	@Override
@@ -118,8 +168,12 @@ public class GameLogic  implements Runnable {
 
 				Position position = new Position(col , row);
 
-				if (isCollidingPlayerWithAnEnemy()){
+				if (isCollidingPlayerWithAnEnemy(player)){
 					System.out.print("X ");
+
+				} else if (isCollidingPlayerWithAnEnemy(player)){
+					System.out.print("X ");
+
 
 				} else if (player.getPosition().equals(position)) { //PRESENTA PLAYER
 					System.out.print("P ");
@@ -194,6 +248,17 @@ public class GameLogic  implements Runnable {
 					break;
 				}
 
+				if(level.isCollidingWithAnEnemy(player2.getPosition())){
+					player2.die();
+					//running = false;
+					PlayerDieWindow playerDieWindow = new PlayerDieWindow();
+					playerDieWindow.setVisible(true);
+
+					System.out.println("TE MORISTE!!");
+					System.out.println("wuruwrur, me muero por thread");
+					break;
+				}
+
 				level.isCollidingBetweenEnemies();
 
 				try {
@@ -247,7 +312,7 @@ public class GameLogic  implements Runnable {
 
 		level.draw(g2, tileSize);
 		player.draw(g2, tileSize);
-		//level.getFru
+		player2.draw(g2,tileSize);
 
 	}
 

@@ -40,6 +40,28 @@ public class KeyControl implements KeyListener {
                 gameLogic.pauseGame();
                 break;
         }
+
+        char keyChar1 = e.getKeyChar();
+
+        // Aquí puedes implementar las acciones que desees realizar con la tecla presionada
+        // Por ejemplo:
+        switch (keyChar1) {
+            case 'j':
+                gameLogic.movePlayer2(Direction.LEFT);
+                break;
+            case 'i':
+                gameLogic.movePlayer2(Direction.UP);
+                break;
+            case 'k':
+                gameLogic.movePlayer2(Direction.DOWN);
+                break;
+            case 'l':
+                gameLogic.movePlayer2(Direction.RIGHT);
+                break;
+            case 'm':
+                gameLogic.playerActivatePowerUp2();
+                break;
+        }
     }
 
     @Override

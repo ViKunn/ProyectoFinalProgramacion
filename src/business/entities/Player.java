@@ -24,7 +24,7 @@ public class Player extends Entity implements Movable, PowerUps {
 		this.alive = true;
 		getPlayerImage(numSkin);
 		this.direction = Direction.DOWN;
-		this.contadorVidas =0;
+		this.contadorVidas =3;
 	}
 
 	public Player(Position position){
@@ -63,8 +63,8 @@ public class Player extends Entity implements Movable, PowerUps {
 	}
 
 	public void die() {
-		contadorVidas++;
-		if (contadorVidas ==3){
+		contadorVidas--;
+		if (contadorVidas ==0){
 			alive = false;
 		}
 
