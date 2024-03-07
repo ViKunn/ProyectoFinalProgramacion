@@ -16,6 +16,7 @@ import presentation.states.PlayerDieWindow;
 import java.awt.*;
 
 public class GameLogic implements Runnable {
+
 	private final Player player;
 	private Level level;
 	private final LevelManager levelManager;
