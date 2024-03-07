@@ -16,6 +16,7 @@ public class Player extends Entity implements Movable, PowerUps {
 
 	private boolean alive;
 	private final Score score;
+	private int contadorVidas;
 
 	public Player(int numSkin){
 		// this.advance = 1;
@@ -23,6 +24,7 @@ public class Player extends Entity implements Movable, PowerUps {
 		this.alive = true;
 		getPlayerImage(numSkin);
 		this.direction = Direction.DOWN;
+		this.contadorVidas =0;
 	}
 
 	public Player(Position position){
@@ -61,7 +63,11 @@ public class Player extends Entity implements Movable, PowerUps {
 	}
 
 	public void die() {
-		alive = false;
+		contadorVidas++;
+		if (contadorVidas ==3){
+			alive = false;
+		}
+
 		//this.score.setScore(0);
 	}
 

@@ -185,7 +185,7 @@ public class GameLogic  implements Runnable {
 
 				if(level.isCollidingWithAnEnemy(player.getPosition())){
 					player.die();
-					running = false;
+					//running = false;
 					PlayerDieWindow playerDieWindow = new PlayerDieWindow();
 					playerDieWindow.setVisible(true);
 
